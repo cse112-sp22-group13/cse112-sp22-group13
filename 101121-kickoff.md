@@ -19,8 +19,9 @@ Team 4
 3. Ryan McLaughlin
 
 # Location and Time
-10/11/2021 6:10 PM (Start)
-10/11/2021 6:XX PM (End)
+Geisel Library 1st Floor 10/11/2021 6:10 PM (Start)
+
+Geisel Library 1st Floor 10/11/2021 6:XX PM (End)
 
 # Agenda
 ## Introductions
@@ -38,5 +39,9 @@ Team 4
 * In-person or Zoom
   * More likely to be zoom. If needed just log in to zoom for 20 minutes so everyone can take the screenshot.
   * Possibly hanging out at Dirty Birds for the group bonding event in person.
+
+## Preliminary Brainstorming
+* Scrape the web for cooking recipes
+  * Search for a cooking API and scrape it instead.
 
 
