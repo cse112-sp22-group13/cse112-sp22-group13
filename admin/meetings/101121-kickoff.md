@@ -50,8 +50,9 @@ The first meeting involving Team 4 members was called to order at 6:10 PM.
   * Search for a cooking API and scrape it instead.
 * JSON databases
 * Website needed on top of application?
-* Ideas for a name?
+* Ideas for a name? (Will choose during hangout tomorrow)
 * Ideas for our introduction video?
+  * Christian volunteered to do the video editing
 
 # Adjournment
 There being no further business to discuss, the meeting was adjourned at 7:02 PM.
