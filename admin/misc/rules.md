@@ -19,11 +19,12 @@
 
 ## Team Procedures
 1. Day, time, and place for regular **team meetings**:
+   
 Monday 6:30 PM - 7:30 PM PST
 Meet on 1st floor of Geisel West
 Any additional meetings may be scheduled either in-person or virtually 
 
-2. Preferred method of **communication** in order to inform each other of team meetings, announcements, updates, reminders, issues, and project responsibilities:
+1. Preferred method of **communication** in order to inform each other of team meetings, announcements, updates, reminders, issues, and project responsibilities:
 We will be communicating through the group’s workspace on Slack. We will make use of the specific channels to keep different conversation types organized. If any virtual meetings are scheduled, it will occur through Zoom.
 
 3. **Decision-making policy** (consensus or majority vote):
@@ -37,9 +38,9 @@ Meeting minutes will be assigned in a revolving cycle every week. Unless a secre
 All commits to a branch, closing of issues, and PR’s should be with description in order to keep a stable record of all code changes. 
 All project conversations, brainstorming, and decisions should be within Slack for the sake of careful record keeping. 
 
-## Team Expectations
+# Team Expectations
 
-# Work Quality
+## Work Quality
 1. Project standards:
 The level of quality we expect from each member of the team is to provide substantial amounts of cooperation, drive, and creativity. Each member that is assigned a specific role to the project shall uphold that role and exhibit skills within that role. For example, designers must exemplify creativity and produce complex ideas, while researchers shall collect abundant information to support the design of the project. Front-end and back-end developers must pay full attention to detail while working on specific features, and have input to feature aspects without leading astray from the desired design. All roles shall communicate effectively amongst their sub-teams and the entire team so that everyone has the same expectations of the outcome of the project. Members should have their questions answered and clarified before continuing with their work. Lastly, every member shall exemplify their own type of leadership and take initiative when they notice things are heading in the wrong direction. It is up to the team as a whole, and the individual, to make sure that the project stays on track and covers all requirements of the assignment.
 
