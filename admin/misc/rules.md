@@ -1,0 +1,70 @@
+# TEAM CONTRACT
+## CSE 110 - Software Engineering
+## Team 4 - NaN Bread
+
+**Team Members:**
+1. Alanna Merlan
+2. Scott Andrews
+3. David Thai
+4. Patrick Wang
+5. Christian Velasquez
+6. Peicong Wu
+7. Han Nguyen				
+8. Andy Sunjic
+9. Delvin Tuankun
+10. Bryan Nguyen
+11. Xavier Sevcik
+12. Ryan McLaughlin
+13. David Liu
+
+## Team Procedures
+1. Day, time, and place for regular **team meetings**:
+Monday 6:30 PM - 7:30 PM PST
+Meet on 1st floor of Geisel West
+Any additional meetings may be scheduled either in-person or virtually 
+
+2. Preferred method of **communication** in order to inform each other of team meetings, announcements, updates, reminders, issues, and project responsibilities:
+We will be communicating through the group’s workspace on Slack. We will make use of the specific channels to keep different conversation types organized. If any virtual meetings are scheduled, it will occur through Zoom.
+
+3. **Decision-making policy** (consensus or majority vote):
+We will make decisions based on what the majority vote is. In the case of a tie, we will base the decision on a consensus.
+
+4. Method for setting and following meeting **agendas**:
+Team leaders will post the meeting agenda in the ‘agenda’ channel on Slack every Monday prior to the evening meeting. Team members can add to the agenda if needed. Whoever is taking the minutes for the meeting that day will use the agenda as a template. Team leaders will be responsible for the teams following the agenda.
+
+5. Method of **record keeping**:
+Meeting minutes will be assigned in a revolving cycle every week. Unless a secretary is assigned who will handle all meeting record keeping, it will be evenly divided among all team members. 
+All commits to a branch, closing of issues, and PR’s should be with description in order to keep a stable record of all code changes. 
+All project conversations, brainstorming, and decisions should be within Slack for the sake of careful record keeping. 
+
+## Team Expectations
+
+# Work Quality
+1. Project standards:
+The level of quality we expect from each member of the team is to provide substantial amounts of cooperation, drive, and creativity. Each member that is assigned a specific role to the project shall uphold that role and exhibit skills within that role. For example, designers must exemplify creativity and produce complex ideas, while researchers shall collect abundant information to support the design of the project. Front-end and back-end developers must pay full attention to detail while working on specific features, and have input to feature aspects without leading astray from the desired design. All roles shall communicate effectively amongst their sub-teams and the entire team so that everyone has the same expectations of the outcome of the project. Members should have their questions answered and clarified before continuing with their work. Lastly, every member shall exemplify their own type of leadership and take initiative when they notice things are heading in the wrong direction. It is up to the team as a whole, and the individual, to make sure that the project stays on track and covers all requirements of the assignment.
+
+2. Strategies to fulfill these standards:
+There will be frequent team and individual check-ups to ensure we are accurately meeting the project needs and expectations. Team leaders may contact any member periodically to confirm the member is completing the work within their role. Weekly stand-up meetings will also be scheduled once roles are assigned. During stand-ups, every member will share what items they have completed, tasks they are currently working on, and what areas they are stuck on. During Monday team meetings, it is expected that every member provides qualitative feedback and ideas toward the project. If a member falls behind or misses a meeting, they will be reminded to read the minutes and Slack channels in order to get caught up. Every member is subject to being reminded to contribute toward the project while they should also be reminding others to do the same.
+
+3. Expected level of communication with other team members:
+All team members must be active on Slack daily. Every overall team channel must be read as pinned announcements may occur frequently. Additionally, members must be continuously active within their own sub-team channels and communicate effectively within those sub-teams (i.e. designers, researchers, specific feature developers) so that their teammates are all on the same page.
+
+4.  Expected level of commitment to team decisions and tasks:
+Since we are all sharing leadership responsibilities, we will equally commit to team decision making and task effort.
+
+## Conflict Resolution
+1. Handling infractions of any of the obligations of this team contract:
+If a team member shows signs of infractions of their obligations, the group will remind the member of their duties. The group will then start issuing warnings if a member continues to forget about their obligations every week.
+
+2. What the team will do if the infractions continue:
+If the team recognizes that a team member is not following the rules of the contract for an extended period of time (such as missing most meetings without following up and not putting in their part for the project), the team will provide a warning to the person. Following a warning, it will be expected that the member will no longer continue falling back on their duties. If the member does not change their behavior after notification, the team may contact the TA and decide how to proceed from there. 
+
+
+***************************************************************************
+
+a) *I reviewed the standards, roles, and procedures as stated in this contract.*
+b) *I understand that I am obligated to abide by these terms and conditions.*
+c) *I understand that if I do not abide by these terms and conditions, I will be subject to the consequences as stated in the contract.*
+ 
+
+_________________________________________________
