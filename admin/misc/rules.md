@@ -48,23 +48,23 @@ There will be frequent team and individual check-ups to ensure we are accurately
 
 ### Personal Accountability
 1. Expected individual attendance, punctuality, and participation at all team meetings: <br/>
-We expect team members to show up on time since the meeting times have been set ahead of time and will be recurring weekly. All team members are expected to either attend a meeting for the entire duration, or to catch up by reviewing the Minutes if they cannot attend/show up late/leave early. If there is something that needs to be done on their part, the Minutes/Slack will let them know what needs to be done. Team members are expected to participate during the meeting by providing input/ideas, and agreeing/disagreeing on actions.
+We expect team members to show up on time since the meeting times have been set ahead of time and will be recurring weekly. All team members are expected to either attend a meeting for the entire duration, or to catch up by reviewing the minutes if they cannot attend/show up late/leave early. If there is something that needs to be done on their part, the minutes/Slack will let them know what needs to be done. Team members are expected to participate during the meeting by providing input/ideas, and agreeing/disagreeing on actions.
 
 2. Expected level of responsibility for fulfilling team assignments, timelines, and deadlines: <br/>
 All team members will take on equal responsibility for getting assignments turned in before the deadline. If a team member is worried about getting their part done prior to the deadline, they need to communicate with the members so that something can be done and the assignment can still be completed in time. 
 
 3. Expected level of communication with other team members: <br/>
-All team members must be active on Slack daily. Every overall team channel must be read as pinned announcements may occur frequently. Additionally, members must be continuously active within their own sub-team channels and communicate effectively within those sub-teams (i.e. designers, researchers, specific feature developers) so that their teammates are all on the same page.
+All team members must be active on Slack daily. Every main team channel must be read as pinned announcements may occur frequently. Additionally, members must be continuously active within their own sub-team channels and communicate effectively within those sub-teams (i.e. designers, researchers, specific feature developers) so that their teammates are all on the same page. Close and frequent communication with the Team Leaders is also expected so that members are comfortable with discussing any aspect of their work.
 
 4.  Expected level of commitment to team decisions and tasks: <br/>
 Since we are all sharing leadership responsibilities, we will equally commit to team decision making and task effort.
 
 ## Conflict Resolution
 1. Handling infractions of any of the obligations of this team contract: <br/>
-If a team member shows signs of infractions of their obligations, the group will remind the member of their duties. The group will then start issuing warnings if a member continues to forget about their obligations every week.
+If a team member shows signs of infractions of their obligations, the group will remind the member of their duties. The Team Leaders will then begin issuing warnings if a member continues to forget about their obligations every week.
 
 2. What the team will do if the infractions continue: <br/>
-If the team recognizes that a team member is not following the rules of the contract for an extended period of time (such as missing most meetings without following up and not putting in their part for the project), the team will provide a warning to the person. Following a warning, it will be expected that the member will no longer continue falling back on their duties. If the member does not change their behavior after notification, the team may contact the TA and decide how to proceed from there. 
+If the team recognizes that a team member is not following the rules of the contract for an extended period of time (such as missing most meetings without following up or not putting in the effort for their part(s) of the project), the team will provide a warning to the person. Following a warning, it will be expected that the member will no longer continue falling back on their duties. If the member does not change their behavior after notification, the team may contact the TA and decide how to proceed from there. 
 
 
 ***************************************************************************
