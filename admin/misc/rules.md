@@ -40,10 +40,10 @@ All project conversations, brainstorming, and decisions should be within Slack f
 ## Team Expectations
 
 ### Work Quality
-1. Project standards: <br/>
+1. **Project standards**: <br/>
 The level of quality we expect from each member of the team is to provide substantial amounts of cooperation, drive, and creativity. Each member that is assigned a specific role to the project shall uphold that role and exhibit skills within that role. For example, designers must exemplify creativity and produce complex ideas, while researchers shall collect abundant information to support the design of the project. Front-end and back-end developers must pay full attention to detail while working on specific features, and have input to feature aspects without leading astray from the desired design. All roles shall communicate effectively amongst their sub-teams and the entire team so that everyone has the same expectations of the outcome of the project. Members should have their questions answered and clarified before continuing with their work. Lastly, every member shall exemplify their own type of leadership and take initiative when they notice things are heading in the wrong direction. It is up to the team as a whole, and the individual, to make sure that the project stays on track and covers all requirements of the assignment.
 
-2. Strategies to fulfill these standards: <br/>
+2. **Strategies** to fulfill these standards: <br/>
 There will be frequent team and individual check-ups to ensure we are accurately meeting the project needs and expectations. Team leaders may contact any member periodically to confirm the member is completing the work within their role. Weekly stand-up meetings will also be scheduled once roles are assigned. During stand-ups, every member will share what items they have completed, tasks they are currently working on, and what areas they are stuck on. During Monday team meetings, it is expected that every member provides qualitative feedback and ideas toward the project. If a member falls behind or misses a meeting, they will be reminded to read the minutes and Slack channels in order to get caught up. Every member is subject to being reminded to contribute toward the project while they should also be reminding others to do the same.
 
 ### Personal Accountability
@@ -76,4 +76,6 @@ c) *I understand that if I do not abide by these terms and conditions, I will be
 
 Print Name: 
 
-Signature:                                                     Date:
+Signature:
+
+Date:
