@@ -1,5 +1,5 @@
 # Team Nan Bread (Team 4)
-![team icon](/admin/branding/nanbread4.png)
+![team icon](/admin/branding/teamicon.png)
 
 ## Brand
 
@@ -42,6 +42,7 @@ As aspiring software engineers, we value
 * Github Link: [Link](https://github.com/davedav1111)
 
 ### David Thai
+![davidthais selfie](/admin/branding/davidthai.jpg)
 * Undisputed #1 Scooter User in the World (self-proclaimed) (Disclaimer: I'm not)
 * 3rd Year CS
 * Github Link: [Link](https://github.com/davidthai6629)
