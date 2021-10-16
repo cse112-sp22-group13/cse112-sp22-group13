@@ -42,7 +42,7 @@ As aspiring software engineers, we value
 ### David Liu
 <img src="/admin/branding/davidliu.jpg" alt="drawing" width="350"/>
 
-* David Liu
+
 * Third Year CS
 * #1 reckless scooter driver
 * Cannot think of anything funny
@@ -63,6 +63,7 @@ As aspiring software engineers, we value
 
 ### Han Nguyen
 <img src="/admin/branding/han.jpg" alt="drawing" width="350"/>
+
 * Forever stuck in fairycore ACNH
 * 4th year Cog Sci - Design & Interaction
 * Github Link: [Link](https://github.com/hannx00)
