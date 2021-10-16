@@ -61,8 +61,9 @@ As aspiring software engineers, we value
 * Description
 * Github Link: [Link](https://github.com/dtuankun)
 
-### Han N.
-* Chasing after nightmares the way other people chase dreams
+### Han Nguyen
+<img src="/admin/branding/han.jpg" alt="drawing" width="350"/>
+* Forever stuck in fairycore ACNH
 * 4th year Cog Sci - Design & Interaction
 * Github Link: [Link](https://github.com/hannx00)
 
