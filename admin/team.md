@@ -3,8 +3,13 @@
 
 ## Brand
 
-## Values
-As aspiring software engineers, we value 
+## Team Values
+
+    Here at team NaNbread we adhere to two tenets above all others: the Golden Rule and Team Work Makes the Dream Work!
+    We value or communication and team member support as critical elements in maintaining a friendly and efficent working
+    environment. Creating and fostering a safe enviornment not only produces an effecient machine but allows all
+    team members to learn and grow. 
+    
 
 ## Roster
 ### Alanna Merlan
@@ -16,6 +21,8 @@ As aspiring software engineers, we value
 * Github Link: [Link](https://github.com/amerlangit)
 
 ### Scott Andrews
+<img src="/admin/branding/andy.jpg" alt="drawing" width="350"/>
+
 * Team Leader
 * Not a 10x programmer
 * Pretty good at being confused
