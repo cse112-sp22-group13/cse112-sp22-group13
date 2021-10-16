@@ -37,11 +37,11 @@ As aspiring software engineers, we value
 * Github Link: [Link](https://github.com/AmnesiacSloth)
 
 ### David Liu
+![davidlius selfie](/admin/branding/davidliu.jpg)
 * Description
 * Github Link: [Link](https://github.com/davedav1111)
 
 ### David Thai
-![davidts selfie](/admin/branding/davidt.jpg)
 * Undisputed #1 Scooter User in the World (self-proclaimed) (Disclaimer: I'm not)
 * 3rd Year CS
 * Github Link: [Link](https://github.com/davidthai6629)
