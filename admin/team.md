@@ -45,7 +45,8 @@
 * Github Link: [Link](https://github.com/dtuankun)
 
 ### Han N.
-* Description
+* chasing after nightmares the way other people chase dreams
+* 4th year Cog Sci - Design & Interaction
 * Github Link: [Link](https://github.com/hannx00)
 
 ### Patrick Wang
