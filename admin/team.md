@@ -1,4 +1,5 @@
 # Team Nan Bread (Team 4)
+![team icon](/admin/branding/nanbread4.png)
 
 ## Brand
 
