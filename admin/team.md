@@ -12,7 +12,7 @@
 
 ## Team Values
 
-    Here at team NaNbread we adhere to two tenets above all others: the Golden Rule and Team Work Makes the Dream Work!
+    Here at team NaN Bread we adhere to two tenets above all others: the Golden Rule and Team Work Makes the Dream Work!
     We value or communication and team member support as critical elements in maintaining a friendly and efficent working
     environment. Creating and fostering a safe enviornment not only produces an effecient machine but allows all
     team members to learn and grow. 
