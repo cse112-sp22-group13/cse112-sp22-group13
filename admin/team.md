@@ -62,7 +62,7 @@ As aspiring software engineers, we value
 * Github Link: [Link](https://github.com/GitPat-Sudo)
 
 ### Peicong Wu
-![claires selfie](/admin/branding/claire.jpg)
+![claires selfie](/admin/branding/claire.JPG)
 * Description
 * Github Link: [Link](https://github.com/PatriciaWuu)
 
@@ -74,7 +74,7 @@ As aspiring software engineers, we value
 * Github Link: [Link](https://github.com/rpmclaughlin18)
 
 ### Xavier Sevcik
-![xaviers selfie](/admin/branding/xavier.jpg)
+![xaviers selfie](/admin/branding/xavier.JPG)
 * Code Monkey
 * Transfer - 4th Year CS
 * Likes to play IDE roullete
