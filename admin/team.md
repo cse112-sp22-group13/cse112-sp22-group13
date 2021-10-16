@@ -3,6 +3,7 @@
 ## Brand
 
 ## Values
+As aspiring software engineers, we value 
 
 ## Roster
 ### Alanna Merlan
