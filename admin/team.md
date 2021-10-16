@@ -38,7 +38,10 @@ As aspiring software engineers, we value
 
 ### David Liu
 ![davidlius selfie](/admin/branding/davidliu.jpg)
-* Description
+* David Liu
+* Third Year CS
+* #1 reckless scooter driver
+* Cannot think of anything funny
 * Github Link: [Link](https://github.com/davedav1111)
 
 ### David Thai
@@ -75,7 +78,7 @@ As aspiring software engineers, we value
 
 ### Xavier Sevcik
 ![xaviers selfie](/admin/branding/xavier.JPG)
-<img src="/admin/branding/xavier.JPG" alt="drawing" width="100"/>
+<img src="/admin/branding/xavier.JPG" alt="drawing" width="500"/>
 * Code Monkey
 * Transfer - 4th Year CS
 * Likes to play IDE roullete
