@@ -7,7 +7,7 @@ As aspiring software engineers, we value
 
 ## Roster
 ### Alanna Merlan
-![alannas selfie](./admin/branding/alanna.jpg)
+![alannas selfie](/admin/branding/alanna.jpg)
 * Team Leader
 * Transfer - 4th Year CS
 * 300th Time Scooter Racing Champion
@@ -20,10 +20,12 @@ As aspiring software engineers, we value
 * Github Link: [Link](https://github.com/ScottAndrews40)
 
 ### Andy Sunjik
+![andys selfie](/admin/branding/andy.jpg)
 * Andy
 * Github Link: [Link](https://github.com/andrija-s)
 
 ### Bryan Nguyen
+![bryans selfie](/admin/branding/bryan.jpg)
 * Upcoming Scooter Drifter
 * 4th Year Math-CS
 * Plays with Beeps and Boops
@@ -38,11 +40,13 @@ As aspiring software engineers, we value
 * Github Link: [Link](https://github.com/davedav1111)
 
 ### David Thai
+![davidts selfie](/admin/branding/davidt.jpg)
 * Undisputed #1 Scooter User in the World (self-proclaimed) (Disclaimer: I'm not)
 * 3rd Year CS
 * Github Link: [Link](https://github.com/davidthai6629)
 
 ### Delvin Tuankun
+![delvins selfie](/admin/branding/delvin.jpg)
 * Description
 * Github Link: [Link](https://github.com/dtuankun)
 
@@ -56,16 +60,19 @@ As aspiring software engineers, we value
 * Github Link: [Link](https://github.com/GitPat-Sudo)
 
 ### Peicong Wu
+![claires selfie](/admin/branding/claire.jpg)
 * Description
 * Github Link: [Link](https://github.com/PatriciaWuu)
 
 ### Ryan McLaughlin
+![ryans selfie](/admin/branding/ryan.jpg)
 * Supplier of Scooter
 * 4th Year Math-CS
 * Bails on friends for naps
 * Github Link: [Link](https://github.com/rpmclaughlin18)
 
 ### Xavier Sevcik
+![xaviers selfie](/admin/branding/xavier.jpg)
 * Code Monkey
 * Transfer - 4th Year CS
 * Likes to play IDE roullete
