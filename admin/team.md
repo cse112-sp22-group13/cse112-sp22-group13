@@ -76,6 +76,8 @@
 * Github Link: [Link](https://github.com/hannx00)
 
 ### Patrick Wang
+<img src="/admin/branding/patrick.jpg" alt="drawing" width="350"/>
+
 * Description
 * Github Link: [Link](https://github.com/GitPat-Sudo)
 
