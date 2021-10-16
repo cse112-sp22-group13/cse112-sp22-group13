@@ -75,7 +75,7 @@ As aspiring software engineers, we value
 
 ### Xavier Sevcik
 ![xaviers selfie](/admin/branding/xavier.JPG)
-<img src="drawing.jpg" alt="drawing" width="100"/>
+<img src="/admin/branding/xavier.JPG" alt="drawing" width="100"/>
 * Code Monkey
 * Transfer - 4th Year CS
 * Likes to play IDE roullete
