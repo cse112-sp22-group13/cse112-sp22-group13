@@ -21,7 +21,7 @@
 * Github Link: [Link](https://github.com/amerlangit)
 
 ### Scott Andrews
-<img src="/admin/branding/andy.jpg" alt="drawing" width="350"/>
+<img src="/admin/branding/Scott.jpg" alt="drawing" width="350"/>
 
 * Team Leader
 * Not a 10x programmer
