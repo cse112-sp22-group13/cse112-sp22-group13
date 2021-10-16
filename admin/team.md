@@ -49,7 +49,6 @@
 ### David Liu
 <img src="/admin/branding/davidliu.jpg" alt="drawing" width="350"/>
 
-
 * Third Year CS
 * #1 reckless scooter driver
 * Cannot think of anything funny
@@ -77,6 +76,10 @@
 
 ### Patrick Wang
 <img src="/admin/branding/patrick.jpg" alt="drawing" width="350"/>
+
+* Speed on Wheels
+* 4th year Math-CS
+* Vroom vroom
 
 * Description
 * Github Link: [Link](https://github.com/GitPat-Sudo)
