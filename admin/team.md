@@ -2,12 +2,12 @@
 ![team icon](/admin/branding/teamicon.png)
 
 ## Brand
-Logo in progress
-Our mascot is Naan Bread Man
+* Logo in progress
+* Our mascot is Naan Bread Man
 
 <img src="/admin/branding/mascot.jpg" alt="drawing" width="350"/>
 
-Our brand colors are Burnt Brown and Herb Green, the most beautiful colors in the world
+* Our brand colors are Burnt Brown and Herb Green, the most beautiful colors in the world
 
 ## Team Values
 
