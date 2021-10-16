@@ -43,7 +43,6 @@
 * Github Link: [Link](https://github.com/bdnguyenucsd)
 
 ### Christian Velasquez
-* Description
 * Github Link: [Link](https://github.com/AmnesiacSloth)
 
 ### David Liu
@@ -64,7 +63,6 @@
 ### Delvin Tuankun
 <img src="/admin/branding/delvin.jpg" alt="drawing" width="350"/>
 
-* Description
 * Github Link: [Link](https://github.com/dtuankun)
 
 ### Han Nguyen
@@ -80,14 +78,11 @@
 * Speed on Wheels
 * 4th year Math-CS
 * Vroom vroom
-
-* Description
 * Github Link: [Link](https://github.com/GitPat-Sudo)
 
 ### Peicong Wu
 <img src="/admin/branding/claire.JPG" alt="drawing" width="350"/>
 
-* Description
 * Github Link: [Link](https://github.com/PatriciaWuu)
 
 ### Ryan McLaughlin
