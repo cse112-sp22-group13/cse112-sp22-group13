@@ -7,7 +7,9 @@ As aspiring software engineers, we value
 
 ## Roster
 ### Alanna Merlan
-![Alanna Selfie](alanna.jpg)
+<img src="alanna.jpg"
+     alt="Alannas Selfie"
+     style="float: left; margin-right: 10px;" />
 * Team Leader
 * Transfer - 4th Year CS
 * 300th Time Scooter Racing Champion
