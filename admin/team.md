@@ -1,4 +1,4 @@
-# Team Nan Bread (Team 4)
+# Team NaN Bread (Team 4)
 ![team icon](/admin/branding/teamicon.png)
 
 ## Brand
@@ -8,6 +8,7 @@
 <img src="/admin/branding/mascot.jpg" alt="drawing" width="350"/>
 
 * Our brand colors are Burnt Brown and Herb Green, the most beautiful colors in the world
+* Our official programming language consists of a bunch of Not A Number expection throws and that's it
 
 ## Team Values
 
