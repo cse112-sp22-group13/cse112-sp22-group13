@@ -8,7 +8,7 @@ As aspiring software engineers, we value
 
 ## Roster
 ### Alanna Merlan
-<img src="/admin/branding/alanna.jpg" alt="drawing" width="400"/>
+<img src="/admin/branding/alanna.jpg" alt="drawing" width="350"/>
 * Team Leader
 * Transfer - 4th Year CS
 * 300th Time Scooter Racing Champion
@@ -21,12 +21,12 @@ As aspiring software engineers, we value
 * Github Link: [Link](https://github.com/ScottAndrews40)
 
 ### Andy Sunjik
-<img src="/admin/branding/andy.jpg" alt="drawing" width="400"/>
+<img src="/admin/branding/andy.jpg" alt="drawing" width="350"/>
 * Andy
 * Github Link: [Link](https://github.com/andrija-s)
 
 ### Bryan Nguyen
-<img src="/admin/branding/bryan.jpg" alt="drawing" width="400"/>
+<img src="/admin/branding/bryan.jpg" alt="drawing" width="350"/>
 * Upcoming Scooter Drifter
 * 4th Year Math-CS
 * Plays with Beeps and Boops
@@ -37,7 +37,7 @@ As aspiring software engineers, we value
 * Github Link: [Link](https://github.com/AmnesiacSloth)
 
 ### David Liu
-<img src="/admin/branding/davidliu.jpg" alt="drawing" width="400"/>
+<img src="/admin/branding/davidliu.jpg" alt="drawing" width="350"/>
 * David Liu
 * Third Year CS
 * #1 reckless scooter driver
@@ -45,13 +45,13 @@ As aspiring software engineers, we value
 * Github Link: [Link](https://github.com/davedav1111)
 
 ### David Thai
-<img src="/admin/branding/davidthai.jpg" alt="drawing" width="400"/>
+<img src="/admin/branding/davidthai.jpg" alt="drawing" width="350"/>
 * Undisputed #1 Scooter User in the World (self-proclaimed) (Disclaimer: I'm not)
 * 3rd Year CS
 * Github Link: [Link](https://github.com/davidthai6629)
 
 ### Delvin Tuankun
-<img src="/admin/branding/delvin.jpg" alt="drawing" width="400"/>
+<img src="/admin/branding/delvin.jpg" alt="drawing" width="350"/>
 * Description
 * Github Link: [Link](https://github.com/dtuankun)
 
@@ -65,19 +65,19 @@ As aspiring software engineers, we value
 * Github Link: [Link](https://github.com/GitPat-Sudo)
 
 ### Peicong Wu
-<img src="/admin/branding/claire.JPG" alt="drawing" width="400"/>
+<img src="/admin/branding/claire.JPG" alt="drawing" width="350"/>
 * Description
 * Github Link: [Link](https://github.com/PatriciaWuu)
 
 ### Ryan McLaughlin
-<img src="/admin/branding/ryan.jpg" alt="drawing" width="400"/>
+<img src="/admin/branding/ryan.jpg" alt="drawing" width="350"/>
 * Supplier of Scooter
 * 4th Year Math-CS
 * Bails on friends for naps
 * Github Link: [Link](https://github.com/rpmclaughlin18)
 
 ### Xavier Sevcik
-<img src="/admin/branding/xavier.JPG" alt="drawing" width="400"/>
+<img src="/admin/branding/xavier.JPG" alt="drawing" width="350"/>
 * Code Monkey
 * Transfer - 4th Year CS
 * Likes to play IDE roullete
