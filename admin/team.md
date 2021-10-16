@@ -7,6 +7,7 @@ As aspiring software engineers, we value
 
 ## Roster
 ### Alanna Merlan
+![Alanna Selfie](alanna.jpg)
 * Team Leader
 * Transfer - 4th Year CS
 * 300th Time Scooter Racing Champion
@@ -34,7 +35,7 @@ As aspiring software engineers, we value
 
 ### David Liu
 * Description
-* Github Link: [Link]()
+* Github Link: [Link](https://github.com/davedav1111)
 
 ### David Thai
 * Undisputed #1 Scooter User in the World (self-proclaimed) (Disclaimer: I'm not)
@@ -52,11 +53,11 @@ As aspiring software engineers, we value
 
 ### Patrick Wang
 * Description
-* Github Link: [Link]()
+* Github Link: [Link](https://github.com/GitPat-Sudo)
 
 ### Peicong Wu
 * Description
-* Github Link: [Link]()
+* Github Link: [Link](https://github.com/PatriciaWuu)
 
 ### Ryan McLaughlin
 * Supplier of Scooter
