@@ -35,7 +35,7 @@
 * Pretty good at being confused
 * Github Link: [Link](https://github.com/ScottAndrews40)
 
-### Andy Sunjik
+### Andy Sunjic
 <img src="/admin/branding/andy.jpg" alt="drawing" width="350"/>
 
 * Andy
