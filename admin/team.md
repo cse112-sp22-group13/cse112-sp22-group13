@@ -70,6 +70,8 @@
 ### Delvin Tuankun
 <img src="/admin/branding/delvin.jpg" alt="drawing" width="350"/>
 
+* 4th Year CS
+* Loves Eating and Sleeping
 * Github Link: [Link](https://github.com/dtuankun)
 
 ### Han Nguyen
