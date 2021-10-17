@@ -50,6 +50,10 @@
 * Github Link: [Link](https://github.com/bdnguyenucsd)
 
 ### Christian Velasquez
+<img src="/admin/branding/christian.jpg" alt="drawing" width="350"/>
+
+* 3rd Year Comp. Eng.
+* Plays 200cc in Mario Kart for fun
 * Github Link: [Link](https://github.com/AmnesiacSloth)
 
 ### David Liu
