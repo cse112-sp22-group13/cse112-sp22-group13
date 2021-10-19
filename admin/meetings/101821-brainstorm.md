@@ -65,5 +65,5 @@ Catch up from last week, start brainstorming.
   * Check miro for brainstorming
 
 # Adjournment
-There being no further business to discuss, the meeting was adjourned at .
+There being no further business to discuss, the meeting was adjourned at 7:40 PM.
 
