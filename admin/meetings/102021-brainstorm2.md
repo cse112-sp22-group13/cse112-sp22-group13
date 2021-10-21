@@ -34,8 +34,8 @@ The second brainstorm meeting involving Team 4 members was called to order at 7:
 ## Basic CRUD Implementation
 * Discuss 2 options: Users uploading and updating their own recipes, or users searching the web (API's) for recipes and updating it.
 * Take on one approach first, then eventually include both.
-* Will begin with a user uploading and updating/deleting their own recipes first.
-* Will follow basic recipe format for upload.
+* Will begin with API's/Databases. So we will scan the API's for recipes using a familiar format/schema and input it into our database.
+* Once we take on the user uploading their own recipes, it will follow a basic recipe format.
 
 ## Starting Features
 * Basic search toolbar first!!!
