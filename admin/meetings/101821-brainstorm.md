@@ -25,7 +25,7 @@ Weekly Meeting, Brainstorm
 Zoom 10/18/21 6:30 PM
 
 # Call to Order
-Catch up from last week, start brainstorming.
+The first brainstorm meeting involving Team 4 members was called to order at 6:30 PM.
 
 # Agenda
 ## Review of last week
@@ -65,5 +65,5 @@ Catch up from last week, start brainstorming.
   * Check miro for brainstorming
 
 # Adjournment
-There being no further business to discuss, the meeting was adjourned at 7:40 PM.
+There being no further business to discuss, the meeting was adjourned at 7:30 PM.
 
