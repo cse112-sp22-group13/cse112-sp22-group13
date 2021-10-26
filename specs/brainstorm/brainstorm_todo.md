@@ -1,1 +1,0 @@
-ADD all associated diagrams and files for braintorm activites to this directory specs/brainstorm/
