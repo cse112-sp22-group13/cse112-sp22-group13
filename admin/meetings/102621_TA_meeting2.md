@@ -16,7 +16,9 @@ Should start meeting twice a week once we start coding!
 
 Need to finalize people's roles and subteams.
 
-Play around with API's (Andy and Patrick)
+Play around with API's (Andy and Patrick).
+
+Sanat will add in a new Slack bot for stand-ups.
 
 # Adjournment
 There being no further business to discuss, the meeting was adjourned at 8:30 PM.
