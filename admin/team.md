@@ -94,6 +94,7 @@
 * Github Link: [Link](https://github.com/GitPat-Sudo)
 
 ### Peicong Wu
+* 4th year CS
 <img src="/admin/branding/claire.JPG" alt="drawing" width="350"/>
 
 * Github Link: [Link](https://github.com/PatriciaWuu)
