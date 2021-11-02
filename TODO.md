@@ -1,6 +1,6 @@
 # TODO Current 
 
--  List of current tasks and who are responsible for them
+- List of current tasks and who are responsible for them
 
   * PI/Database Team: Andy and Patrick
   * UI Coders: Han and Ryan
