@@ -2,7 +2,7 @@
 
 - List of current tasks and who are responsible for them
 
-  * PI/Database Team: Andy and Patrick
+  * API/Database Team: Andy and Patrick
   * UI Coders: Han and Ryan
   * Front and Back-End Designers: Bryan and Christian
   * Repo Management and Testers (CI/CD): David Liu, Scott, and Xavier
