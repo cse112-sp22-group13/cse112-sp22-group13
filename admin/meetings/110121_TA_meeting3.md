@@ -19,4 +19,3 @@ Backend and api together can explore API’s and look at the data format (json),
 
 # Adjournment
 There being no further business to discuss, the meeting was adjourned at 7:30 PM.
-
