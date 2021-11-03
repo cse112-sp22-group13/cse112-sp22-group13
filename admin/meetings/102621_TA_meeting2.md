@@ -1,7 +1,9 @@
 # 10-26-21 Meeting with Sanat, Andy, Scott and Alanna
 
 # Call to Order
-The first brainstorm meeting involving Team 4 members was called to order at 7:30 PM.
+TA meeting called to order at 7:30 PM.
+
+# Notes:
 
 Add user stories for our target audience (initially had written user personas)
 
@@ -16,7 +18,6 @@ Pitch – summarize what Sanat’s seen. (pitch to a possible customer/sharehold
   Need user stories
   Act as if Sanat is a user and investor
   
-
 Should start meeting twice a week once we start coding!
 
 Need to finalize people's roles and subteams.

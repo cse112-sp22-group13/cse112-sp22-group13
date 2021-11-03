@@ -1,7 +1,7 @@
 # 10-19-21 Meeting with Sanat, Andy, Scott and Alanna
 
 # Call to Order
-The first brainstorm meeting involving Team 4 members was called to order at 7:30 PM.
+TA meeting called to order at 7:30 PM.
 
 ## Everyone should read through the brainstorm assignment
 - During braintorm we should focus on creating user personas, ideally 4 to 5.
