@@ -1,4 +1,4 @@
-# 11-01-21 Meeting with Sanat, Andy, Scott and Alanna
+# 11-02-21 Meeting with Sanat, Andy, Scott and Alanna
 
 # Call to Order
 TA meeting called to order at 6:30 PM.
