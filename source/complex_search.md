@@ -25,14 +25,14 @@ complexSearch_c.bread_t holds all the types of bread which we can prepend to the
 
 Schema of data returned:
 ```
-number: {number}
-offset: {number}
+number: {number} // same number value we sent in through options
+offset: {number} // same offset value we sent in through options
 results: {
    id: {number}
    image: {string} //image link
    imageType: {string} //jpg, png, etc
    title: {string}
 }
-totalResults: {number}
+totalResults: {number} // total number of recipes that can possibly be accessed through the query we sent (with different number, offset values of course)
 ```
  
