@@ -15,7 +15,9 @@
 
 TOC coming!
 
-Put `<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>` to make axios calls work. [There are other options.](https://axios-http.com/docs/intro)
+Put `<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>` in the .html file to make axios calls work. [There are other options.](https://axios-http.com/docs/intro)
+
+Not all of this has to be or should be done, it's just a list of what is possible.
 
 *Low Priority **Super Low Priority
 
