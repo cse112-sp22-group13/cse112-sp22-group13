@@ -16,10 +16,10 @@ So far, the four parameters, in order, to it are:
 
 To change any of these parameters after they are set, just access them by their name. Like this `complexObj.query = 'banana';`
 
-To initiate a search, just call the complexSearch_f function and pass the object inside:
+To actually initiate a search, just call the complexSearch_f function and pass the object inside:
 `await complexSearch_f(complexObj);` (the await seems to be necessary)
 The data returned will be stored in the `data` field of the object, `complexObj.data` </br>
-In addition to that, the object has a changeAll() method that allows you to change all the fields at once after the object is made, like `complexObj.changeAll('chocolate', 10, 0, complexSearch_c.breat_t.BAGEL);`
+In addition to that, the object has a changeAll() method that allows you to change all the fields at once after the object is made, like `complexObj.changeAll('chocolate', 10, 0, complexSearch_c.breat_t.BAGEL);` and then you can initiate a brand new search with complexSearch_f (_c is class, _f is function)
 
 complexSearch_c.bread_t holds all the types of bread which we can prepend to the string of the query.
 
@@ -29,8 +29,8 @@ number: {number}
 offset: {number}
 results: {
    id: {number}
-   image: {string} (image link)
-   imageType: {string} (jpg, png, etc)
+   image: {string} //image link
+   imageType: {string} //jpg, png, etc
    title: {string}
 }
 totalResults: {number}
