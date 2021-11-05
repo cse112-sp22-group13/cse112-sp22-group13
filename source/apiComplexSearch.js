@@ -27,7 +27,6 @@ export class complexSearch_c {
       PANCAKE: 'pancake ',
       SCONE: 'scone ',
    };
-   bread = complexSearch_c.bread_t.BREAD;
    constructor(input) {
       this.options = input;
       this.bread = complexSearch_c.bread_t.BREAD;
