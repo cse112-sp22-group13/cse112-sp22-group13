@@ -4,7 +4,6 @@
  *
  */
 export class complexSearch_c {
-   key = 'a6e411c0c3e349d29672f54d7ba122e3';
    data = {};
    static bread_t = {
       WAFFLE: 'waffle ',
