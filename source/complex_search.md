@@ -31,7 +31,7 @@ results: {
 }
 totalResults: {number} // total number of recipes that can possibly be accessed through the query we sent (with different number, offset values of course)
 ```
-Schema of options object to be passed in to complexSearch_c constructor (not all of the params have to be set, and they shouldn't be all set. Just use what you need. **Absolute minimum: query, number, offset, key**)
+Schema of options object to be passed in to complexSearch_c constructor (not all of the params have to be set, and they shouldn't be all set. Just use what you need. **Absolute minimum: query, number, offset, apiKey**)
 ```
 let options = {
          method: 'GET',
