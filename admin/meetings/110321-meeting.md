@@ -24,7 +24,7 @@ Brainstorm Meeting
 4. Xavier Sevcik
 
 # Location and Date
-Zoom 10/27/21 5:00 PM
+Zoom 11/03/21 5:00 PM
 
 # Call to Order
 The brainstorm meeting involving Team 4 members was called to order at 5:00PM
