@@ -22,5 +22,9 @@ jobs:
           annotations: true
 
   csslint:
-    name: stylelint 
-    uses: actions-hub/stylelint@master
+    name: stylelint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions-hub/stylelint@master
