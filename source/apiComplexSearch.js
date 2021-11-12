@@ -1,11 +1,9 @@
 // put "import { complexSearch_c } from './apiComplexSearch.js';" in main.js without quotes
-import axios from 'axios';
 /**
  * @param {string} input
  *
  */
 export class cComplexSearch {
-   data = {};
    static tBread = {
      WAFFLE: 'waffle ',
      BUN: 'bun ',
@@ -29,6 +27,7 @@ export class cComplexSearch {
    };
 
    constructor (input) {
+     this.data = {};
      this.options = input;
      this.bread = cComplexSearch.bread_t.BREAD;
      this.options.params.query = this.#helpCalc(this.options.params.query);
@@ -83,9 +82,9 @@ export class cComplexSearch {
     * Loads recipes in data field of complexSearch_c object
     * @param {*} object complexSearch_c object
     */
-   static async fComplexSearch (object) {
-     await axios.request(object.options).then(function (response) {
-       object.data = response.data;
+   static async fComplexSearch (input) {
+     await axios.request(input.options).then(function (response) {
+       input.data = response.data;
      }).catch(function (error) {
        console.log(error);
      });
