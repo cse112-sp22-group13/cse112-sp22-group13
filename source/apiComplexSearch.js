@@ -30,7 +30,7 @@ export class cComplexSearch {
 
    constructor (input) {
      this.options = input;
-     this.bread = cComplexSearch.bread_t.BREAD
+     this.bread = cComplexSearch.bread_t.BREAD;
      this.options.params.query = this.#helpCalc(this.options.params.query);
    }
 
