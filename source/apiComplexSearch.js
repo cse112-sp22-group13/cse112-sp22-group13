@@ -1,5 +1,5 @@
 // put "import { complexSearch_c } from './apiComplexSearch.js';" in main.js without quotes
-import axios from 'axios'
+import axios from 'axios';
 /**
  * @param {string} input
  *
@@ -29,54 +29,54 @@ export class cComplexSearch {
    };
 
    constructor (input) {
-     this.options = input
-     this.bread = cComplexSearch.bread_t.BREAD
-     this.options.params.query = this.#helpCalc(this.options.params.query)
+     this.options = input;
+     this.bread = cComplexSearch.bread_t.BREAD;
+     this.options.params.query = this.#helpCalc(this.options.params.query);
    }
 
    changeAll (input) {
-     this.options = input
-     this.options.params.query = this.#helpCalc(this.options.params.query)
+     this.options = input;
+     this.options.params.query = this.#helpCalc(this.options.params.query);
    };
 
    /**
     * @param {any} input
     */
    set query (input) {
-     this.options.params.query = this.#helpCalc(input)
+     this.options.params.query = this.#helpCalc(input);
    };
 
    get query () {
-     return this.options.params.query
+     return this.options.params.query;
    }
 
    /**
     * @param {any} input
     */
    set number (input) {
-     this.options.params.number = input
+     this.options.params.number = input;
    };
 
    get number () {
-     return this.options.params.number
+     return this.options.params.number;
    }
 
    /**
     * @param {any} input
     */
    set offset (input) {
-     this.options.params.offset = input
+     this.options.params.offset = input;
    };
 
    get offset () {
-     return this.options.params.offset
+     return this.options.params.offset;
    }
 
    // Use when assigning this.options.params.query
    #helpCalc (input) {
      return (input.toLowerCase().indexOf(this.bread.substr(0, this.bread.length - 1)) >= 0)
        ? input
-       : this.bread + input
+       : this.bread + input;
    };
 
    /**
@@ -85,9 +85,9 @@ export class cComplexSearch {
     */
    static async fComplexSearch (object) {
      await axios.request(object.options).then(function (response) {
-       object.data = response.data
+       object.data = response.data;
      }).catch(function (error) {
-       console.log(error)
-     })
+       console.log(error);
+     });
    }
 }
