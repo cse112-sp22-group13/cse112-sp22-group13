@@ -20,3 +20,7 @@ jobs:
           eslint-args: '--ignore-path=.gitignore --quiet'
           extensions: 'js,jsx,ts,tsx'
           annotations: true
+
+  csslint:
+    name: stylelint 
+    uses: actions-hub/stylelint@master
