@@ -20,5 +20,8 @@
     "axios": "^0.24.0",
     "standard": "^16.0.4"
   },
-  "babel": {}
+  "babel": {},
+  "scripts": {
+    "eslint:github-action": "eslint source/"
+  }
 }
