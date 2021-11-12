@@ -9,3 +9,14 @@
     margin: 0;
     padding: 0;
 }
+
+.recipe-grid-container {
+    display: grid;
+    grid-template-columns:  1fr 2fr;;
+    background-color: #2196F3;
+    padding: 10px;
+  }
+
+.recipe-grid-img .grid-recipe-description {
+    text-align: center;
+}
