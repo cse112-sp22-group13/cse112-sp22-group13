@@ -3,7 +3,7 @@
  * @param {string} input
  *
  */
-export class cComplexSearch {
+export class ComplexSearch {
    static tBread = {
      WAFFLE: 'waffle ',
      BUN: 'bun ',
@@ -29,7 +29,7 @@ export class cComplexSearch {
    constructor (input) {
      this.data = {};
      this.options = input;
-     this.bread = cComplexSearch.tBread.BREAD;
+     this.bread = ComplexSearch.tBread.BREAD;
      this.options.params.query = this.#helpCalc(this.options.params.query);
    }
 

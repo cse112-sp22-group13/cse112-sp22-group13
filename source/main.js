@@ -1,26 +1,26 @@
 // main.js
-import { cComplexSearch } from '../source/apiComplexSearch.js';
-let initialSearch = {
-    method: 'GET',
-    url: 'https://api.spoonacular.com/recipes/complexSearch',
-    params: {
-        query: ' ', // The (natural language) recipe search query.
-        offset: 0, // The number of results to skip (between 0 and 900).
-        number: 20, //The number of expected results (between 1 and 100).
-        apiKey: 'a6e411c0c3e349d29672f54d7ba122e3'
-    }
+import { ComplexSearch } from '../source/apiComplexSearch.js';
+const initialSearch = {
+  method: 'GET',
+  url: 'https://api.spoonacular.com/recipes/complexSearch',
+  params: {
+    query: ' ', // The (natural language) recipe search query.
+    offset: 0, // The number of results to skip (between 0 and 900).
+    number: 20, // The number of expected results (between 1 and 100).
+    apiKey: 'a6e411c0c3e349d29672f54d7ba122e3'
+  }
 };
-let search = new cComplexSearch(initialSearch);
+const search = new ComplexSearch(initialSearch);
 window.addEventListener('DOMContentLoaded', init);
 
 // Initialize function, begins all of the JS code in this file
-async function init() {
-    //initializeServiceWorker();
-    //console.log("hey");
-    await cComplexSearch.fComplexSearch(search);
-    console.log(search.data);
+async function init () {
+  // initializeServiceWorker();
+  // console.log("hey");
+  await ComplexSearch.fComplexSearch(search);
+  console.log(search.data);
 
-    /* try {
+  /* try {
       await fetchRecipes();
     } catch (err) {
       console.log(`Error fetching recipes: ${err}`);
