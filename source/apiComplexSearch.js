@@ -1,4 +1,4 @@
-// put "import { complexSearch_c } from './apiComplexSearch.js';" in main.js without quotes
+// put "import { cComplexSearch } from './apiComplexSearch.js';" in main.js without quotes
 /**
  * @param {string} input
  *
