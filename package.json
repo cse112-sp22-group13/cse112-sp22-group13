@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "standard": "^16.0.4"
+    "standard": "^16.0.4",
+    "stylelint": "^14.1.0"
   },
   "babel": {},
   "scripts": {
