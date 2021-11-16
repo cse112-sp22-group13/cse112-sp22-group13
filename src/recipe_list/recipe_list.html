@@ -22,43 +22,88 @@
               <input type="text" placeholder="Search recipe" name="search">
               <button type="submit">Submit</button>
             </form>
+        </div>
     </header>
 
     <main>
       <div class="recipe-list">
         <!-- recipe card inside the list -->
         <recipe-card-list>
-          <div class="recipe-grid-container">
-            <div class="recipe-grid-img">          
-              <img src="./img/bread.jpg" height="108px" width="108px" alt="recipe-preview" />
+          <recipe-card>
+            <div class="recipe-grid-container">
+
+                  <div class="recipe-grid-img">          
+                    <img src="./img/bread.jpg" height="108px" width="108px" alt="recipe-preview" />
+                  </div>
+                  <div class="recipe-grid-title">
+                    <p>Lucious Loaf</p>
+                  </div>
+                  <div class="recipe-grid-time">
+                    <time>50 min</time>
+                  </div>
+                  <div class="recipe-grid-organization">
+                    <p>NaN inc.</p>
+                  </div>
+
+           
+                  <div class="recipe-grid-description">     
+                    <p>A grainy goddess to tickle your bread bone. Flakey and doughy just like god intended it. The best gluten around, flies off the shelfs. Get it while its crispy hot my friend. </p>
+                  </div>
+                
+                  <div class="recipe-grid-rating">
+                    <span>5</span>
+                    <img src="#" alt="5 stars">
+                    <span>(500)</span>
+                  </div>
+
+                  <div class="recipe-grid-tags">
+                    <ul class="tags">Tags:
+                      <li class="tag">gluten free</li>
+                    </ul>
+                  </div>
+                
             </div>
-            <div class="grid-recipe-description">     
-              lorem ipsum
+          </recipe-card>
+
+          <recipe-card>
+            <div class="recipe-grid-container">
+
+                  <div class="recipe-grid-img">          
+                    <img src="./img/bread.jpg" height="108px" width="108px" alt="recipe-preview" />
+                  </div>
+                  <div class="recipe-grid-title">
+                    <p>Lucious Loaf</p>
+                  </div>
+                  <div class="recipe-grid-time">
+                    <time>50 min</time>
+                  </div>
+                  <div class="recipe-grid-organization">
+                    <p>NaN inc.</p>
+                  </div>
+
+           
+                  <div class="recipe-grid-description">     
+                    <p>A grainy goddess to tickle your bread bone. Flakey and doughy just like god intended it. The best gluten around, flies off the shelfs. Get it while its crispy hot my friend. </p>
+                  </div>
+                
+                  <div class="recipe-grid-rating">
+                    <span>5</span>
+                    <img src="#" alt="5 stars">
+                    <span>(500)</span>
+                  </div>
+
+                  <div class="recipe-grid-tags">
+                    <ul class="tags">Tags:
+                      <li class="tag">gluten free</li>
+                    </ul>
+                  </div>
+                
             </div>
-          </div>
+          </recipe-card>
         </recipe-card-list>
       </div>
       
       <!-- recipe card template, should be in another html file -->
-      <recipe-card>
-        <article>
-          <img src="./img/bread.jpg" alt="Recipe Thumbnail" height="108px" width="108px" style="text-align: center"/>
-          <div class="recipe-body">
-            <p class="title">Lucious Loaf</h3>
-            <p class="organization">NaN inc.</p>
-            <div class="rating">
-              <span>5</span>
-              <img src="#" alt="5 stars">
-              <span>(500)</span>
-            </div>
-            <time>50 min</time>
-            <p class="description">A grainy godess for you to enjoy</p>
-            <ul class="tags">Tags:
-              <li class="tag">gluten free</li>
-            </ul>
-          </div>
-        </article>
-      </recipe-card>
     </main>
 
 
