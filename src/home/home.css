@@ -1,22 +1,49 @@
 @font-face {
-    font-family: 'Source Code Pro', monospace;
-    src: url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+    font-family: 'Bangers', cursive;
+    src: url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 }
 
-* {
-    font-family: 'Source Code Pro', monospace;;
+body {
+    font-family: 'Bangers', cursive;
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    background-color: #FFB41F;
 }
 
-.search-container {
+.title {
+    text-align: right;
+    padding: 2rem;
+}
+ /* .search-container {
     display: flex;
     justify-content: center;
+} */
+
+.button {
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.cool-button {
+    font-size: 18px;
+    font-weight: 400;
+    background-color: #fff;
+    padding: 10px 20px;
+}
+
+.cool-button.one {
+    color: #f45d4c;
+    border: 3px solid #f45d4c;
+    box-shadow: -3px 4px 0 0 #f45d4c;
+}
+
+.cool-button.two {
+    color: #60b99a;
+    border: 3px solid #60b99a;
+    box-shadow: -3px 4px 0 0 #60b99a
 }
 
 img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
+} 
