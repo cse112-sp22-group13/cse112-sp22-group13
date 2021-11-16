@@ -1,9 +1,9 @@
-// put "import { complexSearch_c } from './apiComplexSearch.js';" in main.js without quotes
+// put "import { cComplexSearch } from './apiComplexSearch.js';" in main.js without quotes
 /**
  * @param {string} input
  *
  */
-export class cComplexSearch {
+export class ComplexSearch {
    static tBread = {
      WAFFLE: 'waffle ',
      BUN: 'bun ',
@@ -29,7 +29,7 @@ export class cComplexSearch {
    constructor (input) {
      this.data = {};
      this.options = input;
-     this.bread = cComplexSearch.bread_t.BREAD;
+     this.bread = ComplexSearch.tBread.BREAD;
      this.options.params.query = this.#helpCalc(this.options.params.query);
    }
 
