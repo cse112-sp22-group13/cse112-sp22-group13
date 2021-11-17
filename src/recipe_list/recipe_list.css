@@ -16,6 +16,20 @@ body {
     padding-right: 0%;
 }
 
+.header-grid-container {
+    display: grid;
+    justify-content: center;
+}
+
+h1 {
+    grid-row-start: 1;
+}
+
+.search-container {
+    grid-row-start: 2;
+    width: 100%;
+}
+
 p {
     overflow: hidden;
 }
@@ -23,14 +37,10 @@ p {
     padding-top: .25%;
     
 }
-.search-container {
-    padding: 1%;
-    align-self: left;
-}
 
 .recipe-grid-container {
     display: grid;
-    grid-template-columns:  2fr 1fr;
+    grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr .01fr .01fr .01fr;
     grid-column-gap: 2%;
     grid-row-gap: .25%;
