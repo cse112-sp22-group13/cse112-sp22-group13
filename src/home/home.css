@@ -1,18 +1,21 @@
 @font-face {
-    font-family: 'Bangers', cursive;
-    src: url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+    font-family: 'IBM Plex Mono', monospace;
+    src: url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
 }
 
 body {
-    font-family: 'Bangers', cursive;
+    font-family: 'IBM Plex Mono', monospace;
     box-sizing: border-box;
-    background-color: #FFB41F;
+    background-color: #E6D2AF;
 }
 
-.title {
+.icon {
     text-align: right;
-    padding: 2rem;
+    padding: 2rem 2rem 0 2rem;
+    font-size: 3rem;
 }
+
+
  /* .search-container {
     display: flex;
     justify-content: center;
@@ -24,22 +27,22 @@ body {
 }
 
 .cool-button {
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 1.5rem;
+    font-weight: 900;
     background-color: #fff;
-    padding: 10px 20px;
+    padding: 2% 3%;
 }
 
 .cool-button.one {
     color: #f45d4c;
     border: 3px solid #f45d4c;
-    box-shadow: -3px 4px 0 0 #f45d4c;
+    box-shadow: -7px 4px 0 0 #f45d4c;
 }
 
 .cool-button.two {
     color: #60b99a;
     border: 3px solid #60b99a;
-    box-shadow: -3px 4px 0 0 #60b99a
+    box-shadow: -7px 4px 0 0 #60b99a
 }
 
 img {

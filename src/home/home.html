@@ -6,14 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./home.css">
-  <title>NaN Bread</title>
+  <title>Recipe App</title>
 </head>
 
 <body>
     <header>
         <!-- <button class="add" href="">Add</button> -->
-        <h1 class="title">Recipe App</h1>
-        <nav>
+        <div class="icon">
+          <button href="#">🍞</h1>
+        </div>
+
+        <h1 style="text-align: center; padding-top: 1rem;">RECIPE APP</h1>
+        <!-- <nav>
           <a href="#home" class="active">Logo</a>
           <div id="myLinks">
             <a href="#news">News</a>
@@ -23,18 +27,21 @@
           <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
           </a>
-      </nav>
+      </nav> -->
     </header>
     <main>
-      <img src="./img/bread_logo.jpg" width="300px"/>
+      <p class="blurb" style="margin:0; text-align: center; font-size: 1.3rem; padding-top: 2rem;">GOT A WHOLE LOAF OF BREAD</p>
       <!-- <p class="typed">GOT BREAD?</p> -->
       <div class="button one">
-        <button class="cool-button one">SEARCH RECIPE 🍞</button>
+        <button class="cool-button one">SEARCH RECIPE 🧇</button>
       </div>
 
-      <div class="button two">
+      <div class="button two" style="padding-bottom: 2rem;">
         <button class="cool-button two">ADD RECIPE 🥐</button>
       </div>
+
+      <img src="./img/bread_logo.jpg" width="270px"/>
+
 
           <!-- <form method="GET" action="#">
             <input type="text" placeholder="Search recipe" name="search_recipe">
