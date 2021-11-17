@@ -1,0 +1,35 @@
+{
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.16.3",
+    "@html-eslint/eslint-plugin": "^0.12.0",
+    "@html-eslint/parser": "^0.12.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.3",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "standard": "^16.0.4"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    },
+    "globals": {
+      "axios": true
+    }
+  },
+  "babelConfig": {
+    "requireConfigFile": false
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "standard": "^16.0.4",
+    "stylelint": "^14.1.0"
+  },
+  "babel": {},
+  "scripts": {
+    "eslint:github-action": "eslint source/"
+  }
+}

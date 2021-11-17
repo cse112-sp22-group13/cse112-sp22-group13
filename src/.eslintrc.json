@@ -1,0 +1,27 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "parser": "@babel/eslint-parser",
+    "extends": [
+        "standard"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "semi": [2, "always"]
+    },
+
+    "plugins": ["@html-eslint"],
+    "overrides": [
+        {
+        "files": ["*.html"],
+        "parser": "@html-eslint/parser",
+        "extends": ["plugin:@html-eslint/recommended"]
+        }
+    ]
+
+}
