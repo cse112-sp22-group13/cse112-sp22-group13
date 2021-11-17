@@ -26,6 +26,7 @@ async function init() {
     for (let elem of search.data.results) {
         bulkString = bulkString + elem.id + ",";
     }
+
     let bulkOptions = {
         method: 'GET',
         url: 'https://api.spoonacular.com/recipes/informationBulk',
