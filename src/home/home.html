@@ -7,46 +7,50 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./home.css">
   <title>Recipe App</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&display=swap');  
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+  </style>
 </head>
 
 <body>
     <header>
-        <!-- <button class="add" href="">Add</button> -->
-        <div class="icon">
-          <button href="#">🍞</h1>
-        </div>
-
-        <h1 style="text-align: center; padding-top: 1rem;">RECIPE APP</h1>
-        <!-- <nav>
-          <a href="#home" class="active">Logo</a>
-          <div id="myLinks">
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
-          </div>
-          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
+        <nav>
+          <a href="./home.html">
+            <h1 class="title">oui oui baguette 🥖</h1>
           </a>
-      </nav> -->
+        </nav>
     </header>
     <main>
-      <p class="blurb" style="margin:0; text-align: center; font-size: 1.3rem; padding-top: 2rem;">GOT A WHOLE LOAF OF BREAD</p>
-      <!-- <p class="typed">GOT BREAD?</p> -->
+      <img src="./img/bread_logo.jpg" class="img-fluid" alt="banner_img"/>
+      <p class="blurb">
+        ALL YOU KNEAD IS BREAD? CHECK OUT OUR POPULAR RECIPES!
+      </p>
+      <section>
+        <div class="container">
+          <div class="row" style="text-align: center; padding-top: 2rem;">
+            <div class="col-sm">
+              <img src="./img/bread_logo.jpg" width="200vw" height="200vh" alt="popular_recipe_img"/>
+              <p class="recipe-name">blueberry muffin</p>
+            </div>
+            <div class="col-sm">
+              <img src="./img/bread_logo.jpg" width="200vw" height="200vh" alt="popular_recipe_img"/>
+              <p class="recipe-name">blueberry muffin</p>
+            </div>
+            <div class="col-sm">
+              <img src="./img/bread_logo.jpg" width="200vw" height="200vh" alt="popular_recipe_img"/>
+              <p class="recipe-name">blueberry muffin</p>
+            </div>
+          </div>
+        </div>
+      </section>
       <div class="button one">
-        <button class="cool-button one">SEARCH RECIPE 🧇</button>
+        <button onclick="location.href='../recipe_list/recipe_list.html'" class="cool-button one">SEARCH RECIPE 🧇</button>
       </div>
-
       <div class="button two" style="padding-bottom: 2rem;">
-        <button class="cool-button two">ADD RECIPE 🥐</button>
+        <button onclick="location.href='#'" class="cool-button two">ADD RECIPE 🥐</button>
       </div>
-
-      <img src="./img/bread_logo.jpg" width="270px"/>
-
-
-          <!-- <form method="GET" action="#">
-            <input type="text" placeholder="Search recipe" name="search_recipe">
-            <button type="submit">Submit</button>
-          </form>     -->
     </main>
 </body>
 

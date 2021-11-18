@@ -1,19 +1,23 @@
-@font-face {
-    font-family: Arial, 'Source Code Pro', monospace;
-    src: url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+body {
+    font-family: 'IBM Plex Mono', monospace;
+    box-sizing: border-box;
+    background-color: #AD9169;
+    color:  #9e5f32;
 }
 
-* {
-    font-family: Arial, 'Source Code Pro', monospace;
-    color: #2c1d12;
-    box-sizing: border-box;
-    margin: 0;
-    
+.title {
+    font-family:'Bebas Neue', cursive;
+    text-align: center;
+    color: #e3d477;
+    padding: 3vh 0 2vh 0;
+    font-size: 3.7rem;
 }
-body {
-    background-image: url('./img/grain.jpeg');
-    padding-left: 0%;
-    padding-right: 0%;
+
+a a:link a:visited a:hover a:active {
+    text-decoration: none;
+    text-emphasis: none;
+    text-align: center;
+    color: black;
 }
 
 .header-grid-container {
