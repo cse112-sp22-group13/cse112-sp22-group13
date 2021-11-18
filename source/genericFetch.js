@@ -1,4 +1,4 @@
-export class cGenericFetch {
+export class GenericFetch {
   constructor (input) {
     this.options = input;
     this.data = {};
