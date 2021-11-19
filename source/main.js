@@ -63,12 +63,13 @@ async function init() {
   //now we have local storage with the hashtable (title->id) at key 0
   //and then the rest of local storage filled with id->json files
 
-  //testing out searchTitle
+  //testing out searchTitle with a random title
   let jsonObj = searchTitle(thing.data[5].title);
   console.log("heres a json object for the title the user passed/searched:");
   console.log(jsonObj);
 }
 
+//take user's input for a title and returns the json object for the desired recipe
 function searchTitle(title) {
   
   let hashmap = new Map(JSON.parse(localStorage.getItem(0))); //grabbing that hash table
@@ -80,7 +81,7 @@ function searchTitle(title) {
   return jsonRecipeObj;
 }
 
-/** LAB6 SEARCH KEY
+/** LAB6 SEARCH KEY (being worked on by David Liu and Claire)
  * Recursively search for a key nested somewhere inside an object
  * @param {Object} object the object with which you'd like to search
  * @param {String} key the key that you are looking for in the object
