@@ -18,8 +18,8 @@ async function init () {
     url: 'https://api.spoonacular.com/recipes/complexSearch',
     params: {
       query: ' ', // The (natural language) recipe search query.
-      offset: 0, // The number of results to skip (between 0 and 900).
-      number: 20, // The number of expected results (between 1 and 100).
+      offset: 1, // The number of results to skip (between 0 and 900).
+      number: 1, // The number of expected results (between 1 and 100).
       apiKey: 'a6e411c0c3e349d29672f54d7ba122e3'
     }
   };
@@ -72,13 +72,13 @@ async function init () {
 
   // Testing searchForKey
   const obj = searchForKey(thing.data[0], 'title');
-  const obj2 = searchForKey(searchForKey(thing.data[1], 'analyzedInstructions'), 'steps');
-  const obj2a = getInstructionSteps(thing.data[1]);
-  const obj3 = getInstructionSteps(thing.data[2]);
+  //const obj2 = searchForKey(searchForKey(thing.data[1], 'analyzedInstructions'), 'steps');
+  //const obj2a = getInstructionSteps(thing.data[1]);
+  //const obj3 = getInstructionSteps(thing.data[2]);
   console.log(obj);
-  console.log(obj2);
-  console.log(obj2a);
-  console.log(obj3);
+  //console.log(obj2);
+  //console.log(obj2a);
+  //console.log(obj3);
 }
 
 // take user's input for a title and returns the json object for the desired recipe
@@ -92,15 +92,15 @@ function searchTitle (title) {
   return jsonRecipeObj;
 }
 
-/** LAB6 SEARCH KEY (being worked on by David Liu and Claire)
+
+/**
  * Recursively search for a key nested somewhere inside an object
  * @param {Object} object the object with which you'd like to search
  * @param {String} key the key that you are looking for in the object
  * @returns {*} the value of the found key
  */
 /*
- function searchForKey(object, key) {
-
+function searchForKey(object, key) {
   var value;
   Object.keys(object).some(function (k) {
     if (k === key) {
@@ -113,6 +113,5 @@ function searchTitle (title) {
     }
   });
   return value;
-
 }
 */
