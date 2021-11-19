@@ -18,7 +18,6 @@
      });
      return value;
    }
- 
 /**
  * Returns the instruction steps of the given recipe
  * @param {Object} data
