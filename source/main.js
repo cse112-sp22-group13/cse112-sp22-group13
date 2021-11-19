@@ -1,5 +1,5 @@
 // main.js
-import { searchForKey, getInstructionSteps } from './aux.js';
+import { searchForKey, getInstructionSteps } from './extra.js';
 import { ComplexSearch } from '../source/apiComplexSearch.js';
 import { GenericFetch } from '../source/genericFetch.js';
 
