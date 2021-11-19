@@ -67,6 +67,8 @@ async function init() {
   let jsonObj = searchTitle(thing.data[5].title);
   console.log("heres a json object for the title the user passed/searched:");
   console.log(jsonObj);
+
+
 }
 
 //take user's input for a title and returns the json object for the desired recipe
@@ -81,15 +83,15 @@ function searchTitle(title) {
   return jsonRecipeObj;
 }
 
-/** LAB6 SEARCH KEY (being worked on by David Liu and Claire)
+
+/**
  * Recursively search for a key nested somewhere inside an object
  * @param {Object} object the object with which you'd like to search
  * @param {String} key the key that you are looking for in the object
  * @returns {*} the value of the found key
  */
 /*
- function searchForKey(object, key) {
-
+function searchForKey(object, key) {
   var value;
   Object.keys(object).some(function (k) {
     if (k === key) {
@@ -102,6 +104,5 @@ function searchTitle(title) {
     }
   });
   return value;
-  
 }
 */
