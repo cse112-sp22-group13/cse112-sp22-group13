@@ -26,6 +26,7 @@ async function init () {
   const search = new ComplexSearch(initialSearch);
 
   await ComplexSearch.fComplexSearch(search);
+  console.log(search.data);
 
   // grabbing recipes with id's
   let idString = '';
