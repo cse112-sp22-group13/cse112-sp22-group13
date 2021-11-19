@@ -7,9 +7,9 @@ window.addEventListener('DOMContentLoaded', init);
 // LOCAL STORAGE
 const localStorage = window.localStorage;
 
-/** 
+/**
  * Initialize function, begins all of the JS code in this file
- * */ 
+ * */
 async function init () {
   // initializeServiceWorker();
 
