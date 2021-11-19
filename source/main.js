@@ -18,8 +18,8 @@ async function init () {
     url: 'https://api.spoonacular.com/recipes/complexSearch',
     params: {
       query: ' ', // The (natural language) recipe search query.
-      offset: 0, // The number of results to skip (between 0 and 900).
-      number: 20, // The number of expected results (between 1 and 100).
+      offset: 1, // The number of results to skip (between 0 and 900).
+      number: 1, // The number of expected results (between 1 and 100).
       apiKey: 'a6e411c0c3e349d29672f54d7ba122e3'
     }
   };
