@@ -23,7 +23,7 @@ a a:link a:visited a:hover a:active {
 .blurb {
     margin: 0; 
     text-align: center; 
-    font-size: 2.2vh;
+    font-size: 2.5vw;
     font-weight: 600; 
     padding-top: 2rem;
 }
@@ -34,28 +34,37 @@ a a:link a:visited a:hover a:active {
     padding-top: 1rem;
     color: 	#E8D4B0;
 }
-.button {
+
+.button-row {
     text-align: center;
-    padding-top: 1.5rem;
+    padding: 0 0 2rem;
+    display: flex;
+}
+
+.button-col {
+    flex: 50%;
 }
 
 .cool-button {
     font-size: 1.5rem;
     font-weight: 900;
     background-color: #fff;
-    padding: 2% 3%;
+    padding: 4%;
 }
 
 .cool-button.one {
-    color: #8a9ea7;
-    border: 3px solid #8a9ea7;
-    box-shadow: -7px 4px 0 0 #8a9ea7;
+    color: #FF8303;
+    border: 5px solid #FF8303;
+    box-shadow: -10px 5px 0 0 #FF8303;
+    padding-right: 1rem;
+
 }
 
 .cool-button.two {
-    color: #8d9b6a;
-    border: 3px solid #8d9b6a;
-    box-shadow: -7px 4px 0 0 #8d9b6a;
+    color: #62760C;
+    border: 5px solid #62760C;
+    box-shadow: -10px 5px 0 0 #62760C;
+    float: right;
 }
 
 .img-fluid {
