@@ -1,5 +1,5 @@
 // main.js
-import { searchForKey, getInstructionSteps } from './aux.js';
+import { searchForKey, getInstructionSteps } from './extra.js';
 import { ComplexSearch } from '../source/apiComplexSearch.js';
 import { GenericFetch } from '../source/genericFetch.js';
 
@@ -71,13 +71,13 @@ async function init () {
 
   // Testing searchForKey
   const obj = searchForKey(thing.data[0], 'title');
-  const obj2 = searchForKey(searchForKey(thing.data[1], 'analyzedInstructions'), 'steps');
-  const obj2a = getInstructionSteps(thing.data[1]);
-  const obj3 = getInstructionSteps(thing.data[2]);
+  //const obj2 = searchForKey(searchForKey(thing.data[1], 'analyzedInstructions'), 'steps');
+  //const obj2a = getInstructionSteps(thing.data[1]);
+  //const obj3 = getInstructionSteps(thing.data[2]);
   console.log(obj);
-  console.log(obj2);
-  console.log(obj2a);
-  console.log(obj3);
+  //console.log(obj2);
+  //console.log(obj2a);
+  //console.log(obj3);
 }
 
 // take user's input for a title and returns the json object for the desired recipe
