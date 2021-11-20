@@ -2,6 +2,7 @@
 // import { searchForKey, getInstructionSteps } from './extra.js';
 import { ComplexSearch } from '../source/apiComplexSearch.js';
 import { GenericFetch } from '../source/genericFetch.js';
+import { searchForKey } from './extra.js';
 
 window.addEventListener('DOMContentLoaded', init);
 // LOCAL STORAGE
@@ -28,7 +29,7 @@ async function init () {
   const search = new ComplexSearch(initialSearch);
 
   await ComplexSearch.fComplexSearch(search);
-  console.log(search.data);
+  //console.log(search.data);
 
   // grabbing recipes with id's
   let idString = '';
@@ -55,7 +56,7 @@ async function init () {
 
   const thing = new GenericFetch(bulkOptions);
   await GenericFetch.fGenericFetch(thing);
-  console.log(thing.data);
+  //console.log(thing.data);
 
   // FILLING LOCAL STORAGE
   // first set a place in local storage that will hold the hash table itself at key 0
@@ -63,15 +64,17 @@ async function init () {
   // extract json object and put into local storage
   for (const elem of thing.data) {
     localStorage.setItem(elem.id, JSON.stringify(elem));
+    //console.log(elem);
   }
 
+  createRecipeCards();
   // now we have local storage with the hashtable (title->id) at key 0
   // and then the rest of local storage filled with id->json files
 
   // testing out searchTitle with a random title
-  const jsonObj = searchTitle(thing.data[5].title);
-  console.log('heres a json object for the title the user passed/searched:');
-  console.log(jsonObj);
+  //const jsonObj = searchTitle(thing.data[5].title);
+  //console.log('heres a json object for the title the user passed/searched:');
+  //console.log(jsonObj);
 
   // TESTING SEARCHFORKEY
   // const obj = searchForKey(thing.data[0], 'title');
@@ -85,8 +88,29 @@ async function init () {
 
   // TESTING GETRECIPESCONTAININGKEYWORD
   const myArr = getRecipesContainingKeyword('chocolate');
-  console.log(myArr.length);
+  //console.log(myArr.length);
 }
+
+
+
+function createRecipeCards () {
+  // This function is called for you up above.
+  // From within this function you can access the recipe data from the JSON
+  // files with the recipeData Object above. Make sure you only display the
+  // three recipes we give you, you'll use the bindShowMore() function to
+  // show any others you've added when the user clicks on the "Show more" button.
+  const main = document.getElementsByClassName('recipe-list')[0];
+  //console.log(localStorage);
+  for (let i = 1; i < localStorage.length; i++) {
+    const element = document.createElement('recipe-card');
+    //console.log(localStorage);
+    element.data = localStorage[localStorage.key(i)];
+    main.appendChild(element);
+  }
+}
+
+
+
 
 // take user's input for a title and returns the json object for the desired recipe
 function searchTitle (title) {
