@@ -1,5 +1,5 @@
 // main.js
-import { searchForKey, getInstructionSteps } from './extra.js';
+// import { searchForKey, getInstructionSteps } from './extra.js';
 import { ComplexSearch } from '../source/apiComplexSearch.js';
 import { GenericFetch } from '../source/genericFetch.js';
 
@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', init);
 // LOCAL STORAGE
 const localStorage = window.localStorage;
 // for functions to use as keys to access json files in localStorage
-var idArr = [];
+const idArr = [];
 
 /**
  * Initialize function, begins all of the JS code in this file
@@ -74,24 +74,24 @@ async function init () {
   console.log(jsonObj);
 
   // TESTING SEARCHFORKEY
-  //const obj = searchForKey(thing.data[0], 'title');
-  //const obj2 = searchForKey(searchForKey(thing.data[1], 'analyzedInstructions'), 'steps');
-  //const obj2a = getInstructionSteps(thing.data[1]);
-  //const obj3 = getInstructionSteps(thing.data[2]);
-  //console.log(obj);
-  //console.log(obj2);
-  //console.log(obj2a);
-  //console.log(obj3);
+  // const obj = searchForKey(thing.data[0], 'title');
+  // const obj2 = searchForKey(searchForKey(thing.data[1], 'analyzedInstructions'), 'steps');
+  // const obj2a = getInstructionSteps(thing.data[1]);
+  // const obj3 = getInstructionSteps(thing.data[2]);
+  // console.log(obj);
+  // console.log(obj2);
+  // console.log(obj2a);
+  // console.log(obj3);
 
   // TESTING GETRECIPESCONTAININGKEYWORD
-  let myArr = getRecipesContainingKeyword('chocolate');
+  const myArr = getRecipesContainingKeyword('chocolate');
   console.log(myArr.length);
 }
 
 // take user's input for a title and returns the json object for the desired recipe
 function searchTitle (title) {
   const hashmap = new Map(JSON.parse(localStorage.getItem(0))); // grabbing that hash table
-  //console.log(hashmap);
+  // console.log(hashmap);
   // get the id that the title maps to
   const id = hashmap.get(title);
   // and then query local storage using the id to get recipe
@@ -99,25 +99,23 @@ function searchTitle (title) {
   return jsonRecipeObj;
 }
 
-//FOR GRABBING AN ARRAY OF JSON FILES CONTAINING A KEYWORD LIKE 'CHOCOLATE'
-function getRecipesContainingKeyword(keyword){
-  let arr = [];
+// FOR GRABBING AN ARRAY OF JSON FILES CONTAINING A KEYWORD LIKE 'CHOCOLATE'
+function getRecipesContainingKeyword (keyword) {
+  const arr = [];
   // localStorage.getItem(key) where the key is the title/user input
-  for(const id of idArr)
-  {
-    let jsonFile = localStorage.getItem(id);
-    if(checkForValue(jsonFile, keyword)){
+  for (const id of idArr) {
+    const jsonFile = localStorage.getItem(id);
+    if (checkForValue(jsonFile, keyword)) {
       arr.push(jsonFile);
     }
   }
   return arr;
 }
 
-function checkForValue(json, value) {
-  let jsonAsString = JSON.stringify(json);
-  if(jsonAsString.includes(value)){
+function checkForValue (json, value) {
+  const jsonAsString = JSON.stringify(json);
+  if (jsonAsString.includes(value)) {
     return true;
   }
   return false;
 }
-
