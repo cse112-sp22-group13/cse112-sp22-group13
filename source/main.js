@@ -1,5 +1,5 @@
 // main.js
-// import { searchForKey, getInstructionSteps } from './extra.js';
+import { searchForKey, getInstructionSteps } from './extra.js';
 import { ComplexSearch } from '../source/apiComplexSearch.js';
 import { GenericFetch } from '../source/genericFetch.js';
 
@@ -8,6 +8,10 @@ window.addEventListener('DOMContentLoaded', init);
 const localStorage = window.localStorage;
 // for functions to use as keys to access json files in localStorage
 const idArr = [];
+// SEARCH BAR BUTTON
+const searchBar = document.querySelector('button');
+searchBar.addEventListener('click', searchRecipes);
+const inputTxt = document.getElementById('search-bar');
 
 /**
  * Initialize function, begins all of the JS code in this file
@@ -74,19 +78,22 @@ async function init () {
   console.log(jsonObj);
 
   // TESTING SEARCHFORKEY
-  // const obj = searchForKey(thing.data[0], 'title');
-  // const obj2 = searchForKey(searchForKey(thing.data[1], 'analyzedInstructions'), 'steps');
-  // const obj2a = getInstructionSteps(thing.data[1]);
-  // const obj3 = getInstructionSteps(thing.data[2]);
-  // console.log(obj);
-  // console.log(obj2);
-  // console.log(obj2a);
-  // console.log(obj3);
+  const obj = searchForKey(thing.data[0], 'title');
+  const obj2 = searchForKey(searchForKey(thing.data[1], 'analyzedInstructions'), 'steps');
+  const obj2a = getInstructionSteps(thing.data[1]);
+  const obj3 = getInstructionSteps(thing.data[2]);
+  console.log(obj);
+  console.log(obj2);
+  console.log(obj2a);
+  console.log(obj3);
 
   // TESTING GETRECIPESCONTAININGKEYWORD
   const myArr = getRecipesContainingKeyword('chocolate');
   console.log(myArr.length);
 }
+
+// HERE ARE SOME FILES WE CAN EVENTUALLY PUT INTO EXTRA.JS BUT WE'D HAVE
+// TO HAVE EXTRA.JS HAVE ACCESS TO THE idArr GLOBAL VARIABLE
 
 // take user's input for a title and returns the json object for the desired recipe
 function searchTitle (title) {
@@ -118,4 +125,14 @@ function checkForValue (json, value) {
     return true;
   }
   return false;
+}
+
+function searchRecipes () {
+  const input = inputTxt.value;
+  console.log(input);
+  // take user input from the search bar
+  // pass over to getRecipesContainingKeyword
+  // const mySearchedFiles = getRecipesContainingKeyword(input);
+  // and make use of the array of json files returned from getRecipesContainingKeyword
+  // to populate cards having to do with the input user put into the search bar textarea
 }
