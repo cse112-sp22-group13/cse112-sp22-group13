@@ -9,9 +9,9 @@ const localStorage = window.localStorage;
 // for functions to use as keys to access json files in localStorage
 const idArr = [];
 // SEARCH BAR BUTTON
-let searchBar = document.querySelector('button');
+const searchBar = document.querySelector('button');
 searchBar.addEventListener('click', searchRecipes);
-var inputTxt = document.getElementById('search-bar');
+const inputTxt = document.getElementById('search-bar');
 
 /**
  * Initialize function, begins all of the JS code in this file
@@ -90,13 +90,10 @@ async function init () {
   // TESTING GETRECIPESCONTAININGKEYWORD
   const myArr = getRecipesContainingKeyword('chocolate');
   console.log(myArr.length);
-
 }
-
 
 // HERE ARE SOME FILES WE CAN EVENTUALLY PUT INTO EXTRA.JS BUT WE'D HAVE
 // TO HAVE EXTRA.JS HAVE ACCESS TO THE idArr GLOBAL VARIABLE
-
 
 // take user's input for a title and returns the json object for the desired recipe
 function searchTitle (title) {
@@ -130,12 +127,12 @@ function checkForValue (json, value) {
   return false;
 }
 
-function searchRecipes() {
-  var input = inputTxt.value;
+function searchRecipes () {
+  const input = inputTxt.value;
   console.log(input);
   // take user input from the search bar
   // pass over to getRecipesContainingKeyword
-  var mySearchedFiles = getRecipesContainingKeyword(input);
+  // const mySearchedFiles = getRecipesContainingKeyword(input);
   // and make use of the array of json files returned from getRecipesContainingKeyword
   // to populate cards having to do with the input user put into the search bar textarea
 }
