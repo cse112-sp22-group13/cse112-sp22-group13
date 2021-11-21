@@ -1,22 +1,22 @@
 
 Put this at top of main.js:
 
-`import { complexSearch_c } from './source/apiComplexSearch.js';`
+`import { ComplexSearch } from './source/apiComplexSearch.js';`
 
 Obviously, change the location of file what is appropriate.
 
 First, you need to create the object complexSearch_c and pass in an options object holding all the parameters for the fetch call, for example:
-`let complexObj = new complexSearch_c(options);`
+`let complexObj = new ComplexSearch(options);`
 
 To change all of these parameters after they are set. `complexObj.changeAll(new_options);`
 
 To actually initiate a search, just call the function complexSearch_f from the class complexSearch_c and pass the object inside:
-`await complexSearch_c.complexSearch_f(complexObj);` (the await seems to be necessary)
+`await ComplexSearch.fComplexSearch(complexObj);` (the await seems to be necessary)
 The data returned will be stored in the `data` field of the object, `complexObj.data` </br>
 
 complexSearch_c.bread_t holds all the types of bread which we can prepend to the string of the query.
-The bread field can be changed like this `complexObj.bread = complexSearch_c.bread_t.BAGEL`
-The enum-esque object `bread_t` that is within complexSearch_c is a preferred way to set bread as all the values are appropriately spaced,
+The bread field can be changed like this `complexObj.bread = ComplexSearch.tBread.BAGEL`
+The enum-esque object `tBread` that is within complexSearch_c is a preferred way to set bread as all the values are appropriately spaced,
 and there is autocomplete.
 
 Schema of Data Returned:

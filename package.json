@@ -1,6 +1,8 @@
 {
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.3",
+    "@html-eslint/eslint-plugin": "^0.12.0",
+    "@html-eslint/parser": "^0.12.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.3",
     "eslint": "^7.32.0",
@@ -15,15 +17,16 @@
       "browser": true
     },
     "globals": {
-        "axios": true
-     }
+      "axios": true
+    }
   },
   "babelConfig": {
     "requireConfigFile": false
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "standard": "^16.0.4"
+    "standard": "^16.0.4",
+    "stylelint": "^14.1.0"
   },
   "babel": {},
   "scripts": {
