@@ -2,7 +2,7 @@
 // import {extraction, forceExtraction} from '../source/personalsave.js'; in main
 // var x = extraction('https://foodista.com/recipe/ZHK4KPB6/chocolate-crinkle-cookies'); to try it out in main
 export async function extraction (input) {
-  var data = {};
+  let data = {};
   console.log('using');
   const format = {
     method: 'GET',
@@ -24,9 +24,9 @@ export async function extraction (input) {
     console.log('shiiet');
     console.log(error);
   });
-} 
+}
 export async function forceExtraction (input) {
-  var data = {};
+  let data = {};
   console.log('using');
   const format = {
     method: 'GET',
@@ -48,4 +48,4 @@ export async function forceExtraction (input) {
     console.log('shiiet');
     console.log(error);
   });
-} 
+}
