@@ -193,4 +193,52 @@ p {
     font-style: oblique;
     list-style-position: inside;
     padding: 0%;
-} 
+}*/
+
+/* Sidebar and all related clickables */
+.sidebar {
+    height: 100%;
+    width: 0;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    position: fixed;
+    background-color: #ce966e;
+    opacity: 90%;
+    overflow-x: hidden;
+    transition: 0.5s;
+
+}
+
+.sidebar a {
+    font-size: 25px;
+    top: 50px;
+    position:relative;
+    color: #e3d477;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+/* Button to open and close the sidebar */
+.openbtn {
+    font-size: 20px;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    position:fixed;
+    background-color: #ce966e;
+    color: #e3d477;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.openbtn:focus {
+    outline: none;
+}  

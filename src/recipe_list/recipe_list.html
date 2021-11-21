@@ -9,6 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="../../source/main.js" type="module"></script>
   <script src="../../source/RecipeCard.js" type="module"></script>
+  <script src="../../source/sideBar.js"></script>
   <title>NaN Bread Recipes</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
@@ -28,6 +29,15 @@
     <div class="search-container">
           <input type="text" placeholder="SEARCH RECIPE" class="search-bar">
           <button class="search-button">SEARCH</button>
+    </div>
+    <!-- navbar -->
+    <div id="navButton">
+      <button class="openbtn" onclick="openNav()">&#9776;</button>
+    </div>
+    <div id="sideNavbar" class="sidebar">
+      <a href="../home/home.html">Home</a>
+      <a href="../recipe_list/recipe_list.html">Recipe List</a>
+      <a href="#Favorites">Favorites</a>
     </div>
     <main>
         <!-- recipe card inside the list -->
