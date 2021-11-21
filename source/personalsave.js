@@ -26,7 +26,7 @@ export async function extraction(input){
   });
 }
  
-export async function extraction(input){
+export async function forceExtraction(input){
   var data = {};
   console.log('using');
   const format = {
