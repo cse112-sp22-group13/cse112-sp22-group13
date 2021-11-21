@@ -2,7 +2,8 @@
 import { searchForKey, getInstructionSteps } from './extra.js';
 import { ComplexSearch } from '../source/apiComplexSearch.js';
 import { GenericFetch } from '../source/genericFetch.js';
-import { API_KEY } from '../source/API_KEY.js';
+
+const API_KEY = 'a6e411c0c3e349d29672f54d7ba122e3';
 
 window.addEventListener('DOMContentLoaded', init);
 // LOCAL STORAGE
