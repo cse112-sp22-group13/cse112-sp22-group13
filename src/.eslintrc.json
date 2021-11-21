@@ -13,15 +13,5 @@
     },
     "rules": {
         "semi": [2, "always"]
-    },
-
-    "plugins": ["@html-eslint"],
-    "overrides": [
-        {
-        "files": ["*.html"],
-        "parser": "@html-eslint/parser",
-        "extends": ["plugin:@html-eslint/recommended"]
-        }
-    ]
-
+    }
 }
