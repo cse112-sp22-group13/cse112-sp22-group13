@@ -3,6 +3,8 @@ import { searchForKey, getInstructionSteps } from './extra.js';
 import { ComplexSearch } from '../source/apiComplexSearch.js';
 import { GenericFetch } from '../source/genericFetch.js';
 
+const API_KEY = 'a6e411c0c3e349d29672f54d7ba122e3';
+
 window.addEventListener('DOMContentLoaded', init);
 // LOCAL STORAGE
 const localStorage = window.localStorage;
@@ -26,7 +28,7 @@ async function init () {
       query: ' ', // The (natural language) recipe search query.
       offset: 0, // The number of results to skip (between 0 and 900).
       number: 20, // The number of expected results (between 1 and 100).
-      apiKey: 'a6e411c0c3e349d29672f54d7ba122e3'
+      apiKey: API_KEY
     }
   };
   const search = new ComplexSearch(initialSearch);
@@ -53,7 +55,7 @@ async function init () {
     params: {
       ids: idString,
       includeNutrition: false,
-      apiKey: 'a6e411c0c3e349d29672f54d7ba122e3'
+      apiKey: API_KEY
     }
   };
 
