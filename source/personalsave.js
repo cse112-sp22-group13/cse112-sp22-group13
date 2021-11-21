@@ -1,7 +1,7 @@
 // should recieve a website url to be inputed
 // import {extraction, forceExtraction} from '../source/personalsave.js'; in main
 // var x = extraction('https://foodista.com/recipe/ZHK4KPB6/chocolate-crinkle-cookies'); to try it out in main
-export async function extraction(input){
+export async function extraction (input) {
   var data = {};
   console.log('using');
   const format = {
@@ -14,19 +14,18 @@ export async function extraction(input){
       includeNutrition: false,
       includeTaste: false,
       apiKey: 'a6e411c0c3e349d29672f54d7ba122e3'
-      }
-    };
-  await axios.request(format).then(function(response){
-    data = response.data
+    }
+  };
+  await axios.request(format).then(function (response) {
+    data = response.data;
     console.log(JSON.stringify(data));
     return data;
-  }).catch(function(error) {
+  }).catch(function (error) {
     console.log('shiiet');
     console.log(error);
   });
-}
- 
-export async function forceExtraction(input){
+} 
+export async function forceExtraction (input) {
   var data = {};
   console.log('using');
   const format = {
@@ -39,14 +38,14 @@ export async function forceExtraction(input){
       includeNutrition: false,
       includeTaste: false,
       apiKey: 'a6e411c0c3e349d29672f54d7ba122e3'
-      }
-    };
-  await axios.request(format).then(function(response){
-    data = response.data
+    }
+  };
+  await axios.request(format).then(function (response) {
+    data = response.data;
     console.log(JSON.stringify(data));
     return data;
-  }).catch(function(error) {
+  }).catch(function (error) {
     console.log('shiiet');
     console.log(error);
   });
-}
+} 
