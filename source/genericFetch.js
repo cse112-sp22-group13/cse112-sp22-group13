@@ -14,6 +14,7 @@ export class GenericFetch {
    *
    * @param {*} input
    */
+  
   static async fGenericFetch (input) {
     await axios.request(input.options).then(function (response) {
       input.data = response.data;
