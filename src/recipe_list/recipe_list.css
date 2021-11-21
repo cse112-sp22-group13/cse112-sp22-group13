@@ -20,6 +20,10 @@ a a:link a:visited a:hover a:active {
     color: black;
 }
 
+.search-container {
+    color: white;
+}
+
 .header-grid-container {
     display: grid;
     justify-content: center;

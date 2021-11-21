@@ -1,14 +1,20 @@
 // main.js
-// import { searchForKey, getInstructionSteps } from './extra.js';
+import { searchForKey, getInstructionSteps } from './extra.js';
 import { ComplexSearch } from '../source/apiComplexSearch.js';
 import { GenericFetch } from '../source/genericFetch.js';
 import { searchForKey } from './extra.js';
+
+const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
 
 window.addEventListener('DOMContentLoaded', init);
 // LOCAL STORAGE
 const localStorage = window.localStorage;
 // for functions to use as keys to access json files in localStorage
 const idArr = [];
+// SEARCH BAR BUTTON
+const searchBar = document.querySelector('button');
+searchBar.addEventListener('click', searchRecipes);
+const inputTxt = document.getElementById('search-bar');
 
 /**
  * Initialize function, begins all of the JS code in this file
@@ -23,7 +29,7 @@ async function init () {
       query: ' ', // The (natural language) recipe search query.
       offset: 0, // The number of results to skip (between 0 and 900).
       number: 20, // The number of expected results (between 1 and 100).
-      apiKey: 'a6e411c0c3e349d29672f54d7ba122e3'
+      apiKey: API_KEY
     }
   };
   const search = new ComplexSearch(initialSearch);
@@ -50,7 +56,7 @@ async function init () {
     params: {
       ids: idString,
       includeNutrition: false,
-      apiKey: 'a6e411c0c3e349d29672f54d7ba122e3'
+      apiKey: API_KEY
     }
   };
 
@@ -77,20 +83,21 @@ async function init () {
   //console.log(jsonObj);
 
   // TESTING SEARCHFORKEY
-  // const obj = searchForKey(thing.data[0], 'title');
-  // const obj2 = searchForKey(searchForKey(thing.data[1], 'analyzedInstructions'), 'steps');
-  // const obj2a = getInstructionSteps(thing.data[1]);
-  // const obj3 = getInstructionSteps(thing.data[2]);
-  // console.log(obj);
-  // console.log(obj2);
-  // console.log(obj2a);
-  // console.log(obj3);
+  const obj = searchForKey(thing.data[0], 'title');
+  const obj2 = searchForKey(searchForKey(thing.data[1], 'analyzedInstructions'), 'steps');
+  const obj2a = getInstructionSteps(thing.data[1]);
+  const obj3 = getInstructionSteps(thing.data[2]);
+  console.log(obj);
+  console.log(obj2);
+  console.log(obj2a);
+  console.log(obj3);
 
   // TESTING GETRECIPESCONTAININGKEYWORD
   const myArr = getRecipesContainingKeyword('chocolate');
   //console.log(myArr.length);
 }
 
+<<<<<<< HEAD
 
 
 function createRecipeCards () {
@@ -111,6 +118,10 @@ function createRecipeCards () {
 
 
 
+=======
+// HERE ARE SOME FILES WE CAN EVENTUALLY PUT INTO EXTRA.JS BUT WE'D HAVE
+// TO HAVE EXTRA.JS HAVE ACCESS TO THE idArr GLOBAL VARIABLE
+>>>>>>> 6fb745ea26b7bfe9cc86609d1836f681c78503a8
 
 // take user's input for a title and returns the json object for the desired recipe
 function searchTitle (title) {
@@ -142,4 +153,14 @@ function checkForValue (json, value) {
     return true;
   }
   return false;
+}
+
+function searchRecipes () {
+  const input = inputTxt.value;
+  console.log(input);
+  // take user input from the search bar
+  // pass over to getRecipesContainingKeyword
+  // const mySearchedFiles = getRecipesContainingKeyword(input);
+  // and make use of the array of json files returned from getRecipesContainingKeyword
+  // to populate cards having to do with the input user put into the search bar textarea
 }

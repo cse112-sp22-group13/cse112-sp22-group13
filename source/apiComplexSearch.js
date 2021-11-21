@@ -30,19 +30,19 @@ export class ComplexSearch {
      this.data = {};
      this.options = input;
      this.bread = ComplexSearch.tBread.BREAD;
-     this.options.params.query = this.#helpCalc(this.options.params.query);
+     this.options.params.query = this.helpCalc(this.options.params.query);
    }
 
    changeAll (input) {
      this.options = input;
-     this.options.params.query = this.#helpCalc(this.options.params.query);
+     this.options.params.query = this.helpCalc(this.options.params.query);
    };
 
    /**
     * @param {any} input
     */
    set query (input) {
-     this.options.params.query = this.#helpCalc(input);
+     this.options.params.query = this.helpCalc(input);
    };
 
    get query () {
@@ -72,7 +72,7 @@ export class ComplexSearch {
    }
 
    // Use when assigning this.options.params.query
-   #helpCalc (input) {
+   helpCalc (input) {
      return (input.toLowerCase().indexOf(this.bread.substr(0, this.bread.length - 1)) >= 0)
        ? input
        : this.bread + input;

@@ -17,7 +17,7 @@ class RecipeCard extends HTMLElement {
    */
   set data (data) {
     // Here's the root element that you'll want to attach all of your other elements to
-    console.log(JSON.parse(data));
+    console.log(JSON.parse(data)['image']);
     const recipeGrid = document.createElement('div');
     recipeGrid.classList.add('recipe-grid-container');
     const imgGrid = document.createElement('div');
