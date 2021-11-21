@@ -24,7 +24,7 @@ export async function extraction (input) {
     console.log('shiiet');
     console.log(error);
   });
-} 
+}
 export async function forceExtraction (input) {
   var data = {};
   console.log('using');
@@ -48,4 +48,4 @@ export async function forceExtraction (input) {
     console.log('shiiet');
     console.log(error);
   });
-} 
+}
