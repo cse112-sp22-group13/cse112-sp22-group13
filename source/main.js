@@ -2,7 +2,6 @@
 import { searchForKey, getInstructionSteps } from './extra.js';
 import { ComplexSearch } from '../source/apiComplexSearch.js';
 import { GenericFetch } from '../source/genericFetch.js';
-import { searchForKey } from './extra.js';
 
 const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
 
@@ -97,7 +96,6 @@ async function init () {
   //console.log(myArr.length);
 }
 
-<<<<<<< HEAD
 
 
 function createRecipeCards () {
@@ -106,7 +104,7 @@ function createRecipeCards () {
   // files with the recipeData Object above. Make sure you only display the
   // three recipes we give you, you'll use the bindShowMore() function to
   // show any others you've added when the user clicks on the "Show more" button.
-  const main = document.getElementsByClassName('recipe-list')[0];
+  const main = document.querySelector("main");
   //console.log(localStorage);
   for (let i = 1; i < localStorage.length; i++) {
     const element = document.createElement('recipe-card');
@@ -118,10 +116,8 @@ function createRecipeCards () {
 
 
 
-=======
 // HERE ARE SOME FILES WE CAN EVENTUALLY PUT INTO EXTRA.JS BUT WE'D HAVE
 // TO HAVE EXTRA.JS HAVE ACCESS TO THE idArr GLOBAL VARIABLE
->>>>>>> 6fb745ea26b7bfe9cc86609d1836f681c78503a8
 
 // take user's input for a title and returns the json object for the desired recipe
 function searchTitle (title) {
