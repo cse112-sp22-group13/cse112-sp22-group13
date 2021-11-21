@@ -1,4 +1,4 @@
-//should recieve a website url
+//should recieve a website  url
 //import {extraction, forceExtraction} from '../source/personalsave.js'; in main
 //var x = extraction('https://foodista.com/recipe/ZHK4KPB6/chocolate-crinkle-cookies'); to try it out in main
 export async function extraction(input){
