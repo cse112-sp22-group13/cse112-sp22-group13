@@ -1,7 +1,7 @@
 // main.js
 import { searchForKey, getInstructionSteps } from './extra.js';
-import { ComplexSearch } from '../source/apiComplexSearch.js';
-import { GenericFetch } from '../source/genericFetch.js';
+import { ComplexSearch } from './apiComplexSearch.js';
+import { GenericFetch } from './genericFetch.js';
 
 const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
 
