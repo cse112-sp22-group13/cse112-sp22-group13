@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>ComplexSearch - Documentation</title>
+    <title>GenericFetch - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">ComplexSearch</h1>
+    <h1 class="page-title">GenericFetch</h1>
     
 
     
@@ -42,8 +42,10 @@
 <header>
     
         <h2>
-        ComplexSearch
+        GenericFetch
         </h2>
+        
+            <div class="class-description">Generic fetch that can be used for most of the Spoonacular API calls</div>
         
     
 </header>
@@ -55,8 +57,10 @@
 <div class="section-method">
 
     
+    <h2>Constructor</h2>
+    
 
-    <h4 class="name" id="ComplexSearch"><span class="type-signature"></span>new ComplexSearch<span class="signature">(input)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="GenericFetch"><span class="type-signature"></span>new GenericFetch<span class="signature">(input)</span><span class="type-signature"></span></h4>
 
     
 
@@ -95,7 +99,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="apiComplexSearch.js.html">apiComplexSearch.js</a>, <a href="apiComplexSearch.js.html#line29">line 29</a>
+        <a href="genericFetch.js.html">genericFetch.js</a>, <a href="genericFetch.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -145,7 +149,7 @@
             <td class="type">
             
                 
-<span class="param-type"><code>string</code></span>
+<span class="param-type"><code>*</code></span>
 
 
             
@@ -156,7 +160,7 @@
             
 
             <td class="description last">
-                
+                Options object to be parsed into
                 
             </td>
         </tr>
@@ -192,7 +196,7 @@
         <h3 class="subsection-title">Classes</h3>
 
         <dl>
-            <dt><a href="ComplexSearch.html">ComplexSearch</a></dt>
+            <dt><a href="GenericFetch.html">GenericFetch</a></dt>
             <dd></dd>
         </dl>
     
@@ -201,190 +205,6 @@
 
     
 
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<div class="section-members">
-<h4 class="name" id="number"><span class="type-signature"></span>number<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="apiComplexSearch.js.html">apiComplexSearch.js</a>, <a href="apiComplexSearch.js.html#line55">line 55</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-</div>
-
-        
-            
-<div class="section-members">
-<h4 class="name" id="offset"><span class="type-signature"></span>offset<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="apiComplexSearch.js.html">apiComplexSearch.js</a>, <a href="apiComplexSearch.js.html#line66">line 66</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-</div>
-
-        
-            
-<div class="section-members">
-<h4 class="name" id="query"><span class="type-signature"></span>query<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="apiComplexSearch.js.html">apiComplexSearch.js</a>, <a href="apiComplexSearch.js.html#line44">line 44</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-</div>
-
-        
     
 
     
@@ -396,15 +216,11 @@
 
     
 
-    <h4 class="name" id=".fComplexSearch"><span class="type-signature">(async, static) </span>fComplexSearch<span class="signature">(object)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".fGenericFetch"><span class="type-signature">(async, static) </span>fGenericFetch<span class="signature">(input)</span><span class="type-signature"></span></h4>
 
     
 
 
-
-<div class="description">
-    Loads recipes in data field of complexSearch_c object
-</div>
 
 
 
@@ -439,7 +255,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="apiComplexSearch.js.html">apiComplexSearch.js</a>, <a href="apiComplexSearch.js.html#line85">line 85</a>
+        <a href="genericFetch.js.html">genericFetch.js</a>, <a href="genericFetch.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -483,7 +299,7 @@
 
         <tr>
             
-                <td class="name"><code>object</code></td>
+                <td class="name"><code>input</code></td>
             
 
             <td class="type">
@@ -500,7 +316,7 @@
             
 
             <td class="description last">
-                complexSearch_c object
+                
                 
             </td>
         </tr>

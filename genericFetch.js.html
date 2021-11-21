@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>extra.js - Documentation</title>
+    <title>genericFetch.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">extra.js</h1>
+    <h1 class="page-title">genericFetch.js</h1>
     
 
     
@@ -40,32 +40,29 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Search for the value of the `key` in the given object `data`
- * @param {Object} data
- * @param {String} key
- * @returns {*} The value associated with the key if found
+ * Generic fetch that can be used for most of the Spoonacular API calls
  */
- export function searchForKey(object, key) {
-     var value;
-     Object.keys(object).some(function (k) {
-       if (k === key) {
-         value = object[k];
-         return true;
-       }
-       if (object[k] &amp;&amp; typeof object[k] === 'object') {
-         value = searchForKey(object[k], key);
-         return value !== undefined;
-       }
-     });
-     return value;
-   }
-/**
- * Returns the instruction steps of the given recipe
- * @param {Object} data
- * @returns {Object[]} A list of steps
- */
-export function getInstructionSteps (data) {
-  return searchForKey(searchForKey(data, 'analyzedInstructions'), 'steps');
+export class GenericFetch {
+  /**
+   *
+   * @param {*} input Options object to be parsed into
+   */
+  constructor (input) {
+    this.options = input;
+    this.data = {};
+  }
+  /**
+   *
+   * @param {*} input
+   */
+
+  static async fGenericFetch (input) {
+    await axios.request(input.options).then(function (response) {
+      input.data = response.data;
+    }).catch(function (error) {
+      console.log(error);
+    });
+  }
 }
 </code></pre>
         </article>
