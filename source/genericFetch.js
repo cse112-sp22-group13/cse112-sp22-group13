@@ -3,16 +3,16 @@
  */
 export class GenericFetch {
   /**
-   * 
-   * @param {*} input Options object to be parsed into 
+   *
+   * @param {*} input Options object to be parsed into
    */
   constructor (input) {
     this.options = input;
     this.data = {};
   }
   /**
-   * 
-   * @param {*} input 
+   *
+   * @param {*} input
    */
   static async fGenericFetch (input) {
     await axios.request(input.options).then(function (response) {
