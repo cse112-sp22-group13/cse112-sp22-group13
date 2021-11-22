@@ -1,4 +1,4 @@
-import { searchForKey } from "./extra.js";
+import { searchForKey } from './extra.js';
 
 class RecipeCard extends HTMLElement {
   constructor () {
@@ -17,51 +17,104 @@ class RecipeCard extends HTMLElement {
    */
   set data (data) {
     // Here's the root element that you'll want to attach all of your other elements to
-    console.log(JSON.parse(data));
-    const recipe_card = document.createElement('article');
-    recipe_card.classList.add("recipe-card");
+    const parsed = JSON.parse(data);
+
+    const recipeCard = document.createElement('article');
+    recipeCard.classList.add('recipe-card', 'test');
 
     // Attach grid container to root (article aka recipe card)
-    const recipe_container = document.createElement('div');
-    recipe_container.classList.add("recipe-grid-container");
-    recipe_card.appendChild(recipe_container);
+    const recipeContainer = document.createElement('div');
+    recipeContainer.classList.add('recipe-grid-container');
+    recipeCard.appendChild(recipeContainer);
 
     // 1st column = img of recipe; attach to container
     const imgGrid = document.createElement('div');
     imgGrid.classList.add('recipe-grid-img');
-    let img1 = document.createElement('img');
-    img1.src = (JSON.parse(data)['image']);
+    const img1 = document.createElement('img');
+    img1.src = parsed.image;
     imgGrid.appendChild(img1);
-    recipe_container.appendChild(imgGrid);
+    recipeContainer.appendChild(imgGrid);
 
     // 2nd column = recipe ovewview; attach to container
-    const recipe_overview = document.createElement('div');
-    recipe_overview.classList.add("recipe-grid-overview");
-    recipe_container.appendChild(recipe_overview);
+    const recipeOverview = document.createElement('div');
+    recipeOverview.classList.add('recipe-grid-overview');
+    recipeContainer.appendChild(recipeOverview);
 
     // attach title to recipe overview
-    let recipe_title = document.createElement('p');
-    recipe_title.classList.add("recipe_title");
-    recipe_title.innerText = searchForKey(JSON.parse(data), 'title');
-    recipe_overview.appendChild(recipe_title);
+    const recipeTitle = document.createElement('p');
+    recipeTitle.classList.add('recipeTitle');
+    recipeTitle.innerText = searchForKey(parsed, 'title');
+    recipeOverview.appendChild(recipeTitle);
 
     // attach summary to recipe overview
-    let recipe_summary = document.createElement('p');
-    recipe_summary.classList.add("recipe_summary");
-    recipe_summary.innerText = searchForKey(JSON.parse(data), 'summary');
-    recipe_overview.appendChild(recipe_summary);
+    const recipeSummary = document.createElement('p');
+    recipeSummary.classList.add('recipeSummary');
+    recipeSummary.innerHTML = searchForKey(parsed, 'summary');
+    recipeOverview.appendChild(recipeSummary);
 
     // attach tag to tagList, tagList to recipe overview
-    let tagList = document.createElement('ul');
+    const tagList = document.createElement('ul');
     tagList.classList.add('recipe-tags');
-    tagList.innerText = "Tags: ";
-    let tag = document.createElement("li");
+    tagList.innerText = 'Tags: ';
+    const tag = document.createElement('li');
     tag.classList.add('tags');
     tagList.appendChild(tag);
-    recipe_overview.appendChild(tagList);
+    recipeOverview.appendChild(tagList);
 
+    const styleElem = document.createElement('style');
+    styleElem.innerHTML = `
+    .recipe-card {
+      padding-top: 2rem;
+    }
     
-  
+    .recipe-grid-container {
+        display: grid;
+        column-gap: 1rem;
+        grid-template-columns: 200px auto;
+        background-color: white;
+        /* #909e87; */
+        padding: 1%;
+        border: white;
+        border-top: 3px solid  black;
+        border-bottom: 3px solid  black;
+    
+    }
+    
+    .recipe-grid-overview {
+        text-align: left;
+        color: black;
+        font-weight: bold;
+    }
+    
+    .recipe-title {
+        font-size: x-large;
+        padding:0;
+        margin-bottom: 10px;
+    }
+    
+    .recipe-summary {
+        line-height: 1.4;
+        margin-bottom: 10px;
+    }
+
+    .recipe-grid-img img {
+      width: 100%;
+    }
+    
+    .recipe-tags {
+        font-size: medium;
+        padding: 0%;
+    }
+    
+    .tag {
+        font-size: x-small;
+        font-style: oblique;
+        list-style-position: inside;
+        padding: 0%;
+    }
+    `;
+
+    this.shadowRoot.append(styleElem, recipeCard);
 
     // tagList.appendChild(tag);
     // tagsGrid.appendChild(tagList);
@@ -104,9 +157,8 @@ class RecipeCard extends HTMLElement {
     // p4.innerText = "Spoonacular Score: " + searchForKey(JSON.parse(data), "spoonacularScore");
     // ratingGrid.appendChild(p4);
     // recipeGrid.appendChild(ratingGrid);
-    
 
-    //console.log(searchForKey(JSON.parse(data), "title"));
+    // console.log(searchForKey(JSON.parse(data), "title"));
   }
 }
 
@@ -120,7 +172,7 @@ class RecipeCard extends HTMLElement {
    * @param {Object} data Raw recipe JSON to find the URL of
    * @returns {String} If found, it returns the URL as a string, otherwise null
    */
-function getUrl (data) {
+export function getUrl (data) {
   if (data.url) return data.url;
   if (data['@graph']) {
     for (let i = 0; i < data['@graph'].length; i++) {
@@ -136,7 +188,7 @@ function getUrl (data) {
    * @param {Object} data Raw recipe JSON to find the org string of
    * @returns {String} If found, it retuns the name of the org as a string, otherwise null
    */
-function getOrganization (data) {
+export function getOrganization (data) {
   if (data.publisher?.name) return data.publisher?.name;
   if (data['@graph']) {
     for (let i = 0; i < data['@graph'].length; i++) {
@@ -154,7 +206,7 @@ function getOrganization (data) {
    * @param {String} time time string to format
    * @return {String} formatted time string
    */
-function convertTime (time) {
+export function convertTime (time) {
   let timeStr = '';
 
   // Remove the 'PT'
@@ -183,7 +235,7 @@ function convertTime (time) {
    *                              imported data
    * @return {String} the string comma separate list of ingredients from the array
    */
-function createIngredientList (ingredientArr) {
+export function createIngredientList (ingredientArr) {
   let finalIngredientList = '';
 
   /**
@@ -211,5 +263,3 @@ function createIngredientList (ingredientArr) {
 // Define the Class so you can use it as a custom element.
 // This is critical, leave this here and don't touch it
 customElements.define('recipe-card', RecipeCard);
-
-
