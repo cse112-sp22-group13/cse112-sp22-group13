@@ -8,58 +8,106 @@
   <link rel="stylesheet" type="text/css" href="./recipe_list.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="../scripts/main.js" type="module"></script>
-  <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+  <script src="../scripts/RecipeCard.js" type="module"></script>
+  <script src="../scripts/sideBar.js"></script>
   <title>NaN Bread Recipes</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&display=swap');  
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+  </style>
 </head>
 
 <body>
     <header>
-        <h1>Recipes</h1>
-        <!-- <img src /> -->
-        <div class="search-container">
-              <input type="text" placeholder="Search recipe" name="search-bar" id="search-bar">
-              <button>Search</button>
-        </div>
+      <nav>
+        <a href="../home/home.html">
+          <h1 class="title">oui oui baguette</h1>
+        </a>
+      </nav>
     </header>
-
+    <div class="search-container">
+          <input type="text" placeholder="SEARCH RECIPE" class="search-bar">
+          <button class="search-button">SEARCH</button>
+    </div>
+    <!-- navbar -->
+    <div id="navButton">
+      <button class="openbtn" onclick="openNav()">&#9776;</button>
+    </div>
+    <div id="sideNavbar" class="sidebar">
+      <a href="../home/home.html">Home</a>
+      <a href="../recipe_list/recipe_list.html">Recipe List</a>
+      <a href="#Favorites">Favorites</a>
+    </div>
     <main>
-        <!-- recipe card inside the list -->
-        <div class="recipe-list">
-            <div class="recipe-card">
-              <div class="recipe-grid-container">
-                <div class="recipe-grid-img">          
-                  <img src="./img/bread.jpg" height="108px" width="108px" alt="recipe-preview" />
-                </div>
-                <div class="recipe-grid-title">
-                  <p>Lucious Loaf</p>
-                </div>
-                <div class="recipe-grid-time-org">
-                  <time class="recipe-time">50 min</time>
-                  <p class="organization">NaN inc.</p>
-                </div>
-
+        <!-- Template cards,  keep for reference -->
+          <!--<article class="recipe-card">
+            <div class="recipe-grid-container">
+              <div class="recipe-grid-img">          
+                <img src="./img/bread.jpg" height="150px" width="150px" alt="recipe-img" />
+              </div>
+              <div class="recipe-grid-overview">          
+                <p class="recipe-title">title</p>
+                <p class="recipe-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                <ul class="recipe-tags"> Tags:
+                  <li class="tag">gluten free</li>
+                </ul>
+              </div>
+          </article>
         
-                <div class="recipe-grid-description">     
-                  <p>A grainy goddess to tickle your bread bone. Flakey and doughy just like god intended it. The best gluten around, flies off the shelfs. Get it while its crispy hot my friend. </p>
-                </div>
-              
-                <div class="recipe-grid-tags-rating">
-                  <ul class="tags">Tags:
-                    <li class="tag">gluten free</li>
-                  </ul>
-                </div>
+          <article class="recipe-card">
+            <div class="recipe-grid-container">
+              <div class="recipe-grid-img">          
+                <img src="./img/bread.jpg" height="150px" width="150px" alt="recipe-img" />
+              </div>
+              <div class="recipe-grid-overview">          
+                <p class="recipe-title">title</p>
+                <p class="recipe-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                <ul class="recipe-tags"> Tags:
+                  <li class="tag">gluten free</li>
+                </ul>
+              </div>
+          </article>
 
-                <div class="recipe-grid-rating">
-                  <span>5/5</span>
-                  <img class="rating-stars" src="./img/5-star.svg" alt="5 stars">
-                  <span>500 reviews</span>
-                </div>
+          <article class="recipe-card">
+            <div class="recipe-grid-container">
+              <div class="recipe-grid-img">          
+                <img src="./img/bread.jpg" height="150px" width="150px" alt="recipe-img" />
+              </div>
+              <div class="recipe-grid-overview">          
+                <p class="recipe-title">title</p>
+                <p class="recipe-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                <ul class="recipe-tags"> Tags:
+                  <li class="tag">gluten free</li>
+                </ul>
+              </div>
+          </article>-->
+
+          <!--OLD DESIGN - CODE BY RYAN-->
+              <!-- <div class="recipe-grid-title">
+                <p>Lucious Loaf</p>
+              </div> -->
+              <!-- <div class="recipe-grid-time-org">
+                <time class="recipe-time">50 min</time>
+                <p class="organization">NaN inc.</p>
+              </div>
+      
+              <div class="recipe-grid-description">     
+                <p>A grainy goddess to tickle your bread bone. Flakey and doughy just like god intended it. The best gluten around, flies off the shelfs. Get it while its crispy hot my friend. </p>
+              </div>
+            
+              <div class="recipe-grid-tags-rating">
+                <ul class="tags">Tags:
+                  <li class="tag">gluten free</li>
+                </ul>
+              </div>
+
+              <div class="recipe-grid-rating">
+                <p>Spoonacular Score: </p>
               </div>
             </div>
-
-            <div class="recipe-card">
+            </div> -->
+            <!-- <recipe-card>
               <div class="recipe-grid-container">
                 <div class="recipe-grid-img">          
                   <img src="./img/bread.jpg" height="108px" width="108px" alt="recipe-preview" />
@@ -70,10 +118,10 @@
                 <div class="recipe-grid-time-org">
                   <time class="recipe-time">50 min</time>
                   <p class="organization">NaN inc.</p>
-                </div>
+                </div> -->
 
         
-                <div class="recipe-grid-description">     
+                <!-- <div class="recipe-grid-description">     
                   <p>A grainy goddess to tickle your bread bone. Flakey and doughy just like god intended it. The best gluten around, flies off the shelfs. Get it while its crispy hot my friend. </p>
                 </div>
               
@@ -91,13 +139,8 @@
 
                 
               </div>
-            </div>
-          
-        </div>
-      
-      
-      <!-- recipe card template, should be in another html file -->
-    </main>
+            </recipe-card> -->
+        </main>
 
 
 

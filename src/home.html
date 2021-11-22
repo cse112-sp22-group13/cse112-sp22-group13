@@ -11,39 +11,56 @@
   <script src="./scripts/extra.js" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <title>NaN Bread</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&display=swap');  
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+  </style>
 </head>
 
 <body>
     <header>
-        <!-- <button class="add" href="">Add</button> -->
-        <h1 class="title">Recipe App</h1>
         <nav>
-          <a href="#home" class="active">Logo</a>
-          <div id="myLinks">
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
-          </div>
-          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
+          <a href="./home.html">
+            <h1 class="title">oui oui baguette 🥖</h1>
           </a>
-      </nav>
+        </nav>
     </header>
     <main>
-      <img src="img/bread_logo.jpg" width="300px"/>
-      <!-- <p class="typed">GOT BREAD?</p> -->
-      <div class="button one">
-        <button class="cool-button one">SEARCH RECIPE 🍞</button>
+      <div class="button-row">
+        <div class="button-col" style="text-align:center; padding-left: 4rem;">
+          <button onclick="location.href='../recipe_list/recipe_list.html'" class="cool-button two"
+            >ADD RECIPE 🥐
+          </button>
+        </div>
+        <div class="button-col" >
+          <button onclick="location.href='../recipe_list/recipe_list.html'" class="cool-button one">
+            SEARCH RECIPE 🧇 
+          </button>
+        </div>
       </div>
-
-      <div class="button two">
-        <button class="cool-button two">ADD RECIPE 🥐</button>
-      </div>
-
-          <!-- <form method="GET" action="#">
-            <input type="text" placeholder="Search recipe" name="search_recipe">
-            <button type="submit">Submit</button>
-          </form>     -->
+      <img src="./img/bread_logo.jpg" class="img-fluid" alt="banner_img"/>
+      <p class="blurb">
+        ALL YOU KNEAD IS BREAD? CHECK OUT OUR POPULAR RECIPES!
+      </p>
+      <section>
+        <div class="container">
+          <div class="row" style="text-align: center; padding-top: 2rem;">
+            <div class="col-sm">
+              <img src="./img/bread_logo.jpg" width="200vw" height="200vh" alt="popular_recipe_img"/>
+              <p class="recipe-name">blueberry muffin</p>
+            </div>
+            <div class="col-sm">
+              <img src="./img/bread_logo.jpg" width="200vw" height="200vh" alt="popular_recipe_img"/>
+              <p class="recipe-name">blueberry muffin</p>
+            </div>
+            <div class="col-sm">
+              <img src="./img/bread_logo.jpg" width="200vw" height="200vh" alt="popular_recipe_img"/>
+              <p class="recipe-name">blueberry muffin</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 </body>
 
