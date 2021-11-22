@@ -1,8 +1,18 @@
-// main.js
+/********************************MAIN.JS FILE********************************/
+/* Location of init function where backend fetches the recipes from the API */
+/* and stores the json files into local storage. Local storage will contain */
+/* a hashmap that maps a recipe title to a key, and the key will map to the */
+/* respective json file. Functions searchTitle, searchForKey, and           */
+/* getRecipesContainingKeyword will fetch recipes from search bar input.    */
+/* Lastly, backend functionallity allows frontend to populate the cards and */
+/* single recipe pages.                                                     */
+/****************************************************************************/
+
 import { searchForKey, getInstructionSteps } from './extra.js';
 import { ComplexSearch } from './apiComplexSearch.js';
 import { GenericFetch } from './genericFetch.js';
 
+// Backend devs will switch up using their own spoonacular key for fetching
 const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
 
 window.addEventListener('DOMContentLoaded', init);
@@ -15,11 +25,12 @@ const searchBar = document.querySelector('button');
 searchBar.addEventListener('click', searchRecipes);
 const inputTxt = document.getElementById('search-bar');
 
-/**
- * Initialize function, begins all of the JS code in this file
- * */
+/************************INITIALIZE FUNCTION************************/
+/* Recipes will be fetched as soon as website is booted up, and    */
+/* local storage is filled.                                        */
+/*******************************************************************/
 async function init () {
-  // initializeServiceWorker();
+  // initializeServiceWorker(); will eventually implement
 
   const initialSearch = {
     method: 'GET',
@@ -31,10 +42,10 @@ async function init () {
       apiKey: API_KEY
     }
   };
-  const search = new ComplexSearch(initialSearch);
 
+  const search = new ComplexSearch(initialSearch);
   await ComplexSearch.fComplexSearch(search);
-  console.log(search.data);
+  //console.log(search.data);
 
   // grabbing recipes with id's
   let idString = '';
@@ -61,7 +72,7 @@ async function init () {
 
   const thing = new GenericFetch(bulkOptions);
   await GenericFetch.fGenericFetch(thing);
-  console.log(thing.data);
+  // console.log(thing.data);
 
   // FILLING LOCAL STORAGE
   // first set a place in local storage that will hold the hash table itself at key 0
@@ -74,6 +85,7 @@ async function init () {
   // now we have local storage with the hashtable (title->id) at key 0
   // and then the rest of local storage filled with id->json files
 
+  /**************************TESTING BACKEND BELOW**************************/
   // testing out searchTitle with a random title
   const jsonObj = searchTitle(thing.data[5].title);
   console.log('heres a json object for the title the user passed/searched:');
@@ -97,7 +109,11 @@ async function init () {
 // HERE ARE SOME FILES WE CAN EVENTUALLY PUT INTO EXTRA.JS BUT WE'D HAVE
 // TO HAVE EXTRA.JS HAVE ACCESS TO THE idArr GLOBAL VARIABLE
 
-// take user's input for a title and returns the json object for the desired recipe
+/************************SEARCHTITLE FUNCTION************************/
+/* Take user's input for a title and returns the json object for    */
+/* the desired recipe. Should take them directly to the single      */
+/* recipe page if title is input exactly.                           */
+/********************************************************************/
 function searchTitle (title) {
   const hashmap = new Map(JSON.parse(localStorage.getItem(0))); // grabbing that hash table
   // console.log(hashmap);
@@ -108,7 +124,11 @@ function searchTitle (title) {
   return jsonRecipeObj;
 }
 
-// FOR GRABBING AN ARRAY OF JSON FILES CONTAINING A KEYWORD LIKE 'CHOCOLATE'
+/*****************GETRECIPESCONTAININGKEYWORD FUNCTION*****************/
+/* For grabbing an array of json files with all recipes that contain  */
+/* a keyword inserted into the search bar. i.e. returning an array    */
+/* of all bread recipes that contain the word 'chocolate'             */
+/**********************************************************************/
 function getRecipesContainingKeyword (keyword) {
   const arr = [];
   // localStorage.getItem(key) where the key is the title/user input
@@ -121,6 +141,10 @@ function getRecipesContainingKeyword (keyword) {
   return arr;
 }
 
+/***************************CHECKFORVALUE FUNCTION***************************/
+/* Function utilized by getRecipesContainingKeyword. Will turn a json into  */
+/* a string and check if string contains keyword. If yes, return true.      */
+/****************************************************************************/
 function checkForValue (json, value) {
   const jsonAsString = JSON.stringify(json);
   if (jsonAsString.includes(value)) {
@@ -129,6 +153,11 @@ function checkForValue (json, value) {
   return false;
 }
 
+/****************************SEARCHRECIPES FUNCTION****************************/
+/* Connection between frontend and backend. When user clicks search button,   */
+/* search bar input will be pulled and passed to getRecipesContainingKeyword. */
+/* Then the array returned will populate cards on screen pertaining to input. */
+/******************************************************************************/
 function searchRecipes () {
   const input = inputTxt.value;
   console.log(input);
