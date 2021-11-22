@@ -5,18 +5,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest      # Docker-based github actions have to run on a linux environment
     steps:
-      # Checks-out your repository
-      - uses: actions/checkout@v2
+      - name: HTML/CSS/JS Minifier
+        uses: docker://devatherock/minify-js:1.0.3
         with:
-          ref: ${{ github.ref }}
-
-      - name: Minify Action
-        uses: anthonyftwang/minify-action@v1.0.1
-
-      # Auto-commit to repository
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Minify source code
-          branch: ${{ github.ref }}
+          directory: 'src'      # Optional
+          output: 'minify/src'  # Optional
+          add_suffix: false     # Optional
