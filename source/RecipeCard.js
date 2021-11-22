@@ -17,9 +17,10 @@ class RecipeCard extends HTMLElement {
    */
   set data (data) {
     // Here's the root element that you'll want to attach all of your other elements to
-    console.log(JSON.parse(data));
+    const parsed = JSON.parse(data);
+    
     const recipe_card = document.createElement('article');
-    recipe_card.classList.add("recipe-card");
+    recipe_card.classList.add("recipe-card", 'test');
 
     // Attach grid container to root (article aka recipe card)
     const recipe_container = document.createElement('div');
@@ -30,7 +31,7 @@ class RecipeCard extends HTMLElement {
     const imgGrid = document.createElement('div');
     imgGrid.classList.add('recipe-grid-img');
     let img1 = document.createElement('img');
-    img1.src = (JSON.parse(data)['image']);
+    img1.src = parsed['image'];
     imgGrid.appendChild(img1);
     recipe_container.appendChild(imgGrid);
 
@@ -42,13 +43,13 @@ class RecipeCard extends HTMLElement {
     // attach title to recipe overview
     let recipe_title = document.createElement('p');
     recipe_title.classList.add("recipe_title");
-    recipe_title.innerText = searchForKey(JSON.parse(data), 'title');
+    recipe_title.innerText = searchForKey(parsed, 'title');
     recipe_overview.appendChild(recipe_title);
 
     // attach summary to recipe overview
     let recipe_summary = document.createElement('p');
     recipe_summary.classList.add("recipe_summary");
-    recipe_summary.innerText = searchForKey(JSON.parse(data), 'summary');
+    recipe_summary.innerHTML = searchForKey(parsed, 'summary');
     recipe_overview.appendChild(recipe_summary);
 
     // attach tag to tagList, tagList to recipe overview
@@ -60,8 +61,61 @@ class RecipeCard extends HTMLElement {
     tagList.appendChild(tag);
     recipe_overview.appendChild(tagList);
 
+    const styleElem = document.createElement('style');
+    styleElem.innerHTML = `
+    .recipe-card {
+      padding-top: 2rem;
+    }
     
-  
+    .recipe-grid-container {
+        display: grid;
+        column-gap: 1rem;
+        grid-template-columns: 200px auto;
+        background-color: white;
+        /* #909e87; */
+        padding: 1%;
+        border: white;
+        border-top: 3px solid  black;
+        border-bottom: 3px solid  black;
+    
+    }
+    
+    .recipe-grid-overview {
+        text-align: left;
+        color: black;
+        font-weight: bold;
+    }
+    
+    .recipe-title {
+        font-size: x-large;
+        padding:0;
+        margin-bottom: 10px;
+    }
+    
+    .recipe-summary {
+        line-height: 1.4;
+        margin-bottom: 10px;
+    }
+
+    .recipe-grid-img img {
+      width: 100%;
+    }
+    
+    .recipe-tags {
+        font-size: medium;
+        padding: 0%;
+    }
+    
+    .tag {
+        font-size: x-small;
+        font-style: oblique;
+        list-style-position: inside;
+        padding: 0%;
+    }
+    `
+
+    this.shadowRoot.append(styleElem, recipe_card);
+
 
     // tagList.appendChild(tag);
     // tagsGrid.appendChild(tagList);
@@ -211,5 +265,3 @@ function createIngredientList (ingredientArr) {
 // Define the Class so you can use it as a custom element.
 // This is critical, leave this here and don't touch it
 customElements.define('recipe-card', RecipeCard);
-
-

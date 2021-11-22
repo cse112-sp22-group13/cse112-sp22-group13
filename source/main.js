@@ -105,13 +105,15 @@ function createRecipeCards () {
   // three recipes we give you, you'll use the bindShowMore() function to
   // show any others you've added when the user clicks on the "Show more" button.
   const main = document.querySelector("main");
-  //console.log(localStorage);
-  for (let i = 1; i < localStorage.length; i++) {
+  // get Hash Tables
+  const hashes = JSON.parse(localStorage['0']);
+  // get array of ids
+  const elementIdArr = hashes.map(h => h[1]);
+  elementIdArr.forEach(id => {
     const element = document.createElement('recipe-card');
-    //console.log(localStorage);
-    element.data = localStorage[localStorage.key(i)];
+    element.data = localStorage[`${id}`];
     main.appendChild(element);
-  }
+  });
 }
 
 
