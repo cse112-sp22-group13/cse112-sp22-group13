@@ -101,9 +101,6 @@ async function init () {
   console.log(obj2a);
   console.log(obj3);
 
-  // TESTING GETRECIPESCONTAININGKEYWORD
-  const myArr = getRecipesContainingKeyword('chocolate');
-  console.log(myArr.length);
 }
 
 // HERE ARE SOME FILES WE CAN EVENTUALLY PUT INTO EXTRA.JS BUT WE'D HAVE
@@ -159,11 +156,18 @@ function checkForValue (json, value) {
 /* Then the array returned will populate cards on screen pertaining to input. */
 /******************************************************************************/
 function searchRecipes () {
+  // take user input from the search bar
   const input = inputTxt.value;
   console.log(input);
-  // take user input from the search bar
+
   // pass over to getRecipesContainingKeyword
-  // const mySearchedFiles = getRecipesContainingKeyword(input);
+  const myArr = getRecipesContainingKeyword(input);
+  console.log(myArr.length);
+
   // and make use of the array of json files returned from getRecipesContainingKeyword
   // to populate cards having to do with the input user put into the search bar textarea
+  for(let elem in myArr)
+  {
+    //createAllRecipeCards(elem);
+  }
 }
