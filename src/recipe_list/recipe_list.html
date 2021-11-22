@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./recipe_list.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="../../source/main.js" type="module"></script>
-  <script src="../../source/RecipeCard.js" type="module"></script>
-  <script src="../../source/sideBar.js"></script>
+  <script src="../scripts/main.js" type="module"></script>
+  <script src="../scripts/RecipeCard.js" type="module"></script>
+  <script src="../scripts/sideBar.js"></script>
   <title>NaN Bread Recipes</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
@@ -41,6 +41,22 @@
     </div>
     <main>
         <!-- recipe card inside the list -->
+        <recipe-card></recipe-card>
+        <!-- Template cards,  keep for reference -->
+          <!--<article class="recipe-card">
+            <div class="recipe-grid-container">
+              <div class="recipe-grid-img">          
+                <img src="./img/bread.jpg" height="150px" width="150px" alt="recipe-img" />
+              </div>
+              <div class="recipe-grid-overview">          
+                <p class="recipe-title">title</p>
+                <p class="recipe-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                <ul class="recipe-tags"> Tags:
+                  <li class="tag">gluten free</li>
+                </ul>
+              </div>
+          </article>
+        
           <article class="recipe-card">
             <div class="recipe-grid-container">
               <div class="recipe-grid-img">          
@@ -67,21 +83,7 @@
                   <li class="tag">gluten free</li>
                 </ul>
               </div>
-          </article>
-
-          <article class="recipe-card">
-            <div class="recipe-grid-container">
-              <div class="recipe-grid-img">          
-                <img src="./img/bread.jpg" height="150px" width="150px" alt="recipe-img" />
-              </div>
-              <div class="recipe-grid-overview">          
-                <p class="recipe-title">title</p>
-                <p class="recipe-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                <ul class="recipe-tags"> Tags:
-                  <li class="tag">gluten free</li>
-                </ul>
-              </div>
-          </article>
+          </article>-->
 
           <!--OLD DESIGN - CODE BY RYAN-->
               <!-- <div class="recipe-grid-title">
