@@ -4,7 +4,7 @@ Our project will consist of creating a Recipe Manager. It will incorporate many 
 
 Team Page: [link](https://github.com/cse110-fa21-group4/cse110-fa21-group4/blob/main/admin/team.md)
 
-[![GitHub Super-Linter](https://github.com/cse110-fa21-group4/cse110-fa21-group4/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+Developer wiki: [link](https://cse110-fa21-group4.github.io/cse110-fa21-group4/index.html)
 
 ## Project Pitch
   
