@@ -22,8 +22,8 @@ const localStorage = window.localStorage;
 const idArr = [];
 // SEARCH BAR BUTTON
 const searchBar = document.querySelector('button');
+const inputTxt = document.querySelector('.search-bar');
 searchBar.addEventListener('click', searchRecipes);
-const inputTxt = document.getElementById('search-bar');
 
 /************************INITIALIZE FUNCTION************************/
 /* Recipes will be fetched as soon as website is booted up, and    */
@@ -118,6 +118,7 @@ function createRecipeCards () {
   elementIdArr.forEach(id => {
     const element = document.createElement('recipe-card');
     element.data = localStorage[`${id}`];
+    element.id = id;
     main.appendChild(element);
   });
 }
@@ -140,20 +141,31 @@ function searchTitle (title) {
   return jsonRecipeObj;
 }
 
-/*****************GETRECIPESCONTAININGKEYWORD FUNCTION*****************/
-/* For grabbing an array of json files with all recipes that contain  */
-/* a keyword inserted into the search bar. i.e. returning an array    */
-/* of all bread recipes that contain the word 'chocolate'             */
+/***************GETRECIPESNOTCONTAININGKEYWORD FUNCTION****************/
+/* For grabbing an array of json files with all recipes that don't    */
+/* contain keyword inserted into the search bar. i.e. returning       */
+/* an array of all bread recipes that don't contain the word          */
+/* 'chocolate'                                                        */
 /**********************************************************************/
-function getRecipesContainingKeyword (keyword) {
+function getRecipesNotContainingKeyword (keyword) {
   const arr = [];
+  //const contains = [];
+  //const doesNotContain = [];
   // localStorage.getItem(key) where the key is the title/user input
   for (const id of idArr) {
     const jsonFile = localStorage.getItem(id);
-    if (checkForValue(jsonFile, keyword)) {
-      arr.push(jsonFile);
+    if (!checkForValue(jsonFile, keyword)) {
+      arr.push(id);
     }
+    //else {
+    //  doesNotContain.push(id);
+    //}
   }
+  //if (boolean == true) {
+  //  return contains;
+  //}
+  //else {
+  //  return doesNotContain;
   return arr;
 }
 
@@ -177,16 +189,36 @@ function checkForValue (json, value) {
 function searchRecipes () {
   // take user input from the search bar
   const input = inputTxt.value;
+  if (input == "") {
+    resetCards();
+    return;
+  }
   console.log(input);
 
-  // pass over to getRecipesContainingKeyword
-  const myArr = getRecipesContainingKeyword(input);
+  // pass over to getRecipesNotContainingKeyword
+  const myArr = getRecipesNotContainingKeyword(input);
   console.log(myArr.length);
-
+  console.log(myArr);
+  if (myArr.length == localStorage.length-1) {
+    alert("No recipes matching search found for " + input);
+    return;
+  }
+  resetCards();
   // and make use of the array of json files returned from getRecipesContainingKeyword
   // to populate cards having to do with the input user put into the search bar textarea
-  for(let elem in myArr)
+  for(let i = 0; i < myArr.length; i++)
   {
-    //createAllRecipeCards(elem);
+      let recipeCard = document.getElementById(`${myArr[i]}`);
+      recipeCard.classList.add('hidden');
   }
+}
+
+/*****************************RESETCARDS FUNCTION******************************/
+/* Show all Recipe Cards                                                      */
+/******************************************************************************/
+function resetCards() {
+  let recipeCards = document.querySelectorAll('recipe-card');
+  recipeCards.forEach(function(card) {
+    card.classList.remove('hidden');
+  });
 }
