@@ -18,8 +18,7 @@ const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
 window.addEventListener('DOMContentLoaded', init);
 // LOCAL STORAGE
 const localStorage = window.localStorage;
-// for functions to use as keys to access json files in localStorage
-const idArr = [];
+
 // SEARCH BAR BUTTON
 const searchBar = document.querySelector('button');
 const inputTxt = document.querySelector('.search-bar');
@@ -55,7 +54,6 @@ async function init () {
   for (const elem of search.data.results) {
     hashmap.set(elem.title, elem.id);
     idString = idString + elem.id + ',';
-    idArr.push(elem.id);
   }
   // console.log(JSON.stringify(Array.from(hashmap.entries())));
   // console.log(search.data.results);
@@ -111,7 +109,7 @@ function createRecipeCards () {
   // three recipes we give you, you'll use the bindShowMore() function to
   // show any others you've added when the user clicks on the "Show more" button.
   const main = document.querySelector('main');
-  // get Hash Tables
+  // get hash table
   const hashes = JSON.parse(localStorage['0']);
   // get array of ids
   const elementIdArr = hashes.map(h => h[1]);
@@ -124,7 +122,6 @@ function createRecipeCards () {
 }
 
 // HERE ARE SOME FILES WE CAN EVENTUALLY PUT INTO EXTRA.JS BUT WE'D HAVE
-// TO HAVE EXTRA.JS HAVE ACCESS TO THE idArr GLOBAL VARIABLE
 
 /************************SEARCHTITLE FUNCTION************************/
 /* Take user's input for a title and returns the json object for    */
@@ -152,8 +149,15 @@ function getRecipesNotContainingKeyword (keyword) {
   //const contains = [];
   //const doesNotContain = [];
   // localStorage.getItem(key) where the key is the title/user input
-  for (const id of idArr) {
-    const jsonFile = localStorage.getItem(id);
+
+  // get hash table
+  const hashes = JSON.parse(localStorage['0']);
+  // get array of ids
+  const elementIdArr = hashes.map(h => h[1]);
+  for (const id of elementIdArr) {
+    const jsonFile = JSON.parse(localStorage.getItem(id));
+    const tags = searchForKey(jsonFile, 'tags');
+    console.log(tags);
     if (!checkForValue(jsonFile, keyword)) {
       arr.push(id);
     }
