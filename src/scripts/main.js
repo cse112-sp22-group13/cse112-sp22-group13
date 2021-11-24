@@ -92,22 +92,38 @@ async function init () {
   // console.log(jsonObj);
 
   // TESTING SEARCHFORKEY
-  const obj = searchForKey(thing.data[0], 'title');
-  const obj2 = searchForKey(searchForKey(thing.data[1], 'analyzedInstructions'), 'steps');
-  const obj2a = getInstructionSteps(thing.data[1]);
-  const obj3 = getInstructionSteps(thing.data[2]);
-  console.log(obj);
-  console.log(obj2);
-  console.log(obj2a);
-  console.log(obj3);
+  /*const objTitle = searchForKey(thing.data[0], 'title');
+  const objIng = searchForKey(thing.data[0], 'extendedIngredients');
+  const objCheap = searchForKey(thing.data[0], 'cheap');
+  const objDFree = searchForKey(thing.data[0], 'dairyFree');
+  const objGFree = searchForKey(thing.data[0], 'glutenFree');
+  const objVegan = searchForKey(thing.data[0], 'vegan');
+  const objVege = searchForKey(thing.data[0], 'vegetarian');
+  const objHealthy = searchForKey(thing.data[0], 'veryHealthy');
+  console.log(objTitle);
+  console.log(objIng);
+  console.log(objCheap);
+  console.log(objDFree);
+  console.log(objGFree);
+  console.log(objVegan);
+  console.log(objVege);
+  console.log(objHealthy);*/
+
+  //const arr = getTags(thing.data[3]);
+  //console.log(arr);
 }
 
+
+// HERE ARE SOME FILES WE CAN EVENTUALLY PUT INTO EXTRA.JS:
+
+/****************************CREATERECIPECARDS FUNCTION****************************/
+/* This function is called for you up above.                                      */
+/* From within this function you can access the recipe data from the JSON         */
+/* files with the recipeData Object above. Make sure you only display the         */
+/* three recipes we give you, you'll use the bindShowMore() function to           */
+/* show any others you've added when the user clicks on the "Show more" button.   */
+/**********************************************************************************/
 function createRecipeCards () {
-  // This function is called for you up above.
-  // From within this function you can access the recipe data from the JSON
-  // files with the recipeData Object above. Make sure you only display the
-  // three recipes we give you, you'll use the bindShowMore() function to
-  // show any others you've added when the user clicks on the "Show more" button.
   const main = document.querySelector('main');
   // get hash table
   const hashes = JSON.parse(localStorage['0']);
@@ -120,70 +136,6 @@ function createRecipeCards () {
     main.appendChild(element);
   });
 }
-
-// HERE ARE SOME FILES WE CAN EVENTUALLY PUT INTO EXTRA.JS BUT WE'D HAVE
-
-/************************SEARCHTITLE FUNCTION************************/
-/* Take user's input for a title and returns the json object for    */
-/* the desired recipe. Should take them directly to the single      */
-/* recipe page if title is input exactly.                           */
-/********************************************************************/
-function searchTitle (title) {
-  const hashmap = new Map(JSON.parse(localStorage.getItem(0))); // grabbing that hash table
-  // console.log(hashmap);
-  // get the id that the title maps to
-  const id = hashmap.get(title);
-  // and then query local storage using the id to get recipe
-  const jsonRecipeObj = localStorage.getItem(id);
-  return jsonRecipeObj;
-}
-
-/***************GETRECIPESNOTCONTAININGKEYWORD FUNCTION****************/
-/* For grabbing an array of json files with all recipes that don't    */
-/* contain keyword inserted into the search bar. i.e. returning       */
-/* an array of all bread recipes that don't contain the word          */
-/* 'chocolate'                                                        */
-/**********************************************************************/
-function getRecipesNotContainingKeyword (keyword) {
-  const arr = [];
-  //const contains = [];
-  //const doesNotContain = [];
-  // localStorage.getItem(key) where the key is the title/user input
-
-  // get hash table
-  const hashes = JSON.parse(localStorage['0']);
-  // get array of ids
-  const elementIdArr = hashes.map(h => h[1]);
-  for (const id of elementIdArr) {
-    const jsonFile = JSON.parse(localStorage.getItem(id));
-    const tags = searchForKey(jsonFile, 'tags');
-    console.log(tags);
-    if (!checkForValue(jsonFile, keyword)) {
-      arr.push(id);
-    }
-    //else {
-    //  doesNotContain.push(id);
-    //}
-  }
-  //if (boolean == true) {
-  //  return contains;
-  //}
-  //else {
-  //  return doesNotContain;
-  return arr;
-}
-
-/***************************CHECKFORVALUE FUNCTION***************************/
-/* Function utilized by getRecipesContainingKeyword. Will turn a json into  */
-/* a string and check if string contains keyword. If yes, return true.      */
-/****************************************************************************/
-function checkForValue (json, value) {
-  const jsonAsString = JSON.stringify(json);
-  if (jsonAsString.includes(value)) {
-    return true;
-  }
-  return false;
-} 
 
 /****************************SEARCHRECIPES FUNCTION****************************/
 /* Connection between frontend and backend. When user clicks search button,   */
@@ -202,11 +154,12 @@ function searchRecipes () {
   // pass over to getRecipesNotContainingKeyword
   const myArr = getRecipesNotContainingKeyword(input);
   console.log(myArr.length);
-  console.log(myArr);
+
   if (myArr.length == localStorage.length-1) {
     alert("No recipes matching search found for " + input);
     return;
   }
+
   resetCards();
   // and make use of the array of json files returned from getRecipesContainingKeyword
   // to populate cards having to do with the input user put into the search bar textarea
@@ -226,3 +179,91 @@ function resetCards() {
     card.classList.remove('hidden');
   });
 }
+
+/***************GETRECIPESNOTCONTAININGKEYWORD FUNCTION****************/
+/* For grabbing an array of id' with all recipes that don't           */
+/* contain keyword inserted into the search bar. i.e. returning       */
+/* an array of all bread recipes that don't contain the word          */
+/* 'chocolate'                                                        */
+/**********************************************************************/
+function getRecipesNotContainingKeyword (keyword) {
+  //couple base cases
+  let input = keyword.toLowerCase();
+  if(keyword == 'dairy free'){ input = 'dairyfree'; }
+  if(keyword == 'gluten free'){ input = 'glutenfree'; }
+
+  const arr = [];
+  // get hash table
+  const hashes = JSON.parse(localStorage['0']);
+  // get array of ids
+  const elementIdArr = hashes.map(h => h[1]);
+
+  for (const id of elementIdArr) 
+  {
+    const jsonFile = JSON.parse(localStorage.getItem(id));
+    const tags = getTags(jsonFile);
+    //console.log(tags);
+
+    // checks if input is NOT located in title, ingredients, or rest of tag array
+    if( !(tags[0].includes(input) || tags[1].includes(input) || tags.includes(input)) ) { 
+      arr.push(id); 
+    }
+
+  }
+  return arr;
+}
+
+/***************************CHECKFORVALUE FUNCTION***************************/
+/* Function utilized by getRecipesContainingKeyword. Will turn a json into  */
+/* a string and check if string contains keyword. If yes, return true.      */
+/****************************************************************************/
+/*function checkForValue (json, value) {
+  const jsonAsString = JSON.stringify(json);
+  if (jsonAsString.includes(value)) {
+    return true;
+  }
+  return false;
+}*/ 
+
+/***************************GETTAGS FUNCTION***************************/
+/* Function that will build an array containing title, ingredients,   */
+/* and tags for true booleans within the json file passed      .      */
+/**********************************************************************/
+function getTags (jsonFile) {
+  let tagsArr = [];
+  // title
+  tagsArr.push(String(searchForKey(jsonFile, 'title')).toLowerCase());
+  // ingredients
+  tagsArr.push(JSON.stringify(searchForKey(jsonFile, 'extendedIngredients')).toLowerCase());
+  //booleans
+  if(searchForKey(jsonFile, 'cheap'))
+    tagsArr.push('cheap');
+  if(searchForKey(jsonFile, 'dairyFree'))
+    tagsArr.push('dairyfree');
+  if(searchForKey(jsonFile, 'glutenFree'))
+    tagsArr.push('glutenfree');
+  if(searchForKey(jsonFile, 'vegan'))
+    tagsArr.push('vegan');
+  if(searchForKey(jsonFile, 'vegetarian'))
+    tagsArr.push('vegetarian');
+  if(searchForKey(jsonFile, 'veryHealthy'))
+    tags.Arr.push('healthy');
+
+  return tagsArr;
+}
+
+/************************SEARCHTITLE FUNCTION************************/
+/* Take user's input for a title and returns the json object for    */
+/* the desired recipe. Should take them directly to the single      */
+/* recipe page if title is input exactly.                           */
+/********************************************************************/
+/*function searchTitle (title) {
+  const hashmap = new Map(JSON.parse(localStorage.getItem(0))); // grabbing that hash table
+  // console.log(hashmap);
+  // get the id that the title maps to
+  const id = hashmap.get(title);
+  // and then query local storage using the id to get recipe
+  const jsonRecipeObj = localStorage.getItem(id);
+  return jsonRecipeObj;
+}*/
+
