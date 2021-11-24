@@ -1,12 +1,14 @@
-/********************************MAIN.JS FILE********************************/
-/* Location of init function where backend fetches the recipes from the API */
-/* and stores the json files into local storage. Local storage will contain */
-/* a hashmap that maps a recipe title to a key, and the key will map to the */
-/* respective json file. Functions searchTitle, searchForKey, and           */
-/* getRecipesContainingKeyword will fetch recipes from search bar input.    */
-/* Lastly, backend functionallity allows frontend to populate the cards and */
-/* single recipe pages.                                                     */
-/****************************************************************************/
+/**
+ * ******************************MAIN.JS FILE****************************** *
+ * Location of init function where backend fetches the recipes from the API *
+ * and stores the json files into local storage. Local storage will contain *
+ * a hashmap that maps a recipe title to a key, and the key will map to the *
+ * respective json file. Functions searchTitle, searchForKey, and           *
+ * getRecipesContainingKeyword will fetch recipes from search bar input.    *
+ * Lastly, backend functionallity allows frontend to populate the cards and *
+ * single recipe pages.                                                     *
+ * ************************************************************************ *
+ */
 
 import { searchForKey, getInstructionSteps } from './extra.js';
 import { ComplexSearch } from './apiComplexSearch.js';
@@ -24,10 +26,12 @@ const searchBar = document.querySelector('button');
 const inputTxt = document.querySelector('.search-bar');
 searchBar.addEventListener('click', searchRecipes);
 
-/************************INITIALIZE FUNCTION************************/
-/* Recipes will be fetched as soon as website is booted up, and    */
-/* local storage is filled.                                        */
-/*******************************************************************/
+/**
+ * **********************INITIALIZE FUNCTION********************** *
+ * Recipes will be fetched as soon as website is booted up, and    *
+ * local storage is filled.                                        *
+ * *************************************************************** *
+ */
 async function init () {
   // initializeServiceWorker(); will eventually implement
 
@@ -85,14 +89,14 @@ async function init () {
   // now we have local storage with the hashtable (title->id) at key 0
   // and then the rest of local storage filled with id->json files
 
-  /**************************TESTING BACKEND BELOW**************************/
+  // *************************TESTING BACKEND BELOW**************************
   // testing out searchTitle with a random title
   // const jsonObj = searchTitle(thing.data[5].title);
   // console.log('heres a json object for the title the user passed/searched:');
   // console.log(jsonObj);
 
   // TESTING SEARCHFORKEY
-  /*const objTitle = searchForKey(thing.data[0], 'title');
+  /* const objTitle = searchForKey(thing.data[0], 'title');
   const objIng = searchForKey(thing.data[0], 'extendedIngredients');
   const objCheap = searchForKey(thing.data[0], 'cheap');
   const objDFree = searchForKey(thing.data[0], 'dairyFree');
@@ -107,22 +111,25 @@ async function init () {
   console.log(objGFree);
   console.log(objVegan);
   console.log(objVege);
-  console.log(objHealthy);*/
+  console.log(objHealthy);
+  */
 
-  //const arr = getTags(thing.data[3]);
-  //console.log(arr);
+  // const arr = getTags(thing.data[3]);
+  // console.log(arr);
 }
 
 
 // HERE ARE SOME FILES WE CAN EVENTUALLY PUT INTO EXTRA.JS:
 
-/****************************CREATERECIPECARDS FUNCTION****************************/
-/* This function is called for you up above.                                      */
-/* From within this function you can access the recipe data from the JSON         */
-/* files with the recipeData Object above. Make sure you only display the         */
-/* three recipes we give you, you'll use the bindShowMore() function to           */
-/* show any others you've added when the user clicks on the "Show more" button.   */
-/**********************************************************************************/
+/**
+ * **************************CREATERECIPECARDS FUNCTION************************** *
+ * This function is called for you up above.                                      *
+ * From within this function you can access the recipe data from the JSON         *
+ * files with the recipeData Object above. Make sure you only display the         *
+ * three recipes we give you, you'll use the bindShowMore() function to           *
+ * show any others you've added when the user clicks on the "Show more" button.   *
+ * ****************************************************************************** *
+ */
 function createRecipeCards () {
   const main = document.querySelector('main');
   // get hash table
@@ -137,11 +144,13 @@ function createRecipeCards () {
   });
 }
 
-/****************************SEARCHRECIPES FUNCTION****************************/
-/* Connection between frontend and backend. When user clicks search button,   */
-/* search bar input will be pulled and passed to getRecipesContainingKeyword. */
-/* Then the array returned will populate cards on screen pertaining to input. */
-/******************************************************************************/
+/**
+ * **************************SEARCHRECIPES FUNCTION************************** *
+ * Connection between frontend and backend. When user clicks search button,   *
+ * search bar input will be pulled and passed to getRecipesContainingKeyword. *
+ * Then the array returned will populate cards on screen pertaining to input. *
+ * ************************************************************************** *
+ */
 function searchRecipes () {
   // take user input from the search bar
   const input = inputTxt.value;
@@ -170,9 +179,11 @@ function searchRecipes () {
   }
 }
 
-/*****************************RESETCARDS FUNCTION******************************/
-/* Show all Recipe Cards                                                      */
-/******************************************************************************/
+/**
+ * ***************************RESETCARDS FUNCTION**************************** *
+ * Show all Recipe Cards                                                      *
+ * ************************************************************************** *
+ */
 function resetCards() {
   let recipeCards = document.querySelectorAll('recipe-card');
   recipeCards.forEach(function(card) {
@@ -180,14 +191,16 @@ function resetCards() {
   });
 }
 
-/***************GETRECIPESNOTCONTAININGKEYWORD FUNCTION****************/
-/* For grabbing an array of id' with all recipes that don't           */
-/* contain keyword inserted into the search bar. i.e. returning       */
-/* an array of all bread recipes that don't contain the word          */
-/* 'chocolate'                                                        */
-/**********************************************************************/
+/**
+ * *************GETRECIPESNOTCONTAININGKEYWORD FUNCTION************** *
+ * For grabbing an array of id' with all recipes that don't           *
+ * contain keyword inserted into the search bar. i.e. returning       *
+ * an array of all bread recipes that don't contain the word          *
+ * 'chocolate'                                                        *
+ * ****************************************************************** *
+ */
 function getRecipesNotContainingKeyword (keyword) {
-  //couple base cases
+  // couple base cases
   let input = keyword.toLowerCase();
   if(keyword == 'dairy free'){ input = 'dairyfree'; }
   if(keyword == 'gluten free'){ input = 'glutenfree'; }
@@ -202,7 +215,7 @@ function getRecipesNotContainingKeyword (keyword) {
   {
     const jsonFile = JSON.parse(localStorage.getItem(id));
     const tags = getTags(jsonFile);
-    //console.log(tags);
+    // console.log(tags);
 
     // checks if input is NOT located in title, ingredients, or rest of tag array
     if( !(tags[0].includes(input) || tags[1].includes(input) || tags.includes(input)) ) { 
@@ -213,29 +226,19 @@ function getRecipesNotContainingKeyword (keyword) {
   return arr;
 }
 
-/***************************CHECKFORVALUE FUNCTION***************************/
-/* Function utilized by getRecipesContainingKeyword. Will turn a json into  */
-/* a string and check if string contains keyword. If yes, return true.      */
-/****************************************************************************/
-/*function checkForValue (json, value) {
-  const jsonAsString = JSON.stringify(json);
-  if (jsonAsString.includes(value)) {
-    return true;
-  }
-  return false;
-}*/ 
-
-/***************************GETTAGS FUNCTION***************************/
-/* Function that will build an array containing title, ingredients,   */
-/* and tags for true booleans within the json file passed      .      */
-/**********************************************************************/
+/**
+ * *************************GETTAGS FUNCTION************************* *
+ * Function that will build an array containing title, ingredients,   *
+ * and tags for true booleans within the json file passed             *
+ * ****************************************************************** *
+ */
 function getTags (jsonFile) {
   let tagsArr = [];
   // title
   tagsArr.push(String(searchForKey(jsonFile, 'title')).toLowerCase());
   // ingredients
   tagsArr.push(JSON.stringify(searchForKey(jsonFile, 'extendedIngredients')).toLowerCase());
-  //booleans
+  // booleans
   if(searchForKey(jsonFile, 'cheap'))
     tagsArr.push('cheap');
   if(searchForKey(jsonFile, 'dairyFree'))
@@ -251,19 +254,4 @@ function getTags (jsonFile) {
 
   return tagsArr;
 }
-
-/************************SEARCHTITLE FUNCTION************************/
-/* Take user's input for a title and returns the json object for    */
-/* the desired recipe. Should take them directly to the single      */
-/* recipe page if title is input exactly.                           */
-/********************************************************************/
-/*function searchTitle (title) {
-  const hashmap = new Map(JSON.parse(localStorage.getItem(0))); // grabbing that hash table
-  // console.log(hashmap);
-  // get the id that the title maps to
-  const id = hashmap.get(title);
-  // and then query local storage using the id to get recipe
-  const jsonRecipeObj = localStorage.getItem(id);
-  return jsonRecipeObj;
-}*/
 
