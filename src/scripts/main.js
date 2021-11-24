@@ -59,6 +59,24 @@ async function init () {
     hashmap.set(elem.title, elem.id);
     idString = idString + elem.id + ',';
   }
+
+
+  // SANAT
+  var objSanat = {
+    title : "Sanat",
+    image : "https://avatars.githubusercontent.com/u/31770675?v=4",
+    extendedIngredients : "naan bread, spices, hot dog",
+    cheap : true,
+    dairyFree : false,
+    glutenFree : false,
+    vegan : false,
+    vegetarian : false,
+    healthy : false
+  };
+  hashmap.set(objSanat.title, 1);
+  localStorage.setItem(1, JSON.stringify(objSanat));
+
+
   // console.log(JSON.stringify(Array.from(hashmap.entries())));
   // console.log(search.data.results);
 
@@ -174,8 +192,8 @@ function searchRecipes () {
   // to populate cards having to do with the input user put into the search bar textarea
   for(let i = 0; i < myArr.length; i++)
   {
-      let recipeCard = document.getElementById(`${myArr[i]}`);
-      recipeCard.classList.add('hidden');
+    let recipeCard = document.getElementById(`${myArr[i]}`);
+    recipeCard.classList.add('hidden');
   }
 }
 
