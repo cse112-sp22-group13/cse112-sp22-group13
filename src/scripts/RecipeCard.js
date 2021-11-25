@@ -1,4 +1,4 @@
-import { searchForKey } from './extra.js';
+import { searchForKey } from './searchKey.js';
 
 class RecipeCard extends HTMLElement {
   constructor () {

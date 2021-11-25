@@ -1,4 +1,4 @@
-import { searchForKey, getInstructionSteps } from './extra.js';
+import { searchForKey, getInstructionSteps } from './searchKey.js';
 
 // SEARCH BAR BUTTON
 const searchBar = document.querySelector('button');
