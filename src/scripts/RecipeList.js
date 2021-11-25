@@ -9,7 +9,8 @@ window.addEventListener('DOMContentLoaded', init);
 const localStorage = window.localStorage;
 
 async function init () {
-    createRecipeCards();
+  bindEnterKey();
+  createRecipeCards();
 
   // now we have local storage with the hashtable (title->id) at key 0
   // and then the rest of local storage filled with id->json files
@@ -162,8 +163,8 @@ async function init () {
     tagsArr.push(JSON.stringify(searchForKey(jsonFile, 'extendedIngredients')).toLowerCase());
     
     // booleans
-    //if(searchForKey(jsonFile, 'cheap'))
-    //  tagsArr.push('cheap');
+    if(searchForKey(jsonFile, 'cheap'))
+      tagsArr.push('cheap');
     if(searchForKey(jsonFile, 'dairyFree'))
       tagsArr.push('dairyfree');
     if(searchForKey(jsonFile, 'glutenFree'))
@@ -177,3 +178,19 @@ async function init () {
   
     return tagsArr;
   }
+
+  function bindEnterKey() {
+    /**
+     * TODO - Part 1 Step 5
+     * For this step, add an event listener to document for the 'keydown' event,
+     * if the escape key is pressed, use your router to navigate() to the 'home'
+     * page. This will let us go back to the home page from the detailed page.
+     */
+  //let eleKey = document.querySelector("keydown");
+  document.addEventListener('keydown', function(event){
+    if(event.key === "Enter"){
+      searchRecipes();
+    }
+  })
+  }
+  

@@ -58,7 +58,7 @@ async function init () {
   }
 
 
-  // SANAT
+  // SANAT RECIPE CARD
   var objSanat = {
     title : "Sanat",
     image : "https://avatars.githubusercontent.com/u/31770675?v=4",
@@ -101,3 +101,4 @@ async function init () {
   }
   
 }
+
