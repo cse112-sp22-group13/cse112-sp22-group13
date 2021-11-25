@@ -48,7 +48,7 @@ async function init () {
 
   const search = new ComplexSearch(initialSearch);
   await ComplexSearch.fComplexSearch(search);
-  // console.log(search.data);
+  //console.log(search.data);
 
   // grabbing recipes with id's
   let idString = '';
@@ -92,7 +92,7 @@ async function init () {
 
   const thing = new GenericFetch(bulkOptions);
   await GenericFetch.fGenericFetch(thing);
-  // console.log(thing.data);
+  console.log(thing.data);
 
   // FILLING LOCAL STORAGE
   // first set a place in local storage that will hold the hash table itself at key 0
@@ -256,9 +256,10 @@ function getTags (jsonFile) {
   tagsArr.push(String(searchForKey(jsonFile, 'title')).toLowerCase());
   // ingredients
   tagsArr.push(JSON.stringify(searchForKey(jsonFile, 'extendedIngredients')).toLowerCase());
+  
   // booleans
-  if(searchForKey(jsonFile, 'cheap'))
-    tagsArr.push('cheap');
+  //if(searchForKey(jsonFile, 'cheap'))
+  //  tagsArr.push('cheap');
   if(searchForKey(jsonFile, 'dairyFree'))
     tagsArr.push('dairyfree');
   if(searchForKey(jsonFile, 'glutenFree'))
