@@ -10,7 +10,7 @@
  * ************************************************************************ *
  */
 
-
+import { searchForKey } from './searchKey.js';
 import { ComplexSearch } from './apiComplexSearch.js';
 import { GenericFetch } from './genericFetch.js';
 
@@ -20,8 +20,6 @@ const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
 window.addEventListener('DOMContentLoaded', init);
 // LOCAL STORAGE
 const localStorage = window.localStorage;
-
-
 
 /**
  * **********************INITIALIZE FUNCTION********************** *
@@ -37,7 +35,7 @@ async function init () {
     url: 'https://api.spoonacular.com/recipes/complexSearch',
     params: {
       query: ' ', // The (natural language) recipe search query.
-      offset: 0, // The number of results to skip (between 0 and 900).
+      offset: 20, // The number of results to skip (between 0 and 900).
       number: 20, // The number of expected results (between 1 and 100).
       apiKey: API_KEY
     }
@@ -57,7 +55,6 @@ async function init () {
     idString = idString + elem.id + ',';
   }
 
-
   // SANAT RECIPE CARD
   var objSanat = {
     title : "Sanat",
@@ -72,7 +69,6 @@ async function init () {
   };
   hashmap.set(objSanat.title, 1);
   localStorage.setItem(1, JSON.stringify(objSanat));
-
 
   // console.log(JSON.stringify(Array.from(hashmap.entries())));
   // console.log(search.data.results);
@@ -114,4 +110,28 @@ async function init () {
   //store the fav map in localstor
   console.log(favmap);
   localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
+
+  // popularRecipes();
+}
+
+function popularRecipes(){
+  // get hash table
+  const hashes = JSON.parse(localStorage['0']);
+  // get array of ids
+  const elementIdArr = hashes.map(h => h[1]);
+
+  let count = 0;
+  for (const id of elementIdArr){
+    const jsonFile = JSON.parse(localStorage.getItem(id));
+    if(searchForKey(jsonFile, 'veryPopular') == true)
+    {
+      // use image of json file to replace the image on the homepage
+      count++;
+    }
+    if(count == 3)
+    {
+      break; // break out of loop
+    }
+
+  }
 }
