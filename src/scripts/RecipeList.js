@@ -1,4 +1,5 @@
 import { searchForKey, getInstructionSteps } from './searchKey.js';
+import { markFav, unFav } from './FavoriteRecipe.js';
 
 // SEARCH BAR BUTTON
 const searchBar = document.querySelector('button');
@@ -179,18 +180,15 @@ async function init () {
     return tagsArr;
   }
 
+  /**
+   * *************BINDENTERKEY FUNCTION************* *
+   * Set enter key works for search bar              *
+   * *********************************************** *
+   */
   function bindEnterKey() {
-    /**
-     * TODO - Part 1 Step 5
-     * For this step, add an event listener to document for the 'keydown' event,
-     * if the escape key is pressed, use your router to navigate() to the 'home'
-     * page. This will let us go back to the home page from the detailed page.
-     */
-  //let eleKey = document.querySelector("keydown");
   document.addEventListener('keydown', function(event){
     if(event.key === "Enter"){
       searchRecipes();
     }
   })
   }
-  

@@ -99,7 +99,7 @@ async function init () {
     localStorage.setItem(elem.id, JSON.stringify(elem));
     // console.log(elem);
   }
-
+  
   // MAKING FAVORITES HASHMAP THAT WILL BE LOCATED AT #2 IN LOCAL STORAGE
   const favmap = new Map();
   // get hash table
@@ -111,7 +111,7 @@ async function init () {
     //initialze every id as false (not yet a favorite)
     favmap.set(id, false);
   }
+  //store the fav map in localstor
   console.log(favmap);
   localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
-
 }
