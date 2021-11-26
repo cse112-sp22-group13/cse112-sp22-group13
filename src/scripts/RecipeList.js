@@ -1,4 +1,5 @@
 import { searchForKey, getInstructionSteps } from './searchKey.js';
+import { markFav, unFav } from './FavoriteRecipe.js';
 
 // SEARCH BAR BUTTON
 const searchBar = document.querySelector('button');
@@ -9,7 +10,8 @@ window.addEventListener('DOMContentLoaded', init);
 const localStorage = window.localStorage;
 
 async function init () {
-    createRecipeCards();
+  bindEnterKey();
+  createRecipeCards();
 
   // now we have local storage with the hashtable (title->id) at key 0
   // and then the rest of local storage filled with id->json files
@@ -85,8 +87,9 @@ async function init () {
     // pass over to getRecipesNotContainingKeyword
     const myArr = getRecipesNotContainingKeyword(input);
     console.log(myArr.length);
+    //console.log(localStorage.length);
   
-    if (myArr.length == localStorage.length-1) {
+    if (myArr.length == localStorage.length-2) {
       alert("No recipes matching search found for " + input);
       return;
     }
@@ -162,8 +165,8 @@ async function init () {
     tagsArr.push(JSON.stringify(searchForKey(jsonFile, 'extendedIngredients')).toLowerCase());
     
     // booleans
-    //if(searchForKey(jsonFile, 'cheap'))
-    //  tagsArr.push('cheap');
+    if(searchForKey(jsonFile, 'cheap'))
+      tagsArr.push('cheap');
     if(searchForKey(jsonFile, 'dairyFree'))
       tagsArr.push('dairyfree');
     if(searchForKey(jsonFile, 'glutenFree'))
@@ -173,7 +176,20 @@ async function init () {
     if(searchForKey(jsonFile, 'vegetarian'))
       tagsArr.push('vegetarian');
     if(searchForKey(jsonFile, 'veryHealthy'))
-      tags.Arr.push('healthy');
+      tagsArr.push('healthy');
   
     return tagsArr;
+  }
+
+  /**
+   * *************BINDENTERKEY FUNCTION************* *
+   * Set enter key works for search bar              *
+   * *********************************************** *
+   */
+  function bindEnterKey() {
+  document.addEventListener('keydown', function(event){
+    if(event.key === "Enter"){
+      searchRecipes();
+    }
+  })
   }

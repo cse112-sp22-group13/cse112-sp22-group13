@@ -53,13 +53,14 @@ class RecipeCard extends HTMLElement {
     recipeOverview.appendChild(recipeSummary);
 
     // attach tag to tagList, tagList to recipe overview
-    const tagList = document.createElement('ul');
+    /* const tagList = document.createElement('ul');
     tagList.classList.add('recipe-tags');
     tagList.innerText = 'Tags: ';
     const tag = document.createElement('li');
     tag.classList.add('tags');
     tagList.appendChild(tag);
     recipeOverview.appendChild(tagList);
+    */
 
     const styleElem = document.createElement('style');
     styleElem.innerHTML = `
