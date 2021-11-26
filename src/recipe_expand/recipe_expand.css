@@ -1,18 +1,17 @@
 body {
-    font-family: 'IBM Plex Mono', monospace;
-    box-sizing: border-box;
-    background-color: #AD9169;
-    color: #e3d477;
+  font-family: 'IBM Plex Mono', monospace;
+  box-sizing: border-box;
+  background-color: #ad9169;
+  color: #e3d477;
 }
 
 .title {
-    font-family:'Bebas Neue', cursive;
-    text-align: center;
-    color: #e3d477;
-    padding: 3vh 0 2vh 0;
-    font-size: 3.7rem;
+  font-family: 'Bebas Neue', cursive;
+  text-align: center;
+  color: #e3d477;
+  padding: 3vh 0 2vh 0;
+  font-size: 3.7rem;
 }
-
 
 /* body {
     background-color: #E6D2AF;

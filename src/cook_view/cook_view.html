@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="./cook_view.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+    </style>
+    <title>NaN Bread Recipes</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="./home.html">
+          <h1 class="title">oui oui baguette 🥖</h1>
+        </a>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <h3>The goodest of bread recipes</h3>
+      <p>Step <span id="step">1</span>/<span id="max-step">5</span></p>
+      <img class="recipe-image" src="./img/bread.jpg" alt="recipe image" />
+
+      <div class="direction">
+        <h4>Direction 1</h4>
+        <div class="direction-block">
+          <p>
+            In a large bowl, dissolve yeast and 1/2 teaspoon sugar in warm
+            water...
+          </p>
+        </div>
+
+        <div class="navigate">
+          <button class="left">
+            <span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </span>
+          </button>
+          <button class="right">
+            <span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
