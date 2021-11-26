@@ -35,7 +35,7 @@ async function init () {
     url: 'https://api.spoonacular.com/recipes/complexSearch',
     params: {
       query: ' ', // The (natural language) recipe search query.
-      offset: 20, // The number of results to skip (between 0 and 900).
+      offset: 0, // The number of results to skip (between 0 and 900).
       number: 20, // The number of expected results (between 1 and 100).
       apiKey: API_KEY
     }
@@ -88,6 +88,8 @@ async function init () {
   console.log(thing.data);
 
   // FILLING LOCAL STORAGE
+  // must clear out because every refresh just adds to local storage and the search would get messed up
+  localStorage.clear();
   // first set a place in local storage that will hold the hash table itself at key 0
   localStorage.setItem(0, JSON.stringify(Array.from(hashmap.entries())));
   // extract json object and put into local storage
@@ -110,28 +112,4 @@ async function init () {
   //store the fav map in localstor
   console.log(favmap);
   localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
-
-  // popularRecipes();
-}
-
-function popularRecipes(){
-  // get hash table
-  const hashes = JSON.parse(localStorage['0']);
-  // get array of ids
-  const elementIdArr = hashes.map(h => h[1]);
-
-  let count = 0;
-  for (const id of elementIdArr){
-    const jsonFile = JSON.parse(localStorage.getItem(id));
-    if(searchForKey(jsonFile, 'veryPopular') == true)
-    {
-      // use image of json file to replace the image on the homepage
-      count++;
-    }
-    if(count == 3)
-    {
-      break; // break out of loop
-    }
-
-  }
 }

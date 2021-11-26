@@ -87,8 +87,9 @@ async function init () {
     // pass over to getRecipesNotContainingKeyword
     const myArr = getRecipesNotContainingKeyword(input);
     console.log(myArr.length);
-  
-    if (myArr.length == localStorage.length-1) {
+    console.log(localStorage.length);
+    
+    if (myArr.length == localStorage.length-2) { // if array is 21, and localStorage has 21 recipes + 2 hashmaps
       alert("No recipes matching search found for " + input);
       return;
     }
@@ -175,7 +176,7 @@ async function init () {
     if(searchForKey(jsonFile, 'vegetarian'))
       tagsArr.push('vegetarian');
     if(searchForKey(jsonFile, 'veryHealthy'))
-      tags.Arr.push('healthy');
+      tagsArr.push('healthy');
   
     return tagsArr;
   }
