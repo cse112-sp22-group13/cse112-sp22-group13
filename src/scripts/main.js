@@ -57,7 +57,6 @@
      idString = idString + elem.id + ',';
    }
  
- 
    // SANAT
    var objSanat = {
      title : "Sanat",
@@ -114,5 +113,7 @@
   //store the fav map in localstor
   console.log(favmap);
   localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
+
+  console.log("local storage has ", localStorage.length, " elements");
    
  }
