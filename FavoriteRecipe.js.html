@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Router.js - Documentation</title>
+    <title>FavoriteRecipe.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Router.js</h1>
+    <h1 class="page-title">FavoriteRecipe.js</h1>
     
 
     
@@ -39,54 +39,32 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// Router.js
-
- const funcs = {}
- export class Router {
-   /**
-    * Sets up the home function, the page name should always be 'home', which
-    * is why no page name variable is passed in.
-    * @param {Function} homeFunc The function to run to set the home route
-    *                            visually
-    */
-   constructor(homeFunc) {
-     this.addPage('home', homeFunc);
+            <pre class="prettyprint source linenums"><code>  /**
+   * *************************MARKFAV FUNCTION************************* *
+   * Mark favorite as true in hashmap by id of recipe, store the        *
+   * hashmap in localStorage                                            *
+   * ****************************************************************** *
+   */
+   export function markFav(id){
+    // get hash table
+    const favmap = JSON.parse(localStorage['2']);
+    favmap.set(id, true);
+    localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
    }
  
-   /**
-    * Adds a page name &amp; function so to the router so that the function
-    * can be called later when the page is passed in
-    * @param {String} page The name of the page to route to (this is used
-    *                      as the page's hash as well in the URL)
-    * @param {Function} pageFunc The function to run when the page is called
+    /**
+    * *************************UNFAV FUNCTION************************* *
+    * Mark favorite as false in hashmap by id of recipe, replace the     *
+    * hashmap in localStorage                                           *
+    * ****************************************************************** *
     */
-   addPage(page, pageFunc) {
-     /**
-      * TODO Part 1
-      * Fill in this function as specified in the comment above
-      */
-     funcs[page] = pageFunc;
-   }
- 
-   /**
-    * Changes the page visually to the page that has been passed in. statePopped
-    * is used to avoid pushing a new history state on back/forward button presses
-    * @param {String} page The name of the page to route to
-    * @param {Boolean} statePopped True if this function is being called from a
-    *                              'popstate' event instead of a normal card click
-    */
-   navigate(page, statePopped) {
-     if (funcs[page]){
-       funcs[page].call();
-       if(!statePopped){
-         if(page == 'home')
-           history.pushState({page: page}, "", " ");
-         else
-           history.pushState({page: page}, "", (location.hash)+"#"+page);
-       }
-     }
-  }
- }</code></pre>
+    export function unFav(id){
+      // get hash table
+      
+      const favmap = JSON.parse(localStorage['2']);
+      favmap.set(id, false);
+      localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
+    }</code></pre>
         </article>
     </section>
 
