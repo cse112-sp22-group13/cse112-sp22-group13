@@ -10,7 +10,6 @@
  * ************************************************************************ *
  */
 
-import { searchForKey } from './searchKey.js';
 import { ComplexSearch } from './apiComplexSearch.js';
 import { GenericFetch } from './genericFetch.js';
 
