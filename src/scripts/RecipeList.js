@@ -10,7 +10,8 @@ window.addEventListener('DOMContentLoaded', init);
 const localStorage = window.localStorage;
 
 async function init () {
-    createRecipeCards();
+  bindEnterKey();
+  createRecipeCards();
 
   // now we have local storage with the hashtable (title->id) at key 0
   // and then the rest of local storage filled with id->json files
@@ -86,8 +87,9 @@ async function init () {
     // pass over to getRecipesNotContainingKeyword
     const myArr = getRecipesNotContainingKeyword(input);
     console.log(myArr.length);
+    //console.log(localStorage.length);
   
-    if (myArr.length == localStorage.length-1) {
+    if (myArr.length == localStorage.length-2) {
       alert("No recipes matching search found for " + input);
       return;
     }
