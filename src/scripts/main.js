@@ -59,9 +59,10 @@
  
    // SANAT
    var objSanat = {
+     analyzedInstructions: [{ name : '', steps : []}],
      title : "Sanat",
      image : "https://avatars.githubusercontent.com/u/31770675?v=4",
-     extendedIngredients : "naan bread, spices, hot dog",
+     extendedIngredients : [{ original : 'naan bread' }, { original : 'spices' }, { original : 'hot dog' }],
      cheap : true,
      dairyFree : false,
      glutenFree : false,

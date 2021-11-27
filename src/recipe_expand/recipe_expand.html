@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./recipe_expand.css">
+  <script src="/src/scripts/RecipeCardExpand.js" type="module"></script>
+  <script src="/src/scripts/recipeExpand.js" type="module"></script>
+  <script src="/src/scripts/sideBar.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&display=swap');  
@@ -22,14 +25,21 @@
             </a>
           </nav>
     </header>
-
+    <!-- navbar -->
+    <div id="navButton">
+        <button class="openbtn" onclick="openNav()">&#9776;</button>
+      </div>
+      <div id="sideNavbar" class="sidebar">
+        <a href="/src/home/home.html">Home</a>
+        <a href="/src/recipe_list/recipe_list.html">Recipe List</a>
+        <a href="#Favorites">Favorites</a>
+      </div>
+    </div>
     <main>
-        <p>test</p>
-       <div class="recipe-expand-grid-container">
+       <!-- <div class="recipe-expand-grid-container">
            <div class="recipe-expand-title">
                <p>Tasty Bread</p>
            </div>
-
            <div class="recipe-expand-image">
             <img class="recipe-image" src="./img/bread.jpg" alt="recipe image"></img>
             </div>
@@ -69,7 +79,7 @@
                 </div>
                </ul>
            </div>
-       </div>
+       </div> -->
     </main>
 </body>
 
