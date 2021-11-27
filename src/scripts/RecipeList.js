@@ -65,6 +65,9 @@ async function init () {
       element.data = localStorage[`${id}`];
       element.id = id;
       main.appendChild(element);
+      element.addEventListener('click', (e) => {
+        window.location.href = '/src/recipe_expand/recipe_expand.html' + '#' + element.id;
+      });
     });
   }
   
