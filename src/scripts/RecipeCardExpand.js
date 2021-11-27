@@ -3,16 +3,20 @@ import { getInstructionSteps } from './searchKey.js';
 
 class RecipeCardExpand extends HTMLElement {
     constructor () {
-        // Part 1 Expose - TODO
         super();
         this.attachShadow({ mode: 'open' });
-        // You'll want to attach the shadow DOM here
       }
 
+    /**
+     *  @return {*} The HTML structure of recipe expand
+     */
     get data () {
         return this.shadowRoot;
     }
 
+    /**
+     *  @param {String} data The data to turn into JSOn and parse.
+     */
     set data (data) {
         const recipeData = JSON.parse(data);
         console.log(recipeData);
@@ -152,4 +156,5 @@ class RecipeCardExpand extends HTMLElement {
     }
 }
 
+// Define the custom recipe expand container html element.
 customElements.define('recipe-card-expand-container', RecipeCardExpand);
