@@ -1,5 +1,5 @@
-import { searchForKey, getInstructionSteps } from './searchKey.js';
-import { markFav, unFav } from './FavoriteRecipe.js';
+import { searchForKey/*, getInstructionSteps */ } from './searchKey.js';
+// import { markFav, unFav } from './FavoriteRecipe.js';
 
 // SEARCH BAR BUTTON
 const searchBar = document.querySelector('button');
@@ -54,69 +54,71 @@ async function init () {
  * show any others you've added when the user clicks on the "Show more" button.   *
  * ****************************************************************************** *
  */
- function createRecipeCards () {
-    const main = document.querySelector('main');
-    // get hash table
-    const hashes = JSON.parse(localStorage['0']);
-    // get array of ids
-    const elementIdArr = hashes.map(h => h[1]);
-    elementIdArr.forEach(id => {
-      const element = document.createElement('recipe-card');
-      element.data = localStorage[`${id}`];
-      element.id = id;
-      main.appendChild(element);
+function createRecipeCards () {
+  const main = document.querySelector('main');
+  // get hash table
+  const hashes = JSON.parse(localStorage['0']);
+  // get array of ids
+  const elementIdArr = hashes.map(h => h[1]);
+  elementIdArr.forEach(id => {
+    const element = document.createElement('recipe-card');
+    element.data = localStorage[`${id}`];
+    element.id = id;
+    main.appendChild(element);
+    element.addEventListener('click', (e) => {
+      window.location.href = '/src/recipe_expand/recipe_expand.html' + '#' + element.id;
     });
-  }
-  
-  /**
+  });
+}
+
+/**
    * **************************SEARCHRECIPES FUNCTION************************** *
    * Connection between frontend and backend. When user clicks search button,   *
    * search bar input will be pulled and passed to getRecipesContainingKeyword. *
    * Then the array returned will populate cards on screen pertaining to input. *
    * ************************************************************************** *
    */
-  function searchRecipes () {
-    // take user input from the search bar
-    const input = inputTxt.value;
-    if (input == "") {
-      resetCards();
-      return;
-    }
-    console.log(input);
-  
-    // pass over to getRecipesNotContainingKeyword
-    const myArr = getRecipesNotContainingKeyword(input);
-    console.log(myArr.length);
-    //console.log(localStorage.length);
-  
-    if (myArr.length == localStorage.length-2) {
-      alert("No recipes matching search found for " + input);
-      return;
-    }
-  
+function searchRecipes () {
+  // take user input from the search bar
+  const input = inputTxt.value;
+  if (input === '') {
     resetCards();
-    // and make use of the array of json files returned from getRecipesContainingKeyword
-    // to populate cards having to do with the input user put into the search bar textarea
-    for(let i = 0; i < myArr.length; i++)
-    {
-      let recipeCard = document.getElementById(`${myArr[i]}`);
-      recipeCard.classList.add('hidden');
-    }
+    return;
   }
-  
-  /**
+  console.log(input);
+
+  // pass over to getRecipesNotContainingKeyword
+  const myArr = getRecipesNotContainingKeyword(input);
+  console.log(myArr.length);
+  // console.log(localStorage.length);
+
+  if (myArr.length === localStorage.length - 2) {
+    alert('No recipes matching search found for ' + input);
+    return;
+  }
+
+  resetCards();
+  // and make use of the array of json files returned from getRecipesContainingKeyword
+  // to populate cards having to do with the input user put into the search bar textarea
+  for (let i = 0; i < myArr.length; i++) {
+    const recipeCard = document.getElementById(`${myArr[i]}`);
+    recipeCard.classList.add('hidden');
+  }
+}
+
+/**
    * ***************************RESETCARDS FUNCTION**************************** *
    * Show all Recipe Cards                                                      *
    * ************************************************************************** *
    */
-  function resetCards() {
-    let recipeCards = document.querySelectorAll('recipe-card');
-    recipeCards.forEach(function(card) {
-      card.classList.remove('hidden');
-    });
-  }
-  
-  /**
+function resetCards () {
+  const recipeCards = document.querySelectorAll('recipe-card');
+  recipeCards.forEach(function (card) {
+    card.classList.remove('hidden');
+  });
+}
+
+/**
    * *************GETRECIPESNOTCONTAININGKEYWORD FUNCTION************** *
    * For grabbing an array of id' with all recipes that don't           *
    * contain keyword inserted into the search bar. i.e. returning       *
@@ -124,72 +126,64 @@ async function init () {
    * 'chocolate'                                                        *
    * ****************************************************************** *
    */
-  function getRecipesNotContainingKeyword (keyword) {
-    // couple base cases
-    let input = keyword.toLowerCase();
-    if(keyword == 'dairy free'){ input = 'dairyfree'; }
-    if(keyword == 'gluten free'){ input = 'glutenfree'; }
-  
-    const arr = [];
-    // get hash table
-    const hashes = JSON.parse(localStorage['0']);
-    // get array of ids
-    const elementIdArr = hashes.map(h => h[1]);
-  
-    for (const id of elementIdArr) 
-    {
-      const jsonFile = JSON.parse(localStorage.getItem(id));
-      const tags = getTags(jsonFile);
-      // console.log(tags);
-  
-      // checks if input is NOT located in title, ingredients, or rest of tag array
-      if( !(tags[0].includes(input) || tags[1].includes(input) || tags.includes(input)) ) { 
-        arr.push(id); 
-      }
-  
+function getRecipesNotContainingKeyword (keyword) {
+  // couple base cases
+  let input = keyword.toLowerCase();
+  if (keyword === 'dairy free') { input = 'dairyfree'; }
+  if (keyword === 'gluten free') { input = 'glutenfree'; }
+
+  const arr = [];
+  // get hash table
+  const hashes = JSON.parse(localStorage['0']);
+  // get array of ids
+  const elementIdArr = hashes.map(h => h[1]);
+
+  for (const id of elementIdArr) {
+    const jsonFile = JSON.parse(localStorage.getItem(id));
+    const tags = getTags(jsonFile);
+    // console.log(tags);
+
+    // checks if input is NOT located in title, ingredients, or rest of tag array
+    if (!(tags[0].includes(input) || tags[1].includes(input) || tags.includes(input))) {
+      arr.push(id);
     }
-    return arr;
   }
-  
-  /**
+  return arr;
+}
+
+/**
    * *************************GETTAGS FUNCTION************************* *
    * Function that will build an array containing title, ingredients,   *
    * and tags for true booleans within the json file passed             *
    * ****************************************************************** *
    */
-  function getTags (jsonFile) {
-    let tagsArr = [];
-    // title
-    tagsArr.push(String(searchForKey(jsonFile, 'title')).toLowerCase());
-    // ingredients
-    tagsArr.push(JSON.stringify(searchForKey(jsonFile, 'extendedIngredients')).toLowerCase());
-    
-    // booleans
-    if(searchForKey(jsonFile, 'cheap'))
-      tagsArr.push('cheap');
-    if(searchForKey(jsonFile, 'dairyFree'))
-      tagsArr.push('dairyfree');
-    if(searchForKey(jsonFile, 'glutenFree'))
-      tagsArr.push('glutenfree');
-    if(searchForKey(jsonFile, 'vegan'))
-      tagsArr.push('vegan');
-    if(searchForKey(jsonFile, 'vegetarian'))
-      tagsArr.push('vegetarian');
-    if(searchForKey(jsonFile, 'veryHealthy'))
-      tagsArr.push('healthy');
-  
-    return tagsArr;
-  }
+function getTags (jsonFile) {
+  const tagsArr = [];
+  // title
+  tagsArr.push(String(searchForKey(jsonFile, 'title')).toLowerCase());
+  // ingredients
+  tagsArr.push(JSON.stringify(searchForKey(jsonFile, 'extendedIngredients')).toLowerCase());
 
-  /**
+  // booleans
+  if (searchForKey(jsonFile, 'cheap')) { tagsArr.push('cheap'); }
+  if (searchForKey(jsonFile, 'dairyFree')) { tagsArr.push('dairyfree'); }
+  if (searchForKey(jsonFile, 'glutenFree')) { tagsArr.push('glutenfree'); }
+  if (searchForKey(jsonFile, 'vegan')) { tagsArr.push('vegan'); }
+  if (searchForKey(jsonFile, 'vegetarian')) { tagsArr.push('vegetarian'); }
+  if (searchForKey(jsonFile, 'veryHealthy')) { tagsArr.push('healthy'); }
+
+  return tagsArr;
+}
+
+/**
    * *************BINDENTERKEY FUNCTION************* *
    * Set enter key works for search bar              *
    * *********************************************** *
    */
-  function bindEnterKey() {
-  document.addEventListener('keydown', function(event){
-    if(event.key === "Enter"){
+function bindEnterKey () {
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
       searchRecipes();
     }
-  })
-  }
+  });
+}

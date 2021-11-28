@@ -9,6 +9,7 @@
   <script src="/src/scripts/apiComplexSearch.js" type="module"></script>
   <script src="/src/scripts/main.js" type="module"></script>
   <script src="/src/scripts/searchKey.js" type="module"></script>
+  <script src ="/src/scripts/sideBar.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <title>NaN Bread</title>
   <style>
@@ -26,6 +27,15 @@
           </a>
         </nav>
     </header>
+    <!-- navbar -->
+    <div id="navButton">
+      <button class="openbtn" onclick="openNav()">&#9776;</button>
+    </div>
+    <div id="sideNavbar" class="sidebar">
+      <a href="/src/home/home.html">Home</a>
+      <a href="/src/recipe_list/recipe_list.html">Recipe List</a>
+      <a href="#Favorites">Favorites</a>
+    </div>
     <main>
       <div class="button-row">
         <div class="button-col" style="text-align:center; padding-left: 4rem;">
