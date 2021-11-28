@@ -30,3 +30,46 @@ function createRecipeExpand () {
   element.data = localStorage.getItem(recipeId);
   main.appendChild(element);
 }
+
+// TODO: Figure out a nicer way to iterate through children and selectively replace
+// children with forms that have input for 1 line, and textarea for multiple lines.
+function editRecipe() {
+    // Example selecting the shadowroot + recipe expand container
+    const recipeExpandRoot = document.querySelector('recipe-card-expand-container').data;
+    const recipeExpandContainer = recipeExpandRoot.querySelector('.recipe-expand-grid-container');
+
+    // Example getting the title + class
+    // Recipe Title
+    const recipeTitleForm = document.createElement('form');
+    recipeTitleForm.classList.add(recipeExpandContainer.children[0].className);
+
+    // Example converting the info to text and replacing it.
+    const recipeTitleFormInput = document.createElement('input');
+    recipeTitleFormInput.setAttribute('type', 'text');
+    recipeTitleForm.appendChild(recipeTitleFormInput);
+    recipeTitleFormInput.value = recipeExpandContainer.children[0].innerText;
+    recipeExpandContainer.replaceChild(recipeTitleForm, recipeExpandContainer.children[0]);
+
+    // Swap the button as an example, realistically our implementation
+    // should have another button that appears + dissapears probably near bottom.
+    document.querySelector('#editButton .editbtn').onclick = saveRecipe;
+}
+
+// TODO: Figure out how to parse multiple lines into one large div containing <li>
+function saveRecipe() {
+    // Example selecting the shadowroot + title form container
+    const recipeExpandRoot = document.querySelector('recipe-card-expand-container').data;
+    const recipeExpandContainer = recipeExpandRoot.querySelector('.recipe-expand-grid-container');
+    const recipeTitleForm = recipeExpandRoot.querySelector('.recipe-expand-title');
+
+    // Example getting the title form + class
+    // Recipe Title
+    const recipeTitle = document.createElement('p');
+    recipeTitle.classList.add(recipeTitleForm.className);
+
+    // Example converting the info to text and replacing it.
+    recipeTitle.innerText = recipeTitleForm.children[0].value;
+    recipeExpandContainer.replaceChild(recipeTitle, recipeTitleForm);
+
+    document.querySelector('#editButton .editbtn').onclick = editRecipe;
+}
