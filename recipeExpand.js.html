@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>FavoriteRecipe.js - Documentation</title>
+    <title>recipeExpand.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">FavoriteRecipe.js</h1>
+    <h1 class="page-title">recipeExpand.js</h1>
     
 
     
@@ -39,32 +39,39 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>  /**
-   * *************************MARKFAV FUNCTION************************* *
-   * Mark favorite as true in hashmap by id of recipe, store the        *
-   * hashmap in localStorage                                            *
-   * ****************************************************************** *
-   */
-   export function markFav(id){
-    // get hash table
-    const favmap = JSON.parse(localStorage['2']);
-    favmap.set(id, true);
-    localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
-   }
- 
-    /**
-    * *************************UNFAV FUNCTION************************* *
-    * Mark favorite as false in hashmap by id of recipe, replace the     *
-    * hashmap in localStorage                                           *
-    * ****************************************************************** *
-    */
-    export function unFav(id){
-      // get hash table
-      
-      const favmap = JSON.parse(localStorage['2']);
-      favmap.set(id, false);
-      localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
-    }</code></pre>
+            <pre class="prettyprint source linenums"><code>// The ID of the recipe that we clicked on to get recipe expand.
+const recipeId = window.location.hash.substring(1);
+const localStorage = window.localStorage;
+
+// Initialize creating the recipe expand page.
+window.addEventListener('DOMContentLoaded', init);
+
+/**
+ * **************************INIT FUNCTION*************************************** *
+ * This function is simply just called when we load the recipe expand page. It    *
+ * just calls the createRecipeExpand() function which will create the html        *
+ * structure of the recipe expand page.                                           *
+ * ****************************************************************************** *
+ */
+async function init () {
+  createRecipeExpand();
+}
+
+/**
+ * **************************CREATERECIPEEXPAND FUNCTION************************* *
+ * Grabs the #id url fragment that was appended when we clicked on a recipe card  *
+ * and creates the html structure of the recipe expand page by passing in the     *
+ * data string from localStorage into a custom recipe-card-expand-container. See  *
+ * recipeCardExpand.js for how this data is parsed.                               *
+ * ****************************************************************************** *
+ */
+function createRecipeExpand () {
+  const main = document.querySelector('main');
+  const element = document.createElement('recipe-card-expand-container');
+  element.data = localStorage.getItem(recipeId);
+  main.appendChild(element);
+}
+</code></pre>
         </article>
     </section>
 
