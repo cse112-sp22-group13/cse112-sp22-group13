@@ -15,6 +15,8 @@
       @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&display=swap');
       @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
     </style>
+    <script src="/src/scripts/CookView.js" type="module"></script>
+    <script src="/src/scripts/cookViewInit.js" type="module"></script>
     <title>NaN Bread Recipes</title>
   </head>
 
@@ -28,14 +30,19 @@
     </header>
 
     <main class="layout">
-      <h3>The goodest of bread recipes</h3>
+      <!-- <h3>The goodest of bread recipes</h3>
       <p>Step <span id="step">1</span>/<span id="max-step">5</span></p>
-      <img class="recipe-image" src="./img/bread.jpg" alt="recipe image" id = "breadimg"/>
+      <img
+        class="recipe-image"
+        src="./img/bread.jpg"
+        alt="recipe image"
+        id="breadimg"
+      />
 
       <div class="direction">
-        <h4 id ="stepNum">Direction 1</h4>
+        <h4 id="stepNum">Direction 1</h4>
         <div class="direction-block">
-          <p id= "direction">
+          <p id="direction">
             In a large bowl, dissolve yeast and 1/2 teaspoon sugar in warm
             water...
           </p>
@@ -43,72 +50,79 @@
 
         <script>
           const hashes = JSON.parse(window.localStorage['0']);
-          const elementIdArr = hashes.map(h => h[1]);
-          // console.log(elementIdArr); 
+          const elementIdArr = hashes.map((h) => h[1]);
+          // console.log(elementIdArr);
           // CHANGE NUMBER IN elementIdArr[#] BELOW TO SEE DIFFERENT RECIPES #20 IS BEST RECIPE
           const parsed = JSON.parse(window.localStorage[`${elementIdArr[1]}`]);
           // console.log(parsed);
           // console.log(parsed.instructions);
           let immg = parsed.image;
-          document.getElementById("breadimg").src = immg;
-          let instr = parsed.instructions; 
-          let tempStr = ""; 
-          const arr = []; 
-          console.log(instr[instr.length-1]);
-          if(instr.indexOf('\n')==-1){
-            for( let i = 0; i< instr.length; i++){
-              if(instr[i] == '.' && tempStr.length >140){
-                tempStr+=instr[i];
-                arr.push(tempStr); ;
+          document.getElementById('breadimg').src = immg;
+          let instr = parsed.instructions;
+          let tempStr = '';
+          const arr = [];
+          console.log(instr[instr.length - 1]);
+          if (instr.indexOf('\n') == -1) {
+            for (let i = 0; i < instr.length; i++) {
+              if (instr[i] == '.' && tempStr.length > 140) {
+                tempStr += instr[i];
+                arr.push(tempStr);
                 // console.log(tempStr);
                 // console.log(arr);
-                tempStr = "";  
-              }
-              else{
-                tempStr+= instr[i];
+                tempStr = '';
+              } else {
+                tempStr += instr[i];
               }
             }
-          }
-          else{
-            let i =0; 
-            while(instr.length>0){
-              let newlineIndex = instr.indexOf('\n'); 
-              if(newlineIndex==-1){
+          } else {
+            let i = 0;
+            while (instr.length > 0) {
+              let newlineIndex = instr.indexOf('\n');
+              if (newlineIndex == -1) {
                 arr.push(instr);
                 break;
               }
-              tempStr = instr.substring(i, newlineIndex); 
+              tempStr = instr.substring(i, newlineIndex);
               // console.log(tempStr);
-              arr.push(tempStr); 
-              i = newlineIndex+1; 
-              instr = instr.substring(i); 
-              i=0;
+              arr.push(tempStr);
+              i = newlineIndex + 1;
+              instr = instr.substring(i);
+              i = 0;
               // console.log(instr);
             }
-            // console.log(arr); 
+            // console.log(arr);
           }
-          let directionInt = 0; 
-          let maxDirection = arr.length; 
-          document.getElementById("direction").innerHTML = `${arr[0]}`;
+          let directionInt = 0;
+          let maxDirection = arr.length;
+          document.getElementById('direction').innerHTML = `${arr[0]}`;
           function leftclick() {
             // console.log(directionInt);
-            if(document.getElementById("stepNum").innerHTML == "Direction 1"){
-              return; 
+            if (document.getElementById('stepNum').innerHTML == 'Direction 1') {
+              return;
             }
-            directionInt -=1; 
+            directionInt -= 1;
             // console.log(directionInt);
-            document.getElementById("stepNum").innerHTML = "Direction " + `${directionInt+1}`;
-            document.getElementById("direction").innerHTML = `${arr[directionInt]}`;
+            document.getElementById('stepNum').innerHTML =
+              'Direction ' + `${directionInt + 1}`;
+            document.getElementById(
+              'direction'
+            ).innerHTML = `${arr[directionInt]}`;
           }
           function rightclick() {
             // console.log(directionInt);
-            if(document.getElementById("stepNum").innerHTML == "Direction " +`${maxDirection}`){
-              return; 
+            if (
+              document.getElementById('stepNum').innerHTML ==
+              'Direction ' + `${maxDirection}`
+            ) {
+              return;
             }
-            directionInt +=1; 
+            directionInt += 1;
             // console.log(directionInt);
-            document.getElementById("stepNum").innerHTML = "Direction " + `${directionInt+1}`;
-            document.getElementById("direction").innerHTML = `${arr[directionInt]}`;
+            document.getElementById('stepNum').innerHTML =
+              'Direction ' + `${directionInt + 1}`;
+            document.getElementById(
+              'direction'
+            ).innerHTML = `${arr[directionInt]}`;
           }
         </script>
 
@@ -146,7 +160,7 @@
             </span>
           </button>
         </div>
-      </div>
+      </div> -->
     </main>
   </body>
 </html>
