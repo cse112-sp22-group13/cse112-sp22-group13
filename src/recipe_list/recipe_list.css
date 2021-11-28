@@ -246,3 +246,7 @@ p {
 .hidden {
     display: none;
 }
+
+.deleted {
+    display: none;
+}

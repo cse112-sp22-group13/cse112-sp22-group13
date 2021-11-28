@@ -28,6 +28,7 @@ function createRecipeExpand () {
   const main = document.querySelector('main');
   const element = document.createElement('recipe-card-expand-container');
   element.data = localStorage.getItem(recipeId);
+  element.id = recipeId;
   main.appendChild(element);
 }
 
