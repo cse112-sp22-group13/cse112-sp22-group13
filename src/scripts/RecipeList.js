@@ -64,6 +64,11 @@ function createRecipeCards () {
     const element = document.createElement('recipe-card');
     element.data = localStorage[`${id}`];
     element.id = id;
+    //hides the recipe forever if it is considered deleted in localStorage (uncomment when ready to use)
+    const deletedMap = JSON.parse(localStorage['3']);
+    if (deletedMap[id] == true) {
+        element.classList.add("deleted");
+    }
     main.appendChild(element);
     element.addEventListener('click', (e) => {
       window.location.href = '/src/recipe_expand/recipe_expand.html' + '#' + element.id;
