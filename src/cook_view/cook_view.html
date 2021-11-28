@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="./cook_view.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+    </style>
+    <title>NaN Bread Recipes</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="./home.html">
+          <h1 class="title">oui oui baguette 🥖</h1>
+        </a>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <h3>The goodest of bread recipes</h3>
+      <p>Step <span id="step">1</span>/<span id="max-step">5</span></p>
+      <img class="recipe-image" src="./img/bread.jpg" alt="recipe image" id = "breadimg"/>
+
+      <div class="direction">
+        <h4 id ="stepNum">Direction 1</h4>
+        <div class="direction-block">
+          <p id= "direction">
+            In a large bowl, dissolve yeast and 1/2 teaspoon sugar in warm
+            water...
+          </p>
+        </div>
+
+        <script>
+          const hashes = JSON.parse(window.localStorage['0']);
+          const elementIdArr = hashes.map(h => h[1]);
+          // console.log(elementIdArr); 
+          // CHANGE NUMBER IN elementIdArr[#] BELOW TO SEE DIFFERENT RECIPES #20 IS BEST RECIPE
+          const parsed = JSON.parse(window.localStorage[`${elementIdArr[1]}`]);
+          // console.log(parsed);
+          // console.log(parsed.instructions);
+          let immg = parsed.image;
+          document.getElementById("breadimg").src = immg;
+          let instr = parsed.instructions; 
+          let tempStr = ""; 
+          const arr = []; 
+          console.log(instr[instr.length-1]);
+          if(instr.indexOf('\n')==-1){
+            for( let i = 0; i< instr.length; i++){
+              if(instr[i] == '.' && tempStr.length >140){
+                tempStr+=instr[i];
+                arr.push(tempStr); ;
+                // console.log(tempStr);
+                // console.log(arr);
+                tempStr = "";  
+              }
+              else{
+                tempStr+= instr[i];
+              }
+            }
+          }
+          else{
+            let i =0; 
+            while(instr.length>0){
+              let newlineIndex = instr.indexOf('\n'); 
+              if(newlineIndex==-1){
+                arr.push(instr);
+                break;
+              }
+              tempStr = instr.substring(i, newlineIndex); 
+              // console.log(tempStr);
+              arr.push(tempStr); 
+              i = newlineIndex+1; 
+              instr = instr.substring(i); 
+              i=0;
+              // console.log(instr);
+            }
+            // console.log(arr); 
+          }
+          let directionInt = 0; 
+          let maxDirection = arr.length; 
+          document.getElementById("direction").innerHTML = `${arr[0]}`;
+          function leftclick() {
+            // console.log(directionInt);
+            if(document.getElementById("stepNum").innerHTML == "Direction 1"){
+              return; 
+            }
+            directionInt -=1; 
+            // console.log(directionInt);
+            document.getElementById("stepNum").innerHTML = "Direction " + `${directionInt+1}`;
+            document.getElementById("direction").innerHTML = `${arr[directionInt]}`;
+          }
+          function rightclick() {
+            // console.log(directionInt);
+            if(document.getElementById("stepNum").innerHTML == "Direction " +`${maxDirection}`){
+              return; 
+            }
+            directionInt +=1; 
+            // console.log(directionInt);
+            document.getElementById("stepNum").innerHTML = "Direction " + `${directionInt+1}`;
+            document.getElementById("direction").innerHTML = `${arr[directionInt]}`;
+          }
+        </script>
+
+        <div class="navigate">
+          <button class="left" id="back" onclick="leftclick()">
+            <span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </span>
+          </button>
+          <button class="right" id="next" onclick="rightclick()">
+            <span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
