@@ -12,8 +12,8 @@ window.addEventListener('DOMContentLoaded', init);
  * structure of the recipe expand page.                                           *
  * ****************************************************************************** *
  */
-async function init() {
-    createRecipeExpand();
+async function init () {
+  createRecipeExpand();
 }
 
 /**
@@ -24,9 +24,9 @@ async function init() {
  * recipeCardExpand.js for how this data is parsed.                               *
  * ****************************************************************************** *
  */
-function createRecipeExpand() {
-    const main = document.querySelector('main');
-    const element = document.createElement('recipe-card-expand-container');
-    element.data = localStorage.getItem(recipeId);
-    main.appendChild(element);
+function createRecipeExpand () {
+  const main = document.querySelector('main');
+  const element = document.createElement('recipe-card-expand-container');
+  element.data = localStorage.getItem(recipeId);
+  main.appendChild(element);
 }
