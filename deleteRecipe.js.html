@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>genericFetch.js - Documentation</title>
+    <title>deleteRecipe.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">genericFetch.js</h1>
+    <h1 class="page-title">deleteRecipe.js</h1>
     
 
     
@@ -40,30 +40,16 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Generic fetch that can be used for most of the Spoonacular API calls
+ * 
+ * @param {*} id , Id of Recipe to Delete
  */
-export class GenericFetch {
-  /**
-   *
-   * @param {*} input Options object to be parsed into
-   */
-  constructor (input) {
-    this.options = input;
-    this.data = {};
-  }
-  /**
-   *
-   * @param {*} input
-   */
+ export function deleteRecipe(id) {
+    // get hash table
+    const deletedMap = JSON.parse(localStorage['3']);
+    deletedMap.set(id, true);
+    localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
+ }
 
-  static async fGenericFetch (input) {
-    await axios.request(input.options).then(function (response) {
-      input.data = response.data;
-    }).catch(function (error) {
-      console.log(error);
-    });
-  }
-}
 </code></pre>
         </article>
     </section>
