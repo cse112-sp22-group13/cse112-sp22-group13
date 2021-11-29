@@ -13,7 +13,7 @@
         return;
     }
     let difference = numServings/currServings;
-    const ingredients = document.querySelectorAll('ul.recipe-expand-ingredients-list' > li);
+    const ingredients = document.querySelectorAll('ul.recipe-expand-ingredients-list > li');
     const recipeId = document.querySelector('recipe-card-expand-container').id;
     const recipe = JSON.parse(localStorage[recipeId]);
     const recipeIngredients = recipe[extendedIngredients];
