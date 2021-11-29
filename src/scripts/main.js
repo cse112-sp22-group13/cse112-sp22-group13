@@ -105,14 +105,21 @@ async function init () {
   const hashes = JSON.parse(localStorage['0']);
   // get array of ids
   const elementIdArr = hashes.map(h => h[1]);
-  for (const id in elementIdArr) {
+  for (let i = 0; i < elementIdArr.length; i++) {
     // initialze every id as false (not yet a favorite)
-    favmap.set(id, false);
-    deletedMap.set(id, false);
+    favmap.set(elementIdArr[i], false);
   }
   // store the fav and del maps in localstorage
   localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
   localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
 
   console.log('local storage has ', localStorage.length, ' elements');
+
+  // Making Deleted Hashmap that will be located at #3 in local storage
+  const deletedMap = new Map();
+  for (let i = 0; i < elementIdArr.length; i++) {
+    deletedMap.set(elementIdArr[i], false);
+  }
+  console.log(deletedMap);
+  localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
 }
