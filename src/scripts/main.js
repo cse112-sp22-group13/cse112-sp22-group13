@@ -115,12 +115,4 @@ async function init () {
   localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
 
   console.log('local storage has ', localStorage.length, ' elements');
-
-  // Making Deleted Hashmap that will be located at #3 in local storage
-  const deletedMap = new Map();
-  for (let i = 0; i < elementIdArr.length; i++) {
-    deletedMap.set(elementIdArr[i], false);
-  }
-  console.log(deletedMap);
-  localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
 }
