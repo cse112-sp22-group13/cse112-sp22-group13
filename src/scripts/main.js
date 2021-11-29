@@ -58,6 +58,7 @@ async function init () {
   const objSanat = {
     analyzedInstructions: [{ name: '', steps: [] }],
     title: 'Sanat',
+    id : 1,
     image: 'https://avatars.githubusercontent.com/u/31770675?v=4',
     extendedIngredients: [{ original: 'naan bread' }, { original: 'spices' }, { original: 'hot dog' }],
     cheap: true,
