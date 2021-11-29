@@ -105,8 +105,9 @@ async function init () {
   const hashes = JSON.parse(localStorage['0']);
   // get array of ids
   const elementIdArr = hashes.map(h => h[1]);
+  
   for (let i = 0; i < elementIdArr.length; i++) {
-    // initialze every id as false (not yet a favorite)
+    // initialze every id as false (not yet a favorite or deleted)
     favmap.set(elementIdArr[i], false);
   }
   // store the fav and del maps in localstorage
