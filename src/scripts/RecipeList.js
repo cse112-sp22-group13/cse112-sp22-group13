@@ -1,5 +1,4 @@
-import { searchForKey/*, getInstructionSteps */ } from './searchKey.js';
-// import { markFav, unFav } from './FavoriteRecipe.js';
+import { searchForKey } from './searchKey.js';
 
 // SEARCH BAR BUTTON
 const searchBar = document.querySelector('button');
@@ -12,37 +11,6 @@ const localStorage = window.localStorage;
 async function init () {
   bindEnterKey();
   createRecipeCards();
-
-  // now we have local storage with the hashtable (title->id) at key 0
-  // and then the rest of local storage filled with id->json files
-
-  // *************************TESTING BACKEND BELOW**************************
-  // testing out searchTitle with a random title
-  // const jsonObj = searchTitle(thing.data[5].title);
-  // console.log('heres a json object for the title the user passed/searched:');
-  // console.log(jsonObj);
-
-  // TESTING SEARCHFORKEY
-  /* const objTitle = searchForKey(thing.data[0], 'title');
-  const objIng = searchForKey(thing.data[0], 'extendedIngredients');
-  const objCheap = searchForKey(thing.data[0], 'cheap');
-  const objDFree = searchForKey(thing.data[0], 'dairyFree');
-  const objGFree = searchForKey(thing.data[0], 'glutenFree');
-  const objVegan = searchForKey(thing.data[0], 'vegan');
-  const objVege = searchForKey(thing.data[0], 'vegetarian');
-  const objHealthy = searchForKey(thing.data[0], 'veryHealthy');
-  console.log(objTitle);
-  console.log(objIng);
-  console.log(objCheap);
-  console.log(objDFree);
-  console.log(objGFree);
-  console.log(objVegan);
-  console.log(objVege);
-  console.log(objHealthy);
-  */
-
-  // const arr = getTags(thing.data[3]);
-  // console.log(arr);
 }
 
 /**
@@ -64,6 +32,11 @@ function createRecipeCards () {
     const element = document.createElement('recipe-card');
     element.data = localStorage[`${id}`];
     element.id = id;
+    //hides the recipe forever if it is considered deleted in localStorage (uncomment when ready to use)
+    const deletedMap = JSON.parse(localStorage['3']);
+    if (deletedMap[id] == true) {
+        element.classList.add("deleted");
+    }
     main.appendChild(element);
     element.addEventListener('click', (e) => {
       window.location.href = '/src/recipe_expand/recipe_expand.html' + '#' + element.id;
