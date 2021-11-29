@@ -34,7 +34,7 @@ function createRecipeExpand () {
 
 // TODO: Figure out a nicer way to iterate through children and selectively replace
 // children with forms that have input for 1 line, and textarea for multiple lines.
-function editRecipe() {
+export function editRecipe() {
     // Example selecting the shadowroot + recipe expand container
     const recipeExpandRoot = document.querySelector('recipe-card-expand-container').data;
     const recipeExpandContainer = recipeExpandRoot.querySelector('.recipe-expand-grid-container');
@@ -46,7 +46,7 @@ function editRecipe() {
 
     // Swap the button as an example, realistically our implementation
     // should have another button that appears + dissapears probably near bottom.
-    document.querySelector('#editButton .editbtn').onclick = saveRecipe;
+    recipeExpandContainer.querySelector('.edit-div').querySelector('.editbtn').addEventListener('click', () => {saveRecipe()});
 }
 
 // TODO: Figure out how to parse multiple lines into one large div containing <li>

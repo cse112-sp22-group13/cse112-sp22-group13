@@ -1,4 +1,5 @@
 import { searchForKey, getInstructionSteps } from './searchKey.js';
+import { editRecipe } from './recipeExpand.js';
 
 class RecipeCardExpand extends HTMLElement {
   constructor () {
@@ -163,6 +164,17 @@ class RecipeCardExpand extends HTMLElement {
     recipeInputForm.classList.add("hidden");
     recipeInputFormInput.classList.add("hidden");
     recipeExpandContainer.appendChild(recipeInputForm);
+
+    //Edit button
+    const editButtonDiv = document.createElement('div');
+    editButtonDiv.id="editButton";
+    editButtonDiv.classList.add("edit-div");
+    const editButton = document.createElement('button');
+    editButton.classList.add('editbtn');
+    editButton.innerText = "Edit";
+    editButton.addEventListener('click', () => {editRecipe()})
+    editButtonDiv.appendChild(editButton);
+    recipeExpandContainer.appendChild(editButtonDiv);
 
     // Append the container to the shadowroot.
     this.shadowRoot.appendChild(recipeExpandContainer);
