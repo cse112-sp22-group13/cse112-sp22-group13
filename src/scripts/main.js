@@ -94,6 +94,7 @@ async function init () {
   for (const elem of thing.data) {
     localStorage.setItem(elem.id, JSON.stringify(elem));
   }
+  console.log("we are here");
 
   // MAKING FAVORITES HASHMAP THAT WILL BE LOCATED AT #2 IN LOCAL STORAGE
   const favmap = new Map();
@@ -114,4 +115,12 @@ async function init () {
   localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
 
   console.log('local storage has ', localStorage.length, ' elements');
+
+  // Making Deleted Hashmap that will be located at #3 in local storage
+  const deletedMap = new Map();
+  for (let i = 0; i < elementIdArr.length; i++) {
+    deletedMap.set(elementIdArr[i], false);
+  }
+  console.log(deletedMap);
+  localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
 }
