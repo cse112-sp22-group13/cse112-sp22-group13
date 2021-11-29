@@ -147,7 +147,8 @@ class RecipeCardExpand extends HTMLElement {
     recipeExpandInstructionsContainer.appendChild(recipeExpandInstructionsList);
     recipeExpandContainer.appendChild(recipeExpandSuppliesContainer);
     recipeExpandContainer.appendChild(recipeExpandInstructionsContainer);
-
+    
+    // Delvin's code, adds a cook view button to the bottom of the html structure.
     const recipeExpandButton = document.createElement('button');
     recipeExpandButton.classList.add('recipe-expand-button');
     recipeExpandButton.innerText = 'See Cook View';
