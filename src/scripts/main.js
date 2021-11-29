@@ -95,6 +95,7 @@ async function init () {
   for (const elem of thing.data) {
     localStorage.setItem(elem.id, JSON.stringify(elem));
   }
+  console.log("we are here");
 
   // MAKING FAVORITES HASHMAP THAT WILL BE LOCATED AT #2 IN LOCAL STORAGE
   const favmap = new Map();
