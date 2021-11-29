@@ -1,4 +1,5 @@
 import { searchForKey } from './searchKey.js';
+import { markFav, unFav } from './FavoriteRecipe.js';
 
 class RecipeCard extends HTMLElement {
   constructor () {
@@ -57,6 +58,8 @@ class RecipeCard extends HTMLElement {
     favorite.src = '/src/recipe_list/img/hollowStar.png';
     favorite.id = 'favoriteIcon';
     favorite.alt = 'hollow';
+
+    // When clicked, edit start and edit respective boolean in favmap
     favorite.addEventListener('click', (e) => {
       e.stopPropagation();
       if (favorite.alt === 'hollow') {
@@ -64,10 +67,13 @@ class RecipeCard extends HTMLElement {
         favorite.alt = 'full';
         // Call to favorite recipe here. data is the variable that holds the string representation of our recipe.
         // parsed holds the JSON.parse(data) which is the actual JSON object for this recipe
-      } else {
+        markFav(parsed.id);
+      } 
+      else {
         favorite.src = '/src/recipe_list/img/hollowStar.png';
         favorite.alt = 'hollow';
         // Call to unfavorite recipe here
+        unFav(parsed.id);
       };
     });
 
