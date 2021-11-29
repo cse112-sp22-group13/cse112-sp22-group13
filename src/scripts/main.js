@@ -93,7 +93,6 @@ async function init () {
   // extract json object and put into local storage
   for (const elem of thing.data) {
     localStorage.setItem(elem.id, JSON.stringify(elem));
-    console.log(elem);
   }
   console.log("we are here");
 
@@ -109,6 +108,7 @@ async function init () {
   for (let i = 0; i < elementIdArr.length; i++) {
     // initialze every id as false (not yet a favorite or deleted)
     favmap.set(elementIdArr[i], false);
+    deletedMap.set(elementIdArr[i], false);
   }
   // store the fav and del maps in localstorage
   localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
