@@ -150,6 +150,17 @@ class RecipeCardExpand extends HTMLElement {
     recipeExpandContainer.appendChild(recipeExpandSuppliesContainer);
     recipeExpandContainer.appendChild(recipeExpandInstructionsContainer);
 
+    // Delvin's code, adds a cook view button to the bottom of the html structure.
+    const recipeExpandButton = document.createElement('button');
+    recipeExpandButton.classList.add('recipe-expand-button');
+    recipeExpandButton.innerText = 'See Cook View';
+    recipeExpandButton.addEventListener('click', () => {
+      const recipeId = window.location.hash.substring(1);
+      console.log('clicked', recipeId);
+      window.location.href = `../cook_view/cook_view.html#${recipeId}`;
+    });
+    recipeExpandContainer.appendChild(recipeExpandButton);
+
     // Example getting the title + class
     // Recipe Title
     const recipeInputForm = document.createElement('form');
