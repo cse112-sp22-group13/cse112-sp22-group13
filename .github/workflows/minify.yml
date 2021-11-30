@@ -20,6 +20,7 @@ jobs:
         uses: dsayling/commit-branch-check-action@v0.1.0
         with:
           dest-branch: 'heroku'
+          files: 'src/*'
           
 
     
