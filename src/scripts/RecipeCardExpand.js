@@ -1,5 +1,5 @@
 import { searchForKey, getInstructionSteps } from './searchKey.js';
-import { editRecipe } from './recipeExpand.js';
+import { editRecipe, saveRecipe } from './recipeExpand.js';
 
 class RecipeCardExpand extends HTMLElement {
   constructor () {
@@ -151,12 +151,8 @@ class RecipeCardExpand extends HTMLElement {
     recipeExpandContainer.appendChild(recipeExpandSuppliesContainer);
     recipeExpandContainer.appendChild(recipeExpandInstructionsContainer);
 
-    // Example getting the title + class
-    // Recipe Title
     const recipeInputForm = document.createElement('form');
     recipeInputForm.classList.add("recipe-form");
-
-    // Example converting the info to text and replacing it.
     const recipeInputFormInput = document.createElement('input');
     recipeInputFormInput.setAttribute('type', 'text');
     recipeInputForm.appendChild(recipeInputFormInput);
@@ -164,6 +160,19 @@ class RecipeCardExpand extends HTMLElement {
     recipeInputForm.classList.add("hidden");
     recipeInputFormInput.classList.add("hidden");
     recipeExpandContainer.appendChild(recipeInputForm);
+
+    //Submit button
+    const submitButtonDiv = document.createElement('div');
+    submitButtonDiv.id="submitButton";
+    submitButtonDiv.classList.add("submit-div");
+    const submitButton = document.createElement('button');
+    submitButton.classList.add('submitbtn');
+    submitButtonDiv.classList.add("hidden");
+    submitButton.classList.add("hidden");
+    submitButton.innerText = "Submit";
+    submitButton.addEventListener('click', () => {saveRecipe()})
+    submitButtonDiv.appendChild(submitButton);
+    recipeExpandContainer.appendChild(submitButtonDiv);
 
     //Edit button
     const editButtonDiv = document.createElement('div');
@@ -175,6 +184,8 @@ class RecipeCardExpand extends HTMLElement {
     editButton.addEventListener('click', () => {editRecipe()})
     editButtonDiv.appendChild(editButton);
     recipeExpandContainer.appendChild(editButtonDiv);
+
+    
 
     // Append the container to the shadowroot.
     this.shadowRoot.appendChild(recipeExpandContainer);

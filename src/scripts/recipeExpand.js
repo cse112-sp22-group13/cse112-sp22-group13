@@ -1,3 +1,5 @@
+import { searchForKey } from './searchKey.js';
+
 // The ID of the recipe that we clicked on to get recipe expand.
 const recipeId = window.location.hash.substring(1);
 const localStorage = window.localStorage;
@@ -35,6 +37,7 @@ function createRecipeExpand () {
 // TODO: Figure out a nicer way to iterate through children and selectively replace
 // children with forms that have input for 1 line, and textarea for multiple lines.
 export function editRecipe() {
+    console.log('edit');
     // Example selecting the shadowroot + recipe expand container
     const recipeExpandRoot = document.querySelector('recipe-card-expand-container').data;
     const recipeExpandContainer = recipeExpandRoot.querySelector('.recipe-expand-grid-container');
@@ -42,19 +45,34 @@ export function editRecipe() {
 
     recipeInputForm.classList.remove("hidden");
     recipeInputForm.children[0].classList.remove("hidden");
+
+    const editButtonDiv = recipeExpandContainer.querySelector('.edit-div');
+    editButtonDiv.classList.remove("hidden");
+    editButtonDiv.querySelector(".editbtn").classList.remove("hidden");
+
+    const submitButtonDiv = recipeExpandContainer.querySelector('.submit-div');
+    submitButtonDiv.classList.add("hidden");
+    submitButtonDiv.querySelector(".submitbtn").classList.add("hidden");
     //recipeExpandContainer.replaceChild(recipeTitleForm, recipeExpandContainer.children[0]);
 
     // Swap the button as an example, realistically our implementation
     // should have another button that appears + dissapears probably near bottom.
-    recipeExpandContainer.querySelector('.edit-div').querySelector('.editbtn').addEventListener('click', () => {saveRecipe()});
 }
 
 // TODO: Figure out how to parse multiple lines into one large div containing <li>
-function saveRecipe() {
+export function saveRecipe() {
+    console.log("save");
     // Example selecting the shadowroot + title form container
     const recipeExpandRoot = document.querySelector('recipe-card-expand-container').data;
     const recipeExpandContainer = recipeExpandRoot.querySelector('.recipe-expand-grid-container');
     const recipeInputForm = recipeExpandRoot.querySelector('.recipe-form');
+    const editButtonDiv = recipeExpandContainer.querySelector('.edit-div');
+    editButtonDiv.classList.add("hidden");
+    editButtonDiv.querySelector(".editbtn").classList.add("hidden");
+
+    const submitButtonDiv = recipeExpandContainer.querySelector('.submit-div');
+    submitButtonDiv.classList.remove("hidden");
+    submitButtonDiv.querySelector(".submitbtn").classList.remove("hidden");
 
     // Example getting the title form + class
     // Recipe Title
@@ -76,19 +94,16 @@ function saveRecipe() {
     const recipeId = document.querySelector('recipe-card-expand-container').id;
     const recipe = JSON.parse(localStorage[recipeId]);
     const ingredientsList = searchForKey(recipe, 'extendedIngredients');
-    console.log(ingredientsList);
+  
     for (let i = 0; i < ingredientsList.length; i++) {
       const recipeExpandIngredients = document.createElement('li');
       recipeExpandIngredients.innerText = ingredientsList[i].amount + ingredientsList[i].original.substring(1);
       recipeExpandIngredientsList.appendChild(recipeExpandIngredients);
     }
 
-    console.log(recipeExpandIngredientsList);
     ingredientContainer.appendChild(recipeExpandIngredientsList);
     recipeInputForm.classList.add("hidden");
     recipeInputForm.children[0].classList.add("hidden");
-
-    document.querySelector('#editButton .editbtn').onclick = editRecipe;
 }
 
 /**
@@ -101,9 +116,6 @@ function updateRecipeServings (numServings) {
   const recipeServingContainer = recipeExpandContainer.querySelector('.recipe-expand-servings-time-container');
   let currServings = recipeServingContainer.querySelector('.recipe-servings').innerText;
   recipeServingContainer.querySelector('.recipe-servings').innerText = numServings;
-  
-  console.log(currServings);
-  
   
   if (isNaN(numServings)) {
       alert('Your Serving Amount is Not a Number, Try Again');
@@ -120,22 +132,6 @@ function updateRecipeServings (numServings) {
       let numIngredient = recipeIngredients[i]['amount'];
       recipeIngredients[i]['amount'] = numIngredient * difference;
   }
-  console.log(recipe);
-  localStorage.setItem(recipeId, JSON.stringify(recipe));
-}
 
-function searchForKey (object, key) {
-  let value;
-  Object.keys(object).some(function (k) {
-    if (k === key) {
-      value = object[k];
-      return true;
-    }
-    if (object[k] && typeof object[k] === 'object') {
-      value = searchForKey(object[k], key);
-      return value !== undefined;
-    }
-    return false;
-  });
-  return value;
+  localStorage.setItem(recipeId, JSON.stringify(recipe));
 }
