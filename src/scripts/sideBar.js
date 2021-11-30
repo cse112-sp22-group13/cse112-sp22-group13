@@ -1,6 +1,11 @@
 function openNav () {
-  document.querySelector('#sideNavbar').style.width = '250px';
-  document.querySelector('#navButton .openbtn').onclick = closeNav;
+  if (document.querySelector('#sideNavbar').style.width != '250px') {
+    document.querySelector('#sideNavbar').style.width = '250px';
+  } else {
+    document.querySelector('#sideNavbar').style.width = '0px';
+  }
+  //document.querySelector('#sideNavbar').style.width = '250px';
+  //document.querySelector('#navButton .openbtn').onclick = closeNav;
 }
 
 function closeNav () {
