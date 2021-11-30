@@ -94,7 +94,7 @@ async function init () {
   for (const elem of thing.data) {
     localStorage.setItem(elem.id, JSON.stringify(elem));
   }
-  console.log("we are here");
+  console.log('we are here');
 
   // MAKING FAVORITES HASHMAP THAT WILL BE LOCATED AT #2 IN LOCAL STORAGE
   const favmap = new Map();
@@ -104,7 +104,7 @@ async function init () {
   const hashes = JSON.parse(localStorage['0']);
   // get array of ids
   const elementIdArr = hashes.map(h => h[1]);
-  
+
   for (let i = 0; i < elementIdArr.length; i++) {
     // initialze every id as false (not yet a favorite or deleted)
     favmap.set(elementIdArr[i], false);
