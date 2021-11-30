@@ -47,12 +47,12 @@ export function editRecipe() {
     recipeInputForm.children[0].classList.remove("hidden");
 
     const editButtonDiv = recipeExpandContainer.querySelector('.edit-div');
-    editButtonDiv.classList.remove("hidden");
-    editButtonDiv.querySelector(".editbtn").classList.remove("hidden");
+    editButtonDiv.classList.add("hidden");
+    editButtonDiv.querySelector(".editbtn").classList.add("hidden");
 
     const submitButtonDiv = recipeExpandContainer.querySelector('.submit-div');
-    submitButtonDiv.classList.add("hidden");
-    submitButtonDiv.querySelector(".submitbtn").classList.add("hidden");
+    submitButtonDiv.classList.remove("hidden");
+    submitButtonDiv.querySelector(".submitbtn").classList.remove("hidden");
     //recipeExpandContainer.replaceChild(recipeTitleForm, recipeExpandContainer.children[0]);
 
     // Swap the button as an example, realistically our implementation
@@ -67,12 +67,12 @@ export function saveRecipe() {
     const recipeExpandContainer = recipeExpandRoot.querySelector('.recipe-expand-grid-container');
     const recipeInputForm = recipeExpandRoot.querySelector('.recipe-form');
     const editButtonDiv = recipeExpandContainer.querySelector('.edit-div');
-    editButtonDiv.classList.add("hidden");
-    editButtonDiv.querySelector(".editbtn").classList.add("hidden");
+    editButtonDiv.classList.remove("hidden");
+    editButtonDiv.querySelector(".editbtn").classList.remove("hidden");
 
     const submitButtonDiv = recipeExpandContainer.querySelector('.submit-div');
-    submitButtonDiv.classList.remove("hidden");
-    submitButtonDiv.querySelector(".submitbtn").classList.remove("hidden");
+    submitButtonDiv.classList.add("hidden");
+    submitButtonDiv.querySelector(".submitbtn").classList.add("hidden");
 
     // Example getting the title form + class
     // Recipe Title
