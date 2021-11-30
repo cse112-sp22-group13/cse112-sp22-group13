@@ -132,6 +132,6 @@ function updateRecipeServings (numServings) {
       let numIngredient = recipeIngredients[i]['amount'];
       recipeIngredients[i]['amount'] = numIngredient * difference;
   }
-
+  recipe.servings = numServings;
   localStorage.setItem(recipeId, JSON.stringify(recipe));
 }
