@@ -1,10 +1,10 @@
-name: Minify Code
+name: Minify Code and Deploy
 on:
   push:
     branches: [ main, github-actions ]
 
 jobs:
-  minify:
+  minify-and-deploy:
     runs-on: ubuntu-latest      # Docker-based github actions have to run on a linux environment
     steps:
       - name: Checkout code
@@ -16,10 +16,12 @@ jobs:
           directory: 'src'      # Optional
           add_suffix: false     # Optional
 
-      - name: Commit and Push Branch
-        uses: dsayling/commit-branch-check-action@v0.1.0
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
-          dest-branch: 'deploy'
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "nan-bread-4" #Must be unique in Heroku
+          heroku_email: "xsevcik@ucsd.edu"
+          appdir: "src" # <- This will point to the api folder in your project
           
 
     
