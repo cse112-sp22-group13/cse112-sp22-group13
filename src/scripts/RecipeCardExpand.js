@@ -21,6 +21,12 @@ class RecipeCardExpand extends HTMLElement {
     const recipeData = JSON.parse(data);
     console.log(recipeData);
 
+    // Apply styling to the shadow dom
+    const linkStyleSheet = document.createElement('link');
+    linkStyleSheet.setAttribute('rel', 'stylesheet');
+    linkStyleSheet.setAttribute('href', './recipe_expand.css');
+    this.shadowRoot.appendChild(linkStyleSheet);
+
     // Container div + class.
     const recipeExpandContainer = document.createElement('div');
     recipeExpandContainer.classList.add('recipe-expand-grid-container');
