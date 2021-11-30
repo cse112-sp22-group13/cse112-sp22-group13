@@ -90,7 +90,17 @@ class RecipeCardExpand extends HTMLElement {
     const ingredientsList = searchForKey(recipeData, 'extendedIngredients');
     for (let i = 0; i < ingredientsList.length; i++) {
       const recipeExpandIngredients = document.createElement('li');
-      recipeExpandIngredients.innerText = ingredientsList[i].amount + ingredientsList[i].original.substring(1);
+
+      let myOriginal = ingredientsList[i].original;
+      let index = 0;
+      for(let j = 0; j < myOriginal.length; j++) {
+        if(myOriginal.substring(j, j+1) == " ") {
+          index = j;
+          break;
+        }
+      }
+
+      recipeExpandIngredients.innerText = ingredientsList[i].amount + ingredientsList[i].original.substring(index);
       recipeExpandIngredientsList.appendChild(recipeExpandIngredients);
     }
 
