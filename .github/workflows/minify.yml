@@ -1,10 +1,10 @@
-name: Minify Workflow
+name: Minify Code
 on:
   push:
-    branches: [ main ]
+    branches: [ main, github-actions ]
 
 jobs:
-  build:
+  minify:
     runs-on: ubuntu-latest      # Docker-based github actions have to run on a linux environment
     steps:
       - name: Checkout code
@@ -14,7 +14,12 @@ jobs:
         uses: docker://devatherock/minify-js:1.0.3
         with:
           directory: 'src'      # Optional
-          output: 'minify/src'  # Optional
           add_suffix: false     # Optional
+
+      - name: Commit and Push Branch
+        uses: dsayling/commit-branch-check-action@v0.1.0
+        with:
+          dest-branch: 'heroku'
+          
 
     
