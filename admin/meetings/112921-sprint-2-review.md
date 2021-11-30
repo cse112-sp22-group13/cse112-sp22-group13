@@ -20,7 +20,16 @@ https://user-images.githubusercontent.com/47044043/144133948-e4cd1f39-57d2-41e2-
 # Bryan demos navbar
 https://user-images.githubusercontent.com/47044043/144134681-50a22f0d-3aef-43a6-bd3f-1e6c0bc80b7a.mp4
 
-### in Review
+### In Review
 
-Truly a heroic effort by team NaaNbread.
+Truly a heroic effort by team NaaN Bread.
+
+#### Minor TODOs
+
+1) Close issues in github people!
+2) Clean up repo
+3) Refactor data function to make codeClimate happy.
+4) Comment fixes for JSdocs
+
+
 
