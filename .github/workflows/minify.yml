@@ -19,7 +19,7 @@ jobs:
       - name: Commit and Push Branch
         uses: dsayling/commit-branch-check-action@v0.1.0
         with:
-          dest-branch: 'heroku'
+          dest-branch: 'deploy'
           files: 'src/*'
           
 
