@@ -1,7 +1,7 @@
 name: Minify Code
 on:
   push:
-    branches: [ main ]
+    branches: [ main, github-actions ]
 
 jobs:
   minify:
