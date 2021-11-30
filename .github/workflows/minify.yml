@@ -1,7 +1,7 @@
 name: Minify Code
 on:
   push:
-    branches: [ main, github-actions ]
+    branches: [ main ]
 
 jobs:
   minify:
@@ -20,7 +20,6 @@ jobs:
         uses: dsayling/commit-branch-check-action@v0.1.0
         with:
           dest-branch: 'deploy'
-          files: 'src/*'
           
 
     
