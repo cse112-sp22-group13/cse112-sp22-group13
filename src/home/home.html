@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./home.css">
-  <script src="/src/scripts/apiComplexSearch.js" type="module"></script>
-  <script src="/src/scripts/main.js" type="module"></script>
-  <script src="/src/scripts/searchKey.js" type="module"></script>
-  <script src ="/src/scripts/sideBar.js"></script>
+  <script src="../scripts/apiComplexSearch.js" type="module"></script>
+  <script src="../scripts/main.js" type="module"></script>
+  <script src="../scripts/searchKey.js" type="module"></script>
+  <script src ="../scripts/sideBar.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <title>NaN Bread</title>
   <style>
@@ -22,7 +22,7 @@
 <body>
     <header>
         <nav>
-          <a href="/src/home/home.html">
+          <a href="../home/home.html">
             <h1 class="title">the bread board 🥖</h1>
           </a>
         </nav>
@@ -32,19 +32,19 @@
       <button class="openbtn" onclick="openNav()">&#9776;</button>
     </div>
     <div id="sideNavbar" class="sidebar">
-      <a href="/src/home/home.html">Home</a>
-      <a href="/src/recipe_list/recipe_list.html">Recipe List</a>
-      <a href="#Favorites">Favorites</a>
+      <a href="../home/home.html">Home</a>
+      <a href="../recipe_list/recipe_list.html">Recipe List</a>
+      <a href="../favorites/favorites.html">Favorites</a>
     </div>
     <main>
       <div class="button-row">
         <div class="button-col" style="text-align:center; padding-left: 4rem;">
-          <button onclick="location.href='/src/recipe_list/recipe_list.html'" class="cool-button two"
+          <button onclick="location.href='../recipe_list/recipe_list.html'" class="cool-button two"
             >ADD RECIPE 🥐
           </button>
         </div>
         <div class="button-col" >
-          <button onclick="location.href='/src/recipe_list/recipe_list.html'" class="cool-button one">
+          <button onclick="location.href='../recipe_list/recipe_list.html'" class="cool-button one">
             SEARCH RECIPE 🧇 
           </button>
         </div>

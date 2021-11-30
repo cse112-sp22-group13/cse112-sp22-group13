@@ -74,10 +74,12 @@ class RecipeCardExpand extends HTMLElement {
     // Recipe ingredients container + class.
     const recipeExpandIngredientsContainer = document.createElement('div');
     recipeExpandIngredientsContainer.classList.add('recipe-expand-ingredients-container');
+    recipeExpandIngredientsContainer.id = 'ingredientContainer';
 
     // Recipe ingredients list + class.
     const recipeExpandIngredientsList = document.createElement('ul');
     recipeExpandIngredientsList.classList.add('recipe-expand-ingredients-list');
+    recipeExpandIngredientsList.id = 'ingredientList';
     recipeExpandIngredientsList.innerText = 'Ingredients:';
 
     // Parse the recipe's ingredients and appends them to the list.
@@ -87,7 +89,7 @@ class RecipeCardExpand extends HTMLElement {
     const ingredientsList = searchForKey(recipeData, 'extendedIngredients');
     for (let i = 0; i < ingredientsList.length; i++) {
       const recipeExpandIngredients = document.createElement('li');
-      recipeExpandIngredients.innerText = ingredientsList[i].original;
+      recipeExpandIngredients.innerText = ingredientsList[i].amount + ingredientsList[i].original.substring(1);
       recipeExpandIngredientsList.appendChild(recipeExpandIngredients);
     }
 
@@ -147,7 +149,7 @@ class RecipeCardExpand extends HTMLElement {
     recipeExpandInstructionsContainer.appendChild(recipeExpandInstructionsList);
     recipeExpandContainer.appendChild(recipeExpandSuppliesContainer);
     recipeExpandContainer.appendChild(recipeExpandInstructionsContainer);
-    
+
     // Delvin's code, adds a cook view button to the bottom of the html structure.
     const recipeExpandButton = document.createElement('button');
     recipeExpandButton.classList.add('recipe-expand-button');
@@ -158,6 +160,20 @@ class RecipeCardExpand extends HTMLElement {
       window.location.href = `/src/cook_view/cook_view.html#${recipeId}`;
     });
     recipeExpandContainer.appendChild(recipeExpandButton);
+
+    // Example getting the title + class
+    // Recipe Title
+    const recipeInputForm = document.createElement('form');
+    recipeInputForm.classList.add('recipe-form');
+
+    // Example converting the info to text and replacing it.
+    const recipeInputFormInput = document.createElement('input');
+    recipeInputFormInput.setAttribute('type', 'text');
+    recipeInputForm.appendChild(recipeInputFormInput);
+    recipeInputFormInput.value = '2';
+    recipeInputForm.classList.add('hidden');
+    recipeInputFormInput.classList.add('hidden');
+    recipeExpandContainer.appendChild(recipeInputForm);
 
     // Append the container to the shadowroot.
     this.shadowRoot.appendChild(recipeExpandContainer);
