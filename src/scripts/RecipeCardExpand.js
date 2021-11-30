@@ -157,7 +157,7 @@ class RecipeCardExpand extends HTMLElement {
     recipeExpandButton.addEventListener('click', () => {
       const recipeId = window.location.hash.substring(1);
       console.log('clicked', recipeId);
-      window.location.href = `/src/cook_view/cook_view.html#${recipeId}`;
+      window.location.href = `../cook_view/cook_view.html#${recipeId}`;
     });
     recipeExpandContainer.appendChild(recipeExpandButton);
 
