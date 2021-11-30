@@ -27,11 +27,9 @@ const localStorage = window.localStorage;
   * *************************************************************** *
   */
 async function init () {
-
   // initializeServiceWorker(); will eventually implement
 
-  if(localStorage.length == 0)
-  {
+  if (localStorage.length === 0) {
     const initialSearch = {
       method: 'GET',
       url: 'https://api.spoonacular.com/recipes/complexSearch',
@@ -42,26 +40,26 @@ async function init () {
         apiKey: API_KEY
       }
     };
-  
+
     const search = new ComplexSearch(initialSearch);
     await ComplexSearch.fComplexSearch(search);
     // console.log(search.data);
-  
+
     // grabbing recipes with id's
     let idString = '';
-  
+
     // making hash table that maps titles (key) to recipe id's (values)
     const hashmap = new Map();
     for (const elem of search.data.results) {
       hashmap.set(elem.title, elem.id);
       idString = idString + elem.id + ',';
     }
-  
+
     // SANAT
     const objSanat = {
       analyzedInstructions: [{ name: '', steps: [] }],
       title: 'Sanat',
-      id : 1,
+      id: 1,
       image: 'https://avatars.githubusercontent.com/u/31770675?v=4',
       extendedIngredients: [{ original: 'naan bread' }, { original: 'spices' }, { original: 'hot dog' }],
       cheap: true,
@@ -73,10 +71,10 @@ async function init () {
     };
     hashmap.set(objSanat.title, 1);
     localStorage.setItem(1, JSON.stringify(objSanat));
-  
+
     // console.log(JSON.stringify(Array.from(hashmap.entries())));
     // console.log(search.data.results);
-  
+
     const bulkOptions = {
       method: 'GET',
       url: 'https://api.spoonacular.com/recipes/informationBulk',
@@ -86,11 +84,11 @@ async function init () {
         apiKey: API_KEY
       }
     };
-  
+
     const thing = new GenericFetch(bulkOptions);
     await GenericFetch.fGenericFetch(thing);
     console.log(thing.data);
-  
+
     // FILLING LOCAL STORAGE
     // first set a place in local storage that will hold the hash table itself at key 0
     localStorage.setItem(0, JSON.stringify(Array.from(hashmap.entries())));
@@ -98,8 +96,8 @@ async function init () {
     for (const elem of thing.data) {
       localStorage.setItem(elem.id, JSON.stringify(elem));
     }
-    console.log("we are here");
-  
+    console.log('we are here');
+
     // MAKING FAVORITES HASHMAP THAT WILL BE LOCATED AT #2 IN LOCAL STORAGE
     const favmap = new Map();
     // MAKING DELETES HASHMAP THAT WILL BE LOCATED AT #3 IN LOCAL STORAGE
@@ -108,7 +106,7 @@ async function init () {
     const hashes = JSON.parse(localStorage['0']);
     // get array of ids
     const elementIdArr = hashes.map(h => h[1]);
-    
+
     for (let i = 0; i < elementIdArr.length; i++) {
       // initialze every id as false (not yet a favorite or deleted)
       favmap.set(elementIdArr[i], false);
@@ -117,8 +115,7 @@ async function init () {
     // store the fav and del maps in localstorage
     localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
     localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
-  
+
     console.log('local storage has ', localStorage.length, ' elements');
   }
-
 }

@@ -97,10 +97,10 @@ class RecipeCardExpand extends HTMLElement {
     for (let i = 0; i < ingredientsList.length; i++) {
       const recipeExpandIngredients = document.createElement('li');
 
-      let myOriginal = ingredientsList[i].original;
+      const myOriginal = ingredientsList[i].original;
       let index = 0;
-      for(let j = 0; j < myOriginal.length; j++) {
-        if(myOriginal.substring(j, j+1) == " ") {
+      for (let j = 0; j < myOriginal.length; j++) {
+        if (myOriginal.substring(j, j + 1) === ' ') {
           index = j;
           break;
         }
@@ -192,31 +192,29 @@ class RecipeCardExpand extends HTMLElement {
     recipeInputFormInput.classList.add('hidden');
     recipeExpandContainer.appendChild(recipeInputForm);
 
-    //Submit button
+    // Submit button
     const submitButtonDiv = document.createElement('div');
-    submitButtonDiv.id="submitButton";
-    submitButtonDiv.classList.add("submit-div");
+    submitButtonDiv.id = 'submitButton';
+    submitButtonDiv.classList.add('submit-div');
     const submitButton = document.createElement('button');
     submitButton.classList.add('submitbtn');
-    submitButtonDiv.classList.add("hidden");
-    submitButton.classList.add("hidden");
-    submitButton.innerText = "Submit";
-    submitButton.addEventListener('click', () => {saveRecipe()})
+    submitButtonDiv.classList.add('hidden');
+    submitButton.classList.add('hidden');
+    submitButton.innerText = 'Submit';
+    submitButton.addEventListener('click', () => { saveRecipe(); });
     submitButtonDiv.appendChild(submitButton);
     recipeExpandContainer.appendChild(submitButtonDiv);
 
-    //Edit button
+    // Edit button
     const editButtonDiv = document.createElement('div');
-    editButtonDiv.id="editButton";
-    editButtonDiv.classList.add("edit-div");
+    editButtonDiv.id = 'editButton';
+    editButtonDiv.classList.add('edit-div');
     const editButton = document.createElement('button');
     editButton.classList.add('editbtn');
-    editButton.innerText = "Edit";
-    editButton.addEventListener('click', () => {editRecipe()})
+    editButton.innerText = 'Edit';
+    editButton.addEventListener('click', () => { editRecipe(); });
     editButtonDiv.appendChild(editButton);
     recipeExpandContainer.appendChild(editButtonDiv);
-
-    
 
     // Append the container to the shadowroot.
     this.shadowRoot.appendChild(recipeExpandContainer);
