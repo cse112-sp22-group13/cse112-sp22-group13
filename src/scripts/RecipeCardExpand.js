@@ -1,4 +1,5 @@
 import { searchForKey, getInstructionSteps } from './searchKey.js';
+import { editRecipe, saveRecipe } from './recipeExpand.js';
 
 class RecipeCardExpand extends HTMLElement {
   constructor () {
@@ -19,6 +20,12 @@ class RecipeCardExpand extends HTMLElement {
   set data (data) {
     const recipeData = JSON.parse(data);
     console.log(recipeData);
+
+    // Apply styling to the shadow dom
+    const linkStyleSheet = document.createElement('link');
+    linkStyleSheet.setAttribute('rel', 'stylesheet');
+    linkStyleSheet.setAttribute('href', './recipe_expand.css');
+    this.shadowRoot.appendChild(linkStyleSheet);
 
     // Container div + class.
     const recipeExpandContainer = document.createElement('div');
@@ -89,7 +96,17 @@ class RecipeCardExpand extends HTMLElement {
     const ingredientsList = searchForKey(recipeData, 'extendedIngredients');
     for (let i = 0; i < ingredientsList.length; i++) {
       const recipeExpandIngredients = document.createElement('li');
-      recipeExpandIngredients.innerText = ingredientsList[i].amount + ingredientsList[i].original.substring(1);
+
+      let myOriginal = ingredientsList[i].original;
+      let index = 0;
+      for(let j = 0; j < myOriginal.length; j++) {
+        if(myOriginal.substring(j, j+1) == " ") {
+          index = j;
+          break;
+        }
+      }
+
+      recipeExpandIngredients.innerText = ingredientsList[i].amount + ingredientsList[i].original.substring(index);
       recipeExpandIngredientsList.appendChild(recipeExpandIngredients);
     }
 
@@ -150,12 +167,8 @@ class RecipeCardExpand extends HTMLElement {
     recipeExpandContainer.appendChild(recipeExpandSuppliesContainer);
     recipeExpandContainer.appendChild(recipeExpandInstructionsContainer);
 
-    // Example getting the title + class
-    // Recipe Title
     const recipeInputForm = document.createElement('form');
     recipeInputForm.classList.add("recipe-form");
-
-    // Example converting the info to text and replacing it.
     const recipeInputFormInput = document.createElement('input');
     recipeInputFormInput.setAttribute('type', 'text');
     recipeInputForm.appendChild(recipeInputFormInput);
@@ -163,6 +176,32 @@ class RecipeCardExpand extends HTMLElement {
     recipeInputForm.classList.add("hidden");
     recipeInputFormInput.classList.add("hidden");
     recipeExpandContainer.appendChild(recipeInputForm);
+
+    //Submit button
+    const submitButtonDiv = document.createElement('div');
+    submitButtonDiv.id="submitButton";
+    submitButtonDiv.classList.add("submit-div");
+    const submitButton = document.createElement('button');
+    submitButton.classList.add('submitbtn');
+    submitButtonDiv.classList.add("hidden");
+    submitButton.classList.add("hidden");
+    submitButton.innerText = "Submit";
+    submitButton.addEventListener('click', () => {saveRecipe()})
+    submitButtonDiv.appendChild(submitButton);
+    recipeExpandContainer.appendChild(submitButtonDiv);
+
+    //Edit button
+    const editButtonDiv = document.createElement('div');
+    editButtonDiv.id="editButton";
+    editButtonDiv.classList.add("edit-div");
+    const editButton = document.createElement('button');
+    editButton.classList.add('editbtn');
+    editButton.innerText = "Edit";
+    editButton.addEventListener('click', () => {editRecipe()})
+    editButtonDiv.appendChild(editButton);
+    recipeExpandContainer.appendChild(editButtonDiv);
+
+    
 
     // Append the container to the shadowroot.
     this.shadowRoot.appendChild(recipeExpandContainer);
