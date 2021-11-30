@@ -22,6 +22,7 @@ jobs:
           heroku_app_name: "nan-bread-4" #Must be unique in Heroku
           heroku_email: "xsevcik@ucsd.edu"
           appdir: "src" # <- This will point to the api folder in your project
+          branch: "github-actions"
           
 
     
