@@ -81,12 +81,12 @@ class RecipeCardExpand extends HTMLElement {
     // Recipe ingredients container + class.
     const recipeExpandIngredientsContainer = document.createElement('div');
     recipeExpandIngredientsContainer.classList.add('recipe-expand-ingredients-container');
-    recipeExpandIngredientsContainer.id = "ingredientContainer";
+    recipeExpandIngredientsContainer.id = 'ingredientContainer';
 
     // Recipe ingredients list + class.
     const recipeExpandIngredientsList = document.createElement('ul');
     recipeExpandIngredientsList.classList.add('recipe-expand-ingredients-list');
-    recipeExpandIngredientsList.id = "ingredientList";
+    recipeExpandIngredientsList.id = 'ingredientList';
     recipeExpandIngredientsList.innerText = 'Ingredients:';
 
     // Parse the recipe's ingredients and appends them to the list.
@@ -167,14 +167,29 @@ class RecipeCardExpand extends HTMLElement {
     recipeExpandContainer.appendChild(recipeExpandSuppliesContainer);
     recipeExpandContainer.appendChild(recipeExpandInstructionsContainer);
 
+    // Delvin's code, adds a cook view button to the bottom of the html structure.
+    const recipeExpandButton = document.createElement('button');
+    recipeExpandButton.classList.add('recipe-expand-button');
+    recipeExpandButton.innerText = 'See Cook View';
+    recipeExpandButton.addEventListener('click', () => {
+      const recipeId = window.location.hash.substring(1);
+      console.log('clicked', recipeId);
+      window.location.href = `../cook_view/cook_view.html#${recipeId}`;
+    });
+    recipeExpandContainer.appendChild(recipeExpandButton);
+
+    // Example getting the title + class
+    // Recipe Title
     const recipeInputForm = document.createElement('form');
-    recipeInputForm.classList.add("recipe-form");
+    recipeInputForm.classList.add('recipe-form');
+
+    // Example converting the info to text and replacing it.
     const recipeInputFormInput = document.createElement('input');
     recipeInputFormInput.setAttribute('type', 'text');
     recipeInputForm.appendChild(recipeInputFormInput);
-    recipeInputFormInput.value = "2";
-    recipeInputForm.classList.add("hidden");
-    recipeInputFormInput.classList.add("hidden");
+    recipeInputFormInput.value = '2';
+    recipeInputForm.classList.add('hidden');
+    recipeInputFormInput.classList.add('hidden');
     recipeExpandContainer.appendChild(recipeInputForm);
 
     //Submit button

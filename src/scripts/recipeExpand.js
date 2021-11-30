@@ -123,30 +123,30 @@ function deleteRecipe(id) {
 }
 
 /**
- * 
+ *
  * @param {*} numServings , number of servings to modify the recipe's ingredients
  */
 function updateRecipeServings (numServings) {
   const recipeExpandRoot = document.querySelector('recipe-card-expand-container').data;
   const recipeExpandContainer = recipeExpandRoot.querySelector('.recipe-expand-grid-container');
   const recipeServingContainer = recipeExpandContainer.querySelector('.recipe-expand-servings-time-container');
-  let currServings = recipeServingContainer.querySelector('.recipe-servings').innerText;
+  const currServings = recipeServingContainer.querySelector('.recipe-servings').innerText;
   recipeServingContainer.querySelector('.recipe-servings').innerText = numServings;
   
   if (isNaN(numServings)) {
-      alert('Your Serving Amount is Not a Number, Try Again');
-      return;
+    alert('Your Serving Amount is Not a Number, Try Again');
+    return;
   }
-  if (currServings == numServings) {
-      return;
+  if (currServings === numServings) {
+    return;
   }
-  let difference = numServings/currServings;
+  const difference = numServings / currServings;
   const recipeId = document.querySelector('recipe-card-expand-container').id;
   const recipe = JSON.parse(localStorage[recipeId]);
-  const recipeIngredients = recipe['extendedIngredients'];
+  const recipeIngredients = recipe.extendedIngredients;
   for (let i = 0; i < recipeIngredients.length; i++) {
-      let numIngredient = recipeIngredients[i]['amount'];
-      recipeIngredients[i]['amount'] = numIngredient * difference;
+    const numIngredient = recipeIngredients[i].amount;
+    recipeIngredients[i].amount = numIngredient * difference;
   }
   recipe.servings = numServings;
   localStorage.setItem(recipeId, JSON.stringify(recipe));
