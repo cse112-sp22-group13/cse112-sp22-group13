@@ -57,11 +57,11 @@ class RecipeCard extends HTMLElement {
     const favorite = document.createElement('img');
     const favmap = new Map(JSON.parse(localStorage['2']));
     if (favmap.get(parsed.id) === true) {
-      favorite.src = '/src/recipe_list/img/heartFull.png';
+      favorite.src = '../recipe_list/img/heartFull.png';
       favorite.id = 'favoriteIcon';
       favorite.alt = 'full';
     } else {
-      favorite.src = '/src/recipe_list/img/heartEmpty.png';
+      favorite.src = '../recipe_list/img/heartEmpty.png';
       favorite.id = 'favoriteIcon';
       favorite.alt = 'empty';
     }
@@ -71,14 +71,14 @@ class RecipeCard extends HTMLElement {
       e.stopPropagation();
       if (favorite.alt === 'empty') {
         console.log('favorited');
-        favorite.src = '/src/recipe_list/img/heartFull.png';
+        favorite.src = '../recipe_list/img/heartFull.png';
         favorite.alt = 'full';
         // Call to favorite recipe here. data is the variable that holds the string representation of our recipe.
         // parsed holds the JSON.parse(data) which is the actual JSON object for this recipe
         markFav(parsed.id);
       } else {
         console.log('unfavorited');
-        favorite.src = '/src/recipe_list/img/heartEmpty.png';
+        favorite.src = '../recipe_list/img/heartEmpty.png';
         favorite.alt = 'empty';
         // Call to unfavorite recipe here
         unFav(parsed.id);

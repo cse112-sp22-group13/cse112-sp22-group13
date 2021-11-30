@@ -39,7 +39,7 @@ function createRecipeCards () {
     }
     main.appendChild(element);
     element.addEventListener('click', (e) => {
-      window.location.href = '/src/recipe_expand/recipe_expand.html' + '#' + element.id;
+      window.location.href = '../recipe_expand/recipe_expand.html' + '#' + element.id;
     });
   });
 }
