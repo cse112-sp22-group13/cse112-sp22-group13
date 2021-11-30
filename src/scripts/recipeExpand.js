@@ -98,7 +98,11 @@ export function saveRecipe() {
   
     for (let i = 0; i < ingredientsList.length; i++) {
       const recipeExpandIngredients = document.createElement('li');
-      recipeExpandIngredients.innerText = ingredientsList[i].amount + ingredientsList[i].original.substring(1);
+      if (ingredientsList[i].unit == '') {
+        recipeExpandIngredients.innerText = ingredientsList[i].amount + " " + ingredientsList[i].originalName;
+      } else {
+        recipeExpandIngredients.innerText = ingredientsList[i].amount + " " + ingredientsList[i].unit + " " + ingredientsList[i].originalName;
+      }
       recipeExpandIngredientsList.appendChild(recipeExpandIngredients);
     }
 
