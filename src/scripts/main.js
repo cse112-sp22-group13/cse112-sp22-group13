@@ -58,12 +58,13 @@ async function init () {
 
     // SANAT
     const objSanat = {
-      analyzedInstructions: [{ name: '', steps: [] }],
+      analyzedInstructions: [{ name: '', steps: [{ equipment: [], ingredients: [], number: 1, step: '' }]}],
+      servings: '\u221E',
       title: 'Sanat',
       summary : 'Sanat is 1 part hot cocoa by the fire, 2 parts earthy love, 3 parts long embrace after a hard day, 4 parts pile of puppies, a pinch of your cheek by grandma, and a dash of "go get em tiger". You will not regret this recipe!',
       id: 1,
       image: 'https://avatars.githubusercontent.com/u/31770675?v=4',
-      extendedIngredients: [{ original: 'naan bread' }, { original: 'spices' }, { original: 'hot dog' }],
+      extendedIngredients: [{ amount: 1, unit: '', originalName: 'naan bread' }, { amount: 1, unit: '', originalName: 'spices' }, { amount: 1, unit: '', originalName: 'hot dog' }],
       cheap: true,
       dairyFree: false,
       glutenFree: false,

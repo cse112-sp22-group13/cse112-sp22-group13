@@ -200,6 +200,8 @@ class CookView extends HTMLElement {
         // our directions/steps start at 1 so we are 1 index ahead by startStep so we need to go back 2 times
         const directionEl = this.shadowRoot.getElementById('direction');
         directionEl.innerText = instructionsList[startStep - 2].step;
+      } else {
+        window.location.href = "../recipe_expand/recipe_expand.html#"+parsed.id;
       }
     });
     // the right button click updates the html page to show the next direction step and the corresponding step numbers
@@ -247,6 +249,8 @@ class CookView extends HTMLElement {
         // at index startStep
         const directionEl = this.shadowRoot.getElementById('direction');
         directionEl.innerText = instructionsList[startStep].step;
+      } else {
+        window.location.href = "../recipe_expand/recipe_expand.html#"+parsed.id;
       }
     });
     // append buttons to navigate div
