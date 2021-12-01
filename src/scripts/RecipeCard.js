@@ -1,5 +1,6 @@
 import { searchForKey } from './searchKey.js';
 import { markFav, unFav } from './FavoriteRecipe.js';
+import { deleteRecipe } from './deleteRecipe.js';
 
 class RecipeCard extends HTMLElement {
   constructor () {
@@ -88,6 +89,15 @@ class RecipeCard extends HTMLElement {
     // favoriteButton.appendChild(favorite);
     recipeOverview.appendChild(favorite);
 
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.classList.add('deleteBtn');
+    deleteButton.addEventListener('click', function (e) {
+      e.stopPropagation();
+      document.getElementById(parsed.id).classList.add('deleted');
+      deleteRecipe(parsed.id)});
+    recipeOverview.appendChild(deleteButton);
+
     // attach tag to tagList, tagList to recipe overview
     /* const tagList = document.createElement('ul');
     tagList.classList.add('recipe-tags');
@@ -148,6 +158,18 @@ class RecipeCard extends HTMLElement {
         font-style: oblique;
         list-style-position: inside;
         padding: 0%;
+    }
+    .deleteBtn {
+      font-size: 1rem;
+      font-weight: 900;
+      color: whitesmoke;
+      position: relative;
+      border-radius: 10px 10px 10px 10px;
+      left: 50px;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      outline: none;
+      cursor: pointer;
+      background-color: #FF8303;;
     }
     `;
 

@@ -16,7 +16,6 @@ window.addEventListener('DOMContentLoaded', init);
  */
 async function init () {
   createRecipeExpand();
-  bindDelete();
 }
 
 /**
@@ -108,21 +107,6 @@ export function saveRecipe () {
   ingredientContainer.appendChild(recipeExpandIngredientsList);
   recipeInputForm.classList.add('hidden');
   recipeInputForm.children[0].classList.add('hidden');
-}
-
-function bindDelete () {
-  document.querySelector('.deletebtn').addEventListener('click', function () { deleteRecipe(document.querySelector('recipe-card-expand-container').id); });
-}
-
-/**
- *
- * @param {*} id , Id of Recipe to Delete
- */
-function deleteRecipe (id) {
-  // get hash table
-  const deletedMap = new Map(JSON.parse(localStorage['3']));
-  deletedMap.set(parseInt(id), true);
-  localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
 }
 
 /**
