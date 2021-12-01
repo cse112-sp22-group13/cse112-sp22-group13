@@ -107,9 +107,12 @@ class RecipeCardExpand extends HTMLElement {
       }*/
 
       if (ingredientsList[i].unit == '') {
-        recipeExpandIngredients.innerText = ingredientsList[i].amount + " " + ingredientsList[i].originalName;
+        recipeExpandIngredients.innerText = ingredientsList[i].amount 
+          + " " + ingredientsList[i].originalName;
       } else {
-        recipeExpandIngredients.innerText = ingredientsList[i].amount + " " + ingredientsList[i].unit + " " + ingredientsList[i].originalName;
+        recipeExpandIngredients.innerText = ingredientsList[i].amount 
+          + " " + ingredientsList[i].unit 
+          + " " + ingredientsList[i].originalName;
       }
 
       recipeExpandIngredientsList.appendChild(recipeExpandIngredients);
