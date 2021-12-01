@@ -81,12 +81,12 @@ class RecipeCardExpand extends HTMLElement {
     // Recipe ingredients container + class.
     const recipeExpandIngredientsContainer = document.createElement('div');
     recipeExpandIngredientsContainer.classList.add('recipe-expand-ingredients-container');
-    recipeExpandIngredientsContainer.id = "ingredientContainer";
+    recipeExpandIngredientsContainer.id = 'ingredientContainer';
 
     // Recipe ingredients list + class.
     const recipeExpandIngredientsList = document.createElement('ul');
     recipeExpandIngredientsList.classList.add('recipe-expand-ingredients-list');
-    recipeExpandIngredientsList.id = "ingredientList";
+    recipeExpandIngredientsList.id = 'ingredientList';
     recipeExpandIngredientsList.innerText = 'Ingredients:';
 
     // Parse the recipe's ingredients and appends them to the list.
@@ -97,22 +97,22 @@ class RecipeCardExpand extends HTMLElement {
     for (let i = 0; i < ingredientsList.length; i++) {
       const recipeExpandIngredients = document.createElement('li');
 
-      /*let myOriginal = ingredientsList[i].original;
+      /* let myOriginal = ingredientsList[i].original;
       let index = 0;
-      for(let j = 0; j < myOriginal.length; j++) {
-        if(myOriginal.substring(j, j+1) == " ") {
+      for (let j = 0; j < myOriginal.length; j++) {
+        if (myOriginal.substring(j, j + 1) === ' ') {
           index = j;
           break;
         }
-      }*/
+      } */
 
-      if (ingredientsList[i].unit == '') {
-        recipeExpandIngredients.innerText = ingredientsList[i].amount 
-          + " " + ingredientsList[i].originalName;
+      if (ingredientsList[i].unit === '') {
+        recipeExpandIngredients.innerText = ingredientsList[i].amount +
+          ' ' + ingredientsList[i].originalName;
       } else {
-        recipeExpandIngredients.innerText = ingredientsList[i].amount 
-          + " " + ingredientsList[i].unit 
-          + " " + ingredientsList[i].originalName;
+        recipeExpandIngredients.innerText = ingredientsList[i].amount +
+          ' ' + ingredientsList[i].unit +
+          ' ' + ingredientsList[i].originalName;
       }
 
       recipeExpandIngredientsList.appendChild(recipeExpandIngredients);
@@ -175,41 +175,54 @@ class RecipeCardExpand extends HTMLElement {
     recipeExpandContainer.appendChild(recipeExpandSuppliesContainer);
     recipeExpandContainer.appendChild(recipeExpandInstructionsContainer);
 
+    // Delvin's code, adds a cook view button to the bottom of the html structure.
+    const recipeExpandButton = document.createElement('button');
+    recipeExpandButton.classList.add('recipe-expand-button');
+    recipeExpandButton.innerText = 'See Cook View';
+    recipeExpandButton.addEventListener('click', () => {
+      const recipeId = window.location.hash.substring(1);
+      console.log('clicked', recipeId);
+      window.location.href = `../cook_view/cook_view.html#${recipeId}`;
+    });
+    recipeExpandContainer.appendChild(recipeExpandButton);
+
+    // Example getting the title + class
+    // Recipe Title
     const recipeInputForm = document.createElement('form');
-    recipeInputForm.classList.add("recipe-form");
+    recipeInputForm.classList.add('recipe-form');
+
+    // Example converting the info to text and replacing it.
     const recipeInputFormInput = document.createElement('input');
     recipeInputFormInput.setAttribute('type', 'text');
     recipeInputForm.appendChild(recipeInputFormInput);
-    recipeInputFormInput.value = "2";
-    recipeInputForm.classList.add("hidden");
-    recipeInputFormInput.classList.add("hidden");
+    recipeInputFormInput.value = '2';
+    recipeInputForm.classList.add('hidden');
+    recipeInputFormInput.classList.add('hidden');
     recipeExpandContainer.appendChild(recipeInputForm);
 
-    //Submit button
+    // Submit button
     const submitButtonDiv = document.createElement('div');
-    submitButtonDiv.id="submitButton";
-    submitButtonDiv.classList.add("submit-div");
+    submitButtonDiv.id = 'submitButton';
+    submitButtonDiv.classList.add('submit-div');
     const submitButton = document.createElement('button');
     submitButton.classList.add('submitbtn');
-    submitButtonDiv.classList.add("hidden");
-    submitButton.classList.add("hidden");
-    submitButton.innerText = "Submit";
-    submitButton.addEventListener('click', () => {saveRecipe()})
+    submitButtonDiv.classList.add('hidden');
+    submitButton.classList.add('hidden');
+    submitButton.innerText = 'Submit';
+    submitButton.addEventListener('click', () => { saveRecipe(); });
     submitButtonDiv.appendChild(submitButton);
     recipeExpandContainer.appendChild(submitButtonDiv);
 
-    //Edit button
+    // Edit button
     const editButtonDiv = document.createElement('div');
-    editButtonDiv.id="editButton";
-    editButtonDiv.classList.add("edit-div");
+    editButtonDiv.id = 'editButton';
+    editButtonDiv.classList.add('edit-div');
     const editButton = document.createElement('button');
     editButton.classList.add('editbtn');
-    editButton.innerText = "Edit";
-    editButton.addEventListener('click', () => {editRecipe()})
+    editButton.innerText = 'Edit';
+    editButton.addEventListener('click', () => { editRecipe(); });
     editButtonDiv.appendChild(editButton);
     recipeExpandContainer.appendChild(editButtonDiv);
-
-    
 
     // Append the container to the shadowroot.
     this.shadowRoot.appendChild(recipeExpandContainer);

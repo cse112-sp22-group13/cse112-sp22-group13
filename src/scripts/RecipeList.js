@@ -32,14 +32,14 @@ function createRecipeCards () {
     const element = document.createElement('recipe-card');
     element.data = localStorage[`${id}`];
     element.id = id;
-    //hides the recipe forever if it is considered deleted in localStorage (uncomment when ready to use)
+    // hides the recipe forever if it is considered deleted in localStorage (uncomment when ready to use)
     const deletedMap = new Map(JSON.parse(localStorage['3']));
-    if (deletedMap.get(id) == true) {
-        element.classList.add("deleted");
+    if (deletedMap.get(id) === true) {
+      element.classList.add('deleted');
     }
     main.appendChild(element);
     element.addEventListener('click', (e) => {
-      window.location.href = '/src/recipe_expand/recipe_expand.html' + '#' + element.id;
+      window.location.href = '../recipe_expand/recipe_expand.html' + '#' + element.id;
     });
   });
 }

@@ -1,15 +1,15 @@
 // import { searchForKey } from './searchKey.js';
 
 // SEARCH BAR BUTTON
-//const searchBar = document.querySelector('button');
-//const inputTxt = document.querySelector('.search-bar');
-//searchBar.addEventListener('click', searchRecipes);
+// const searchBar = document.querySelector('button');
+// const inputTxt = document.querySelector('.search-bar');
+// searchBar.addEventListener('click', searchRecipes);
 
 window.addEventListener('DOMContentLoaded', init);
 const localStorage = window.localStorage;
 
 async function init () {
-  console.log("here in favs page now");  
+  console.log('here in favs page now');
   createFavCards();
 }
 
@@ -32,21 +32,19 @@ function createFavCards () {
   const elementIdArr = hashes.map(h => h[1]);
 
   elementIdArr.forEach(id => {
-      
-    if(favmap.get(id) == true){
-        const element = document.createElement('recipe-card');
-        element.data = localStorage[`${id}`];
-        element.id = id;
-        //hides the recipe forever if it is considered deleted in localStorage (uncomment when ready to use)
-        const deletedMap = JSON.parse(localStorage['3']);
-        if (deletedMap[id] == true) {
-            element.classList.add("deleted");
-        }
-        main.appendChild(element);
-        element.addEventListener('click', (e) => {
-        window.location.href = '/src/recipe_expand/recipe_expand.html' + '#' + element.id;
-        });
-    }  
-
+    if (favmap.get(id) === true) {
+      const element = document.createElement('recipe-card');
+      element.data = localStorage[`${id}`];
+      element.id = id;
+      // hides the recipe forever if it is considered deleted in localStorage (uncomment when ready to use)
+      const deletedMap = JSON.parse(localStorage['3']);
+      if (deletedMap[id] === true) {
+        element.classList.add('deleted');
+      }
+      main.appendChild(element);
+      element.addEventListener('click', (e) => {
+        window.location.href = '../recipe_expand/recipe_expand.html' + '#' + element.id;
+      });
+    }
   });
 }
