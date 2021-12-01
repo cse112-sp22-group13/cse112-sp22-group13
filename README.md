@@ -31,8 +31,11 @@ As brainstorming may have your team settle on choices quickly capturing them in 
 
 ## Interface Design Documents
 
-- we will initially capture "fat marker design" later extended with wireframes and high fidelity prototypes (/specs/interface/rough, /specs/interface/wireframes, /specs/interface/highfidelity  These directories may contain single or multitude of documents)
+- we will initially capture "fat marker design" 
+later extended with wireframes and high fidelity prototypes (/specs/interface/rough, /specs/interface/wireframes, /specs/interface/highfidelity  These directories may contain single or multitude of documents)
 
 ## Project Roadmap
 
 - we will capture a roadmap of how the product will evolve both here in the quarter as well as ideas of how it might grow beyond the time we have with  (/specs/roadmap.md)
+
+![gitBranchVerification](https://user-images.githubusercontent.com/47044043/144176446-84c47ea2-4b68-41cd-abe7-081a26ce4552.png)
