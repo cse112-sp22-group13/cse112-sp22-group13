@@ -19,9 +19,9 @@ class RecipeCard extends HTMLElement {
   set data (data) {
     // Here's the root element that you'll want to attach all of your other elements to
     const parsed = JSON.parse(data);
-
+    console.log(parsed);
     const recipeCard = document.createElement('article');
-    recipeCard.classList.add('recipe-card', 'test');
+    recipeCard.classList.add('recipe-card');
 
     // Attach grid container to root (article aka recipe card)
     const recipeContainer = document.createElement('div');
@@ -43,18 +43,31 @@ class RecipeCard extends HTMLElement {
 
     // attach title to recipe overview
     const recipeTitle = document.createElement('p');
-    recipeTitle.classList.add('recipeTitle');
+    recipeTitle.classList.add('recipe-title');
     recipeTitle.innerText = searchForKey(parsed, 'title');
     recipeOverview.appendChild(recipeTitle);
 
-    // attach summary to recipe overview
-    const recipeSummary = document.createElement('p');
-    recipeSummary.classList.add('recipeSummary');
-    recipeSummary.innerHTML = searchForKey(parsed, 'summary');
-    recipeOverview.appendChild(recipeSummary);
+    // attach serving to recipe overview
+    const recipeServing = document.createElement('p');
+    recipeServing.classList.add('recipe-serving');
+    recipeServing.innerHTML = "Sevings: " + searchForKey(parsed, 'servings');
+    recipeOverview.appendChild(recipeServing);
+
+    // attach time to recipe overview
+    const recipeTime = document.createElement('p');
+    recipeTime.classList.add('recipe-time');
+    recipeTime.innerHTML = "Time: " + searchForKey(parsed, 'readyInMinutes') + " minutes";
+    recipeOverview.appendChild(recipeTime);
+
+    // attach company to recipe overview
+    const recipeOrg = document.createElement('p');
+    recipeOrg.classList.add('recipe-org');
+    recipeOrg.innerHTML = "By " + searchForKey(parsed, 'sourceName');
+    recipeOverview.appendChild(recipeOrg);
 
     // const favoriteButton = document.createElement('button');
     const favorite = document.createElement('img');
+    favorite.classList.add("recipe-favorite");
     const favmap = new Map(JSON.parse(localStorage['2']));
     if (favmap.get(parsed.id) === true) {
       favorite.src = '../recipe_list/img/heartFull.png';
@@ -85,18 +98,7 @@ class RecipeCard extends HTMLElement {
       };
     });
 
-    // favoriteButton.appendChild(favorite);
     recipeOverview.appendChild(favorite);
-
-    // attach tag to tagList, tagList to recipe overview
-    /* const tagList = document.createElement('ul');
-    tagList.classList.add('recipe-tags');
-    tagList.innerText = 'Tags: ';
-    const tag = document.createElement('li');
-    tag.classList.add('tags');
-    tagList.appendChild(tag);
-    recipeOverview.appendChild(tagList);
-    */
 
     const styleElem = document.createElement('style');
     styleElem.innerHTML = `
@@ -105,97 +107,51 @@ class RecipeCard extends HTMLElement {
     }
     
     .recipe-grid-container {
-        display: grid;
-        column-gap: 1rem;
-        grid-template-columns: 200px auto;
+        display: flex;
         background-color: white;
-        /* #909e87; */
         padding: 1%;
         border: white;
         border-top: 3px solid  black;
         border-bottom: 3px solid  black;
-    
     }
-    
-    .recipe-grid-overview {
-        text-align: left;
-        color: black;
-        font-weight: bold;
-    }
-    
-    .recipe-title {
-        font-size: x-large;
-        padding:0;
-        margin-bottom: 10px;
-    }
-    
-    .recipe-summary {
-        line-height: 1.4;
-        margin-bottom: 10px;
+
+    .recipe-grid-img {
+        float: left;
+        width: 50%;
     }
 
     .recipe-grid-img img {
-      width: 100%;
+        height: 100%;
+        width: 90%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .recipe-grid-overview {
+        float: left;
+        width: 50%;
+        text-align: left;
+        color: black;
+        font-size: 2.8vw;
+        line-height: 0.7;
     }
     
-    .recipe-tags {
-        font-size: medium;
-        padding: 0%;
+    .recipe-title {
+        font-size: 3.8vw;
+        padding:0;
+        margin: 0.2rem 0;
+        font-weight: 600;
+        line-height:1.5;
     }
     
-    .tag {
-        font-size: x-small;
-        font-style: oblique;
-        list-style-position: inside;
-        padding: 0%;
+    .recipe-favorite {
+        padding: 0.3rem 0 0.3rem 0;
+        height: 30px;
+        width: 30px;
     }
     `;
 
     this.shadowRoot.append(styleElem, recipeCard);
-
-    // tagList.appendChild(tag);
-    // tagsGrid.appendChild(tagList);
-    // recipeGrid.appendChild(tagList);
-    // let timeOrgGrid = document.createElement('div');
-    // timeOrgGrid.classList.add('recipe-grid-time-org')
-    // let time = document.createElement('time');
-    // time.classList.add('recipe-time');
-    // time.innerText = searchForKey(JSON.parse(data), 'readyInMinutes');
-    // let p2 = document.createElement('p');
-    // p2.classList.add('organization');
-    // p2.innerText = (searchForKey(JSON.parse(data), 'creditsText'));
-
-    // timeOrgGrid.appendChild(time);
-    // timeOrgGrid.appendChild(p2);
-    // recipeGrid.appendChild(timeOrgGrid);
-
-    // let descriptionGrid = document.createElement('div');
-    // descriptionGrid.classList.add('recipe-grid-description');
-    // let p3 = document.createElement('p');
-    // p3.innerText = searchForKey(JSON.parse(data), "summary");
-    // descriptionGrid.appendChild(p3);
-    // recipeGrid.appendChild(descriptionGrid);
-
-    // let tagsGrid = document.createElement('div');
-    // let tagList = document.createElement('ul');
-    // tagsGrid.classList.add('recipe-grid-tags-rating');
-    // tagList.classList.add('tags');
-    // tagList.innerText = "Tags: ";
-    // let tag = document.createElement("li");
-    // tag.classList.add('tag');
-    // tag.innerText = "Temp Tag 1";
-    // tagList.appendChild(tag);
-    // tagsGrid.appendChild(tagList);
-    // recipeGrid.appendChild(tagList);
-
-    // let ratingGrid = document.createElement('div');
-    // ratingGrid.classList.add('recipe-grid-rating');
-    // let p4 = document.createElement('p');
-    // p4.innerText = "Spoonacular Score: " + searchForKey(JSON.parse(data), "spoonacularScore");
-    // ratingGrid.appendChild(p4);
-    // recipeGrid.appendChild(ratingGrid);
-
-    // console.log(searchForKey(JSON.parse(data), "title"));
   }
 }
 
