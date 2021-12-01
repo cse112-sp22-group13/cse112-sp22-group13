@@ -92,11 +92,21 @@ async function init () {
     console.log(thing.data);
 
     // FILLING LOCAL STORAGE
+    // create a popular array to place into local storage
+    let popularArr = [];
     // first set a place in local storage that will hold the hash table itself at key 0
     localStorage.setItem(0, JSON.stringify(Array.from(hashmap.entries())));
+    
     // extract json object and put into local storage
     for (const elem of thing.data) {
       localStorage.setItem(elem.id, JSON.stringify(elem));
+
+      // fill popularArr
+      if(elem.spoonacularScore >= 30)
+      {
+        popularArr.push(elem.id);
+      }
+
     }
     console.log('we are here');
 
@@ -117,6 +127,8 @@ async function init () {
     // store the fav and del maps in localstorage
     localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
     localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
+    // store popular array
+    localStorage.setItem(4, JSON.stringify(popularArr));
 
     console.log('local storage has ', localStorage.length, ' elements');
     alert("Local storage populated. You may now naviage freely.");

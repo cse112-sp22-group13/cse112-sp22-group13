@@ -2,20 +2,8 @@
 
 export function fillPopular() {
 
-  // get hash table
-  const hashes = JSON.parse(localStorage['0']);
-  // get array of ids
-  const elementIdArr = hashes.map(h => h[1]);
-  // popular array
-  let popularArr = [];
-  //fill poplular array with id's of recipes with spoonacular score >= 50
-  for (const id of elementIdArr) {
-    const jsonFile = JSON.parse(localStorage.getItem(id));
-    if(jsonFile.spoonacularScore >= 30)
-    {
-        popularArr.push(id);
-    }
-  }
+  // get popular array of popular id's
+  const popularArr = JSON.parse(localStorage['4']);
 
   // shuffle array
   for(let i = 0; i < popularArr.length; i++){
