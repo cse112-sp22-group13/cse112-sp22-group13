@@ -34,8 +34,10 @@ function createRecipeExpand () {
   main.appendChild(element);
 }
 
-// TODO: Figure out a nicer way to iterate through children and selectively replace
-// children with forms that have input for 1 line, and textarea for multiple lines.
+/**
+ * Called when edit button is clicked in recipe-expand.html. Hides the edit button
+ * and sets the input form and submit button to be viewable
+ */
 export function editRecipe () {
   console.log('edit');
   // Example selecting the shadowroot + recipe expand container
@@ -53,16 +55,16 @@ export function editRecipe () {
   const submitButtonDiv = recipeExpandContainer.querySelector('.submit-div');
   submitButtonDiv.classList.remove('hidden');
   submitButtonDiv.querySelector('.submitbtn').classList.remove('hidden');
-  // recipeExpandContainer.replaceChild(recipeTitleForm, recipeExpandContainer.children[0]);
-
-  // Swap the button as an example, realistically our implementation
-  // should have another button that appears + dissapears probably near bottom.
 }
 
-// TODO: Figure out how to parse multiple lines into one large div containing <li>
+/**
+ * Called when submit butotn is clicked in recipe-expand.html. Grabs the new serving amount
+ * and scales ingredients accordingly. Writes back changes to local storage. Hides
+ * submit button and input form, shows edit button again.
+ */
 export function saveRecipe () {
   console.log('save');
-  // Example selecting the shadowroot + title form container
+  // Get the edit button and show it
   const recipeExpandRoot = document.querySelector('recipe-card-expand-container').data;
   const recipeExpandContainer = recipeExpandRoot.querySelector('.recipe-expand-grid-container');
   const recipeInputForm = recipeExpandRoot.querySelector('.recipe-form');
@@ -70,18 +72,20 @@ export function saveRecipe () {
   editButtonDiv.classList.remove('hidden');
   editButtonDiv.querySelector('.editbtn').classList.remove('hidden');
 
+  // Hide submit button
   const submitButtonDiv = recipeExpandContainer.querySelector('.submit-div');
   submitButtonDiv.classList.add('hidden');
   submitButtonDiv.querySelector('.submitbtn').classList.add('hidden');
 
-  // Example getting the title form + class
-  // Recipe Title
+  // Update recipe given new serving amount
   const servings = recipeInputForm.children[0].value;
   updateRecipeServings(servings);
 
+  // Update HTML for Serving
   const recipeServingContainer = recipeExpandContainer.querySelector('.recipe-expand-servings-time-container');
   recipeServingContainer.querySelector('.recipe-servings').innerText = servings;
 
+  // Update HTML for ingredients
   const ingredientContainer = recipeExpandContainer.querySelector('.recipe-expand-ingredients-container');
   const recipeExpandIngredientsList = document.createElement('ul');
   recipeExpandIngredientsList.classList.add('recipe-expand-ingredients-list');
@@ -101,16 +105,18 @@ export function saveRecipe () {
     recipeExpandIngredientsList.appendChild(recipeExpandIngredients);
   }
   const oldIngredients = recipeExpandContainer.querySelector('.recipe-expand-ingredients-container').querySelector('.recipe-expand-ingredients-list');
-  // console.log(oldIngredients);
   oldIngredients.remove();
 
+  // Hide the input form
   ingredientContainer.appendChild(recipeExpandIngredientsList);
   recipeInputForm.classList.add('hidden');
   recipeInputForm.children[0].classList.add('hidden');
 }
 
 /**
- *
+ * Given a new number of servings, scales the amount of ingredients needed for the recipe 
+ * curently shown on recipe-expand.html accordingly.
+ * 
  * @param {*} numServings , number of servings to modify the recipe's ingredients
  */
 function updateRecipeServings (numServings) {

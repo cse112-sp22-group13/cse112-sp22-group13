@@ -97,15 +97,6 @@ class RecipeCardExpand extends HTMLElement {
     for (let i = 0; i < ingredientsList.length; i++) {
       const recipeExpandIngredients = document.createElement('li');
 
-      /* let myOriginal = ingredientsList[i].original;
-      let index = 0;
-      for (let j = 0; j < myOriginal.length; j++) {
-        if (myOriginal.substring(j, j + 1) === ' ') {
-          index = j;
-          break;
-        }
-      } */
-
       if (ingredientsList[i].unit === '') {
         recipeExpandIngredients.innerText = ingredientsList[i].amount +
           ' ' + ingredientsList[i].originalName;
