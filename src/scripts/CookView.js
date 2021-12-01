@@ -201,7 +201,7 @@ class CookView extends HTMLElement {
         const directionEl = this.shadowRoot.getElementById('direction');
         directionEl.innerText = instructionsList[startStep - 2].step;
       } else {
-        window.location.href = "../recipe_expand/recipe_expand.html#"+parsed.id;
+        window.location.href = '../recipe_expand/recipe_expand.html#' + parsed.id;
       }
     });
     // the right button click updates the html page to show the next direction step and the corresponding step numbers
@@ -250,7 +250,7 @@ class CookView extends HTMLElement {
         const directionEl = this.shadowRoot.getElementById('direction');
         directionEl.innerText = instructionsList[startStep].step;
       } else {
-        window.location.href = "../recipe_expand/recipe_expand.html#"+parsed.id;
+        window.location.href = '../recipe_expand/recipe_expand.html#' + parsed.id;
       }
     });
     // append buttons to navigate div
