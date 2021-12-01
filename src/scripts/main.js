@@ -12,6 +12,7 @@
 
 import { ComplexSearch } from './apiComplexSearch.js';
 import { GenericFetch } from './genericFetch.js';
+import { fillPopular } from './popularRecipes.js';
 
 // Backend devs will switch up using their own spoonacular key for fetching
 const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
@@ -59,6 +60,7 @@ async function init () {
     const objSanat = {
       analyzedInstructions: [{ name: '', steps: [] }],
       title: 'Sanat',
+      summary : 'Sanat is 1 part hot cocoa by the fire, 2 parts earthy love, 3 parts long embrace after a hard day, 4 parts pile of puppies, a pinch of your cheek by grandma, and a dash of "go get em tiger". You will not regret this recipe!',
       id: 1,
       image: 'https://avatars.githubusercontent.com/u/31770675?v=4',
       extendedIngredients: [{ original: 'naan bread' }, { original: 'spices' }, { original: 'hot dog' }],
@@ -90,11 +92,21 @@ async function init () {
     console.log(thing.data);
 
     // FILLING LOCAL STORAGE
+    // create a popular array to place into local storage
+    let popularArr = [];
     // first set a place in local storage that will hold the hash table itself at key 0
     localStorage.setItem(0, JSON.stringify(Array.from(hashmap.entries())));
+    
     // extract json object and put into local storage
     for (const elem of thing.data) {
       localStorage.setItem(elem.id, JSON.stringify(elem));
+
+      // fill popularArr
+      if(elem.spoonacularScore >= 30)
+      {
+        popularArr.push(elem.id);
+      }
+
     }
     console.log('we are here');
 
@@ -115,7 +127,13 @@ async function init () {
     // store the fav and del maps in localstorage
     localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
     localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
+    // store popular array
+    localStorage.setItem(4, JSON.stringify(popularArr));
 
     console.log('local storage has ', localStorage.length, ' elements');
+    alert("Local storage populated. You may now naviage freely.");
   }
+
+  //fill popular recipes
+  fillPopular();
 }
