@@ -83,10 +83,6 @@ export function saveRecipe () {
   const recipeServingContainer = recipeExpandContainer.querySelector('.recipe-expand-servings-time-container');
   recipeServingContainer.querySelector('.recipe-servings').innerText = servings;
 
-  const oldIngredients = recipeExpandContainer.querySelector('.recipe-expand-ingredients-container').querySelector('.recipe-expand-ingredients-list');
-  // console.log(oldIngredients);
-  oldIngredients.remove();
-
   const ingredientContainer = recipeExpandContainer.querySelector('.recipe-expand-ingredients-container');
   const recipeExpandIngredientsList = document.createElement('ul');
   recipeExpandIngredientsList.classList.add('recipe-expand-ingredients-list');
@@ -98,9 +94,16 @@ export function saveRecipe () {
 
   for (let i = 0; i < ingredientsList.length; i++) {
     const recipeExpandIngredients = document.createElement('li');
-    recipeExpandIngredients.innerText = ingredientsList[i].amount + ingredientsList[i].original.substring(1);
+    if (ingredientsList[i].unit === '') {
+      recipeExpandIngredients.innerText = ingredientsList[i].amount + ' ' + ingredientsList[i].originalName;
+    } else {
+      recipeExpandIngredients.innerText = ingredientsList[i].amount + ' ' + ingredientsList[i].unit + ' ' + ingredientsList[i].originalName;
+    }
     recipeExpandIngredientsList.appendChild(recipeExpandIngredients);
   }
+  const oldIngredients = recipeExpandContainer.querySelector('.recipe-expand-ingredients-container').querySelector('.recipe-expand-ingredients-list');
+  // console.log(oldIngredients);
+  oldIngredients.remove();
 
   ingredientContainer.appendChild(recipeExpandIngredientsList);
   recipeInputForm.classList.add('hidden');

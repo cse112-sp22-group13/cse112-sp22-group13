@@ -97,16 +97,24 @@ class RecipeCardExpand extends HTMLElement {
     for (let i = 0; i < ingredientsList.length; i++) {
       const recipeExpandIngredients = document.createElement('li');
 
-      const myOriginal = ingredientsList[i].original;
+      /* let myOriginal = ingredientsList[i].original;
       let index = 0;
       for (let j = 0; j < myOriginal.length; j++) {
         if (myOriginal.substring(j, j + 1) === ' ') {
           index = j;
           break;
         }
+      } */
+
+      if (ingredientsList[i].unit === '') {
+        recipeExpandIngredients.innerText = ingredientsList[i].amount +
+          ' ' + ingredientsList[i].originalName;
+      } else {
+        recipeExpandIngredients.innerText = ingredientsList[i].amount +
+          ' ' + ingredientsList[i].unit +
+          ' ' + ingredientsList[i].originalName;
       }
 
-      recipeExpandIngredients.innerText = ingredientsList[i].amount + ingredientsList[i].original.substring(index);
       recipeExpandIngredientsList.appendChild(recipeExpandIngredients);
     }
 
