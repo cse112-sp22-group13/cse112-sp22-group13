@@ -69,8 +69,13 @@
  async function addRecipe()
  {
    const inputData = inputHTML.value;
+
    //console.log(inputData);
    let recipetoHash = await extraction(inputData);
+   if (typeof recipetoHash == 'undefined'){
+     alert("Not a valid url");
+     return;
+   }
    let recipeData = JSON.stringify(recipetoHash);
    const main = document.querySelector("main");
    const element = document.createElement('recipe-card');
@@ -82,16 +87,6 @@
   //  console.log(hashMap);
    const favMap = new Map(JSON.parse(localStorage['2']));
    const DelMap = new Map(JSON.parse(localStorage['3']));
-   //const PopMap = new Map(JSON.parse(localStorage['4']));
-  //  const hashMap = JSON.parse(localStorage['0']);
-  //  //console.log(hashMap);
-  //  const favMap = JSON.parse(localStorage['2']);
-  //  const DelMap = JSON.parse(localStorage['3']);
-  // const hashMap = new Map(localStorage['0']);
-  //  console.log(recipetoHash.title);
-  //  const favMap = new Map(localStorage['2']);
-  //  const DelMap = new Map(localStorage['3']);
-   
    hashMap.set(recipetoHash.title, validID);
    favMap.set(validID, false);
    DelMap.set(validID, false);
@@ -114,3 +109,30 @@
  
  }
  
+function checkckDu()
+{
+  const hashes = JSON.parse(localStorage['0']);
+  // get favmap
+  const favmap = new Map(JSON.parse(localStorage['2']));
+  // get array of ids
+  const elementIdArr = hashes.map(h => h[1]);
+
+  elementIdArr.forEach(id => {
+    ///
+    if (favmap.get(id) === true) {
+      const element = document.createElement('recipe-card');
+      element.data = localStorage[`${id}`];
+      element.id = id;
+      // hides the recipe forever if it is considered deleted in localStorage (uncomment when ready to use)
+      const deletedMap = new Map(JSON.parse(localStorage['3']));
+      if (deletedMap.get(id) === true) {
+        element.classList.add('deleted');
+      }
+      main.appendChild(element);
+      element.addEventListener('click', (e) => {
+        window.location.href = '../recipe_expand/recipe_expand.html' + '#' + element.id;
+      });
+    }
+  });
+
+}
