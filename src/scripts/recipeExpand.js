@@ -114,9 +114,9 @@ export function saveRecipe () {
 }
 
 /**
- * Given a new number of servings, scales the amount of ingredients needed for the recipe 
+ * Given a new number of servings, scales the amount of ingredients needed for the recipe
  * curently shown on recipe-expand.html accordingly.
- * 
+ *
  * @param {*} numServings , number of servings to modify the recipe's ingredients
  */
 function updateRecipeServings (numServings) {

@@ -13,7 +13,7 @@ class RecipeCard extends HTMLElement {
   }
 
   /**
-   * @param {String} data The string representation of our JSON object representing a recipe 
+   * @param {String} data The string representation of our JSON object representing a recipe
    */
   set data (data) {
     // Parse string to JSON object
@@ -90,7 +90,8 @@ class RecipeCard extends HTMLElement {
     deleteButton.addEventListener('click', function (e) {
       e.stopPropagation();
       document.getElementById(parsed.id).classList.add('deleted');
-      deleteRecipe(parsed.id)});
+      deleteRecipe(parsed.id);
+    });
     recipeOverview.appendChild(deleteButton);
 
     const styleElem = document.createElement('style');
