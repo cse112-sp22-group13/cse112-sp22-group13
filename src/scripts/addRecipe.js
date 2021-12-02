@@ -62,50 +62,74 @@ async function forceExtraction (input) {
 async function addRecipe () {
   const inputData = inputHTML.value;
 
-  // add recipe onlt if not duplicated
-  if (checkckDu(inputData)) {
+  // grab maps from localStorage for insertion and replacement
+  const hashMap = new Map(JSON.parse(localStorage['0']));
+  const favMap = new Map(JSON.parse(localStorage['2']));
+  const delMap = new Map(JSON.parse(localStorage['3']));
+  const urlMap = new Map(JSON.parse(localStorage['5']));
+
+  // BASE CASES PRIOR TO CONTINUING TO ALTER LOCAL STORAGE:
+  // add recipe only if not duplicated
+  if (checkDup(inputData)) {
+
+    // returned true for duplicate, so now check if it was marked true in the delmap
+    const id = urlMap.get(inputData);
+    if (delMap.get(id) === true) {
+      alert('This url existed but was previously deleted. Will now add back to view.');
+      // edit delmap value
+      delMap.set(id, false);
+      // replace delmap in local
+      localStorage.setItem(3, JSON.stringify(Array.from(delMap.entries())));
+      // now unhide the card
+      document.getElementById(id).classList.remove('deleted');
+      return;
+    } 
+
+    // if it wasn't in delmap, it's a duplicate add
     alert('Duplicated recipe.');
     return;
   }
+
+  // IF WE GET HERE, THAT MEANS THE RECIPE HAS NEVER BEEN ADDED BEFORE, SO DIDN'T EXIST IN URLMAP
+
   const recipetoHash = await extraction(inputData);
-  // check if the url is valid
+  // Now check if the url is valid
   if (typeof recipetoHash === 'undefined') {
     alert('Not a valid url');
     return;
   }
-  const recipeData = JSON.stringify(recipetoHash);
+
+  // GOOD TO GO!
+  // grab json file, and begin creating a recipe card with it
+  console.log('heres the json of your added recipe:');
+  console.log(recipetoHash);
   const main = document.querySelector('main');
   const element = document.createElement('recipe-card');
 
-  // generate the vlaid id
-  const validID = Math.random() * 1000;
+  // generate a random valid id because it's added with an id of -1
+  const validID = Math.floor(Math.random() * 1000);
 
-  // grab value from localStorage
-  const hashMap = new Map(JSON.parse(localStorage['0']));
-  const favMap = new Map(JSON.parse(localStorage['2']));
-  const DelMap = new Map(JSON.parse(localStorage['3']));
-  const urlMap = new Map(JSON.parse(localStorage['5']));
-
-  // set value in map for new added card
+  // set values in maps for newly added card
   hashMap.set(recipetoHash.title, validID);
   favMap.set(validID, false);
-  DelMap.set(validID, false);
-  console.log(recipetoHash.sourceUrl);
-
-  // urlmap's value is for store id to check for dulipated.
-  urlMap.set(recipetoHash.sourceUrl, validID);
+  delMap.set(validID, false);
+  urlMap.set(recipetoHash.sourceUrl, validID); // urlmap's value is for store id to check for dulipated.
+  
+  // also edit the inner ID of json file
+  recipetoHash.id = validID;
+  const recipeData = JSON.stringify(recipetoHash);
 
   // update local storage
   localStorage.setItem(validID, recipeData);
   localStorage.setItem(0, JSON.stringify(Array.from(hashMap.entries())));
   localStorage.setItem(2, JSON.stringify(Array.from(favMap.entries())));
-  localStorage.setItem(3, JSON.stringify(Array.from(DelMap.entries())));
+  localStorage.setItem(3, JSON.stringify(Array.from(delMap.entries())));
   localStorage.setItem(5, JSON.stringify(Array.from(urlMap.entries())));
 
-  // updated recipe card  in html
+  // update recipe card in html
   element.data = recipeData;
   element.id = validID;
-  if (DelMap.get(element.id) === true) {
+  if (delMap.get(element.id) === true) {
     element.classList.add('deleted');
   }
   main.appendChild(element);
@@ -120,21 +144,17 @@ async function addRecipe () {
 
 /**
  * Check if the recipe is already in the localStorage
- * @param {String} urll url which comes from user input
- * @returns {Boolean} true if there exist, false if not.
+ * @param {String} url url which comes from user input
+ * @returns {Boolean} true if there already exists a url, false if not
  */
-function checkckDu (urll) {
-  const delHash = new Map(JSON.parse(localStorage['3']));
-  const urlHash = new Map(JSON.parse(localStorage['5']));
-  // if url is empty, means no url is added before, return false
-  if (!urlHash.has(urll)) {
+function checkDup (url) {
+  const urlMap = new Map(JSON.parse(localStorage['5']));
+  // if url map doesn't contain url, then we want to return false for duplication
+  if (!urlMap.has(url)) {
     console.log('false');
     return false;
   }
-  // or url is not empty, deleteMap is true, meaning the added recipe has been deleted, return false
-  if (delHash.get(urlHash.get(urll)) === true) {
-    console.log(urlHash.get(urll));
-    return false;
-  }
+
+  // if we get here then url has been inserted. could possibly be hidden from being marked true in delmap
   return true;
 }

@@ -113,9 +113,11 @@ async function init () {
     const favmap = new Map();
     // MAKING DELETES HASHMAP THAT WILL BE LOCATED AT #3 IN LOCAL STORAGE
     const deletedMap = new Map();
+    // URL map to keep track of duplicate inputs for addRecipe
+    const urlMap = new Map();
+
     // get hash table
     const hashes = JSON.parse(localStorage['0']);
-    const urlMap = new Map();
     // get array of ids
     const elementIdArr = hashes.map(h => h[1]);
 
@@ -125,15 +127,16 @@ async function init () {
       deletedMap.set(elementIdArr[i], false);
     }
     urlMap.set('2046', 'none');
-    // store the fav and del maps in localstorage
+    // store the fav map into local
     localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
+    // store the del map into local
     localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
     // store popular array
     localStorage.setItem(4, JSON.stringify(popularArr));
-    // store popular array to check ducpliated issue in add
+    // store URL map to check duplicated issue in add
     localStorage.setItem(5, JSON.stringify(Array.from(urlMap.entries())));
 
-    console.log('local storage has ', localStorage.length, ' elements');
+    console.log('local storage has ', localStorage.length, ' elements, which is 5 hashmaps, Sanats card, and ', localStorage.length - 6, 'recipes');
     alert('Local storage populated. You may now naviage freely.');
   }
 
