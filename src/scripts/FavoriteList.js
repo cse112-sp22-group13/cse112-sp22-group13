@@ -32,13 +32,14 @@ function createFavCards () {
   const elementIdArr = hashes.map(h => h[1]);
 
   elementIdArr.forEach(id => {
+    ///
     if (favmap.get(id) === true) {
       const element = document.createElement('recipe-card');
       element.data = localStorage[`${id}`];
       element.id = id;
       // hides the recipe forever if it is considered deleted in localStorage (uncomment when ready to use)
-      const deletedMap = JSON.parse(localStorage['3']);
-      if (deletedMap[id] === true) {
+      const deletedMap = new Map(JSON.parse(localStorage['3']));
+      if (deletedMap.get(id) === true) {
         element.classList.add('deleted');
       }
       main.appendChild(element);
