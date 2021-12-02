@@ -151,6 +151,7 @@ function checkDup (url) {
     delHash.set(urlHash.get(url), false);
     // replace delmap in local
     localStorage.setItem(3, JSON.stringify(Array.from(delHash.entries())));
+    document.getElementById(urlHash.get(url)).classList.remove('deleted');
     // return true because we don't wanna continue adding a new recipe
     return true;
   }
