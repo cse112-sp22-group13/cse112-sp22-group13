@@ -65,7 +65,6 @@ async function addRecipe () {
   // BASE CASES PRIOR TO CONTINUING TO ALTER LOCAL STORAGE:
   // add recipe only if not duplicated
   if (checkDup(inputData)) {
-    alert('Duplicated recipe.');
     return;
   }
 
@@ -151,11 +150,13 @@ function checkDup (url) {
     delHash.set(urlHash.get(url), false);
     // replace delmap in local
     localStorage.setItem(3, JSON.stringify(Array.from(delHash.entries())));
-    document.getElementById(urlHash.get(url)).classList.remove('deleted');
+     document.getElementById(urlHash.get(url)).classList.remove('deleted');
     // return true because we don't wanna continue adding a new recipe
+    alert('Your new card is inserted~');
     return true;
   }
 
   // if we get here then url hasn't been inserted and also hasn't been turned to true in delmap
+  alert('Duplicated recipe.');
   return true;
 }
