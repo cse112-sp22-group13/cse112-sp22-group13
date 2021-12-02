@@ -84,15 +84,6 @@ class RecipeCardExpand extends HTMLElement {
     for (let i = 0; i < ingredientsList.length; i++) {
       const recipeExpandIngredients = document.createElement('li');
 
-      /* let myOriginal = ingredientsList[i].original;
-      let index = 0;
-      for (let j = 0; j < myOriginal.length; j++) {
-        if (myOriginal.substring(j, j + 1) === ' ') {
-          index = j;
-          break;
-        }
-      } */
-
       if (ingredientsList[i].unit === '') {
         recipeExpandIngredients.innerText = ingredientsList[i].amount +
           ' ' + ingredientsList[i].originalName;
@@ -182,7 +173,7 @@ class RecipeCardExpand extends HTMLElement {
     const recipeInputFormInput = document.createElement('input');
     recipeInputFormInput.setAttribute('type', 'text');
     recipeInputForm.appendChild(recipeInputFormInput);
-    recipeInputFormInput.value = '2';
+    recipeInputFormInput.value = recipeExpandServings.innerText;
     recipeInputForm.classList.add('hidden');
     recipeInputFormInput.classList.add('hidden');
     recipeExpandContainer.appendChild(recipeInputForm);

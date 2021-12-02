@@ -4,10 +4,8 @@ import { deleteRecipe } from './deleteRecipe.js';
 
 class RecipeCard extends HTMLElement {
   constructor () {
-    // Part 1 Expose - TODO
     super();
     this.attachShadow({ mode: 'open' });
-    // You'll want to attach the shadow DOM here
   }
 
   get data () {
@@ -15,10 +13,10 @@ class RecipeCard extends HTMLElement {
   }
 
   /**
-   * @param {any} data
+   * @param {String} data The string representation of our JSON object representing a recipe
    */
   set data (data) {
-    // Here's the root element that you'll want to attach all of your other elements to
+    // Parse string to JSON object
     const parsed = JSON.parse(data);
     console.log(parsed);
     const recipeCard = document.createElement('article');
@@ -87,14 +85,11 @@ class RecipeCard extends HTMLElement {
         console.log('favorited');
         favorite.src = '../recipe_list/img/heartFull.png';
         favorite.alt = 'full';
-        // Call to favorite recipe here. data is the variable that holds the string representation of our recipe.
-        // parsed holds the JSON.parse(data) which is the actual JSON object for this recipe
         markFav(parsed.id);
       } else {
         console.log('unfavorited');
         favorite.src = '../recipe_list/img/heartEmpty.png';
         favorite.alt = 'empty';
-        // Call to unfavorite recipe here
         unFav(parsed.id);
       };
     });
@@ -107,18 +102,9 @@ class RecipeCard extends HTMLElement {
     deleteButton.addEventListener('click', function (e) {
       e.stopPropagation();
       document.getElementById(parsed.id).classList.add('deleted');
-      deleteRecipe(parsed.id)});
+      deleteRecipe(parsed.id);
+    });
     recipeOverview.appendChild(deleteButton);
-
-    // attach tag to tagList, tagList to recipe overview
-    /* const tagList = document.createElement('ul');
-    tagList.classList.add('recipe-tags');
-    tagList.innerText = 'Tags: ';
-    const tag = document.createElement('li');
-    tag.classList.add('tags');
-    tagList.appendChild(tag);
-    recipeOverview.appendChild(tagList);
-    */
 
     const styleElem = document.createElement('style');
     styleElem.innerHTML = `
@@ -187,104 +173,5 @@ class RecipeCard extends HTMLElement {
   }
 }
 
-/*********************************************************************/
-/** *                       Helper Functions:                       ***/
-/** *          Below are some functions I used when making          ***/
-/** *     the solution, feel free to use them or not, up to you     ***/
-/*********************************************************************/
-/**
-   * Extract the URL from the given recipe schema JSON object
-   * @param {Object} data Raw recipe JSON to find the URL of
-   * @returns {String} If found, it returns the URL as a string, otherwise null
-   */
-export function getUrl (data) {
-  if (data.url) return data.url;
-  if (data['@graph']) {
-    for (let i = 0; i < data['@graph'].length; i++) {
-      if (data['@graph'][i]['@type'] === 'Article') return data['@graph'][i]['@id'];
-    }
-  };
-  return null;
-}
-
-/**
-   * Similar to getUrl(), this function extracts the organizations name from the
-   * schema JSON object. It's not in a standard location so this function helps.
-   * @param {Object} data Raw recipe JSON to find the org string of
-   * @returns {String} If found, it retuns the name of the org as a string, otherwise null
-   */
-export function getOrganization (data) {
-  if (data.publisher?.name) return data.publisher?.name;
-  if (data['@graph']) {
-    for (let i = 0; i < data['@graph'].length; i++) {
-      if (data['@graph'][i]['@type'] === 'Organization') {
-        return data['@graph'][i].name;
-      }
-    }
-  };
-  return null;
-}
-
-/**
-   * Converts ISO 8061 time strings to regular english time strings.
-   * Not perfect but it works for this lab
-   * @param {String} time time string to format
-   * @return {String} formatted time string
-   */
-export function convertTime (time) {
-  let timeStr = '';
-
-  // Remove the 'PT'
-  time = time.slice(2);
-
-  const timeArr = time.split('');
-  if (time.includes('H')) {
-    for (let i = 0; i < timeArr.length; i++) {
-      if (timeArr[i] === 'H') return `${timeStr} hr`;
-      timeStr += timeArr[i];
-    }
-  } else {
-    for (let i = 0; i < timeArr.length; i++) {
-      if (timeArr[i] === 'M') return `${timeStr} min`;
-      timeStr += timeArr[i];
-    }
-  }
-
-  return '';
-}
-
-/**
-   * Takes in a list of ingredients raw from imported data and returns a neatly
-   * formatted comma separated list.
-   * @param {Array} ingredientArr The raw unprocessed array of ingredients from the
-   *                              imported data
-   * @return {String} the string comma separate list of ingredients from the array
-   */
-export function createIngredientList (ingredientArr) {
-  let finalIngredientList = '';
-
-  /**
-     * Removes the quantity and measurement from an ingredient string.
-     * This isn't perfect, it makes the assumption that there will always be a quantity
-     * (sometimes there isn't, so this would fail on something like '2 apples' or 'Some olive oil').
-     * For the purposes of this lab you don't have to worry about those cases.
-     * @param {String} ingredient the raw ingredient string you'd like to process
-     * @return {String} the ingredient without the measurement & quantity
-     * (e.g. '1 cup flour' returns 'flour')
-     */
-  function _removeQtyAndMeasurement (ingredient) {
-    return ingredient.split(' ').splice(2).join(' ');
-  }
-
-  ingredientArr.forEach(ingredient => {
-    ingredient = _removeQtyAndMeasurement(ingredient);
-    finalIngredientList += `${ingredient}, `;
-  });
-
-  // The .slice(0,-2) here gets ride of the extra ', ' added to the last ingredient
-  return finalIngredientList.slice(0, -2);
-}
-
-// Define the Class so you can use it as a custom element.
-// This is critical, leave this here and don't touch it
+// Associate recipe-card tag with RecipeCard class
 customElements.define('recipe-card', RecipeCard);

@@ -58,12 +58,13 @@ async function init () {
 
     // SANAT
     const objSanat = {
-      analyzedInstructions: [{ name: '', steps: [] }],
+      analyzedInstructions: [{ name: '', steps: [{ equipment: [], ingredients: [], number: 1, step: '' }] }],
+      servings: '\u221E',
       title: 'Sanat',
-      summary : 'Sanat is 1 part hot cocoa by the fire, 2 parts earthy love, 3 parts long embrace after a hard day, 4 parts pile of puppies, a pinch of your cheek by grandma, and a dash of "go get em tiger". You will not regret this recipe!',
+      summary: 'Sanat is 1 part hot cocoa by the fire, 2 parts earthy love, 3 parts long embrace after a hard day, 4 parts pile of puppies, a pinch of your cheek by grandma, and a dash of "go get em tiger". You will not regret this recipe!',
       id: 1,
       image: 'https://avatars.githubusercontent.com/u/31770675?v=4',
-      extendedIngredients: [{ original: 'naan bread' }, { original: 'spices' }, { original: 'hot dog' }],
+      extendedIngredients: [{ amount: 1, unit: '', originalName: 'naan bread' }, { amount: 1, unit: '', originalName: 'spices' }, { amount: 1, unit: '', originalName: 'hot dog' }],
       cheap: true,
       dairyFree: false,
       glutenFree: false,
@@ -93,20 +94,18 @@ async function init () {
 
     // FILLING LOCAL STORAGE
     // create a popular array to place into local storage
-    let popularArr = [];
+    const popularArr = [];
     // first set a place in local storage that will hold the hash table itself at key 0
     localStorage.setItem(0, JSON.stringify(Array.from(hashmap.entries())));
-    
+
     // extract json object and put into local storage
     for (const elem of thing.data) {
       localStorage.setItem(elem.id, JSON.stringify(elem));
 
       // fill popularArr
-      if(elem.spoonacularScore >= 30)
-      {
+      if (elem.spoonacularScore >= 30) {
         popularArr.push(elem.id);
       }
-
     }
     console.log('we are here');
 
@@ -114,6 +113,9 @@ async function init () {
     const favmap = new Map();
     // MAKING DELETES HASHMAP THAT WILL BE LOCATED AT #3 IN LOCAL STORAGE
     const deletedMap = new Map();
+    // URL map to keep track of duplicate inputs for addRecipe
+    const urlMap = new Map();
+
     // get hash table
     const hashes = JSON.parse(localStorage['0']);
     // get array of ids
@@ -124,16 +126,20 @@ async function init () {
       favmap.set(elementIdArr[i], false);
       deletedMap.set(elementIdArr[i], false);
     }
-    // store the fav and del maps in localstorage
+    urlMap.set('2046', 'none');
+    // store the fav map into local
     localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
+    // store the del map into local
     localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
     // store popular array
     localStorage.setItem(4, JSON.stringify(popularArr));
+    // store URL map to check duplicated issue in add
+    localStorage.setItem(5, JSON.stringify(Array.from(urlMap.entries())));
 
-    console.log('local storage has ', localStorage.length, ' elements');
-    alert("Local storage populated. You may now naviage freely.");
+    console.log('local storage has ', localStorage.length, ' elements, which is 5 hashmaps, Sanats card, and ', localStorage.length - 6, 'recipes');
+    alert('Local storage populated. You may now naviage freely.');
   }
 
-  //fill popular recipes
+  // fill popular recipes
   fillPopular();
 }
