@@ -62,17 +62,38 @@ async function forceExtraction (input) {
 async function addRecipe () {
   const inputData = inputHTML.value;
 
+  // grab maps from localStorage for insertion and replacement
+  const hashMap = new Map(JSON.parse(localStorage['0']));
+  const favMap = new Map(JSON.parse(localStorage['2']));
+  const delMap = new Map(JSON.parse(localStorage['3']));
+  const urlMap = new Map(JSON.parse(localStorage['5']));
+
   // BASE CASES PRIOR TO CONTINUING TO ALTER LOCAL STORAGE:
   // add recipe only if not duplicated
   if (checkDup(inputData)) {
+
+    // returned true for duplicate, so now check if it was marked true in the delmap
+    const id = urlMap.get(inputData);
+    if (delMap.get(id) === true) {
+      alert('This url existed but was previously deleted. Will now add back to view.');
+      // edit delmap value
+      delMap.set(id, false);
+      // replace delmap in local
+      localStorage.setItem(3, JSON.stringify(Array.from(delMap.entries())));
+      // now unhide the card
+      document.getElementById(id).classList.remove('deleted');
+      return;
+    }
+
+    // if it wasn't in delmap, it's a duplicate add
     alert('Duplicated recipe.');
     return;
   }
 
-  // IF WE GET HERE, THAT MEANS THE RECIPE HAS NEVER BEEN ADDED BEFORE, SO DIDN'T EXIST IN DELMAP
+  // IF WE GET HERE, THAT MEANS THE RECIPE HAS NEVER BEEN ADDED BEFORE, SO DIDN'T EXIST IN URLMAP
 
   const recipetoHash = await extraction(inputData);
-  // check if the url is valid
+  // Now check if the url is valid
   if (typeof recipetoHash === 'undefined') {
     alert('Not a valid url');
     return;
@@ -88,20 +109,12 @@ async function addRecipe () {
   // generate a random valid id because it's added with an id of -1
   const validID = Math.floor(Math.random() * 1000);
 
-  // grab maps from localStorage for insertion and replacement
-  const hashMap = new Map(JSON.parse(localStorage['0']));
-  const favMap = new Map(JSON.parse(localStorage['2']));
-  const delMap = new Map(JSON.parse(localStorage['3']));
-  const urlMap = new Map(JSON.parse(localStorage['5']));
-
-  // set value in map for new added card
+  // set values in maps for newly added card
   hashMap.set(recipetoHash.title, validID);
   favMap.set(validID, false);
   delMap.set(validID, false);
-  console.log(recipetoHash.sourceUrl);
-
-  // urlmap's value is for store id to check for dulipated.
-  urlMap.set(recipetoHash.sourceUrl, validID);
+  urlMap.set(recipetoHash.sourceUrl, validID); // urlmap's value is for store id to check for dulipated.
+  
   // also edit the inner ID of json file
   recipetoHash.id = validID;
   const recipeData = JSON.stringify(recipetoHash);
@@ -132,30 +145,16 @@ async function addRecipe () {
 /**
  * Check if the recipe is already in the localStorage
  * @param {String} url url which comes from user input
- * @returns {Boolean} true if there exist, false if not.
+ * @returns {Boolean} true if there already exists a url, false if not
  */
 function checkDup (url) {
-  const delHash = new Map(JSON.parse(localStorage['3']));
-  const urlHash = new Map(JSON.parse(localStorage['5']));
-  // if url is empty, means no url is added before, return false and continue adding
-  if (!urlHash.has(url)) {
+  const urlMap = new Map(JSON.parse(localStorage['5']));
+  // if url map doesn't contain url, then we want to return false for duplication
+  if (!urlMap.has(url)) {
     console.log('false');
     return false;
   }
 
-  // if we get here then the url has been inserted before, meaning we either have a duplicate recipe or its in delmap
-
-  // or url is not empty, deleteMap is true, meaning the added recipe has been deleted, return false
-  if (delHash.get(urlHash.get(url)) === true) {
-    console.log('this url existed but was previously deleted. id: ', urlHash.get(url));
-    delHash.set(urlHash.get(url), false);
-    // replace delmap in local
-    localStorage.setItem(3, JSON.stringify(Array.from(delHash.entries())));
-    document.getElementById(urlHash.get(url)).classList.remove('deleted');
-    // return true because we don't wanna continue adding a new recipe
-    return true;
-  }
-
-  // if we get here then url hasn't been inserted and also hasn't been turned to true in delmap
+  // if we get here then url has been inserted. could possibly be hidden from being marked true in delmap
   return true;
 }
