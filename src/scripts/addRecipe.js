@@ -132,7 +132,7 @@ async function addRecipe () {
   if (delMap.get(element.id) === true) {
     element.classList.add('deleted');
   }
-  main.appendChild(element);
+  main.insertBefore(element, main.firstChild);
 
   alert('Your new card is inserted~');
 
