@@ -213,6 +213,7 @@ p {
 .sidebar a {
     font-size: 25px;
     top: 50px;
+    width: 250px;
     position:relative;
     color: #e3d477;
     padding: 8px 8px 8px 32px;
