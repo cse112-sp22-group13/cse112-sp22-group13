@@ -114,7 +114,7 @@
        element.classList.add('deleted');
    }
    main.appendChild(element);
-   
+
    alert("Your new card is inserted~");
 
    // go to expand card view
@@ -125,7 +125,7 @@
 
  /**
  * Check if the recipe is already in the localStorage
- * @param {String} urll
+ * @param {String} urll url which comes from user input
  * @returns {Boolean} true if there exist, false if not.
  */
 function checkckDu(urll)
