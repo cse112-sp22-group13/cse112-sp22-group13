@@ -9,7 +9,7 @@
  const localStorage = window.localStorage;
  const addBar = document.querySelector('.add-container');
  const inputHTML = document.querySelector('.add-bar');
- addBar.querySelector('button'),addEventListener('click', addRecipe);
+ addBar.querySelector('button').addEventListener('click', addRecipe);
  //console.log(addBar.querySelector(".add-button"));
  
  
@@ -34,7 +34,7 @@
      data = response.data;
      //console.log(data);
    }).catch(function (error) {
-     forceExtraction(input);
+     data = forceExtraction(input);
      //console.log(data);
      console.log(error);
    });
@@ -59,12 +59,11 @@
    await axios.request(format).then(function (response) {
      data = response.data;
      console.log(JSON.stringify(data));
-     
+     return data;
    }).catch(function (error) {
      //console.log(data);
      console.log(error);
    });
-   return data;
  }
  
  async function addRecipe()
@@ -79,17 +78,26 @@
    //console.log(recipeData.title);
    //update local storage
    localStorage.setItem(validID, recipeData);
-   const hashMap = new Map(JSON.parse(localStorage['0']));
-   console.log(hashMap);
+    const hashMap = new Map(JSON.parse(localStorage['0']));
+  //  console.log(hashMap);
    const favMap = new Map(JSON.parse(localStorage['2']));
    const DelMap = new Map(JSON.parse(localStorage['3']));
    //const PopMap = new Map(JSON.parse(localStorage['4']));
+  //  const hashMap = JSON.parse(localStorage['0']);
+  //  //console.log(hashMap);
+  //  const favMap = JSON.parse(localStorage['2']);
+  //  const DelMap = JSON.parse(localStorage['3']);
+  // const hashMap = new Map(localStorage['0']);
+  //  console.log(recipetoHash.title);
+  //  const favMap = new Map(localStorage['2']);
+  //  const DelMap = new Map(localStorage['3']);
+   
    hashMap.set(recipetoHash.title, validID);
    favMap.set(validID, false);
    DelMap.set(validID, false);
-   localStorage.setItem(0, JSON.stringify(hashMap));
-   localStorage.setItem(2, JSON.stringify(favMap));
-   localStorage.setItem(3, JSON.stringify(DelMap));
+   localStorage.setItem(0, JSON.stringify(Array.from(hashMap.entries())));
+   localStorage.setItem(2, JSON.stringify(Array.from(favMap.entries())));
+   localStorage.setItem(3, JSON.stringify(Array.from(DelMap.entries())));
    element.data = recipeData;
    element.id = validID;
      // hides the recipe forever if it is considered deleted in localStorage (uncomment when ready to use)
