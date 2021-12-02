@@ -116,6 +116,7 @@ async function init () {
     const deletedMap = new Map();
     // get hash table
     const hashes = JSON.parse(localStorage['0']);
+    const urlMap = new Map();
     // get array of ids
     const elementIdArr = hashes.map(h => h[1]);
 
@@ -123,12 +124,16 @@ async function init () {
       // initialze every id as false (not yet a favorite or deleted)
       favmap.set(elementIdArr[i], false);
       deletedMap.set(elementIdArr[i], false);
+      
     }
+    urlMap.set('2046', "none");
     // store the fav and del maps in localstorage
     localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
     localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
     // store popular array
     localStorage.setItem(4, JSON.stringify(popularArr));
+        // store popular array to check ducpliated issue in add
+    localStorage.setItem(5, JSON.stringify(Array.from(urlMap.entries())));
 
     console.log('local storage has ', localStorage.length, ' elements');
     alert("Local storage populated. You may now naviage freely.");

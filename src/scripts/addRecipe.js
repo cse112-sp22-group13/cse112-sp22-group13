@@ -69,7 +69,11 @@
  async function addRecipe()
  {
    const inputData = inputHTML.value;
-
+    if(checkckDu(inputData))
+    {
+      alert("Duplicated recipe.");
+      return;
+    }
    //console.log(inputData);
    let recipetoHash = await extraction(inputData);
    if (typeof recipetoHash == 'undefined'){
@@ -81,18 +85,24 @@
    const element = document.createElement('recipe-card');
    let validID  = Math.random() *1000;
    //console.log(recipeData.title);
-   //update local storage
-   localStorage.setItem(validID, recipeData);
+   //grab value from ls
     const hashMap = new Map(JSON.parse(localStorage['0']));
-  //  console.log(hashMap);
    const favMap = new Map(JSON.parse(localStorage['2']));
    const DelMap = new Map(JSON.parse(localStorage['3']));
+   const urlMap = new Map(JSON.parse(localStorage['5']));
+
    hashMap.set(recipetoHash.title, validID);
    favMap.set(validID, false);
    DelMap.set(validID, false);
+   console.log(recipetoHash.sourceUrl);
+   urlMap.set(recipetoHash.sourceUrl, validID);   
+   //   update local storage
+   localStorage.setItem(validID, recipeData);
    localStorage.setItem(0, JSON.stringify(Array.from(hashMap.entries())));
    localStorage.setItem(2, JSON.stringify(Array.from(favMap.entries())));
    localStorage.setItem(3, JSON.stringify(Array.from(DelMap.entries())));
+   localStorage.setItem(5, JSON.stringify(Array.from(urlMap.entries())));
+
    element.data = recipeData;
    element.id = validID;
      // hides the recipe forever if it is considered deleted in localStorage (uncomment when ready to use)
@@ -104,35 +114,28 @@
      element.addEventListener('click', (e) => {
        window.location.href = '../recipe_expand/recipe_expand.html' + '#' + element.id;
      });
- 
- 
- 
  }
- 
-function checkckDu()
-{
-  const hashes = JSON.parse(localStorage['0']);
-  // get favmap
-  const favmap = new Map(JSON.parse(localStorage['2']));
-  // get array of ids
-  const elementIdArr = hashes.map(h => h[1]);
 
-  elementIdArr.forEach(id => {
-    ///
-    if (favmap.get(id) === true) {
-      const element = document.createElement('recipe-card');
-      element.data = localStorage[`${id}`];
-      element.id = id;
-      // hides the recipe forever if it is considered deleted in localStorage (uncomment when ready to use)
-      const deletedMap = new Map(JSON.parse(localStorage['3']));
-      if (deletedMap.get(id) === true) {
-        element.classList.add('deleted');
-      }
-      main.appendChild(element);
-      element.addEventListener('click', (e) => {
-        window.location.href = '../recipe_expand/recipe_expand.html' + '#' + element.id;
-      });
-    }
-  });
+ /**
+ * Check if the recipe is already in the localStorage
+ * @param {String} urll
+ * @returns {Boolean}
+ */
+ 
+function checkckDu(urll)
+{
+  const delHash = new Map(JSON.parse(localStorage['3']));
+  const urlHash = new Map(JSON.parse(localStorage['5']));
+  //if url is empty, means no url is added before, return false
+  if(!urlHash.has(urll)){
+    console.log("false");
+    return false;
+  }
+    //or url is not empty, deleteMap is true, meaning the added recipe has been deleted, return false
+  if(delHash.get(urlHash.get(urll)) == true){
+    console.log(urlHash.get(urll));
+      return false;
+  }
+  return true;
 
 }
