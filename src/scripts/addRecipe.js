@@ -1,6 +1,7 @@
 // should recieve a website url to be inputed
 const APIKey = '85859c45fa7949ec8b915c61690f2ce1';
 
+// test url
 // https://foodista.com/recipe/ZHK4KPB6/chocolate-crinkle-cookies
 
 const localStorage = window.localStorage;
@@ -63,7 +64,7 @@ async function addRecipe () {
   const inputData = inputHTML.value;
 
   // grab maps from localStorage for insertion and replacement
-  const hashMap = new Map(JSON.parse(localStorage['0']));
+  let hashMap = new Map(JSON.parse(localStorage['0']));
   const favMap = new Map(JSON.parse(localStorage['2']));
   const delMap = new Map(JSON.parse(localStorage['3']));
   const urlMap = new Map(JSON.parse(localStorage['5']));
@@ -110,7 +111,8 @@ async function addRecipe () {
   const validID = Math.floor(Math.random() * 1000);
 
   // set values in maps for newly added card
-  hashMap.set(recipetoHash.title, validID);
+  //hashMap.set(recipetoHash.title, validID);
+  hashMap = insertAtIndex(0, recipetoHash.title, validID, hashMap);
   favMap.set(validID, false);
   delMap.set(validID, false);
   urlMap.set(recipetoHash.sourceUrl, validID); // urlmap's value is for store id to check for dulipated.
@@ -157,4 +159,11 @@ function checkDup (url) {
 
   // if we get here then url has been inserted. could possibly be hidden from being marked true in delmap
   return true;
+}
+
+
+function insertAtIndex(insertIndex, key, value, ourMap){
+  const convertArr = Array.from(ourMap);
+  arr.splice(insertIndex, 0, [key, value]);
+  return new Map(convertArr);
 }
