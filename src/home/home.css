@@ -172,16 +172,13 @@ section {
 .sidebar a {
     font-size: 25px;
     top: 50px;
+    width: 250px;
     position:relative;
     color: #e3d477;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     display: block;
     transition: 0.3s;
-}
-
-.sidebar a:hover {
-    color: #f1f1f1;
 }
 
 /* Button to open and close the sidebar */
