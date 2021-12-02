@@ -106,7 +106,6 @@ async function init () {
       if (elem.spoonacularScore >= 30) {
         popularArr.push(elem.id);
       }
-
     }
     console.log('we are here');
 
@@ -131,9 +130,9 @@ async function init () {
     localStorage.setItem(4, JSON.stringify(popularArr));
 
     console.log('local storage has ', localStorage.length, ' elements');
-    alert("Local storage populated. You may now naviage freely.");
+    alert('Local storage populated. You may now naviage freely.');
   }
 
-  //fill popular recipes
+  // fill popular recipes
   fillPopular();
 }
