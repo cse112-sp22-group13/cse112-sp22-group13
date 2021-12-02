@@ -68,6 +68,9 @@ async function addRecipe () {
     alert('Duplicated recipe.');
     return;
   }
+
+  // IF WE GET HERE, THAT MEANS THE RECIPE HAS NEVER BEEN ADDED BEFORE, SO DIDN'T EXIST IN DELMAP
+
   const recipetoHash = await extraction(inputData);
   // check if the url is valid
   if (typeof recipetoHash === 'undefined') {
@@ -134,15 +137,24 @@ async function addRecipe () {
 function checkDup (url) {
   const delHash = new Map(JSON.parse(localStorage['3']));
   const urlHash = new Map(JSON.parse(localStorage['5']));
-  // if url is empty, means no url is added before, return false
+  // if url is empty, means no url is added before, return false and continue adding
   if (!urlHash.has(url)) {
     console.log('false');
     return false;
   }
+
+  // if we get here then the url has been inserted before, meaning we either have a duplicate recipe or its in delmap
+
   // or url is not empty, deleteMap is true, meaning the added recipe has been deleted, return false
   if (delHash.get(urlHash.get(url)) === true) {
-    console.log(urlHash.get(url));
-    return false;
+    console.log('this url existed but was previously deleted. id: ', urlHash.get(url));
+    delHash.set(urlHash.get(url), false);
+    // replace delmap in local
+    localStorage.setItem(3, JSON.stringify(Array.from(delHash.entries())));
+    // return true because we don't wanna continue adding a new recipe
+    return true;
   }
+
+  // if we get here then url hasn't been inserted and also hasn't been turned to true in delmap
   return true;
 }
