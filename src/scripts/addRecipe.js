@@ -83,7 +83,7 @@ async function addRecipe () {
       // now unhide the card
       document.getElementById(id).classList.remove('deleted');
       return;
-    }
+    } 
 
     // if it wasn't in delmap, it's a duplicate add
     alert('Duplicated recipe.');
