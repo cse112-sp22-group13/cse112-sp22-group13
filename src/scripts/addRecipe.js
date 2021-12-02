@@ -92,7 +92,6 @@ async function addRecipe () {
   }
 
   // IF WE GET HERE, THAT MEANS THE RECIPE HAS NEVER BEEN ADDED BEFORE, SO DIDN'T EXIST IN URLMAP
-
   const recipetoHash = await extraction(inputData);
   // Now check if the url is valid
   if (typeof recipetoHash === 'undefined') {
@@ -111,7 +110,7 @@ async function addRecipe () {
   const validID = Math.floor(Math.random() * 1000);
 
   // set values in maps for newly added card
-  //hashMap.set(recipetoHash.title, validID);
+  // set the new item at index 0 of hashMap to let new card always go to top
   hashMap = insertAtIndex(0, recipetoHash.title, validID, hashMap);
   favMap.set(validID, false);
   delMap.set(validID, false);
@@ -161,7 +160,13 @@ function checkDup (url) {
   return true;
 }
 
-
+/**
+ * Use array.splice function to insert item at certain index to map
+ * @param {Int} insertIndex url which comes from user input
+ *  @param {String} key url which comes from user input
+ * @param {Int} value url which comes from user input
+ * @returns {Map} return the Map which is updated
+ */
 function insertAtIndex(insertIndex, key, value, ourMap){
   const convertArr = Array.from(ourMap);
   arr.splice(insertIndex, 0, [key, value]);
