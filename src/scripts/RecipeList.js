@@ -65,7 +65,7 @@ function searchRecipes () {
   console.log(myArr.length);
   // console.log(localStorage.length);
 
-  if (myArr.length === localStorage.length - 2) {
+  if (myArr.length === localStorage.length - 5) {
     alert('No recipes matching search found for ' + input);
     return;
   }
@@ -117,7 +117,7 @@ function getRecipesNotContainingKeyword (keyword) {
     // console.log(tags);
 
     // checks if input is NOT located in title, ingredients, or rest of tag array
-    if (!(tags[0].includes(input) || tags[1].includes(input) || tags.includes(input))) {
+    if (!(tags[0].includes(input)||tags[1].includes(input)||tags.includes(input))) {
       arr.push(id);
     }
   }
