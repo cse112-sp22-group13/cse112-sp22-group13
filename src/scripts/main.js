@@ -60,7 +60,7 @@ async function init () {
     const objSanat = {
       analyzedInstructions: [{ name: '', steps: [] }],
       title: 'Sanat',
-      summary : 'Sanat is 1 part hot cocoa by the fire, 2 parts earthy love, 3 parts long embrace after a hard day, 4 parts pile of puppies, a pinch of your cheek by grandma, and a dash of "go get em tiger". You will not regret this recipe!',
+      summary: 'Sanat is 1 part hot cocoa by the fire, 2 parts earthy love, 3 parts long embrace after a hard day, 4 parts pile of puppies, a pinch of your cheek by grandma, and a dash of "go get em tiger". You will not regret this recipe!',
       id: 1,
       image: 'https://avatars.githubusercontent.com/u/31770675?v=4',
       extendedIngredients: [{ original: 'naan bread' }, { original: 'spices' }, { original: 'hot dog' }],
@@ -93,20 +93,18 @@ async function init () {
 
     // FILLING LOCAL STORAGE
     // create a popular array to place into local storage
-    let popularArr = [];
+    const popularArr = [];
     // first set a place in local storage that will hold the hash table itself at key 0
     localStorage.setItem(0, JSON.stringify(Array.from(hashmap.entries())));
-    
+
     // extract json object and put into local storage
     for (const elem of thing.data) {
       localStorage.setItem(elem.id, JSON.stringify(elem));
 
       // fill popularArr
-      if(elem.spoonacularScore >= 30)
-      {
+      if (elem.spoonacularScore >= 30) {
         popularArr.push(elem.id);
       }
-
     }
     console.log('we are here');
 
@@ -124,21 +122,20 @@ async function init () {
       // initialze every id as false (not yet a favorite or deleted)
       favmap.set(elementIdArr[i], false);
       deletedMap.set(elementIdArr[i], false);
-      
     }
-    urlMap.set('2046', "none");
+    urlMap.set('2046', 'none');
     // store the fav and del maps in localstorage
     localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
     localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
     // store popular array
     localStorage.setItem(4, JSON.stringify(popularArr));
-        // store popular array to check ducpliated issue in add
+    // store popular array to check ducpliated issue in add
     localStorage.setItem(5, JSON.stringify(Array.from(urlMap.entries())));
 
     console.log('local storage has ', localStorage.length, ' elements');
-    alert("Local storage populated. You may now naviage freely.");
+    alert('Local storage populated. You may now naviage freely.');
   }
 
-  //fill popular recipes
+  // fill popular recipes
   fillPopular();
 }

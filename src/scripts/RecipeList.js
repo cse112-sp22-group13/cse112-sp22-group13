@@ -117,7 +117,7 @@ function getRecipesNotContainingKeyword (keyword) {
     // console.log(tags);
 
     // checks if input is NOT located in title, ingredients, or rest of tag array
-    if (!(tags[0].includes(input)||tags[1].includes(input)||tags.includes(input))) {
+    if (!(tags[0].includes(input) || tags[1].includes(input) || tags.includes(input))) {
       arr.push(id);
     }
   }
