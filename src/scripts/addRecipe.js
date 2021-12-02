@@ -114,7 +114,9 @@
        element.classList.add('deleted');
    }
    main.appendChild(element);
-  
+   
+   alert("Your new card is inserted~");
+
    // go to expand card view
    element.addEventListener('click', (e) => {
    window.location.href = '../recipe_expand/recipe_expand.html' + '#' + element.id;
@@ -130,16 +132,15 @@ function checkckDu(urll)
 {
   const delHash = new Map(JSON.parse(localStorage['3']));
   const urlHash = new Map(JSON.parse(localStorage['5']));
-  //if url is empty, means no url is added before, return false
-  if(!urlHash.has(urll)){
+  // if url is empty, means no url is added before, return false
+  if(!urlHash.has(urll)) {
     console.log("false");
     return false;
   }
-    //or url is not empty, deleteMap is true, meaning the added recipe has been deleted, return false
-  if(delHash.get(urlHash.get(urll)) == true){
+  // or url is not empty, deleteMap is true, meaning the added recipe has been deleted, return false
+  if(delHash.get(urlHash.get(urll)) == true) {
     console.log(urlHash.get(urll));
       return false;
   }
   return true;
-
 }
