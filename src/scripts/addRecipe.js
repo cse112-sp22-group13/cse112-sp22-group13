@@ -11,15 +11,10 @@ const APIKey = '85859c45fa7949ec8b915c61690f2ce1';
 
 const localStorage = window.localStorage;
 
-// promte user to enter data for add new recipe
+// prompt user to enter data for add new recipe
 const addBar = document.querySelector('.add-container');
 const inputHTML = document.querySelector('.add-bar');
 addBar.querySelector('button').addEventListener('click', addRecipe);
-
-window.addEventListener('DOMContentLoaded', init);
-async function init () {
-  bindEnterKeyforAdd();
-}
 
 /**
  * Normal extract that makes call to API to obtain json file from the
@@ -194,15 +189,4 @@ function insertAtIndex (insertIndex, key, value, ourMap) {
   const convertArr = Array.from(ourMap);
   convertArr.splice(insertIndex, 0, [key, value]);
   return new Map(convertArr);
-}
-
-/**
- * Set enter key to work for the add recipe bar
- */
- function bindEnterKeyforAdd () {
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') {
-      addRecipe();
-    }
-  });
 }
