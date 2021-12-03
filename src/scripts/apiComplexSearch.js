@@ -49,7 +49,7 @@ export class ComplexSearch {
      this.options.params.query = this.helpCalc(input);
    };
    /**
-    * Get the query parameter
+    * @return query parameter
     */
    get query () {
      return this.options.params.query;
@@ -62,7 +62,7 @@ export class ComplexSearch {
      this.options.params.number = input;
    };
    /**
-    * Get the number parameter
+    * @return the number parameter
     */
    get number () {
      return this.options.params.number;
@@ -75,13 +75,14 @@ export class ComplexSearch {
      this.options.params.offset = input;
    };
    /**
-    * Get the offset parameter
+    * @return offset parameter
     */
    get offset () {
      return this.options.params.offset;
    }
    /**
     * Use when assigning this.options.params.query to prepend a bread noun to force a bread search in this bread universe
+    * @return Newer breader query
     */
    helpCalc (input) {
      return (input.toLowerCase().indexOf(this.bread.substr(0, this.bread.length - 1)) >= 0)
