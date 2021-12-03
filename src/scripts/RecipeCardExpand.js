@@ -58,7 +58,7 @@ class RecipeCardExpand extends HTMLElement {
     // Recipe time label + class.
     const recipeExpandTimeLabel = document.createElement('div');
     recipeExpandTimeLabel.classList.add('recipe-time-label');
-    recipeExpandTimeLabel.innerText = 'Time: ' + searchForKey(recipeData, 'readyInMinutes') + " minutes";
+    recipeExpandTimeLabel.innerText = 'Time: ' + searchForKey(recipeData, 'readyInMinutes') + ' minutes';
 
     // Construct the servings/time container and append to recipe expand.
     recipeExpandServingsTimeContainer.appendChild(recipeExpandServingsLabel);

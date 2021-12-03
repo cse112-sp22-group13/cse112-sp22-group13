@@ -83,7 +83,7 @@ export function saveRecipe () {
 
   // Update HTML for Serving
   const recipeServingContainer = recipeExpandContainer.querySelector('.recipe-expand-servings-time-container');
-  recipeServingContainer.querySelector('.recipe-servings-label').innerText = 'Servings: ' +  servings;
+  recipeServingContainer.querySelector('.recipe-servings-label').innerText = 'Servings: ' + servings;
 
   // Update HTML for ingredients
   const ingredientContainer = recipeExpandContainer.querySelector('.recipe-expand-ingredients-container');
@@ -124,7 +124,7 @@ function updateRecipeServings (numServings) {
   const recipeExpandContainer = recipeExpandRoot.querySelector('.recipe-expand-grid-container');
   const recipeServingContainer = recipeExpandContainer.querySelector('.recipe-expand-servings-time-container');
   const currServings = recipeServingContainer.querySelector('.recipe-servings-label').innerText.substring(10);
-  //recipeServingContainer.querySelector('.recipe-servings-label').innerText = 'Servings: ' + numServings;
+  // recipeServingContainer.querySelector('.recipe-servings-label').innerText = 'Servings: ' + numServings;
 
   if (isNaN(numServings)) {
     alert('Your Serving Amount is Not a Number, Try Again');
