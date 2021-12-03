@@ -33,7 +33,7 @@ const fetchPromise = new Promise((resolve, reject) => {
       .then(response => response.text())
       .then(text => { thing.data = JSON.parse(text); resolve(); });
   } else {
-    console.log('local already populated');
+    reject('local already populated');
   }
 });
 
