@@ -13,6 +13,10 @@ class RecipeCard extends HTMLElement {
   }
 
   /**
+   * Takes in JSON object in string form and parses it to create a recipe card that
+   * will be populated in the recipe list page. The card will be clickable that will
+   * navigate you to its recipe expand page. Also places a fav heart and delete button for
+   * the user to interact with.
    * @param {String} data The string representation of our JSON object representing a recipe
    */
   set data (data) {

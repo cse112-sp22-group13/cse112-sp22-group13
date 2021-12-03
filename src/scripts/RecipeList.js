@@ -8,19 +8,21 @@ searchBar.addEventListener('click', searchRecipes);
 window.addEventListener('DOMContentLoaded', init);
 const localStorage = window.localStorage;
 
+/**
+ * Init automatically sets enter key bind to search bar and populates
+ * the page with recipe cards of every json file that was fetched into
+ * local storage.
+ */
 async function init () {
   bindEnterKey();
   createRecipeCards();
 }
 
 /**
- * **************************CREATERECIPECARDS FUNCTION************************** *
- * This function is called for you up above.                                      *
- * From within this function you can access the recipe data from the JSON         *
- * files with the recipeData Object above. Make sure you only display the         *
- * three recipes we give you, you'll use the bindShowMore() function to           *
- * show any others you've added when the user clicks on the "Show more" button.   *
- * ****************************************************************************** *
+ * CREATERECIPECARDS FUNCTION is called within init. From within this function you
+ * can access the recipe data from the JSON files with the recipeData Object above.
+ * Make sure you only display the three recipes we give you, you'll use the bindShowMore()
+ * function to show any others you've added when the user clicks on the "Show more" button.
  */
 function createRecipeCards () {
   const main = document.querySelector('main');
@@ -45,12 +47,11 @@ function createRecipeCards () {
 }
 
 /**
-   * **************************SEARCHRECIPES FUNCTION************************** *
-   * Connection between frontend and backend. When user clicks search button,   *
-   * search bar input will be pulled and passed to getRecipesContainingKeyword. *
-   * Then the array returned will populate cards on screen pertaining to input. *
-   * ************************************************************************** *
-   */
+ * SEARCHRECIPES functin is the connection between frontend and backend.
+ * When user clicks search button, search bar input will be pulled and passed to
+ * getRecipesContainingKeyword(). Then the array returned will populate cards on
+ * screen pertaining to input.
+ */
 function searchRecipes () {
   // take user input from the search bar
   const input = inputTxt.value;
@@ -80,10 +81,9 @@ function searchRecipes () {
 }
 
 /**
-   * ***************************RESETCARDS FUNCTION**************************** *
-   * Show all Recipe Cards                                                      *
-   * ************************************************************************** *
-   */
+ * resetCards function selects all cards and removes any hidden classes to
+ * show them for view again.
+ */
 function resetCards () {
   const recipeCards = document.querySelectorAll('recipe-card');
   recipeCards.forEach(function (card) {
@@ -92,13 +92,14 @@ function resetCards () {
 }
 
 /**
-   * *************GETRECIPESNOTCONTAININGKEYWORD FUNCTION************** *
-   * For grabbing an array of id' with all recipes that don't           *
-   * contain keyword inserted into the search bar. i.e. returning       *
-   * an array of all bread recipes that don't contain the word          *
-   * 'chocolate'                                                        *
-   * ****************************************************************** *
-   */
+ * GETRECIPESNOTCONTAININGKEYWORD function
+ * For grabbing an array of id' with all recipes that DON'T contain the
+ * search input user put into search bar. This will be used to set those
+ * recipes to 'hidden' so that only the recipes containing the word are
+ * in view on the recipe list.
+ * @param {String} keyword
+ * @returns {int[]} an array that holds id's of recipes
+ */
 function getRecipesNotContainingKeyword (keyword) {
   // couple base cases
   let input = keyword.toLowerCase();
@@ -125,11 +126,12 @@ function getRecipesNotContainingKeyword (keyword) {
 }
 
 /**
-   * *************************GETTAGS FUNCTION************************* *
-   * Function that will build an array containing title, ingredients,   *
-   * and tags for true booleans within the json file passed             *
-   * ****************************************************************** *
-   */
+ * getTags function will build an array containing title, ingredients,
+ * and tags for true booleans within the json file passed. These tags will be
+ * used to search through and compare user's search bar input to.
+ * @param {Object} jsonFile that will be used to extract tags
+ * @returns {String[]} an array of tags, consisting of the recipe title, ingredients, etc.
+ */
 function getTags (jsonFile) {
   const tagsArr = [];
   // title
@@ -149,10 +151,9 @@ function getTags (jsonFile) {
 }
 
 /**
-   * *************BINDENTERKEY FUNCTION************* *
-   * Set enter key works for search bar              *
-   * *********************************************** *
-   */
+ * bindEnterKey allows user to click 'enter' after they typed something
+ * into the search bar on the recipe list page.
+ */
 function bindEnterKey () {
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
