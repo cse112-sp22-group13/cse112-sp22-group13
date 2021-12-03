@@ -97,7 +97,8 @@ class RecipeCard extends HTMLElement {
     recipeOverview.appendChild(favorite);
 
 
-    // 1st column = img of recipe; attach to container
+    // Make another div to lock the delete button on the right side of the container 
+    // Create the delete button to remove recipes from list 
     const buttonGrid = document.createElement('div');
     buttonGrid.classList.add('delete-button');
     const deleteButton = document.createElement('button');
@@ -108,6 +109,14 @@ class RecipeCard extends HTMLElement {
       document.getElementById(parsed.id).classList.add('deleted');
       deleteRecipe(parsed.id);
     });
+    // attach title-buffer to buttonGrid to make sure the button is on the bottom
+    // and is locked there 
+    const titleBuffer = document.createElement('p');
+    titleBuffer.classList.add('title-buffer');
+    titleBuffer.innerText = '       ' +'\n\n\n\n\n'; 
+    buttonGrid.appendChild(titleBuffer); 
+
+
     buttonGrid.appendChild(deleteButton);
     recipeContainer.appendChild(buttonGrid);
 
@@ -160,12 +169,20 @@ class RecipeCard extends HTMLElement {
         height: 30px;
         width: 30px;  
     }
+
+    .title-buffer {
+      font-size: 3.8vw;
+      padding:0;
+      margin: 0.2rem 0;
+      font-weight: 600;
+      line-height:1.5;
+    }
+
     .deleteBtn {
       font-size: 1rem;
       font-weight: 900;
       color: whitesmoke;
-      position: relative;
-      margin-top: 200px; 
+      position: relative; 
       border-radius: 10px 10px 10px 10px;
       padding: 0.5rem 1rem 0.5rem 1rem;
       outline: none;
