@@ -1,3 +1,8 @@
+/** ADD RECIPE JAVASCRIPT FILE.
+ *  Takes input url from user and uploads a new json file, creating a recipe card
+ *  Functionallity also handles adding a duplicate url or adding the url again after it was previously deleted
+ */
+
 // should recieve a website url to be inputed
 const APIKey = '85859c45fa7949ec8b915c61690f2ce1';
 
@@ -10,6 +15,10 @@ const addBar = document.querySelector('.add-container');
 const inputHTML = document.querySelector('.add-bar');
 addBar.querySelector('button').addEventListener('click', addRecipe);
 
+/**
+ * Normal extract
+ * @param {string} input takes in url that user inserted into textarea
+ */
 async function extraction (input) {
   let data = {};
   console.log('using');
@@ -33,6 +42,11 @@ async function extraction (input) {
   });
   return data;
 }
+
+/**
+ * Forced extract
+ * @param {string} input 
+ */
 async function forceExtraction (input) {
   let data = {};
   console.log('using');
@@ -57,7 +71,9 @@ async function forceExtraction (input) {
 }
 
 /**
- * add Recipe to recipe_list.html, update localStorage
+ * ADDRECIPE function will take url input by user, check if it's a duplicate, and then extract the json
+ * from the website. Will then insert into local storage and all the hash maps, and then 
+ * create the recipe card.
  */
 async function addRecipe () {
   const inputData = inputHTML.value;

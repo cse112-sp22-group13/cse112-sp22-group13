@@ -1,3 +1,9 @@
+/**
+ * COOKVIEW JAVASCRIPT FILE (WITH SOME EMBEDDED CSS)
+ * Feature allows user to click on a 'cookview' button on the recipe expand page
+ * where they will have simpler looking, easy click-through steps provided.
+ */
+
 /* eslint-disable spaced-comment */
 import { searchForKey, getInstructionSteps } from './searchKey.js';
 // this const contains the css for our webpage
@@ -73,14 +79,17 @@ class CookView extends HTMLElement {
   }
 
   /**
-   *  @return {*} The HTML structure of recipe expand
+   * Return data which is in the shadow root
+   *  @return {Object} The HTML structure of recipe expand
    */
   get data () {
     return this.shadowRoot;
   }
 
   /**
-   *  @param {String} data The data to turn into JSOn and parse.
+   * A SET DATA function that gets the data, parses instructions, and sets the html elements to show
+   * every instruction as separate steps.
+   *  @param {String} data The data to turn into JSON and parse.
    */
   set data (data) {
     // parse the data from localstorage to get a JSON objectt

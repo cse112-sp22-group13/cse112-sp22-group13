@@ -1,7 +1,7 @@
 // put "import { ComplexSearch } from './apiComplexSearch.js';" in main.js without quotes
 /**
+ * 
  * @param {string} input
- *
  */
 export class ComplexSearch {
    static tBread = {

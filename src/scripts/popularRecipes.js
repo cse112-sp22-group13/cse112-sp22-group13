@@ -1,5 +1,10 @@
-// will run function every time homepage is clicked on
-
+/**
+ * FILLPOPULAR will be called right when homepage is clicked on and localstorage is filled.
+ * It will access the popular array that main had initialized with the top rate recipes
+ * and shuffle it (so that there are different recommendations every page refresh. Then it
+ * will choose 3 and places their images and titles for view on homepage. When they are
+ * clicked on, will take you to recipe expand page.
+ */
 export function fillPopular() {
 
   // get popular array of popular id's

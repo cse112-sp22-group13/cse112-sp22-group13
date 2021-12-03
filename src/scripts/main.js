@@ -1,13 +1,12 @@
 /**
- * ******************************MAIN.JS FILE****************************** *
- * Location of init function where backend fetches the recipes from the API *
- * and stores the json files into local storage. Local storage will contain *
- * a hashmap that maps a recipe title to a key, and the key will map to the *
- * respective json file. Functions searchTitle, searchForKey, and           *
- * getRecipesContainingKeyword will fetch recipes from search bar input.    *
- * Lastly, backend functionallity allows frontend to populate the cards and *
- * single recipe pages.                                                     *
- * ************************************************************************ *
+ * MAIN.JS FILE
+ * Location of init function where backend fetches the recipes from the API
+ * and stores the json files into local storage. Local storage will contain
+ * a hashmap that maps a recipe title to a key, and the key will map to the
+ * respective json file. Functions searchTitle, searchForKey, and
+ * getRecipesContainingKeyword will fetch recipes from search bar input.
+ * Lastly, backend functionallity allows frontend to populate the cards and
+ * single recipe pages.
  */
 
 import { ComplexSearch } from './apiComplexSearch.js';
@@ -22,11 +21,13 @@ window.addEventListener('DOMContentLoaded', init);
 const localStorage = window.localStorage;
 
 /**
-  * **********************INITIALIZE FUNCTION********************** *
-  * Recipes will be fetched as soon as website is booted up, and    *
-  * local storage is filled.                                        *
-  * *************************************************************** *
-  */
+ * INITIALIZE FUNCTION where recipes will be fetches as soon as website is booted up.
+ * Will send out a request to api to fetch 0-100 recipes and then populate local storage
+ * to hold all recipe id's as keys and their json files as the values. Will also
+ * create a hashmap to map titles to id's, favmap and del map to map id's to booleans,
+ * a popular array to hold top rated recipes for homepage view, and lastly a urlmap
+ * that that holds url as key and id as a value to keep track of duplicated added recipes.
+ */
 async function init () {
   // initializeServiceWorker(); will eventually implement
 
