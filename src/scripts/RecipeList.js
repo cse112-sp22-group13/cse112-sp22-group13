@@ -165,7 +165,8 @@ function getTags (jsonFile) {
 
 /**
  * bindEnterKey allows user to click 'enter' after they typed something
- * into the search bar on the recipe list page.
+ * into the search bar or add bar on the recipe list page.
+ * Checks the active bar on the page first to call the appropriate funciton.
  */
 function bindEnterKey () {
   document.addEventListener('keydown', function (event) {
