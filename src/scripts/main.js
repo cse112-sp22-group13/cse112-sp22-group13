@@ -161,4 +161,18 @@ async function init () {
 
   // fill popular recipes
   fillPopular();
+
+  // Bind the enter key on main
+  bindEnterOnMain();
+}
+
+function bindEnterOnMain() {
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      let element = document.activeElement;
+      if (element.className === 'search-bar') {
+        window.location.href = '../recipe_list/recipe_list.html';
+      }
+    }
+  });
 }

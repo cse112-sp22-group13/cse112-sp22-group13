@@ -9,6 +9,13 @@ searchBar.addEventListener('click', searchRecipes);
 window.addEventListener('DOMContentLoaded', init);
 const localStorage = window.localStorage;
 
+// Control flow for enterring recipe list from home page.
+if (document.referrer == window.location.origin + '/src/home/home.html') {
+  console.log(document.referrer);
+  console.log(window.location);
+  console.log('omg it works');
+}
+
 /**
  * Init automatically sets enter key bind to search bar and populates
  * the page with recipe cards of every json file that was fetched into
@@ -116,7 +123,6 @@ function getRecipesNotContainingKeyword (keyword) {
   for (const id of elementIdArr) {
     const jsonFile = JSON.parse(localStorage.getItem(id));
     const tags = getTags(jsonFile);
-    // console.log(tags);
 
     // checks if input is NOT located in title, ingredients, or rest of tag array
     if (!(tags[0].includes(input) || tags[1].includes(input) || tags.includes(input))) {
