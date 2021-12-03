@@ -190,14 +190,3 @@ function insertAtIndex (insertIndex, key, value, ourMap) {
   convertArr.splice(insertIndex, 0, [key, value]);
   return new Map(convertArr);
 }
-
-/**
- * Set enter key to work for the add recipe bar
- */
- function bindEnterKeyforAdd () {
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') {
-      addRecipe();
-    }
-  });
-}
