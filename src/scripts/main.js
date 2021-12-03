@@ -64,6 +64,7 @@ async function init () {
       hashmap.set(elem.title, elem.id);
       idString = idString + elem.id + ',';
     } */
+
     // SANAT
     const objSanat = {
       analyzedInstructions: [{ name: '', steps: [{ equipment: [], ingredients: [], number: 1, step: '' }] }],
@@ -85,13 +86,14 @@ async function init () {
 
     // console.log(JSON.stringify(Array.from(hashmap.entries())));
     // console.log(search.data.results);
+
     // OLD FETCH
     /*
     const bulkOptions = {
       method: 'GET',
       url: 'https://api.spoonacular.com/recipes/informationBulk',
       params: {
-        ids: 'idString',
+        ids: idString,
         includeNutrition: false,
         apiKey: API_KEY
       }
