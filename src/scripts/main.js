@@ -48,8 +48,6 @@ const fetchPromise = new Promise((resolve, reject) => {
 async function init () {
   // initializeServiceWorker(); will eventually implement; or not
   if (localStorage.length === 0) {
-    // magic time
-    await fetchPromise;
     /* const thing = { data: {} }; // structured like this so it is polymorphic with old fetch
     await fetch('../why.txt', {
       method: 'GET',
@@ -121,6 +119,11 @@ async function init () {
     const thing = new GenericFetch(bulkOptions);
     await GenericFetch.fGenericFetch(thing);
     */
+
+    /* MAGIC FETCH MOMENT  */
+    await fetchPromise;
+    /* MAGIC FETCH MOMENT  */
+
     for (const elem of thing.data) {
       hashmap.set(elem.title, elem.id);
     }
