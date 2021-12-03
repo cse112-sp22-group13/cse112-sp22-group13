@@ -16,10 +16,10 @@ const addBar = document.querySelector('.add-container');
 const inputHTML = document.querySelector('.add-bar');
 addBar.querySelector('button').addEventListener('click', addRecipe);
 
-/**
- * Normal extract
- * @param {string} input takes in url that user inserted into textarea
- */
+window.addEventListener('DOMContentLoaded', init);
+async function init (){
+  bindEnterKeyforAdd();
+}
 async function extraction (input) {
   let data = {};
   console.log('using');
@@ -128,6 +128,7 @@ async function addRecipe () {
   // set values in maps for newly added card
   // set the new item at index 0 of hashMap to let new card always go to top
   hashMap = insertAtIndex(0, recipetoHash.title, validID, hashMap);
+  //hashMap.set(recipetoHash.title,validID);
   favMap.set(validID, false);
   delMap.set(validID, false);
   urlMap.set(recipetoHash.sourceUrl, validID); // urlmap's value is for store id to check for dulipated.
@@ -185,6 +186,20 @@ function checkDup (url) {
  */
 function insertAtIndex(insertIndex, key, value, ourMap){
   const convertArr = Array.from(ourMap);
-  arr.splice(insertIndex, 0, [key, value]);
+  convertArr.splice(insertIndex, 0, [key, value]);
   return new Map(convertArr);
+}
+
+
+/**
+   * *************BINDENTERKEY FUNCTION************* *
+   * Set enter key works for search bar              *
+   * *********************************************** *
+   */
+ function bindEnterKeyforAdd () {
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      addRecipe();
+    }
+  });
 }
