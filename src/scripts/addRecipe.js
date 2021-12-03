@@ -16,11 +16,6 @@ const addBar = document.querySelector('.add-container');
 const inputHTML = document.querySelector('.add-bar');
 addBar.querySelector('button').addEventListener('click', addRecipe);
 
-window.addEventListener('DOMContentLoaded', init);
-async function init () {
-  bindEnterKeyforAdd();
-}
-
 /**
  * Normal extract that makes call to API to obtain json file from the
  * url the user inserted.
