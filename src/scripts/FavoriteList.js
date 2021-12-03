@@ -1,12 +1,11 @@
 // import { searchForKey } from './searchKey.js';
 
-// SEARCH BAR BUTTON
-// const searchBar = document.querySelector('button');
-// const inputTxt = document.querySelector('.search-bar');
-// searchBar.addEventListener('click', searchRecipes);
-
 window.addEventListener('DOMContentLoaded', init);
 const localStorage = window.localStorage;
+
+/**
+ * Init function that automacially creates cards list when favorites page is clicked on.
+ */
 
 async function init () {
   console.log('here in favs page now');
@@ -14,13 +13,11 @@ async function init () {
 }
 
 /**
- * **************************CREATEFAVCARDS FUNCTION************************** *
- * This function is called for you up above.                                      *
- * From within this function you can access the recipe data from the JSON         *
- * files with the recipeData Object above. Make sure you only display the         *
- * three recipes we give you, you'll use the bindShowMore() function to           *
- * show any others you've added when the user clicks on the "Show more" button.   *
- * ****************************************************************************** *
+ * CREATEFAVCARDS function is called for you up above.
+ * From within this function you can access the recipe data from the JSON
+ * files with the recipeData Object above. Make sure you only display the
+ * three recipes we give you, you'll use the bindShowMore() function to
+ * show any others you've added when the user clicks on the "Show more" button.
  */
 function createFavCards () {
   const main = document.querySelector('main');
