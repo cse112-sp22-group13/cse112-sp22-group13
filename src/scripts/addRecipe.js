@@ -83,7 +83,7 @@ async function forceExtraction (input) {
  * from the website. Will then insert into local storage and all the hash maps, and then
  * create the recipe card that will be viewable at the top of the recipe list.
  */
-async function addRecipe () {
+export async function addRecipe () {
   const inputData = inputHTML.value;
 
   // grab maps from localStorage for insertion and replacement

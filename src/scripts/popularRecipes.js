@@ -29,6 +29,9 @@ export function fillPopular () {
     const title = divArr[i].querySelector('.recipe-name');
     img.src = jsonFile.image;
     title.innerText = jsonFile.title;
+    title.addEventListener('click', (e) => {
+      window.location.href = '../recipe_expand/recipe_expand.html' + '#' + popularArr[i];
+    });
     img.addEventListener('click', (e) => {
       window.location.href = '../recipe_expand/recipe_expand.html' + '#' + popularArr[i];
     });
