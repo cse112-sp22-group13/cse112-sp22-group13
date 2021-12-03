@@ -19,9 +19,9 @@ async function init () {
 }
 
 /**
- * CREATERECIPECARDS FUNCTION is called within init. From within this function you 
- * can access the recipe data from the JSON files with the recipeData Object above. 
- * Make sure you only display the three recipes we give you, you'll use the bindShowMore() 
+ * CREATERECIPECARDS FUNCTION is called within init. From within this function you
+ * can access the recipe data from the JSON files with the recipeData Object above.
+ * Make sure you only display the three recipes we give you, you'll use the bindShowMore()
  * function to show any others you've added when the user clicks on the "Show more" button.
  */
 function createRecipeCards () {
@@ -47,9 +47,9 @@ function createRecipeCards () {
 }
 
 /**
- * SEARCHRECIPES functin is the connection between frontend and backend. 
- * When user clicks search button, search bar input will be pulled and passed to 
- * getRecipesContainingKeyword(). Then the array returned will populate cards on 
+ * SEARCHRECIPES functin is the connection between frontend and backend.
+ * When user clicks search button, search bar input will be pulled and passed to
+ * getRecipesContainingKeyword(). Then the array returned will populate cards on
  * screen pertaining to input.
  */
 function searchRecipes () {
@@ -97,7 +97,7 @@ function resetCards () {
  * search input user put into search bar. This will be used to set those
  * recipes to 'hidden' so that only the recipes containing the word are
  * in view on the recipe list.
- * @param {String} keyword 
+ * @param {String} keyword
  * @returns {int[]} an array that holds id's of recipes
  */
 function getRecipesNotContainingKeyword (keyword) {

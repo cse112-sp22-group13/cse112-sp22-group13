@@ -17,9 +17,9 @@ async function init () {
 }
 
 /**
- * CREATERECIPEEXPAND function grabs the #id url fragment that was appended when 
- * we clicked on a recipe card and creates the html structure of the recipe expand 
- * page by passing in the data string from localStorage into a custom 
+ * CREATERECIPEEXPAND function grabs the #id url fragment that was appended when
+ * we clicked on a recipe card and creates the html structure of the recipe expand
+ * page by passing in the data string from localStorage into a custom
  * recipe-card-expand-container. See recipeCardExpand.js for how this data is parsed.
  */
 function createRecipeExpand () {
@@ -31,7 +31,7 @@ function createRecipeExpand () {
 }
 
 /**
- * Export editRecipe function called when edit button is clicked in recipe-expand.html. 
+ * Export editRecipe function called when edit button is clicked in recipe-expand.html.
  * Hides the edit button and sets the input form and submit button to be viewable.
  */
 export function editRecipe () {
@@ -54,8 +54,8 @@ export function editRecipe () {
 }
 
 /**
- * Export saveRecipe alled when submit button is clicked in recipe-expand.html. 
- * Grabs the new serving amount and scales ingredients accordingly. Writes back 
+ * Export saveRecipe alled when submit button is clicked in recipe-expand.html.
+ * Grabs the new serving amount and scales ingredients accordingly. Writes back
  * changes to local storage. Hides submit button and input form, shows edit button again.
  */
 export function saveRecipe () {
@@ -79,7 +79,7 @@ export function saveRecipe () {
 
   // Update HTML for Serving
   const recipeServingContainer = recipeExpandContainer.querySelector('.recipe-expand-servings-time-container');
-  recipeServingContainer.querySelector('.recipe-servings').innerText = servings;
+  recipeServingContainer.querySelector('.recipe-servings-label').innerText = 'Servings: ' + servings;
 
   // Update HTML for ingredients
   const ingredientContainer = recipeExpandContainer.querySelector('.recipe-expand-ingredients-container');
@@ -118,8 +118,8 @@ function updateRecipeServings (numServings) {
   const recipeExpandRoot = document.querySelector('recipe-card-expand-container').data;
   const recipeExpandContainer = recipeExpandRoot.querySelector('.recipe-expand-grid-container');
   const recipeServingContainer = recipeExpandContainer.querySelector('.recipe-expand-servings-time-container');
-  const currServings = recipeServingContainer.querySelector('.recipe-servings').innerText;
-  recipeServingContainer.querySelector('.recipe-servings').innerText = numServings;
+  const currServings = recipeServingContainer.querySelector('.recipe-servings-label').innerText.substring(10);
+  // recipeServingContainer.querySelector('.recipe-servings-label').innerText = 'Servings: ' + numServings;
 
   if (isNaN(numServings)) {
     alert('Your Serving Amount is Not a Number, Try Again');

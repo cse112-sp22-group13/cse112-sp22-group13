@@ -17,7 +17,7 @@ const inputHTML = document.querySelector('.add-bar');
 addBar.querySelector('button').addEventListener('click', addRecipe);
 
 window.addEventListener('DOMContentLoaded', init);
-async function init (){
+async function init () {
   bindEnterKeyforAdd();
 }
 
@@ -80,7 +80,7 @@ async function forceExtraction (input) {
 
 /**
  * ADDRECIPE function will take url input by user, check if it's a duplicate, and then extract the json
- * from the website. Will then insert into local storage and all the hash maps, and then 
+ * from the website. Will then insert into local storage and all the hash maps, and then
  * create the recipe card that will be viewable at the top of the recipe list.
  */
 async function addRecipe () {
@@ -95,7 +95,6 @@ async function addRecipe () {
   // BASE CASES PRIOR TO CONTINUING TO ALTER LOCAL STORAGE:
   // add recipe only if not duplicated
   if (checkDup(inputData)) {
-
     // returned true for duplicate, so now check if it was marked true in the delmap
     const id = urlMap.get(inputData);
     if (delMap.get(id) === true) {
@@ -107,7 +106,7 @@ async function addRecipe () {
       // now unhide the card
       document.getElementById(id).classList.remove('deleted');
       return;
-    } 
+    }
 
     // if it wasn't in delmap, it's a duplicate add
     alert('Duplicated recipe.');
@@ -139,7 +138,7 @@ async function addRecipe () {
   favMap.set(validID, false);
   delMap.set(validID, false);
   urlMap.set(recipetoHash.sourceUrl, validID); // urlmap's value is for store id to check for dulipated.
-  
+
   // also edit the inner ID of json file
   recipetoHash.id = validID;
   const recipeData = JSON.stringify(recipetoHash);
@@ -191,7 +190,7 @@ function checkDup (url) {
  * @param {int} value url which comes from user input
  * @returns {Map} return the Map which is updated
  */
-function insertAtIndex(insertIndex, key, value, ourMap){
+function insertAtIndex (insertIndex, key, value, ourMap) {
   const convertArr = Array.from(ourMap);
   convertArr.splice(insertIndex, 0, [key, value]);
   return new Map(convertArr);

@@ -15,9 +15,9 @@ async function init () {
 }
 
 /**
- * CREATECOOKVIEW functionGrabs the #id url fragment that was appended when we clicked 
+ * CREATECOOKVIEW functionGrabs the #id url fragment that was appended when we clicked
  * on a recipe card and creates the html structure of the cook view page by passing in the
- * data string from localStorage into a custom recipe-card-expand-container. See 
+ * data string from localStorage into a custom recipe-card-expand-container. See
  * recipeCardExpand.js for how this data is parsed.
  */
 function createCookView () {

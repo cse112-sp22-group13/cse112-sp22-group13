@@ -1,7 +1,7 @@
 /**
  * MARKFAV function sets recipe's id location in favmap as true, and then
  * replaces the favmap in local storage.
- * @param {int} id 
+ * @param {int} id
  */
 export function markFav (id) {
   // get hash table
@@ -14,7 +14,7 @@ export function markFav (id) {
 /**
  * UNFAV function sets recipe's id location in favmap as false and replaces
  * the favmap into local storage again.
- * @param {int} id 
+ * @param {int} id
  */
 export function unFav (id) {
   // get hash table

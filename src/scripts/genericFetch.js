@@ -10,7 +10,7 @@ export class GenericFetch {
     this.options = input;
     this.data = {};
   }
-  
+
   /**
    * Async function will request data from api, if there is an error it will
    * be caught and console log the error.
