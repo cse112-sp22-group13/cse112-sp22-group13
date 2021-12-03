@@ -1,7 +1,7 @@
 // put "import { ComplexSearch } from './apiComplexSearch.js';" in main.js without quotes
 /**
  * Object to perform make axios fetch for recipe information (images, ids).
- * @param {string} input Options object holding parameters for fetch call
+ * @param {String} input Options object holding parameters for fetch call
  *
  */
 export class ComplexSearch {
@@ -91,7 +91,7 @@ export class ComplexSearch {
    };
    /**
     * Loads recipes in data field of complexSearch_c object
-    * @param {*} object complexSearch_c object
+    * @param {Object} object complexSearch_c object
     */
    static async fComplexSearch (input) {
      await axios.request(input.options).then(function (response) {

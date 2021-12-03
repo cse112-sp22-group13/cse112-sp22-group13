@@ -8,15 +8,15 @@ class RecipeCardExpand extends HTMLElement {
   }
 
   /**
-     *  @return {*} The HTML structure of recipe expand
-     */
+   * @return {Object} The HTML structure of recipe expand
+   */
   get data () {
     return this.shadowRoot;
   }
 
   /**
-     *  @param {String} data The data to turn into JSOn and parse.
-     */
+   * @param {String} data The data to turn into JSOn and parse.
+   */
   set data (data) {
     const recipeData = JSON.parse(data);
     console.log(recipeData);

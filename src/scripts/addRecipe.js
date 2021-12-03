@@ -17,7 +17,8 @@ const inputHTML = document.querySelector('.add-bar');
 addBar.querySelector('button').addEventListener('click', addRecipe);
 
 /**
- * Normal extract
+ * Normal extract that makes call to API to obtain json file from the
+ * url the user inserted.
  * @param {string} input takes in url that user inserted into textarea
  */
 async function extraction (input) {
@@ -45,8 +46,9 @@ async function extraction (input) {
 }
 
 /**
- * Forced extract
- * @param {string} input 
+ * Forced extract that makes call to API to obtain json file from the
+ * url the user inserted.
+ * @param {string} input takes in url that user inserted into textarea
  */
 async function forceExtraction (input) {
   let data = {};
@@ -74,7 +76,7 @@ async function forceExtraction (input) {
 /**
  * ADDRECIPE function will take url input by user, check if it's a duplicate, and then extract the json
  * from the website. Will then insert into local storage and all the hash maps, and then 
- * create the recipe card.
+ * create the recipe card that will be viewable at the top of the recipe list.
  */
 async function addRecipe () {
   const inputData = inputHTML.value;
@@ -178,9 +180,9 @@ function checkDup (url) {
 
 /**
  * Use array.splice function to insert item at certain index to map
- * @param {Int} insertIndex url which comes from user input
+ * @param {int} insertIndex url which comes from user input
  *  @param {String} key url which comes from user input
- * @param {Int} value url which comes from user input
+ * @param {int} value url which comes from user input
  * @returns {Map} return the Map which is updated
  */
 function insertAtIndex(insertIndex, key, value, ourMap){
