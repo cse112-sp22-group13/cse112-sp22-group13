@@ -4,6 +4,7 @@
  */
 
 // should recieve a website url to be inputed
+import { GenericFetch } from './genericFetch.js';
 const APIKey = '85859c45fa7949ec8b915c61690f2ce1';
 
 // test url
@@ -21,28 +22,27 @@ addBar.querySelector('button').addEventListener('click', addRecipe);
  * url the user inserted.
  * @param {string} input takes in url that user inserted into textarea
  */
-async function extraction (input, force = false) {
-  let data = {};
-  console.log('Attempting add, force: ' + force);
+async function extraction (input) {
+  console.log('Attempting add');
   const format = {
     method: 'GET',
     url: 'https://api.spoonacular.com/recipes/extract',
     params: {
       url: input,
-      forceExtraction: force,
+      forceExtraction: false,
       analyze: false,
       includeNutrition: false,
       includeTaste: false,
       apiKey: APIKey
     }
   };
-  await axios.request(format).then(function (response) {
-    data = response.data;
-  }).catch(function (error) {
-    if (force === false) data = extraction(input, true);
-    else console.log(error);
-  });
-  return data;
+  const obj = new GenericFetch(format);
+  await GenericFetch.fGenericFetch(obj);
+  if (obj.data === null) {
+    obj.options.forceExtraction = true;
+    await GenericFetch.fGenericFetch(obj);
+  }
+  return obj.data;
 }
 
 /**
