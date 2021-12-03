@@ -1,7 +1,7 @@
 # SPA VS MULTIPAGE
 
 * Status: Resolved
-* Deciders: Scott, Alanna, Bryan, and Andy
+* Deciders: Scott, Alanna, Bryan, Ryan, and Andy
 * Date: 12/02/2021 
 
 ## Context and Problem Statement
