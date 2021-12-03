@@ -17,7 +17,22 @@ import { fillPopular } from './popularRecipes.js';
 // const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
 // LOCAL STORAGE
 const localStorage = window.localStorage;
-
+// SANAT
+const objSanat = {
+  analyzedInstructions: [{ name: '', steps: [{ equipment: [], ingredients: [], number: 1, step: '' }] }],
+  servings: '\u221E',
+  title: 'Sanat',
+  summary: 'Sanat is 1 part hot cocoa by the fire, 2 parts earthy love, 3 parts long embrace after a hard day, 4 parts pile of puppies, a pinch of your cheek by grandma, and a dash of "go get em tiger". You will not regret this recipe!',
+  id: 1,
+  image: 'https://avatars.githubusercontent.com/u/31770675?v=4',
+  extendedIngredients: [{ amount: 1, unit: '', originalName: 'naan bread' }, { amount: 1, unit: '', originalName: 'spices' }, { amount: 1, unit: '', originalName: 'hot dog' }],
+  cheap: true,
+  dairyFree: false,
+  glutenFree: false,
+  vegan: false,
+  vegetarian: false,
+  healthy: false
+};
 window.addEventListener('DOMContentLoaded', init);
 
 /**
@@ -65,23 +80,6 @@ async function init () {
       hashmap.set(elem.title, elem.id);
       idString = idString + elem.id + ',';
     } */
-
-    // SANAT
-    const objSanat = {
-      analyzedInstructions: [{ name: '', steps: [{ equipment: [], ingredients: [], number: 1, step: '' }] }],
-      servings: '\u221E',
-      title: 'Sanat',
-      summary: 'Sanat is 1 part hot cocoa by the fire, 2 parts earthy love, 3 parts long embrace after a hard day, 4 parts pile of puppies, a pinch of your cheek by grandma, and a dash of "go get em tiger". You will not regret this recipe!',
-      id: 1,
-      image: 'https://avatars.githubusercontent.com/u/31770675?v=4',
-      extendedIngredients: [{ amount: 1, unit: '', originalName: 'naan bread' }, { amount: 1, unit: '', originalName: 'spices' }, { amount: 1, unit: '', originalName: 'hot dog' }],
-      cheap: true,
-      dairyFree: false,
-      glutenFree: false,
-      vegan: false,
-      vegetarian: false,
-      healthy: false
-    };
 
     // console.log(JSON.stringify(Array.from(hashmap.entries())));
     // console.log(search.data.results);
