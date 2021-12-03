@@ -9,6 +9,13 @@ searchBar.addEventListener('click', searchRecipes);
 window.addEventListener('DOMContentLoaded', init);
 const localStorage = window.localStorage;
 
+// Control flow for enterring recipe list from home page.
+if (document.referrer == window.location.origin + '/src/home/home.html') {
+  console.log(document.referrer);
+  console.log(window.location);
+  console.log('omg it works');
+}
+
 /**
  * Init automatically sets enter key bind to search bar and populates
  * the page with recipe cards of every json file that was fetched into
@@ -48,7 +55,7 @@ function createRecipeCards () {
 }
 
 /**
- * SEARCHRECIPES functin is the connection between frontend and backend.
+ * SEARCHRECIPES function is the connection between frontend and backend.
  * When user clicks search button, search bar input will be pulled and passed to
  * getRecipesContainingKeyword(). Then the array returned will populate cards on
  * screen pertaining to input.
@@ -104,8 +111,13 @@ function resetCards () {
 function getRecipesNotContainingKeyword (keyword) {
   // couple base cases
   let input = keyword.toLowerCase();
-  if (keyword === 'dairy free') { input = 'dairyfree'; }
-  if (keyword === 'gluten free') { input = 'glutenfree'; }
+
+  if( keyword === 'dairy free' || keyword === 'gluten free')
+  {
+    console.log(input);
+    input = input.replace(/\s/g, '');
+    console.log(input);
+  }
 
   const arr = [];
   // get hash table
@@ -114,7 +126,6 @@ function getRecipesNotContainingKeyword (keyword) {
   hashes.forEach(h => {
     const jsonFile = JSON.parse(localStorage.getItem(h[1]));
     const tags = getTags(jsonFile);
-    // console.log(tags);
 
     // checks if input is NOT located in title, ingredients, or rest of tag array
     if (!(tags[0].includes(input) || tags[1].includes(input) || tags.includes(input))) {
@@ -139,13 +150,24 @@ function getTags (jsonFile) {
   // ingredients
   tagsArr.push(JSON.stringify(searchForKey(jsonFile, 'extendedIngredients')).toLowerCase());
 
+  // if (searchForKey(jsonFile, 'cheap')) { tagsArr.push('cheap'); }
+  // if (searchForKey(jsonFile, 'dairyFree')) { tagsArr.push('dairyfree'); }
+  // if (searchForKey(jsonFile, 'glutenFree')) { tagsArr.push('glutenfree'); }
+  // if (searchForKey(jsonFile, 'vegan')) { tagsArr.push('vegan'); }
+  // if (searchForKey(jsonFile, 'vegetarian')) { tagsArr.push('vegetarian'); }
+  // if (searchForKey(jsonFile, 'veryHealthy')) { tagsArr.push('healthy'); }
+
   // booleans
-  if (searchForKey(jsonFile, 'cheap')) { tagsArr.push('cheap'); }
-  if (searchForKey(jsonFile, 'dairyFree')) { tagsArr.push('dairyfree'); }
-  if (searchForKey(jsonFile, 'glutenFree')) { tagsArr.push('glutenfree'); }
-  if (searchForKey(jsonFile, 'vegan')) { tagsArr.push('vegan'); }
-  if (searchForKey(jsonFile, 'vegetarian')) { tagsArr.push('vegetarian'); }
-  if (searchForKey(jsonFile, 'veryHealthy')) { tagsArr.push('healthy'); }
+  const climateChange = ['cheap', 'dairyFree', 'glutenFree', 'vegan', 'vegetarian'];
+  for (const elem of climateChange) {
+    if (searchForKey(jsonFile, elem)) { 
+      tagsArr.push(elem.toLowerCase()); 
+    }
+  }
+
+  if (searchForKey(jsonFile, 'veryHealthy')) {
+    tagsArr.push('healthy'); 
+  }
 
   return tagsArr;
 }
@@ -167,3 +189,6 @@ function bindEnterKey () {
     }
   });
 }
+
+
+

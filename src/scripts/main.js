@@ -82,8 +82,6 @@ async function init () {
       vegetarian: false,
       healthy: false
     };
-    hashmap.set(objSanat.title, 1);
-    localStorage.setItem(1, JSON.stringify(objSanat));
 
     // console.log(JSON.stringify(Array.from(hashmap.entries())));
     // console.log(search.data.results);
@@ -106,11 +104,15 @@ async function init () {
       hashmap.set(elem.title, elem.id);
     }
 
+    // put in sanat last
+    hashmap.set(objSanat.title, 1);
+
     // FILLING LOCAL STORAGE
     // create a popular array to place into local storage
     const popularArr = [];
     // first set a place in local storage that will hold the hash table itself at key 0
     localStorage.setItem(0, JSON.stringify(Array.from(hashmap.entries())));
+    localStorage.setItem(1, JSON.stringify(objSanat));
 
     // TIME TO STORE JSONS INTO LOCAL STORAGE :)
     for (const elem of thing.data) {
@@ -146,7 +148,7 @@ async function init () {
 
     hashes.forEach(h => { favmap.set(h[1], false); deletedMap.set(h[1], false); });
 
-    urlMap.set('2046', 'none');
+    // urlMap.set('2046', 'none');
     // store the fav map into local
     localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
     // store the del map into local
@@ -162,4 +164,18 @@ async function init () {
 
   // fill popular recipes
   fillPopular();
+
+  // Bind the enter key on main
+  bindEnterOnMain();
+}
+
+function bindEnterOnMain () {
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      const element = document.activeElement;
+      if (element.className === 'search-bar') {
+        window.location.href = '../recipe_list/recipe_list.html';
+      }
+    }
+  });
 }
