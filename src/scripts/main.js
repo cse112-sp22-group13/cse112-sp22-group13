@@ -16,21 +16,26 @@ import { searchForKey } from './searchKey.js';
 
 // Backend devs will switch up using their own spoonacular key for fetching
 // const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
-const thing = { data: {} };
-const fetchPromise = new Promise((resolve, reject) => {
-  fetch('../why.txt', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'text/plain',
-      'Content-Encoding': 'gzip'
-    }
-  })
-    .then(response => response.text())
-    .then(text => { thing.data = JSON.parse(text); resolve(); });
-});
 window.addEventListener('DOMContentLoaded', init);
 // LOCAL STORAGE
 const localStorage = window.localStorage;
+
+const thing = { data: {} };
+const fetchPromise = new Promise((resolve, reject) => {
+  if (localStorage.length === 0) {
+    fetch('../why.txt', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'text/plain',
+        'Content-Encoding': 'gzip'
+      }
+    })
+      .then(response => response.text())
+      .then(text => { thing.data = JSON.parse(text); resolve(); });
+  } else {
+    console.log('local already populated');
+  }
+});
 
 /**
  * INITIALIZE FUNCTION where recipes will be fetches as soon as website is booted up.
@@ -45,7 +50,6 @@ async function init () {
   if (localStorage.length === 0) {
     // magic time
     await fetchPromise;
-
     /* const thing = { data: {} }; // structured like this so it is polymorphic with old fetch
     await fetch('../why.txt', {
       method: 'GET',
