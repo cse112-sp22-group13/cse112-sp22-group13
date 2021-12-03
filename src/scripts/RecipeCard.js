@@ -153,7 +153,7 @@ class RecipeCard extends HTMLElement {
     .recipe-favorite {
         padding: 0.3rem 0 0.3rem 0;
         height: 30px;
-        width: 30px; 
+        width: 30px;  
     }
     .deleteBtn {
       font-size: 1rem;
