@@ -1,6 +1,6 @@
 import { searchForKey } from './searchKey.js';
 import { markFav, unFav } from './FavoriteRecipe.js';
-import { deleteRecipe } from './deleteRecipe.js';
+//import { deleteRecipe } from './deleteRecipe.js';
 
 class RecipeCard extends HTMLElement {
   constructor () {
