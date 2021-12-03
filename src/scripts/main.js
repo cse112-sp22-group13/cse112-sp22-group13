@@ -9,12 +9,11 @@
  * single recipe pages.
  */
 
-import { ComplexSearch } from './apiComplexSearch.js';
-import { GenericFetch } from './genericFetch.js';
+// import { ComplexSearch } from './apiComplexSearch.js';
+// import { GenericFetch } from './genericFetch.js';
 import { fillPopular } from './popularRecipes.js';
-
 // Backend devs will switch up using their own spoonacular key for fetching
-const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
+// const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
 
 window.addEventListener('DOMContentLoaded', init);
 // LOCAL STORAGE
@@ -29,8 +28,19 @@ const localStorage = window.localStorage;
  * that that holds url as key and id as a value to keep track of duplicated added recipes.
  */
 async function init () {
-  // initializeServiceWorker(); will eventually implement
+  // initializeServiceWorker(); will eventually implement; or not
   if (localStorage.length === 0) {
+    const thing = { data: {} }; // structured like this so it is polymorphic with old fetch
+    await fetch('../why.txt', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'text/plain',
+        'Content-Encoding': 'gzip'
+      }
+    })
+      .then(response => response.text())
+      .then(text => { thing.data = JSON.parse(text); });
+    // OLD FETCH
     /* const initialSearch = {
       method: 'GET',
       url: 'https://api.spoonacular.com/recipes/complexSearch',
@@ -75,7 +85,8 @@ async function init () {
 
     // console.log(JSON.stringify(Array.from(hashmap.entries())));
     // console.log(search.data.results);
-
+    // OLD FETCH
+    /*
     const bulkOptions = {
       method: 'GET',
       url: 'https://api.spoonacular.com/recipes/informationBulk',
@@ -86,11 +97,8 @@ async function init () {
       }
     };
     const thing = new GenericFetch(bulkOptions);
-    // await GenericFetch.fGenericFetch(thing);
-
-    await fetch('../why.txt')
-      .then(response => response.text())
-      .then(text => { thing.data = JSON.parse(text); });
+    await GenericFetch.fGenericFetch(thing);
+    */
     for (const elem of thing.data) {
       hashmap.set(elem.title, elem.id);
     }
