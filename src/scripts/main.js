@@ -38,7 +38,7 @@ async function init () {
       params: {
         query: ' ', // The (natural language) recipe search query.
         offset: 0, // The number of results to skip (between 0 and 900).
-        number: 20, // The number of expected results (between 1 and 100).
+        number: 100, // The number of expected results (between 1 and 100).
         apiKey: API_KEY
       }
     };

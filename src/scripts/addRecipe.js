@@ -6,6 +6,7 @@
 // should recieve a website url to be inputed
 const APIKey = '85859c45fa7949ec8b915c61690f2ce1';
 
+// test url
 // https://foodista.com/recipe/ZHK4KPB6/chocolate-crinkle-cookies
 
 const localStorage = window.localStorage;
@@ -79,7 +80,7 @@ async function addRecipe () {
   const inputData = inputHTML.value;
 
   // grab maps from localStorage for insertion and replacement
-  const hashMap = new Map(JSON.parse(localStorage['0']));
+  let hashMap = new Map(JSON.parse(localStorage['0']));
   const favMap = new Map(JSON.parse(localStorage['2']));
   const delMap = new Map(JSON.parse(localStorage['3']));
   const urlMap = new Map(JSON.parse(localStorage['5']));
@@ -107,7 +108,6 @@ async function addRecipe () {
   }
 
   // IF WE GET HERE, THAT MEANS THE RECIPE HAS NEVER BEEN ADDED BEFORE, SO DIDN'T EXIST IN URLMAP
-
   const recipetoHash = await extraction(inputData);
   // Now check if the url is valid
   if (typeof recipetoHash === 'undefined') {
@@ -126,7 +126,8 @@ async function addRecipe () {
   const validID = Math.floor(Math.random() * 1000);
 
   // set values in maps for newly added card
-  hashMap.set(recipetoHash.title, validID);
+  // set the new item at index 0 of hashMap to let new card always go to top
+  hashMap = insertAtIndex(0, recipetoHash.title, validID, hashMap);
   favMap.set(validID, false);
   delMap.set(validID, false);
   urlMap.set(recipetoHash.sourceUrl, validID); // urlmap's value is for store id to check for dulipated.
@@ -148,7 +149,7 @@ async function addRecipe () {
   if (delMap.get(element.id) === true) {
     element.classList.add('deleted');
   }
-  main.appendChild(element);
+  main.insertBefore(element, main.firstChild);
 
   alert('Your new card is inserted~');
 
@@ -173,4 +174,17 @@ function checkDup (url) {
 
   // if we get here then url has been inserted. could possibly be hidden from being marked true in delmap
   return true;
+}
+
+/**
+ * Use array.splice function to insert item at certain index to map
+ * @param {Int} insertIndex url which comes from user input
+ *  @param {String} key url which comes from user input
+ * @param {Int} value url which comes from user input
+ * @returns {Map} return the Map which is updated
+ */
+function insertAtIndex(insertIndex, key, value, ourMap){
+  const convertArr = Array.from(ourMap);
+  arr.splice(insertIndex, 0, [key, value]);
+  return new Map(convertArr);
 }
