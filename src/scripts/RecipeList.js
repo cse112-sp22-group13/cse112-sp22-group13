@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', init);
 const localStorage = window.localStorage;
 
 // Control flow for enterring recipe list from home page.
-if (document.referrer == window.location.origin + '/src/home/home.html') {
+if (document.referrer === window.location.origin + '/src/home/home.html') {
   console.log(document.referrer);
   console.log(window.location);
   console.log('omg it works');
@@ -112,8 +112,7 @@ function getRecipesNotContainingKeyword (keyword) {
   // couple base cases
   let input = keyword.toLowerCase();
 
-  if( keyword === 'dairy free' || keyword === 'gluten free')
-  {
+  if (keyword === 'dairy free' || keyword === 'gluten free') {
     console.log(input);
     input = input.replace(/\s/g, '');
     console.log(input);
@@ -160,13 +159,13 @@ function getTags (jsonFile) {
   // booleans
   const climateChange = ['cheap', 'dairyFree', 'glutenFree', 'vegan', 'vegetarian'];
   for (const elem of climateChange) {
-    if (searchForKey(jsonFile, elem)) { 
-      tagsArr.push(elem.toLowerCase()); 
+    if (searchForKey(jsonFile, elem)) {
+      tagsArr.push(elem.toLowerCase());
     }
   }
 
   if (searchForKey(jsonFile, 'veryHealthy')) {
-    tagsArr.push('healthy'); 
+    tagsArr.push('healthy');
   }
 
   return tagsArr;
@@ -189,6 +188,3 @@ function bindEnterKey () {
     }
   });
 }
-
-
-
