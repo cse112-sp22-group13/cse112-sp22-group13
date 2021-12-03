@@ -31,7 +31,7 @@ const localStorage = window.localStorage;
 async function init () {
   // initializeServiceWorker(); will eventually implement
   if (localStorage.length === 0) {
-    const initialSearch = {
+    /* const initialSearch = {
       method: 'GET',
       url: 'https://api.spoonacular.com/recipes/complexSearch',
       params: {
@@ -41,22 +41,19 @@ async function init () {
         apiKey: API_KEY
       }
     };
-    const searchTime = performance.now();
+
     const search = new ComplexSearch(initialSearch);
     await ComplexSearch.fComplexSearch(search);
-    console.log('ComplexSearch: ' + (performance.now() - searchTime));
     // console.log(search.data);
 
     // grabbing recipes with id's
-    let idString = '';
-    const hashTime = performance.now();
+    let idString = ''; */
     // making hash table that maps titles (key) to recipe id's (values)
     const hashmap = new Map();
-    for (const elem of search.data.results) {
+    /* for (const elem of search.data.results) {
       hashmap.set(elem.title, elem.id);
       idString = idString + elem.id + ',';
-    }
-    console.log('hash Time: ' + (performance.now() - hashTime));
+    } */
     // SANAT
     const objSanat = {
       analyzedInstructions: [{ name: '', steps: [{ equipment: [], ingredients: [], number: 1, step: '' }] }],
@@ -83,24 +80,25 @@ async function init () {
       method: 'GET',
       url: 'https://api.spoonacular.com/recipes/informationBulk',
       params: {
-        ids: idString,
+        ids: 'idString',
         includeNutrition: false,
         apiKey: API_KEY
       }
     };
-    const bulkTime = performance.now();
     const thing = new GenericFetch(bulkOptions);
     // await GenericFetch.fGenericFetch(thing);
+
     await fetch('../why.txt')
       .then(response => response.text())
       .then(text => { thing.data = JSON.parse(text); });
-    console.log('bulk Time: ' + (performance.now() - bulkTime));
+    for (const elem of thing.data) {
+      hashmap.set(elem.title, elem.id);
+    }
 
     // FILLING LOCAL STORAGE
     // create a popular array to place into local storage
     const popularArr = [];
     // first set a place in local storage that will hold the hash table itself at key 0
-    const localTime = performance.now();
     localStorage.setItem(0, JSON.stringify(Array.from(hashmap.entries())));
 
     // extract json object and put into local storage
@@ -112,7 +110,6 @@ async function init () {
         popularArr.push(elem.id);
       }
     }
-    console.log('local Time: ' + (performance.now() - localTime));
     console.log('we are here');
 
     // MAKING FAVORITES HASHMAP THAT WILL BE LOCATED AT #2 IN LOCAL STORAGE
