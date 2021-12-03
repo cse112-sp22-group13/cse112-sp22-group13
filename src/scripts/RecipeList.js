@@ -27,10 +27,6 @@ async function init () {
  */
 function createRecipeCards () {
   const main = document.querySelector('main');
-  let topp = document.createElement("Top");
-  topp.innerHTML = "Page top";
-  topp.setAttribute("id", "Top");
-  main.appendChild(topp);
   // get hash table
   const hashes = JSON.parse(localStorage['0']);
   // get array of ids
@@ -49,14 +45,6 @@ function createRecipeCards () {
       window.location.href = '../recipe_expand/recipe_expand.html' + '#' + element.id;
     });
   });
-  let buttomm = document.createElement("Buttom");
-  buttomm.innerHTML = "Page buttom";
-  buttomm.setAttribute("id", "Buttom");
-  main.appendChild(buttomm);
-
-  // let topBut = document.createElement('Top');
-  // topBut.href = "#Top";
-  // main.appendChild(topBut);
 }
 
 /**
