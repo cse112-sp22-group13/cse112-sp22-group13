@@ -144,14 +144,9 @@ async function init () {
 
     // get hash table
     const hashes = JSON.parse(localStorage['0']);
-    // get array of ids
-    const elementIdArr = hashes.map(h => h[1]);
 
-    for (let i = 0; i < elementIdArr.length; i++) {
-      // initialze every id as false (not yet a favorite or deleted)
-      favmap.set(elementIdArr[i], false);
-      deletedMap.set(elementIdArr[i], false);
-    }
+    hashes.forEach(h => { favmap.set(h[1], false); deletedMap.set(h[1], false); });
+
     urlMap.set('2046', 'none');
     // store the fav map into local
     localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));

@@ -25,22 +25,20 @@ function createFavCards () {
   const hashes = JSON.parse(localStorage['0']);
   // get favmap
   const favmap = new Map(JSON.parse(localStorage['2']));
-  // get array of ids
-  const elementIdArr = hashes.map(h => h[1]);
 
-  elementIdArr.forEach(id => {
+  hashes.forEach(h => {
     ///
-    if (favmap.get(id) === true) {
+    if (favmap.get(h[1]) === true) {
       const element = document.createElement('recipe-card');
-      element.data = localStorage[`${id}`];
-      element.id = id;
+      element.data = localStorage[`${h[1]}`];
+      element.id = h[1];
       // hides the recipe forever if it is considered deleted in localStorage (uncomment when ready to use)
       const deletedMap = new Map(JSON.parse(localStorage['3']));
-      if (deletedMap.get(id) === true) {
+      if (deletedMap.get(h[1]) === true) {
         element.classList.add('deleted');
       }
       main.appendChild(element);
-      element.addEventListener('click', (e) => {
+      element.addEventListener('click', () => {
         window.location.href = '../recipe_expand/recipe_expand.html' + '#' + element.id;
       });
     }

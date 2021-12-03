@@ -30,18 +30,18 @@ function createRecipeCards () {
   // get hash table
   const hashes = JSON.parse(localStorage['0']);
   // get array of ids
-  const elementIdArr = hashes.map(h => h[1]);
-  elementIdArr.forEach(id => {
+  // const elementIdArr = hashes.map(h => h[1]);
+  hashes.forEach(h => {
     const element = document.createElement('recipe-card');
-    element.data = localStorage[`${id}`];
-    element.id = id;
+    element.data = localStorage[`${h[1]}`];
+    element.id = h[1];
     // hides the recipe forever if it is considered deleted in localStorage (uncomment when ready to use)
     const deletedMap = new Map(JSON.parse(localStorage['3']));
-    if (deletedMap.get(id) === true) {
+    if (deletedMap.get(h[1]) === true) {
       element.classList.add('deleted');
     }
     main.appendChild(element);
-    element.addEventListener('click', (e) => {
+    element.addEventListener('click', () => {
       window.location.href = '../recipe_expand/recipe_expand.html' + '#' + element.id;
     });
   });
@@ -110,19 +110,18 @@ function getRecipesNotContainingKeyword (keyword) {
   const arr = [];
   // get hash table
   const hashes = JSON.parse(localStorage['0']);
-  // get array of ids
-  const elementIdArr = hashes.map(h => h[1]);
 
-  for (const id of elementIdArr) {
-    const jsonFile = JSON.parse(localStorage.getItem(id));
+  hashes.forEach(h => {
+    const jsonFile = JSON.parse(localStorage.getItem(h[1]));
     const tags = getTags(jsonFile);
     // console.log(tags);
 
     // checks if input is NOT located in title, ingredients, or rest of tag array
     if (!(tags[0].includes(input) || tags[1].includes(input) || tags.includes(input))) {
-      arr.push(id);
+      arr.push(h[1]);
     }
-  }
+  });
+
   return arr;
 }
 
