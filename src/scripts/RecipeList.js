@@ -111,8 +111,13 @@ function resetCards () {
 function getRecipesNotContainingKeyword (keyword) {
   // couple base cases
   let input = keyword.toLowerCase();
-  if (keyword === 'dairy free') { input = 'dairyfree'; }
-  if (keyword === 'gluten free') { input = 'glutenfree'; }
+
+  if( keyword === 'dairy free' || keyword === 'gluten free')
+  {
+    console.log(input);
+    input = input.replace(/\s/g, '');
+    console.log(input);
+  }
 
   const arr = [];
   // get hash table
@@ -146,13 +151,24 @@ function getTags (jsonFile) {
   // ingredients
   tagsArr.push(JSON.stringify(searchForKey(jsonFile, 'extendedIngredients')).toLowerCase());
 
+  // if (searchForKey(jsonFile, 'cheap')) { tagsArr.push('cheap'); }
+  // if (searchForKey(jsonFile, 'dairyFree')) { tagsArr.push('dairyfree'); }
+  // if (searchForKey(jsonFile, 'glutenFree')) { tagsArr.push('glutenfree'); }
+  // if (searchForKey(jsonFile, 'vegan')) { tagsArr.push('vegan'); }
+  // if (searchForKey(jsonFile, 'vegetarian')) { tagsArr.push('vegetarian'); }
+  // if (searchForKey(jsonFile, 'veryHealthy')) { tagsArr.push('healthy'); }
+
   // booleans
-  if (searchForKey(jsonFile, 'cheap')) { tagsArr.push('cheap'); }
-  if (searchForKey(jsonFile, 'dairyFree')) { tagsArr.push('dairyfree'); }
-  if (searchForKey(jsonFile, 'glutenFree')) { tagsArr.push('glutenfree'); }
-  if (searchForKey(jsonFile, 'vegan')) { tagsArr.push('vegan'); }
-  if (searchForKey(jsonFile, 'vegetarian')) { tagsArr.push('vegetarian'); }
-  if (searchForKey(jsonFile, 'veryHealthy')) { tagsArr.push('healthy'); }
+  const climateChange = ['cheap', 'dairyFree', 'glutenFree', 'vegan', 'vegetarian'];
+  for (const elem of climateChange) {
+    if (searchForKey(jsonFile, elem)) { 
+      tagsArr.push(elem.toLowerCase()); 
+    }
+  }
+
+  if (searchForKey(jsonFile, 'veryHealthy')) {
+    tagsArr.push('healthy'); 
+  }
 
   return tagsArr;
 }
