@@ -3,18 +3,16 @@
  */
 export class GenericFetch {
   /**
-   *
-   * @param {*} input Options object to be parsed into
+   * @param {Object} input Options object to be parsed into
    */
   constructor (input) {
     this.options = input;
     this.data = {};
   }
   /**
-   *
-   * @param {*} input
+   * Makes the fetch call
+   * @param {Object} input Options object held by an instance of this class
    */
-
   static async fGenericFetch (input) {
     await axios.request(input.options).then(function (response) {
       input.data = response.data;
