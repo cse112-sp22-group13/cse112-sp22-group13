@@ -133,7 +133,7 @@ async function init () {
         popularArr.push(elem.id);
       }
     }
-    console.log('we are here');
+    // console.log('we are here');
 
     // MAKING FAVORITES HASHMAP THAT WILL BE LOCATED AT #2 IN LOCAL STORAGE
     const favmap = new Map();

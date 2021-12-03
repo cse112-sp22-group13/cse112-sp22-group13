@@ -21,15 +21,15 @@ addBar.querySelector('button').addEventListener('click', addRecipe);
  * url the user inserted.
  * @param {string} input takes in url that user inserted into textarea
  */
-async function extraction (input) {
+async function extraction (input, force = false) {
   let data = {};
-  console.log('using');
+  console.log('Attempting add, force: ' + force);
   const format = {
     method: 'GET',
     url: 'https://api.spoonacular.com/recipes/extract',
     params: {
       url: input,
-      forceExtraction: false,
+      forceExtraction: force,
       analyze: false,
       includeNutrition: false,
       includeTaste: false,
@@ -39,38 +39,10 @@ async function extraction (input) {
   await axios.request(format).then(function (response) {
     data = response.data;
   }).catch(function (error) {
-    data = forceExtraction(input);
-    console.log(error);
+    if (force === false) data = extraction(input, true);
+    else console.log(error);
   });
   return data;
-}
-
-/**
- * Forced extract that makes call to API to obtain json file from the
- * url the user inserted.
- * @param {string} input takes in url that user inserted into textarea
- */
-async function forceExtraction (input) {
-  let data = {};
-  console.log('using');
-  const format = {
-    method: 'GET',
-    url: 'https://api.spoonacular.com/recipes/extract',
-    params: {
-      url: input,
-      forceExtraction: true,
-      analyze: false,
-      includeNutrition: false,
-      includeTaste: false,
-      apiKey: APIKey
-    }
-  };
-  await axios.request(format).then(function (response) {
-    data = response.data;
-    return data;
-  }).catch(function (error) {
-    console.log(error);
-  });
 }
 
 /**
@@ -156,7 +128,7 @@ export async function addRecipe () {
   alert('Your new card is inserted~');
 
   // go to expand card view
-  element.addEventListener('click', (e) => {
+  element.addEventListener('click', () => {
     window.location.href = '../recipe_expand/recipe_expand.html' + '#' + element.id;
   });
 }
