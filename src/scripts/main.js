@@ -37,7 +37,7 @@ async function init () {
       method: 'GET',
       headers: {
         'Content-Type': 'text/plain',
-        'Content-Encoding': 'gzip'
+        'Accept-Encoding': 'gzip'
       }
     })
       .then(response => response.text())
