@@ -33,6 +33,7 @@ export class ComplexSearch {
      this.bread = ComplexSearch.tBread.BREAD;
      this.options.params.query = this.helpCalc(this.options.params.query);
    }
+
    /**
     * Change all the options parameters by passing in new options object
     * @param {Object} input Object holding options parameters for fetch call
@@ -41,6 +42,7 @@ export class ComplexSearch {
      this.options = input;
      this.options.params.query = this.helpCalc(this.options.params.query);
    };
+
    /**
     * Changing the query parameter
     * @param {String} input New search query
@@ -48,12 +50,14 @@ export class ComplexSearch {
    set query (input) {
      this.options.params.query = this.helpCalc(input);
    };
+
    /**
     * @return query parameter
     */
    get query () {
      return this.options.params.query;
    }
+
    /**
     * Changing the number parameter
     * @param {String} new number
@@ -61,12 +65,14 @@ export class ComplexSearch {
    set number (input) {
      this.options.params.number = input;
    };
+
    /**
     * @return the number parameter
     */
    get number () {
      return this.options.params.number;
    }
+
    /**
     * Set the offset parameter
     * @param {String} new offset
@@ -74,12 +80,14 @@ export class ComplexSearch {
    set offset (input) {
      this.options.params.offset = input;
    };
+
    /**
     * @return offset parameter
     */
    get offset () {
      return this.options.params.offset;
    }
+
    /**
     * Use when assigning this.options.params.query to prepend a bread noun to force a bread search in this bread universe
     * @return Newer breader query
@@ -89,6 +97,7 @@ export class ComplexSearch {
        ? input
        : this.bread + input;
    };
+
    /**
     * Loads recipes in data field of complexSearch_c object
     * @param {Object} object complexSearch_c object

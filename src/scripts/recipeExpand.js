@@ -17,9 +17,9 @@ async function init () {
 }
 
 /**
- * CREATERECIPEEXPAND function grabs the #id url fragment that was appended when 
- * we clicked on a recipe card and creates the html structure of the recipe expand 
- * page by passing in the data string from localStorage into a custom 
+ * CREATERECIPEEXPAND function grabs the #id url fragment that was appended when
+ * we clicked on a recipe card and creates the html structure of the recipe expand
+ * page by passing in the data string from localStorage into a custom
  * recipe-card-expand-container. See recipeCardExpand.js for how this data is parsed.
  */
 function createRecipeExpand () {
@@ -31,7 +31,7 @@ function createRecipeExpand () {
 }
 
 /**
- * Export editRecipe function called when edit button is clicked in recipe-expand.html. 
+ * Export editRecipe function called when edit button is clicked in recipe-expand.html.
  * Hides the edit button and sets the input form and submit button to be viewable.
  */
 export function editRecipe () {
@@ -54,8 +54,8 @@ export function editRecipe () {
 }
 
 /**
- * Export saveRecipe alled when submit button is clicked in recipe-expand.html. 
- * Grabs the new serving amount and scales ingredients accordingly. Writes back 
+ * Export saveRecipe alled when submit button is clicked in recipe-expand.html.
+ * Grabs the new serving amount and scales ingredients accordingly. Writes back
  * changes to local storage. Hides submit button and input form, shows edit button again.
  */
 export function saveRecipe () {
