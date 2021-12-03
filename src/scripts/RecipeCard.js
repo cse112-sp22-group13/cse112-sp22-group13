@@ -96,6 +96,10 @@ class RecipeCard extends HTMLElement {
 
     recipeOverview.appendChild(favorite);
 
+
+    // 1st column = img of recipe; attach to container
+    const buttonGrid = document.createElement('div');
+    buttonGrid.classList.add('delete-button');
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.classList.add('deleteBtn');
@@ -104,7 +108,8 @@ class RecipeCard extends HTMLElement {
       document.getElementById(parsed.id).classList.add('deleted');
       deleteRecipe(parsed.id);
     });
-    recipeOverview.appendChild(deleteButton);
+    buttonGrid.appendChild(deleteButton);
+    recipeContainer.appendChild(buttonGrid);
 
     const styleElem = document.createElement('style');
     styleElem.innerHTML = `
@@ -161,7 +166,6 @@ class RecipeCard extends HTMLElement {
       color: whitesmoke;
       position: relative;
       border-radius: 10px 10px 10px 10px;
-      margin-left: 450px;
       padding: 0.5rem 1rem 0.5rem 1rem;
       outline: none;
       cursor: pointer;
