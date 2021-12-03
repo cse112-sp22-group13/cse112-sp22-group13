@@ -151,6 +151,7 @@ main {
 }
 
 /* Button to open and close the sidebar */
+/* Button to open and close the sidebar */
 .openbtn {
     font-size: 20px;
     top: 0;
@@ -158,6 +159,7 @@ main {
     z-index: 2;
     position:fixed;
     background-color: #ce966e;
+    opacity: 90%;
     color: #e3d477;
     padding: 10px 15px;
     border: none;
