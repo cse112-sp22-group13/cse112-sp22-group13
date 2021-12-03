@@ -59,7 +59,7 @@ async function forceExtraction (input) {
 /**
  * add Recipe to recipe_list.html, update localStorage
  */
-async function addRecipe () {
+export async function addRecipe () {
   const inputData = inputHTML.value;
 
   // grab maps from localStorage for insertion and replacement

@@ -1,4 +1,5 @@
 import { searchForKey } from './searchKey.js';
+import { addRecipe } from './addRecipe.js';
 
 // SEARCH BAR BUTTON
 const searchBar = document.querySelector('button');
@@ -156,7 +157,12 @@ function getTags (jsonFile) {
 function bindEnterKey () {
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
-      searchRecipes();
+      let element = document.activeElement;
+      if (element.className === 'search-bar') {
+        searchRecipes();
+      } else if (element.className === 'add-bar') {
+        addRecipe();
+      }
     }
   });
 }
