@@ -1,6 +1,6 @@
-#Meeting Notes with Sanat
+# Meeting Notes with Sanat
 
-####Attendance:
+#### Attendance:
 Scott, Andy, Bryan, Alanna, Claire, Patrick, David Thai, Xavier
 Demoing most up to date version to Sanat
 
