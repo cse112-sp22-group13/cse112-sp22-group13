@@ -12,7 +12,6 @@
 import { ComplexSearch } from './apiComplexSearch.js';
 import { GenericFetch } from './genericFetch.js';
 import { fillPopular } from './popularRecipes.js';
-import { searchForKey } from './searchKey.js';
 
 // Backend devs will switch up using their own spoonacular key for fetching
 const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
@@ -55,6 +54,7 @@ async function init () {
       hashmap.set(elem.title, elem.id);
       idString = idString + elem.id + ',';
     } */
+
     // SANAT
     const objSanat = {
       analyzedInstructions: [{ name: '', steps: [{ equipment: [], ingredients: [], number: 1, step: '' }] }],
@@ -71,8 +71,6 @@ async function init () {
       vegetarian: false,
       healthy: false
     };
-    hashmap.set(objSanat.title, 1);
-    localStorage.setItem(1, JSON.stringify(objSanat));
 
     // console.log(JSON.stringify(Array.from(hashmap.entries())));
     // console.log(search.data.results);
@@ -96,11 +94,15 @@ async function init () {
       hashmap.set(elem.title, elem.id);
     }
 
+    // put in sanat last
+    hashmap.set(objSanat.title, 1);
+
     // FILLING LOCAL STORAGE
     // create a popular array to place into local storage
     const popularArr = [];
     // first set a place in local storage that will hold the hash table itself at key 0
     localStorage.setItem(0, JSON.stringify(Array.from(hashmap.entries())));
+    localStorage.setItem(1, JSON.stringify(objSanat));
 
     // TIME TO STORE JSONS INTO LOCAL STORAGE :)
     for (const elem of thing.data) {
@@ -143,7 +145,7 @@ async function init () {
       favmap.set(elementIdArr[i], false);
       deletedMap.set(elementIdArr[i], false);
     }
-    urlMap.set('2046', 'none');
+    // urlMap.set('2046', 'none');
     // store the fav map into local
     localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
     // store the del map into local
@@ -159,4 +161,18 @@ async function init () {
 
   // fill popular recipes
   fillPopular();
+
+  // Bind the enter key on main
+  bindEnterOnMain();
+}
+
+function bindEnterOnMain() {
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      let element = document.activeElement;
+      if (element.className === 'search-bar') {
+        window.location.href = '../recipe_list/recipe_list.html';
+      }
+    }
+  });
 }
