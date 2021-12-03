@@ -131,10 +131,10 @@ export async function addRecipe () {
   // generate a random valid id because it's added with an id of -1
   const validID = Math.floor(Math.random() * 1000);
 
-  // set values in maps for newly added card
   // set the new item at index 0 of hashMap to let new card always go to top
   hashMap = insertAtIndex(0, recipetoHash.title, validID, hashMap);
-  // hashMap.set(recipetoHash.title,validID);
+
+  // set values in maps for newly added card
   favMap.set(validID, false);
   delMap.set(validID, false);
   urlMap.set(recipetoHash.sourceUrl, validID); // urlmap's value is for store id to check for dulipated.
@@ -197,11 +197,9 @@ function insertAtIndex (insertIndex, key, value, ourMap) {
 }
 
 /**
-   * *************BINDENTERKEY FUNCTION************* *
-   * Set enter key works for search bar              *
-   * *********************************************** *
-   */
-function bindEnterKeyforAdd () {
+ * Set enter key to work for the add recipe bar
+ */
+ function bindEnterKeyforAdd () {
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
       addRecipe();
