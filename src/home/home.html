@@ -12,11 +12,10 @@
   <script src="../scripts/searchKey.js" type="module"></script>
   <script src ="../scripts/sideBar.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <title>NaN Bread</title>
+  <title>KNEADED</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&display=swap');  
-    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap');  
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;600&display=swap');  
   </style>
 </head>
 
@@ -24,7 +23,7 @@
     <header>
         <nav>
           <a href="../home/home.html">
-            <h1 class="title">the bread board 🥖</h1>
+            <h1 class="title">KNEADED</h1>
           </a>
         </nav>
     </header>
@@ -38,21 +37,18 @@
       <a href="../favorites/favorites.html">Favorites</a>
     </div>
     <main>
-      <div class="button-row">
-        <div class="button-col" style="text-align:center; padding-left: 4rem;">
-          <button onclick="location.href='../recipe_list/recipe_list.html'" class="cool-button two"
-            >ADD RECIPE 🥐
-          </button>
-        </div>
-        <div class="button-col" >
-          <button onclick="location.href='../recipe_list/recipe_list.html'" class="cool-button one">
-            SEARCH RECIPE 🧇 
-          </button>
-        </div>
+      <div class="search-container">
+        <input type="text" placeholder="SEARCH RECIPE 🧇" class="search-bar">
+        <button class="search-button">SEARCH</button>
       </div>
-      <img src="./img/breadbanner2.jpg" class="img-fluid" alt="banner_img"/>
+      <div class="typewriter">
+        <img src="./img/bread-bg2.jpg" class="img-fluid" alt="banner_img"/>
+        <div class="typewriter-text"> ALL YOU KNEAD IS BREAD 🧇</div>
+      </div>
+      <!-- <img src="./img/bread-bg2.jpg" class="img-fluid" alt="banner_img"/> -->
+
       <p class="blurb">
-        ALL YOU KNEAD IS BREAD? CHECK OUT OUR POPULAR RECIPES!
+        CHECK OUT OUR POPULAR RECIPES!
       </p>
       <section>
         <div class="container">

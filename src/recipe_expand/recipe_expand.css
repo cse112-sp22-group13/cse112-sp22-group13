@@ -1,17 +1,24 @@
 body {
-  font-family: 'IBM Plex Mono', monospace;
-  box-sizing: border-box;
-  background-color: #ad9169;
-  color: #e3d477;
+    font-family: 'Montserrat', sans-serif;  
+    box-sizing: border-box;
+    background-color: #AD9169;
+    background-color: black;
+    color:  #fff;
+}
+
+main {
+    font-family: 'Manrope', sans-serif;
 }
 
 .title {
-  font-family: 'Bebas Neue', cursive;
-  text-align: center;
-  color: #e3d477;
-  padding: 3vh 0 2vh 0;
-  font-size: 3.7rem;
+    text-align: center;
+    color: #e3d477;
+    padding: 3vh 0 0 0;
+    font-size: 3.7rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
 }
+
 
 /* body {
     background-color: #E6D2AF;
@@ -130,6 +137,7 @@ body {
 .sidebar a {
     font-size: 25px;
     top: 50px;
+    width: 250px;
     position:relative;
     color: #e3d477;
     padding: 8px 8px 8px 32px;

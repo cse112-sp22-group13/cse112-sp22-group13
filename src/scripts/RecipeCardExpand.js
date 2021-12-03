@@ -40,7 +40,6 @@ class RecipeCardExpand extends HTMLElement {
     // Recipe img container + class.
     const recipeExpandImgContainer = document.createElement('div');
     recipeExpandImgContainer.classList.add('recipe-img-container');
-
     // Recipe img + class
     const recipeExpandImg = document.createElement('img');
     recipeExpandImg.src = recipeData.image;
@@ -52,30 +51,18 @@ class RecipeCardExpand extends HTMLElement {
     recipeExpandServingsTimeContainer.classList.add('recipe-expand-servings-time-container');
 
     // Recipe servings label + class.
-    const recipeExpandServingsLabel = document.createElement('p');
+    const recipeExpandServingsLabel = document.createElement('div');
     recipeExpandServingsLabel.classList.add('recipe-servings-label');
-    recipeExpandServingsLabel.innerText = 'Servings:';
-
-    // Recipe servings + class.
-    const recipeExpandServings = document.createElement('p');
-    recipeExpandServings.classList.add('recipe-servings');
-    recipeExpandServings.innerText = searchForKey(recipeData, 'servings');
+    recipeExpandServingsLabel.innerText = 'Servings: ' + searchForKey(recipeData, 'servings');
 
     // Recipe time label + class.
-    const recipeExpandTimeLabel = document.createElement('p');
+    const recipeExpandTimeLabel = document.createElement('div');
     recipeExpandTimeLabel.classList.add('recipe-time-label');
-    recipeExpandTimeLabel.innerText = 'Time:';
-
-    // Recipe time + class.
-    const recipeExpandTime = document.createElement('p');
-    recipeExpandTime.classList.add('recipe-time');
-    recipeExpandTime.innerText = searchForKey(recipeData, 'readyInMinutes');
+    recipeExpandTimeLabel.innerText = 'Time: ' + searchForKey(recipeData, 'readyInMinutes') + ' minutes';
 
     // Construct the servings/time container and append to recipe expand.
     recipeExpandServingsTimeContainer.appendChild(recipeExpandServingsLabel);
-    recipeExpandServingsTimeContainer.appendChild(recipeExpandServings);
     recipeExpandServingsTimeContainer.appendChild(recipeExpandTimeLabel);
-    recipeExpandServingsTimeContainer.appendChild(recipeExpandTime);
     recipeExpandContainer.appendChild(recipeExpandServingsTimeContainer);
 
     // Recipe ingredients container + class.
@@ -186,7 +173,7 @@ class RecipeCardExpand extends HTMLElement {
     const recipeInputFormInput = document.createElement('input');
     recipeInputFormInput.setAttribute('type', 'text');
     recipeInputForm.appendChild(recipeInputFormInput);
-    recipeInputFormInput.value = recipeExpandServings.innerText;
+    recipeInputFormInput.value = searchForKey(recipeData, 'servings');
     recipeInputForm.classList.add('hidden');
     recipeInputFormInput.classList.add('hidden');
     recipeExpandContainer.appendChild(recipeInputForm);
@@ -217,6 +204,65 @@ class RecipeCardExpand extends HTMLElement {
 
     // Append the container to the shadowroot.
     this.shadowRoot.appendChild(recipeExpandContainer);
+
+    const styleElem = document.createElement('style');
+    styleElem.innerHTML = `
+    .recipe-expand-grid-container {
+      margin: 0;
+      font-size: 1.5rem;
+      color: whitesmoke;
+      font-weight: 300;
+    }
+
+    .recipe-expand-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: whitesmoke;
+      text-align: center;
+      padding: 0 0 1rem 0;
+      margin: 0;
+    }
+
+    .recipe-img-container {
+      text-align: center;
+    }
+
+    .recipe-expand-servings-time-container {
+      position: relative;
+      display: flex;
+      text-align: center;
+      padding: 2rem 0 0 0;
+    }
+
+    .recipe-time-label {
+      flex: 60%;
+    }
+
+    .recipe-servings-label {
+      flex: 50%;
+    }
+    
+    .recipe-expand-ingredients-container  {
+      padding-left: 4.5rem;
+      margin: 0;
+    }
+
+    .recipe-expand-supplies-container {
+      padding-left: 4.5rem;
+      margin: 0;
+    }
+
+    .recipe-expand-instructions-container {
+      padding-left: 4.5rem;
+      margin: 0;
+    }
+    
+    li {
+      width: 90%;
+    }
+    `;
+
+    this.shadowRoot.append(styleElem, recipeExpandContainer);
   }
 }
 
