@@ -22,7 +22,7 @@ class RecipeCard extends HTMLElement {
   set data (data) {
     // Parse string to JSON object
     const parsed = JSON.parse(data);
-    console.log(parsed);
+    // console.log(parsed);
     const recipeCard = document.createElement('article');
     recipeCard.classList.add('recipe-card');
 
@@ -157,7 +157,7 @@ class RecipeCard extends HTMLElement {
     .recipe-favorite {
         padding: 0.3rem 0 0.3rem 0;
         height: 30px;
-        width: 30px;
+        width: 30px;  
     }
     .deleteBtn {
       font-size: 1rem;
@@ -165,7 +165,7 @@ class RecipeCard extends HTMLElement {
       color: whitesmoke;
       position: relative;
       border-radius: 10px 10px 10px 10px;
-      left: 50px;
+      margin-left: 450px;
       padding: 0.5rem 1rem 0.5rem 1rem;
       outline: none;
       cursor: pointer;
