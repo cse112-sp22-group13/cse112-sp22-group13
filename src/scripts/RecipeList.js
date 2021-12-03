@@ -60,7 +60,7 @@ function createRecipeCards () {
 }
 
 /**
- * SEARCHRECIPES functin is the connection between frontend and backend.
+ * SEARCHRECIPES function is the connection between frontend and backend.
  * When user clicks search button, search bar input will be pulled and passed to
  * getRecipesContainingKeyword(). Then the array returned will populate cards on
  * screen pertaining to input.

@@ -1,11 +1,7 @@
 /**
  * Function that applies styling to expand and close the navbar on the side when clicked.
  */
-<<<<<<< Updated upstream
 function clickNav () {
-=======
- function clickNav () {
->>>>>>> Stashed changes
   if (document.querySelector('#sideNavbar').style.width !== '250px') {
     document.querySelector('#sideNavbar').style.width = '250px';
   } else {
