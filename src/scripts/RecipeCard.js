@@ -22,7 +22,7 @@ class RecipeCard extends HTMLElement {
   set data (data) {
     // Parse string to JSON object
     const parsed = JSON.parse(data);
-    console.log(parsed);
+    // console.log(parsed);
     const recipeCard = document.createElement('article');
     recipeCard.classList.add('recipe-card');
 

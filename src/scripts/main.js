@@ -12,6 +12,7 @@
 import { ComplexSearch } from './apiComplexSearch.js';
 import { GenericFetch } from './genericFetch.js';
 import { fillPopular } from './popularRecipes.js';
+import { searchForKey } from './searchKey.js';
 
 // Backend devs will switch up using their own spoonacular key for fetching
 const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
@@ -91,7 +92,7 @@ async function init () {
 
     const thing = new GenericFetch(bulkOptions);
     await GenericFetch.fGenericFetch(thing);
-    console.log(thing.data);
+    // console.log(thing.data);
 
     // FILLING LOCAL STORAGE
     // create a popular array to place into local storage
@@ -99,8 +100,21 @@ async function init () {
     // first set a place in local storage that will hold the hash table itself at key 0
     localStorage.setItem(0, JSON.stringify(Array.from(hashmap.entries())));
 
-    // extract json object and put into local storage
+    // TIME TO STORE JSONS INTO LOCAL STORAGE :)
     for (const elem of thing.data) {
+
+      // check if elem contains image attribute, because if it doesn't, will throw a 404 error
+      // when creating a recipe card
+      if(elem.image == undefined)
+      {
+        // console.log(elem.image);
+        console.log('we found a json that doesnt contain an image attribute, so adding in our logo :)');
+        elem.image = '../home/img/bread_logo.jpg';
+        console.log(elem);
+        // console.log(elem.image);
+      }
+
+      // yeet that baby into local storage :)
       localStorage.setItem(elem.id, JSON.stringify(elem));
 
       // fill popularArr
@@ -108,7 +122,6 @@ async function init () {
         popularArr.push(elem.id);
       }
     }
-    console.log('we are here');
 
     // MAKING FAVORITES HASHMAP THAT WILL BE LOCATED AT #2 IN LOCAL STORAGE
     const favmap = new Map();
