@@ -16,26 +16,10 @@ import { searchForKey } from './searchKey.js';
 
 // Backend devs will switch up using their own spoonacular key for fetching
 // const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
-window.addEventListener('DOMContentLoaded', init);
 // LOCAL STORAGE
 const localStorage = window.localStorage;
 
-const thing = { data: {} };
-const fetchPromise = new Promise((resolve, reject) => {
-  if (localStorage.length === 0) {
-    fetch('../why.txt', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'text/plain',
-        'Content-Encoding': 'gzip'
-      }
-    })
-      .then(response => response.text())
-      .then(text => { thing.data = JSON.parse(text); resolve(); });
-  } else {
-    reject('local already populated');
-  }
-});
+window.addEventListener('DOMContentLoaded', init);
 
 /**
  * INITIALIZE FUNCTION where recipes will be fetches as soon as website is booted up.
@@ -48,7 +32,7 @@ const fetchPromise = new Promise((resolve, reject) => {
 async function init () {
   // initializeServiceWorker(); will eventually implement; or not
   if (localStorage.length === 0) {
-    /* const thing = { data: {} }; // structured like this so it is polymorphic with old fetch
+    const thing = { data: {} }; // structured like this so it is polymorphic with old fetch
     await fetch('../why.txt', {
       method: 'GET',
       headers: {
@@ -57,7 +41,7 @@ async function init () {
       }
     })
       .then(response => response.text())
-      .then(text => { thing.data = JSON.parse(text); }); */
+      .then(text => { thing.data = JSON.parse(text); });
     // OLD FETCH
     /* const initialSearch = {
       method: 'GET',
@@ -119,11 +103,6 @@ async function init () {
     const thing = new GenericFetch(bulkOptions);
     await GenericFetch.fGenericFetch(thing);
     */
-
-    /* MAGIC FETCH MOMENT  */
-    await fetchPromise;
-    /* MAGIC FETCH MOMENT  */
-
     for (const elem of thing.data) {
       hashmap.set(elem.title, elem.id);
     }
