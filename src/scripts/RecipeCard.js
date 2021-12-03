@@ -165,6 +165,7 @@ class RecipeCard extends HTMLElement {
       font-weight: 900;
       color: whitesmoke;
       position: relative;
+      margin-top: 200px; 
       border-radius: 10px 10px 10px 10px;
       padding: 0.5rem 1rem 0.5rem 1rem;
       outline: none;
