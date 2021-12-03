@@ -11,7 +11,7 @@ const APIKey = '85859c45fa7949ec8b915c61690f2ce1';
 
 const localStorage = window.localStorage;
 
-// promte user to enter data for add new recipe
+// prompt user to enter data for add new recipe
 const addBar = document.querySelector('.add-container');
 const inputHTML = document.querySelector('.add-bar');
 addBar.querySelector('button').addEventListener('click', addRecipe);
