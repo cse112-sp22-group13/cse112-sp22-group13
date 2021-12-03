@@ -12,7 +12,6 @@
 // import { ComplexSearch } from './apiComplexSearch.js';
 // import { GenericFetch } from './genericFetch.js';
 import { fillPopular } from './popularRecipes.js';
-import { searchForKey } from './searchKey.js';
 
 // Backend devs will switch up using their own spoonacular key for fetching
 // const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';

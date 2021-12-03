@@ -83,7 +83,7 @@ export async function addRecipe () {
   // IF WE GET HERE, THAT MEANS THE RECIPE HAS NEVER BEEN ADDED BEFORE, SO DIDN'T EXIST IN URLMAP
   const recipetoHash = await extraction(inputData);
   // Now check if the url is valid
-  if (typeof recipetoHash === 'undefined') {
+  if (recipetoHash === null) {
     alert('Not a valid url');
     return;
   }
@@ -153,7 +153,7 @@ function checkDup (url) {
 /**
  * Use array.splice function to insert item at certain index to map
  * @param {int} insertIndex url which comes from user input
- *  @param {String} key url which comes from user input
+ * @param {String} key url which comes from user input
  * @param {int} value url which comes from user input
  * @returns {Map} return the Map which is updated
  */

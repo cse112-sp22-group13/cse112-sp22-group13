@@ -27,7 +27,6 @@ function createFavCards () {
   const favmap = new Map(JSON.parse(localStorage['2']));
 
   hashes.forEach(h => {
-    ///
     if (favmap.get(h[1]) === true) {
       const element = document.createElement('recipe-card');
       element.data = localStorage[`${h[1]}`];

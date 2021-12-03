@@ -158,7 +158,7 @@ function getTags (jsonFile) {
 function bindEnterKey () {
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
-      let element = document.activeElement;
+      const element = document.activeElement;
       if (element.className === 'search-bar') {
         searchRecipes();
       } else if (element.className === 'add-bar') {
