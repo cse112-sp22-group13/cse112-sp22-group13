@@ -9,16 +9,31 @@
  * single recipe pages.
  */
 
-import { ComplexSearch } from './apiComplexSearch.js';
-import { GenericFetch } from './genericFetch.js';
+// import { ComplexSearch } from './apiComplexSearch.js';
+// import { GenericFetch } from './genericFetch.js';
 import { fillPopular } from './popularRecipes.js';
 
 // Backend devs will switch up using their own spoonacular key for fetching
-const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
-
-window.addEventListener('DOMContentLoaded', init);
+// const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
 // LOCAL STORAGE
 const localStorage = window.localStorage;
+// SANAT
+const objSanat = {
+  analyzedInstructions: [{ name: '', steps: [{ equipment: [], ingredients: [], number: 1, step: '' }] }],
+  servings: '\u221E',
+  title: 'Sanat',
+  summary: 'Sanat is 1 part hot cocoa by the fire, 2 parts earthy love, 3 parts long embrace after a hard day, 4 parts pile of puppies, a pinch of your cheek by grandma, and a dash of "go get em tiger". You will not regret this recipe!',
+  id: 1,
+  image: 'https://avatars.githubusercontent.com/u/31770675?v=4',
+  extendedIngredients: [{ amount: 1, unit: '', originalName: 'naan bread' }, { amount: 1, unit: '', originalName: 'spices' }, { amount: 1, unit: '', originalName: 'hot dog' }],
+  cheap: true,
+  dairyFree: false,
+  glutenFree: false,
+  vegan: false,
+  vegetarian: false,
+  healthy: false
+};
+window.addEventListener('DOMContentLoaded', init);
 
 /**
  * INITIALIZE FUNCTION where recipes will be fetches as soon as website is booted up.
@@ -29,8 +44,19 @@ const localStorage = window.localStorage;
  * that that holds url as key and id as a value to keep track of duplicated added recipes.
  */
 async function init () {
-  // initializeServiceWorker(); will eventually implement
+  // initializeServiceWorker(); will eventually implement; or not
   if (localStorage.length === 0) {
+    const thing = { data: {} }; // structured like this so it is polymorphic with old fetch
+    await fetch('../why.txt', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'text/plain',
+        'Accept-Encoding': 'gzip'
+      }
+    })
+      .then(response => response.text())
+      .then(text => { thing.data = JSON.parse(text); });
+    // OLD FETCH
     /* const initialSearch = {
       method: 'GET',
       url: 'https://api.spoonacular.com/recipes/complexSearch',
@@ -55,41 +81,23 @@ async function init () {
       idString = idString + elem.id + ',';
     } */
 
-    // SANAT
-    const objSanat = {
-      analyzedInstructions: [{ name: '', steps: [{ equipment: [], ingredients: [], number: 1, step: '' }] }],
-      servings: '\u221E',
-      title: 'Sanat',
-      summary: 'Sanat is 1 part hot cocoa by the fire, 2 parts earthy love, 3 parts long embrace after a hard day, 4 parts pile of puppies, a pinch of your cheek by grandma, and a dash of "go get em tiger". You will not regret this recipe!',
-      id: 1,
-      image: 'https://avatars.githubusercontent.com/u/31770675?v=4',
-      extendedIngredients: [{ amount: 1, unit: '', originalName: 'naan bread' }, { amount: 1, unit: '', originalName: 'spices' }, { amount: 1, unit: '', originalName: 'hot dog' }],
-      cheap: true,
-      dairyFree: false,
-      glutenFree: false,
-      vegan: false,
-      vegetarian: false,
-      healthy: false
-    };
-
     // console.log(JSON.stringify(Array.from(hashmap.entries())));
     // console.log(search.data.results);
 
+    // OLD FETCH
+    /*
     const bulkOptions = {
       method: 'GET',
       url: 'https://api.spoonacular.com/recipes/informationBulk',
       params: {
-        ids: 'idString',
+        ids: idString,
         includeNutrition: false,
         apiKey: API_KEY
       }
     };
     const thing = new GenericFetch(bulkOptions);
-    // await GenericFetch.fGenericFetch(thing);
-
-    await fetch('../why.txt')
-      .then(response => response.text())
-      .then(text => { thing.data = JSON.parse(text); });
+    await GenericFetch.fGenericFetch(thing);
+    */
     for (const elem of thing.data) {
       hashmap.set(elem.title, elem.id);
     }
@@ -106,11 +114,9 @@ async function init () {
 
     // TIME TO STORE JSONS INTO LOCAL STORAGE :)
     for (const elem of thing.data) {
-
       // check if elem contains image attribute, because if it doesn't, will throw a 404 error
       // when creating a recipe card
-      if(elem.image == undefined)
-      {
+      if (elem.image === undefined) {
         // console.log(elem.image);
         console.log('we found a json that doesnt contain an image attribute, so adding in our logo :)');
         elem.image = '../home/img/bread_logo.jpg';
@@ -126,7 +132,7 @@ async function init () {
         popularArr.push(elem.id);
       }
     }
-    console.log('we are here');
+    // console.log('we are here');
 
     // MAKING FAVORITES HASHMAP THAT WILL BE LOCATED AT #2 IN LOCAL STORAGE
     const favmap = new Map();
@@ -137,14 +143,9 @@ async function init () {
 
     // get hash table
     const hashes = JSON.parse(localStorage['0']);
-    // get array of ids
-    const elementIdArr = hashes.map(h => h[1]);
 
-    for (let i = 0; i < elementIdArr.length; i++) {
-      // initialze every id as false (not yet a favorite or deleted)
-      favmap.set(elementIdArr[i], false);
-      deletedMap.set(elementIdArr[i], false);
-    }
+    hashes.forEach(h => { favmap.set(h[1], false); deletedMap.set(h[1], false); });
+
     // urlMap.set('2046', 'none');
     // store the fav map into local
     localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
@@ -166,10 +167,10 @@ async function init () {
   bindEnterOnMain();
 }
 
-function bindEnterOnMain() {
+function bindEnterOnMain () {
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
-      let element = document.activeElement;
+      const element = document.activeElement;
       if (element.className === 'search-bar') {
         window.location.href = '../recipe_list/recipe_list.html';
       }

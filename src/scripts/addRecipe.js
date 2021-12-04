@@ -4,6 +4,7 @@
  */
 
 // should recieve a website url to be inputed
+import { GenericFetch } from './genericFetch.js';
 const APIKey = '85859c45fa7949ec8b915c61690f2ce1';
 
 // test url
@@ -22,8 +23,7 @@ addBar.querySelector('button').addEventListener('click', addRecipe);
  * @param {string} input takes in url that user inserted into textarea
  */
 async function extraction (input) {
-  let data = {};
-  console.log('using');
+  console.log('Attempting add');
   const format = {
     method: 'GET',
     url: 'https://api.spoonacular.com/recipes/extract',
@@ -36,41 +36,13 @@ async function extraction (input) {
       apiKey: APIKey
     }
   };
-  await axios.request(format).then(function (response) {
-    data = response.data;
-  }).catch(function (error) {
-    data = forceExtraction(input);
-    console.log(error);
-  });
-  return data;
-}
-
-/**
- * Forced extract that makes call to API to obtain json file from the
- * url the user inserted.
- * @param {string} input takes in url that user inserted into textarea
- */
-async function forceExtraction (input) {
-  let data = {};
-  console.log('using');
-  const format = {
-    method: 'GET',
-    url: 'https://api.spoonacular.com/recipes/extract',
-    params: {
-      url: input,
-      forceExtraction: true,
-      analyze: false,
-      includeNutrition: false,
-      includeTaste: false,
-      apiKey: APIKey
-    }
-  };
-  await axios.request(format).then(function (response) {
-    data = response.data;
-    return data;
-  }).catch(function (error) {
-    console.log(error);
-  });
+  const obj = new GenericFetch(format);
+  await GenericFetch.fGenericFetch(obj);
+  if (obj.data === null) {
+    obj.options.forceExtraction = true;
+    await GenericFetch.fGenericFetch(obj);
+  }
+  return obj.data;
 }
 
 /**
@@ -111,7 +83,7 @@ export async function addRecipe () {
   // IF WE GET HERE, THAT MEANS THE RECIPE HAS NEVER BEEN ADDED BEFORE, SO DIDN'T EXIST IN URLMAP
   const recipetoHash = await extraction(inputData);
   // Now check if the url is valid
-  if (typeof recipetoHash === 'undefined') {
+  if (recipetoHash === null) {
     alert('Not a valid url');
     return;
   }
@@ -156,7 +128,7 @@ export async function addRecipe () {
   alert('Your new card is inserted~');
 
   // go to expand card view
-  element.addEventListener('click', (e) => {
+  element.addEventListener('click', () => {
     window.location.href = '../recipe_expand/recipe_expand.html' + '#' + element.id;
   });
 }
@@ -181,7 +153,7 @@ function checkDup (url) {
 /**
  * Use array.splice function to insert item at certain index to map
  * @param {int} insertIndex url which comes from user input
- *  @param {String} key url which comes from user input
+ * @param {String} key url which comes from user input
  * @param {int} value url which comes from user input
  * @returns {Map} return the Map which is updated
  */

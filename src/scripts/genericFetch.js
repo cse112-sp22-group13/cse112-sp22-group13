@@ -8,7 +8,7 @@ export class GenericFetch {
    */
   constructor (input) {
     this.options = input;
-    this.data = {};
+    this.data = null;
   }
 
   /**

@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', init);
 const localStorage = window.localStorage;
 
 // Control flow for enterring recipe list from home page.
-if (document.referrer == window.location.origin + '/src/home/home.html') {
+if (document.referrer === window.location.origin + '/src/home/home.html') {
   console.log(document.referrer);
   console.log(window.location);
   console.log('omg it works');
@@ -37,18 +37,18 @@ function createRecipeCards () {
   // get hash table
   const hashes = JSON.parse(localStorage['0']);
   // get array of ids
-  const elementIdArr = hashes.map(h => h[1]);
-  elementIdArr.forEach(id => {
+  // const elementIdArr = hashes.map(h => h[1]);
+  hashes.forEach(h => {
     const element = document.createElement('recipe-card');
-    element.data = localStorage[`${id}`];
-    element.id = id;
+    element.data = localStorage[`${h[1]}`];
+    element.id = h[1];
     // hides the recipe forever if it is considered deleted in localStorage (uncomment when ready to use)
     const deletedMap = new Map(JSON.parse(localStorage['3']));
-    if (deletedMap.get(id) === true) {
+    if (deletedMap.get(h[1]) === true) {
       element.classList.add('deleted');
     }
     main.appendChild(element);
-    element.addEventListener('click', (e) => {
+    element.addEventListener('click', () => {
       window.location.href = '../recipe_expand/recipe_expand.html' + '#' + element.id;
     });
   });
@@ -112,8 +112,7 @@ function getRecipesNotContainingKeyword (keyword) {
   // couple base cases
   let input = keyword.toLowerCase();
 
-  if( keyword === 'dairy free' || keyword === 'gluten free')
-  {
+  if (keyword === 'dairy free' || keyword === 'gluten free') {
     console.log(input);
     input = input.replace(/\s/g, '');
     console.log(input);
@@ -122,18 +121,17 @@ function getRecipesNotContainingKeyword (keyword) {
   const arr = [];
   // get hash table
   const hashes = JSON.parse(localStorage['0']);
-  // get array of ids
-  const elementIdArr = hashes.map(h => h[1]);
 
-  for (const id of elementIdArr) {
-    const jsonFile = JSON.parse(localStorage.getItem(id));
+  hashes.forEach(h => {
+    const jsonFile = JSON.parse(localStorage.getItem(h[1]));
     const tags = getTags(jsonFile);
 
     // checks if input is NOT located in title, ingredients, or rest of tag array
     if (!(tags[0].includes(input) || tags[1].includes(input) || tags.includes(input))) {
-      arr.push(id);
+      arr.push(h[1]);
     }
-  }
+  });
+
   return arr;
 }
 
@@ -161,13 +159,13 @@ function getTags (jsonFile) {
   // booleans
   const climateChange = ['cheap', 'dairyFree', 'glutenFree', 'vegan', 'vegetarian'];
   for (const elem of climateChange) {
-    if (searchForKey(jsonFile, elem)) { 
-      tagsArr.push(elem.toLowerCase()); 
+    if (searchForKey(jsonFile, elem)) {
+      tagsArr.push(elem.toLowerCase());
     }
   }
 
   if (searchForKey(jsonFile, 'veryHealthy')) {
-    tagsArr.push('healthy'); 
+    tagsArr.push('healthy');
   }
 
   return tagsArr;
@@ -181,7 +179,7 @@ function getTags (jsonFile) {
 function bindEnterKey () {
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
-      let element = document.activeElement;
+      const element = document.activeElement;
       if (element.className === 'search-bar') {
         searchRecipes();
       } else if (element.className === 'add-bar') {
@@ -190,6 +188,3 @@ function bindEnterKey () {
     }
   });
 }
-
-
-

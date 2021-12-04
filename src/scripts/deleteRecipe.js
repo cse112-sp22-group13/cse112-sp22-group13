@@ -3,7 +3,7 @@
  * and changes its value in the delMap (located at index 3 in localstorage) to true.
  * @param {int} id , Id of Recipe to Delete
  */
- export function deleteRecipe (id) {
+export function deleteRecipe (id) {
   // get hash table
   const deletedMap = new Map(JSON.parse(localStorage['3']));
   deletedMap.set(parseInt(id), true);
