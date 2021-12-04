@@ -26,7 +26,7 @@ describe("testing for the website", () => {
         const typewriterJson = await typewriterHandle.jsonValue();
         
         console.log(titleJson);
-        expect([titleJson, typewriterJson]).toBe(["KNEAD IT", "ALL YOU KNEAD IS BREAD 🧇"]);
+        expect([titleJson, typewriterJson]).toStrictEqual(["KNEAD IT", "ALL YOU KNEAD IS BREAD 🧇"]);
     })
     it("Initial Page Test - Check if favorites are populated", async () => {
         console.log("Checking if favorites are populated");
