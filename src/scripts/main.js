@@ -9,16 +9,31 @@
  * single recipe pages.
  */
 
-import { ComplexSearch } from './apiComplexSearch.js';
-import { GenericFetch } from './genericFetch.js';
+// import { ComplexSearch } from './apiComplexSearch.js';
+// import { GenericFetch } from './genericFetch.js';
 import { fillPopular } from './popularRecipes.js';
 
 // Backend devs will switch up using their own spoonacular key for fetching
-const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
-
-window.addEventListener('DOMContentLoaded', init);
+// const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
 // LOCAL STORAGE
 const localStorage = window.localStorage;
+// SANAT
+const objSanat = {
+  analyzedInstructions: [{ name: '', steps: [{ equipment: [], ingredients: [], number: 1, step: '' }] }],
+  servings: '\u221E',
+  title: 'Sanat',
+  summary: 'Sanat is 1 part hot cocoa by the fire, 2 parts earthy love, 3 parts long embrace after a hard day, 4 parts pile of puppies, a pinch of your cheek by grandma, and a dash of "go get em tiger". You will not regret this recipe!',
+  id: 1,
+  image: 'https://avatars.githubusercontent.com/u/31770675?v=4',
+  extendedIngredients: [{ amount: 1, unit: '', originalName: 'naan bread' }, { amount: 1, unit: '', originalName: 'spices' }, { amount: 1, unit: '', originalName: 'hot dog' }],
+  cheap: true,
+  dairyFree: false,
+  glutenFree: false,
+  vegan: false,
+  vegetarian: false,
+  healthy: false
+};
+window.addEventListener('DOMContentLoaded', init);
 
 /**
  * INITIALIZE FUNCTION where recipes will be fetches as soon as website is booted up.
@@ -29,10 +44,20 @@ const localStorage = window.localStorage;
  * that that holds url as key and id as a value to keep track of duplicated added recipes.
  */
 async function init () {
-  // initializeServiceWorker(); will eventually implement
-
+  // initializeServiceWorker(); will eventually implement; or not
   if (localStorage.length === 0) {
-    const initialSearch = {
+    const thing = { data: {} }; // structured like this so it is polymorphic with old fetch
+    await fetch('../why.txt', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'text/plain',
+        'Accept-Encoding': 'gzip'
+      }
+    })
+      .then(response => response.text())
+      .then(text => { thing.data = JSON.parse(text); });
+    // OLD FETCH
+    /* const initialSearch = {
       method: 'GET',
       url: 'https://api.spoonacular.com/recipes/complexSearch',
       params: {
@@ -48,37 +73,19 @@ async function init () {
     // console.log(search.data);
 
     // grabbing recipes with id's
-    let idString = '';
-
+    let idString = ''; */
     // making hash table that maps titles (key) to recipe id's (values)
     const hashmap = new Map();
-    for (const elem of search.data.results) {
+    /* for (const elem of search.data.results) {
       hashmap.set(elem.title, elem.id);
       idString = idString + elem.id + ',';
-    }
-
-    // SANAT
-    const objSanat = {
-      analyzedInstructions: [{ name: '', steps: [{ equipment: [], ingredients: [], number: 1, step: '' }] }],
-      servings: '\u221E',
-      title: 'Sanat',
-      summary: 'Sanat is 1 part hot cocoa by the fire, 2 parts earthy love, 3 parts long embrace after a hard day, 4 parts pile of puppies, a pinch of your cheek by grandma, and a dash of "go get em tiger". You will not regret this recipe!',
-      id: 1,
-      image: 'https://avatars.githubusercontent.com/u/31770675?v=4',
-      extendedIngredients: [{ amount: 1, unit: '', originalName: 'naan bread' }, { amount: 1, unit: '', originalName: 'spices' }, { amount: 1, unit: '', originalName: 'hot dog' }],
-      cheap: true,
-      dairyFree: false,
-      glutenFree: false,
-      vegan: false,
-      vegetarian: false,
-      healthy: false
-    };
-    hashmap.set(objSanat.title, 1);
-    localStorage.setItem(1, JSON.stringify(objSanat));
+    } */
 
     // console.log(JSON.stringify(Array.from(hashmap.entries())));
     // console.log(search.data.results);
 
+    // OLD FETCH
+    /*
     const bulkOptions = {
       method: 'GET',
       url: 'https://api.spoonacular.com/recipes/informationBulk',
@@ -88,19 +95,36 @@ async function init () {
         apiKey: API_KEY
       }
     };
-
     const thing = new GenericFetch(bulkOptions);
     await GenericFetch.fGenericFetch(thing);
-    console.log(thing.data);
+    */
+    for (const elem of thing.data) {
+      hashmap.set(elem.title, elem.id);
+    }
+
+    // put in sanat last
+    hashmap.set(objSanat.title, 1);
 
     // FILLING LOCAL STORAGE
     // create a popular array to place into local storage
     const popularArr = [];
     // first set a place in local storage that will hold the hash table itself at key 0
     localStorage.setItem(0, JSON.stringify(Array.from(hashmap.entries())));
+    localStorage.setItem(1, JSON.stringify(objSanat));
 
-    // extract json object and put into local storage
+    // TIME TO STORE JSONS INTO LOCAL STORAGE :)
     for (const elem of thing.data) {
+      // check if elem contains image attribute, because if it doesn't, will throw a 404 error
+      // when creating a recipe card
+      if (elem.image === undefined) {
+        // console.log(elem.image);
+        console.log('we found a json that doesnt contain an image attribute, so adding in our logo :)');
+        elem.image = '../home/img/bread_logo.jpg';
+        console.log(elem);
+        // console.log(elem.image);
+      }
+
+      // yeet that baby into local storage :)
       localStorage.setItem(elem.id, JSON.stringify(elem));
 
       // fill popularArr
@@ -108,7 +132,7 @@ async function init () {
         popularArr.push(elem.id);
       }
     }
-    console.log('we are here');
+    // console.log('we are here');
 
     // MAKING FAVORITES HASHMAP THAT WILL BE LOCATED AT #2 IN LOCAL STORAGE
     const favmap = new Map();
@@ -119,15 +143,10 @@ async function init () {
 
     // get hash table
     const hashes = JSON.parse(localStorage['0']);
-    // get array of ids
-    const elementIdArr = hashes.map(h => h[1]);
 
-    for (let i = 0; i < elementIdArr.length; i++) {
-      // initialze every id as false (not yet a favorite or deleted)
-      favmap.set(elementIdArr[i], false);
-      deletedMap.set(elementIdArr[i], false);
-    }
-    urlMap.set('2046', 'none');
+    hashes.forEach(h => { favmap.set(h[1], false); deletedMap.set(h[1], false); });
+
+    // urlMap.set('2046', 'none');
     // store the fav map into local
     localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
     // store the del map into local
@@ -143,4 +162,18 @@ async function init () {
 
   // fill popular recipes
   fillPopular();
+
+  // Bind the enter key on main
+  bindEnterOnMain();
+}
+
+function bindEnterOnMain () {
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      const element = document.activeElement;
+      if (element.className === 'search-bar') {
+        window.location.href = '../recipe_list/recipe_list.html';
+      }
+    }
+  });
 }
