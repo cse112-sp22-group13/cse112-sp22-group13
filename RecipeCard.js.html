@@ -2,35 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>RecipeCard.js - Documentation</title>
+    <title>JSDoc: Source: RecipeCard.js</title>
 
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
+
 <body>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
-
-<label for="nav-trigger" class="overlay"></label>
-
-<nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="ComplexSearch.html">ComplexSearch</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ComplexSearch.html#.fComplexSearch">fComplexSearch</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="GenericFetch.html">GenericFetch</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="GenericFetch.html#.fGenericFetch">fGenericFetch</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addRecipe">addRecipe</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#bindEnterKey">bindEnterKey</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#checkckDu">checkckDu</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#clickNav">clickNav</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createCookView">createCookView</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createFavCards">createFavCards</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createRecipeCards">createRecipeCards</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createRecipeExpand">createRecipeExpand</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#deleteRecipe">deleteRecipe</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#editRecipe">editRecipe</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getInstructionSteps">getInstructionSteps</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getRecipesNotContainingKeyword">getRecipesNotContainingKeyword</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getTags">getTags</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#init">init</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#markFav">markFav</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#resetCards">resetCards</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#saveRecipe">saveRecipe</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#searchForKey">searchForKey</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#searchRecipes">searchRecipes</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#unFav">unFav</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#updateRecipeServings">updateRecipeServings</a></span></li>
-</nav>
-
 <div id="main">
-    
-    <h1 class="page-title">RecipeCard.js</h1>
-    
+
+    <h1 class="page-title">Source: RecipeCard.js</h1>
 
     
 
@@ -54,14 +41,18 @@ class RecipeCard extends HTMLElement {
   }
 
   /**
+   * Takes in JSON object in string form and parses it to create a recipe card that
+   * will be populated in the recipe list page. The card will be clickable that will
+   * navigate you to its recipe expand page. Also places a fav heart and delete button for
+   * the user to interact with.
    * @param {String} data The string representation of our JSON object representing a recipe
    */
   set data (data) {
     // Parse string to JSON object
     const parsed = JSON.parse(data);
-
+    // console.log(parsed);
     const recipeCard = document.createElement('article');
-    recipeCard.classList.add('recipe-card', 'test');
+    recipeCard.classList.add('recipe-card');
 
     // Attach grid container to root (article aka recipe card)
     const recipeContainer = document.createElement('div');
@@ -83,18 +74,31 @@ class RecipeCard extends HTMLElement {
 
     // attach title to recipe overview
     const recipeTitle = document.createElement('p');
-    recipeTitle.classList.add('recipeTitle');
+    recipeTitle.classList.add('recipe-title');
     recipeTitle.innerText = searchForKey(parsed, 'title');
     recipeOverview.appendChild(recipeTitle);
 
-    // attach summary to recipe overview
-    const recipeSummary = document.createElement('p');
-    recipeSummary.classList.add('recipeSummary');
-    recipeSummary.innerHTML = searchForKey(parsed, 'summary');
-    recipeOverview.appendChild(recipeSummary);
+    // attach serving to recipe overview
+    const recipeServing = document.createElement('p');
+    recipeServing.classList.add('recipe-serving');
+    recipeServing.innerHTML = 'Sevings: ' + searchForKey(parsed, 'servings');
+    recipeOverview.appendChild(recipeServing);
+
+    // attach time to recipe overview
+    const recipeTime = document.createElement('p');
+    recipeTime.classList.add('recipe-time');
+    recipeTime.innerHTML = 'Time: ' + searchForKey(parsed, 'readyInMinutes') + ' minutes';
+    recipeOverview.appendChild(recipeTime);
+
+    // attach company to recipe overview
+    const recipeOrg = document.createElement('p');
+    recipeOrg.classList.add('recipe-org');
+    recipeOrg.innerHTML = 'By ' + searchForKey(parsed, 'sourceName');
+    recipeOverview.appendChild(recipeOrg);
 
     // const favoriteButton = document.createElement('button');
     const favorite = document.createElement('img');
+    favorite.classList.add('recipe-favorite');
     const favmap = new Map(JSON.parse(localStorage['2']));
     if (favmap.get(parsed.id) === true) {
       favorite.src = '../recipe_list/img/heartFull.png';
@@ -122,7 +126,6 @@ class RecipeCard extends HTMLElement {
       };
     });
 
-    // favoriteButton.appendChild(favorite);
     recipeOverview.appendChild(favorite);
 
     const deleteButton = document.createElement('button');
@@ -142,49 +145,47 @@ class RecipeCard extends HTMLElement {
     }
     
     .recipe-grid-container {
-        display: grid;
-        column-gap: 1rem;
-        grid-template-columns: 200px auto;
+        display: flex;
         background-color: white;
-        /* #909e87; */
         padding: 1%;
         border: white;
         border-top: 3px solid  black;
         border-bottom: 3px solid  black;
-    
     }
-    
-    .recipe-grid-overview {
-        text-align: left;
-        color: black;
-        font-weight: bold;
-    }
-    
-    .recipe-title {
-        font-size: x-large;
-        padding:0;
-        margin-bottom: 10px;
-    }
-    
-    .recipe-summary {
-        line-height: 1.4;
-        margin-bottom: 10px;
+
+    .recipe-grid-img {
+        float: left;
+        width: 50%;
     }
 
     .recipe-grid-img img {
-      width: 100%;
+        height: 100%;
+        width: 90%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .recipe-grid-overview {
+        float: left;
+        width: 50%;
+        text-align: left;
+        color: black;
+        font-size: 2.8vw;
+        line-height: 0.7;
     }
     
-    .recipe-tags {
-        font-size: medium;
-        padding: 0%;
+    .recipe-title {
+        font-size: 3.8vw;
+        padding:0;
+        margin: 0.2rem 0;
+        font-weight: 600;
+        line-height:1.5;
     }
     
-    .tag {
-        font-size: x-small;
-        font-style: oblique;
-        list-style-position: inside;
-        padding: 0%;
+    .recipe-favorite {
+        padding: 0.3rem 0 0.3rem 0;
+        height: 30px;
+        width: 30px;  
     }
     .deleteBtn {
       font-size: 1rem;
@@ -192,7 +193,7 @@ class RecipeCard extends HTMLElement {
       color: whitesmoke;
       position: relative;
       border-radius: 10px 10px 10px 10px;
-      left: 50px;
+      margin-left: 450px;
       padding: 0.5rem 1rem 0.5rem 1rem;
       outline: none;
       cursor: pointer;
@@ -215,13 +216,17 @@ customElements.define('recipe-card', RecipeCard);
 
 </div>
 
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ComplexSearch.html">ComplexSearch</a></li><li><a href="GenericFetch.html">GenericFetch</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addRecipe">addRecipe</a></li><li><a href="global.html#bindEnterKey">bindEnterKey</a></li><li><a href="global.html#checkDup">checkDup</a></li><li><a href="global.html#clickNav">clickNav</a></li><li><a href="global.html#createCookView">createCookView</a></li><li><a href="global.html#createFavCards">createFavCards</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#createRecipeExpand">createRecipeExpand</a></li><li><a href="global.html#deleteRecipe">deleteRecipe</a></li><li><a href="global.html#editRecipe">editRecipe</a></li><li><a href="global.html#extraction">extraction</a></li><li><a href="global.html#fillPopular">fillPopular</a></li><li><a href="global.html#getInstructionSteps">getInstructionSteps</a></li><li><a href="global.html#getRecipesNotContainingKeyword">getRecipesNotContainingKeyword</a></li><li><a href="global.html#getTags">getTags</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#insertAtIndex">insertAtIndex</a></li><li><a href="global.html#markFav">markFav</a></li><li><a href="global.html#resetCards">resetCards</a></li><li><a href="global.html#saveRecipe">saveRecipe</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#searchRecipes">searchRecipes</a></li><li><a href="global.html#unFav">unFav</a></li><li><a href="global.html#updateRecipeServings">updateRecipeServings</a></li></ul>
+</nav>
+
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Thu Dec 02 2021 03:21:31 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Dec 05 2021 00:38:31 GMT+0000 (Coordinated Universal Time)
 </footer>
 
-<script>prettyPrint();</script>
-<script src="scripts/linenumber.js"></script>
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
 </body>
 </html>

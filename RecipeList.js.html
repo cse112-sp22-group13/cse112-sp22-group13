@@ -2,35 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>RecipeList.js - Documentation</title>
+    <title>JSDoc: Source: RecipeList.js</title>
 
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
+
 <body>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
-
-<label for="nav-trigger" class="overlay"></label>
-
-<nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="ComplexSearch.html">ComplexSearch</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="ComplexSearch.html#.fComplexSearch">fComplexSearch</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="GenericFetch.html">GenericFetch</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="GenericFetch.html#.fGenericFetch">fGenericFetch</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addRecipe">addRecipe</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#bindEnterKey">bindEnterKey</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#checkckDu">checkckDu</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#clickNav">clickNav</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createCookView">createCookView</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createFavCards">createFavCards</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createRecipeCards">createRecipeCards</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createRecipeExpand">createRecipeExpand</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#deleteRecipe">deleteRecipe</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#editRecipe">editRecipe</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getInstructionSteps">getInstructionSteps</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getRecipesNotContainingKeyword">getRecipesNotContainingKeyword</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getTags">getTags</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#init">init</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#markFav">markFav</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#resetCards">resetCards</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#saveRecipe">saveRecipe</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#searchForKey">searchForKey</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#searchRecipes">searchRecipes</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#unFav">unFav</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#updateRecipeServings">updateRecipeServings</a></span></li>
-</nav>
-
 <div id="main">
-    
-    <h1 class="page-title">RecipeList.js</h1>
-    
+
+    <h1 class="page-title">Source: RecipeList.js</h1>
 
     
 
@@ -40,6 +27,7 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import { searchForKey } from './searchKey.js';
+import { addRecipe } from './addRecipe.js';
 
 // SEARCH BAR BUTTON
 const searchBar = document.querySelector('button');
@@ -49,49 +37,57 @@ searchBar.addEventListener('click', searchRecipes);
 window.addEventListener('DOMContentLoaded', init);
 const localStorage = window.localStorage;
 
+// Control flow for enterring recipe list from home page.
+if (document.referrer === window.location.origin + '/src/home/home.html') {
+  console.log(document.referrer);
+  console.log(window.location);
+  console.log('omg it works');
+}
+
+/**
+ * Init automatically sets enter key bind to search bar and populates
+ * the page with recipe cards of every json file that was fetched into
+ * local storage.
+ */
 async function init () {
   bindEnterKey();
   createRecipeCards();
 }
 
 /**
- * **************************CREATERECIPECARDS FUNCTION************************** *
- * This function is called for you up above.                                      *
- * From within this function you can access the recipe data from the JSON         *
- * files with the recipeData Object above. Make sure you only display the         *
- * three recipes we give you, you'll use the bindShowMore() function to           *
- * show any others you've added when the user clicks on the "Show more" button.   *
- * ****************************************************************************** *
+ * CREATERECIPECARDS FUNCTION is called within init. From within this function you
+ * can access the recipe data from the JSON files with the recipeData Object above.
+ * Make sure you only display the three recipes we give you, you'll use the bindShowMore()
+ * function to show any others you've added when the user clicks on the "Show more" button.
  */
 function createRecipeCards () {
   const main = document.querySelector('main');
   // get hash table
   const hashes = JSON.parse(localStorage['0']);
   // get array of ids
-  const elementIdArr = hashes.map(h => h[1]);
-  elementIdArr.forEach(id => {
+  // const elementIdArr = hashes.map(h => h[1]);
+  hashes.forEach(h => {
     const element = document.createElement('recipe-card');
-    element.data = localStorage[`${id}`];
-    element.id = id;
+    element.data = localStorage[`${h[1]}`];
+    element.id = h[1];
     // hides the recipe forever if it is considered deleted in localStorage (uncomment when ready to use)
     const deletedMap = new Map(JSON.parse(localStorage['3']));
-    if (deletedMap.get(id) === true) {
+    if (deletedMap.get(h[1]) === true) {
       element.classList.add('deleted');
     }
     main.appendChild(element);
-    element.addEventListener('click', (e) => {
+    element.addEventListener('click', () => {
       window.location.href = '../recipe_expand/recipe_expand.html' + '#' + element.id;
     });
   });
 }
 
 /**
-   * **************************SEARCHRECIPES FUNCTION************************** *
-   * Connection between frontend and backend. When user clicks search button,   *
-   * search bar input will be pulled and passed to getRecipesContainingKeyword. *
-   * Then the array returned will populate cards on screen pertaining to input. *
-   * ************************************************************************** *
-   */
+ * SEARCHRECIPES function is the connection between frontend and backend.
+ * When user clicks search button, search bar input will be pulled and passed to
+ * getRecipesContainingKeyword(). Then the array returned will populate cards on
+ * screen pertaining to input.
+ */
 function searchRecipes () {
   // take user input from the search bar
   const input = inputTxt.value;
@@ -121,10 +117,9 @@ function searchRecipes () {
 }
 
 /**
-   * ***************************RESETCARDS FUNCTION**************************** *
-   * Show all Recipe Cards                                                      *
-   * ************************************************************************** *
-   */
+ * resetCards function selects all cards and removes any hidden classes to
+ * show them for view again.
+ */
 function resetCards () {
   const recipeCards = document.querySelectorAll('recipe-card');
   recipeCards.forEach(function (card) {
@@ -133,44 +128,48 @@ function resetCards () {
 }
 
 /**
-   * *************GETRECIPESNOTCONTAININGKEYWORD FUNCTION************** *
-   * For grabbing an array of id' with all recipes that don't           *
-   * contain keyword inserted into the search bar. i.e. returning       *
-   * an array of all bread recipes that don't contain the word          *
-   * 'chocolate'                                                        *
-   * ****************************************************************** *
-   */
+ * GETRECIPESNOTCONTAININGKEYWORD function
+ * For grabbing an array of id' with all recipes that DON'T contain the
+ * search input user put into search bar. This will be used to set those
+ * recipes to 'hidden' so that only the recipes containing the word are
+ * in view on the recipe list.
+ * @param {String} keyword
+ * @returns {int[]} an array that holds id's of recipes
+ */
 function getRecipesNotContainingKeyword (keyword) {
   // couple base cases
   let input = keyword.toLowerCase();
-  if (keyword === 'dairy free') { input = 'dairyfree'; }
-  if (keyword === 'gluten free') { input = 'glutenfree'; }
+
+  if (keyword === 'dairy free' || keyword === 'gluten free') {
+    console.log(input);
+    input = input.replace(/\s/g, '');
+    console.log(input);
+  }
 
   const arr = [];
   // get hash table
   const hashes = JSON.parse(localStorage['0']);
-  // get array of ids
-  const elementIdArr = hashes.map(h => h[1]);
 
-  for (const id of elementIdArr) {
-    const jsonFile = JSON.parse(localStorage.getItem(id));
+  hashes.forEach(h => {
+    const jsonFile = JSON.parse(localStorage.getItem(h[1]));
     const tags = getTags(jsonFile);
-    // console.log(tags);
 
     // checks if input is NOT located in title, ingredients, or rest of tag array
     if (!(tags[0].includes(input) || tags[1].includes(input) || tags.includes(input))) {
-      arr.push(id);
+      arr.push(h[1]);
     }
-  }
+  });
+
   return arr;
 }
 
 /**
-   * *************************GETTAGS FUNCTION************************* *
-   * Function that will build an array containing title, ingredients,   *
-   * and tags for true booleans within the json file passed             *
-   * ****************************************************************** *
-   */
+ * getTags function will build an array containing title, ingredients,
+ * and tags for true booleans within the json file passed. These tags will be
+ * used to search through and compare user's search bar input to.
+ * @param {Object} jsonFile that will be used to extract tags
+ * @returns {String[]} an array of tags, consisting of the recipe title, ingredients, etc.
+ */
 function getTags (jsonFile) {
   const tagsArr = [];
   // title
@@ -178,26 +177,42 @@ function getTags (jsonFile) {
   // ingredients
   tagsArr.push(JSON.stringify(searchForKey(jsonFile, 'extendedIngredients')).toLowerCase());
 
+  // if (searchForKey(jsonFile, 'cheap')) { tagsArr.push('cheap'); }
+  // if (searchForKey(jsonFile, 'dairyFree')) { tagsArr.push('dairyfree'); }
+  // if (searchForKey(jsonFile, 'glutenFree')) { tagsArr.push('glutenfree'); }
+  // if (searchForKey(jsonFile, 'vegan')) { tagsArr.push('vegan'); }
+  // if (searchForKey(jsonFile, 'vegetarian')) { tagsArr.push('vegetarian'); }
+  // if (searchForKey(jsonFile, 'veryHealthy')) { tagsArr.push('healthy'); }
+
   // booleans
-  if (searchForKey(jsonFile, 'cheap')) { tagsArr.push('cheap'); }
-  if (searchForKey(jsonFile, 'dairyFree')) { tagsArr.push('dairyfree'); }
-  if (searchForKey(jsonFile, 'glutenFree')) { tagsArr.push('glutenfree'); }
-  if (searchForKey(jsonFile, 'vegan')) { tagsArr.push('vegan'); }
-  if (searchForKey(jsonFile, 'vegetarian')) { tagsArr.push('vegetarian'); }
-  if (searchForKey(jsonFile, 'veryHealthy')) { tagsArr.push('healthy'); }
+  const climateChange = ['cheap', 'dairyFree', 'glutenFree', 'vegan', 'vegetarian'];
+  for (const elem of climateChange) {
+    if (searchForKey(jsonFile, elem)) {
+      tagsArr.push(elem.toLowerCase());
+    }
+  }
+
+  if (searchForKey(jsonFile, 'veryHealthy')) {
+    tagsArr.push('healthy');
+  }
 
   return tagsArr;
 }
 
 /**
-   * *************BINDENTERKEY FUNCTION************* *
-   * Set enter key works for search bar              *
-   * *********************************************** *
-   */
+ * bindEnterKey allows user to click 'enter' after they typed something
+ * into the search bar or add bar on the recipe list page.
+ * Checks the active bar on the page first to call the appropriate funciton.
+ */
 function bindEnterKey () {
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
-      searchRecipes();
+      const element = document.activeElement;
+      if (element.className === 'search-bar') {
+        searchRecipes();
+      } else if (element.className === 'add-bar') {
+        addRecipe();
+      }
     }
   });
 }
@@ -210,13 +225,17 @@ function bindEnterKey () {
 
 </div>
 
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ComplexSearch.html">ComplexSearch</a></li><li><a href="GenericFetch.html">GenericFetch</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addRecipe">addRecipe</a></li><li><a href="global.html#bindEnterKey">bindEnterKey</a></li><li><a href="global.html#checkDup">checkDup</a></li><li><a href="global.html#clickNav">clickNav</a></li><li><a href="global.html#createCookView">createCookView</a></li><li><a href="global.html#createFavCards">createFavCards</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#createRecipeExpand">createRecipeExpand</a></li><li><a href="global.html#deleteRecipe">deleteRecipe</a></li><li><a href="global.html#editRecipe">editRecipe</a></li><li><a href="global.html#extraction">extraction</a></li><li><a href="global.html#fillPopular">fillPopular</a></li><li><a href="global.html#getInstructionSteps">getInstructionSteps</a></li><li><a href="global.html#getRecipesNotContainingKeyword">getRecipesNotContainingKeyword</a></li><li><a href="global.html#getTags">getTags</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#insertAtIndex">insertAtIndex</a></li><li><a href="global.html#markFav">markFav</a></li><li><a href="global.html#resetCards">resetCards</a></li><li><a href="global.html#saveRecipe">saveRecipe</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#searchRecipes">searchRecipes</a></li><li><a href="global.html#unFav">unFav</a></li><li><a href="global.html#updateRecipeServings">updateRecipeServings</a></li></ul>
+</nav>
+
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> on Thu Dec 02 2021 03:21:31 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Dec 05 2021 00:38:31 GMT+0000 (Coordinated Universal Time)
 </footer>
 
-<script>prettyPrint();</script>
-<script src="scripts/linenumber.js"></script>
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
 </body>
 </html>
