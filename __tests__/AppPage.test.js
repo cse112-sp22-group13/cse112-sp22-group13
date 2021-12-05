@@ -42,7 +42,6 @@ describe("testing for the website", () => {
         await page.type('.add-bar', 'https://butterwithasideofbread.com/homemade-bread/');
         //Click on add button
         await page.click('.add-button');
-    
         expect(localStorage[Object.keys(hashes)[0]]).toBeDefined();
     });
 
@@ -51,8 +50,12 @@ describe("testing for the website", () => {
         //await page.goto('https://nan-bread-4.herokuapp.com/recipe_list/recipe_list.html');
         const localStorage = await page.evaluate(() =>  Object.assign({}, window.localStorage));
         const numRecipes = localStorage.length - 1;
+        console.log(page);
+        console.log(numRecipes);
         //delete the recipe
+        //await page.waitFor(2000);
         await page.click('.delete-button');
+
         expect(localStorage.length).toBe(numRecipes - 1);
-    });
+    }, 100000);
 });
