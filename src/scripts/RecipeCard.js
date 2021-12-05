@@ -13,12 +13,16 @@ class RecipeCard extends HTMLElement {
   }
 
   /**
+   * Takes in JSON object in string form and parses it to create a recipe card that
+   * will be populated in the recipe list page. The card will be clickable that will
+   * navigate you to its recipe expand page. Also places a fav heart and delete button for
+   * the user to interact with.
    * @param {String} data The string representation of our JSON object representing a recipe
    */
   set data (data) {
     // Parse string to JSON object
     const parsed = JSON.parse(data);
-    console.log(parsed);
+    // console.log(parsed);
     const recipeCard = document.createElement('article');
     recipeCard.classList.add('recipe-card');
 
@@ -49,24 +53,24 @@ class RecipeCard extends HTMLElement {
     // attach serving to recipe overview
     const recipeServing = document.createElement('p');
     recipeServing.classList.add('recipe-serving');
-    recipeServing.innerHTML = "Sevings: " + searchForKey(parsed, 'servings');
+    recipeServing.innerHTML = 'Sevings: ' + searchForKey(parsed, 'servings');
     recipeOverview.appendChild(recipeServing);
 
     // attach time to recipe overview
     const recipeTime = document.createElement('p');
     recipeTime.classList.add('recipe-time');
-    recipeTime.innerHTML = "Time: " + searchForKey(parsed, 'readyInMinutes') + " minutes";
+    recipeTime.innerHTML = 'Time: ' + searchForKey(parsed, 'readyInMinutes') + ' minutes';
     recipeOverview.appendChild(recipeTime);
 
     // attach company to recipe overview
     const recipeOrg = document.createElement('p');
     recipeOrg.classList.add('recipe-org');
-    recipeOrg.innerHTML = "By " + searchForKey(parsed, 'sourceName');
+    recipeOrg.innerHTML = 'By ' + searchForKey(parsed, 'sourceName');
     recipeOverview.appendChild(recipeOrg);
 
     // const favoriteButton = document.createElement('button');
     const favorite = document.createElement('img');
-    favorite.classList.add("recipe-favorite");
+    favorite.classList.add('recipe-favorite');
     const favmap = new Map(JSON.parse(localStorage['2']));
     if (favmap.get(parsed.id) === true) {
       favorite.src = '../recipe_list/img/heartFull.png';

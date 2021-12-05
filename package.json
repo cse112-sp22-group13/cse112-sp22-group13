@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
+    "minami": "^1.2.3",
     "standard": "^16.0.4",
     "stylelint": "^14.1.0"
   },

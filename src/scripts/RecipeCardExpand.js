@@ -8,15 +8,15 @@ class RecipeCardExpand extends HTMLElement {
   }
 
   /**
-     *  @return {*} The HTML structure of recipe expand
-     */
+   * @return {Object} The HTML structure of recipe expand
+   */
   get data () {
     return this.shadowRoot;
   }
 
   /**
-     *  @param {String} data The data to turn into JSOn and parse.
-     */
+   * @param {String} data The data to turn into JSOn and parse.
+   */
   set data (data) {
     const recipeData = JSON.parse(data);
     console.log(recipeData);
@@ -58,7 +58,7 @@ class RecipeCardExpand extends HTMLElement {
     // Recipe time label + class.
     const recipeExpandTimeLabel = document.createElement('div');
     recipeExpandTimeLabel.classList.add('recipe-time-label');
-    recipeExpandTimeLabel.innerText = 'Time: ' + searchForKey(recipeData, 'readyInMinutes') + " minutes";
+    recipeExpandTimeLabel.innerText = 'Time: ' + searchForKey(recipeData, 'readyInMinutes') + ' minutes';
 
     // Construct the servings/time container and append to recipe expand.
     recipeExpandServingsTimeContainer.appendChild(recipeExpandServingsLabel);
@@ -114,18 +114,20 @@ class RecipeCardExpand extends HTMLElement {
     // any other way without making another network call.
     const instructionsList = getInstructionSteps(recipeData);
     const suppliesList = [];
-    for (let i = 0; i < instructionsList.length; i++) {
-      const recipeExpandInstructions = document.createElement('li');
-      recipeExpandInstructions.innerText = instructionsList[i].step;
-      recipeExpandInstructionsList.appendChild(recipeExpandInstructions);
-
-      // Parse the instruction for the associated supplies.
-      const parsedSupplies = instructionsList[i].equipment;
-      // Iterate through the associated parsed supplies. If the element
-      // is not in the supplies list, add it.
-      for (let j = 0; j < parsedSupplies.length; j++) {
-        if (!(suppliesList.filter((e) => e.id === parsedSupplies[j].id).length > 0)) {
-          suppliesList.push(parsedSupplies[j]);
+    if ( instructionsList !== undefined) {
+      for (let i = 0; i < instructionsList.length; i++) {
+        const recipeExpandInstructions = document.createElement('li');
+        recipeExpandInstructions.innerText = instructionsList[i].step;
+        recipeExpandInstructionsList.appendChild(recipeExpandInstructions);
+  
+        // Parse the instruction for the associated supplies.
+        const parsedSupplies = instructionsList[i].equipment;
+        // Iterate through the associated parsed supplies. If the element
+        // is not in the supplies list, add it.
+        for (let j = 0; j < parsedSupplies.length; j++) {
+          if (!(suppliesList.filter((e) => e.id === parsedSupplies[j].id).length > 0)) {
+            suppliesList.push(parsedSupplies[j]);
+          }
         }
       }
     }
