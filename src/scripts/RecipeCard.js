@@ -99,26 +99,32 @@ class RecipeCard extends HTMLElement {
 
     // Make another div to lock the delete button on the right side of the container 
     // Create the delete button to remove recipes from list 
-    const buttonGrid = document.createElement('div');
-    buttonGrid.classList.add('delete-button');
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Delete';
-    deleteButton.classList.add('deleteBtn');
-    deleteButton.addEventListener('click', function (e) {
+    const delete_btn = document.createElement('img');
+    delete_btn.classList.add("delete-button");
+    delete_btn.src = "../recipe_list/img/delete.png";
+    // const buttonGrid = document.createElement('div');
+    // buttonGrid.classList.add('delete-button');
+    // const deleteButton = document.createElement('button');
+    // deleteButton.textContent = 'Delete';
+    // deleteButton.classList.add('deleteBtn');
+    delete_btn.addEventListener('click', function (e) {
       e.stopPropagation();
       document.getElementById(parsed.id).classList.add('deleted');
       deleteRecipe(parsed.id);
     });
+    recipeOverview.appendChild(delete_btn);
+
     // attach title-buffer to buttonGrid to make sure the button is on the bottom
     // and is locked there 
-    const titleBuffer = document.createElement('p');
-    titleBuffer.classList.add('title-buffer');
-    titleBuffer.innerText = '       ' +'\n\n\n\n\n'; 
-    buttonGrid.appendChild(titleBuffer); 
+    // const titleBuffer = document.createElement('p');
+    // titleBuffer.classList.add('title-buffer');
+    // titleBuffer.innerText = '       ' +'\n\n\n\n\n'; 
+    // buttonGrid.appendChild(titleBuffer); 
+    // PLEASE TALK TO ME WTH IS THIS - HAN
 
 
-    buttonGrid.appendChild(deleteButton);
-    recipeContainer.appendChild(buttonGrid);
+    // buttonGrid.appendChild(deleteButton);
+    // recipeContainer.appendChild(buttonGrid);
 
     const styleElem = document.createElement('style');
     styleElem.innerHTML = `
@@ -170,24 +176,10 @@ class RecipeCard extends HTMLElement {
         width: 30px;  
     }
 
-    .title-buffer {
-      font-size: 3.8vw;
-      padding:0;
-      margin: 0.2rem 0;
-      font-weight: 600;
-      line-height:1.5;
-    }
-
-    .deleteBtn {
-      font-size: 1rem;
-      font-weight: 900;
-      color: whitesmoke;
-      position: relative; 
-      border-radius: 10px 10px 10px 10px;
-      padding: 0.5rem 1rem 0.5rem 1rem;
-      outline: none;
-      cursor: pointer;
-      background-color: #FF8303;;
+    .delete-button {
+      padding: 0.3rem 0 0.3rem 1rem;
+      height: 30px;
+      width: 30px;  
     }
     `;
 
