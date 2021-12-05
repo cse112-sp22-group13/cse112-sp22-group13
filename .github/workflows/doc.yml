@@ -1,6 +1,7 @@
 name: Deply JSDoc to GitHub pages
 
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -12,12 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build
-        uses: andstor/jsdoc-action@v1.2.0
+      - name: Generate JSDoc documentation
+        uses: brunokrauss/jsdoc-action@3
         with:
-          source_dir: ./src/scripts
-          output_dir: ./out
-          template: minami
+          jsdoc-path: 'src'
+
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
