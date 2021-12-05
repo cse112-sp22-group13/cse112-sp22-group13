@@ -33,17 +33,26 @@ describe("testing for the website", () => {
     });
 
     //Test Add Recipe
-    it('Testing Create - navigate to recipe list and add recipe', async () => {
-    await page.goto('https://nan-bread-4.herokuapp.com/recipe_list/recipe_list.html');
-    //Enter value in the input
-    const localStorage = await page.evaluate(() =>  Object.assign({}, window.localStorage));
-    //console.log(localStorage);
-    const hashes = JSON.parse(localStorage['0']);
-    await page.type('.add-bar', 'https://butterwithasideofbread.com/homemade-bread/');
-    //Click on add button
-    await page.click('.add-button');
+    it('Testing Create - navigate to recipe list and add recipe.', async () => {
+        await page.goto('https://nan-bread-4.herokuapp.com/recipe_list/recipe_list.html');
+        //Enter value in the input
+        const localStorage = await page.evaluate(() =>  Object.assign({}, window.localStorage));
+        //console.log(localStorage);
+        const hashes = JSON.parse(localStorage['0']);
+        await page.type('.add-bar', 'https://butterwithasideofbread.com/homemade-bread/');
+        //Click on add button
+        await page.click('.add-button');
     
-    expect(localStorage[Object.keys(hashes)[0]]).toBeDefined();
-});
+        expect(localStorage[Object.keys(hashes)[0]]).toBeDefined();
+    });
 
+    it('Delete added recipe.', async () => {
+        //grab num of recipes in local
+        //await page.goto('https://nan-bread-4.herokuapp.com/recipe_list/recipe_list.html');
+        const localStorage = await page.evaluate(() =>  Object.assign({}, window.localStorage));
+        const numRecipes = localStorage.length - 1;
+        //delete the recipe
+        await page.click('.delete-button');
+        expect(localStorage.length).toBe(numRecipes - 1);
+    });
 });
