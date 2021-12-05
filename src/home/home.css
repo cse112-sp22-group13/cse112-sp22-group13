@@ -70,7 +70,7 @@ a:link a:visited a:hover a:active {
     opacity: 0.7;
 }
 
-.search-container {
+/* .search-container {
     text-align: center;
     padding: 0 0 2rem 0;
 }
@@ -96,7 +96,7 @@ a:link a:visited a:hover a:active {
     cursor: pointer;
     background-color: #FF8303;
     background-color: #9c5d41;
-}
+} */
 
 .blurb {
     margin: 0; 
@@ -126,7 +126,8 @@ section {
 }
 
 .button-col {
-    flex: 50%;
+    text-align: center;
+    padding: 0 0 2rem 0;
 }
 
 .cool-button {
