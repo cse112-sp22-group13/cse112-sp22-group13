@@ -1,7 +1,6 @@
 name: Deply JSDoc to GitHub pages
 
 on:
-  pull_request:
   push:
     branches:
       - main
