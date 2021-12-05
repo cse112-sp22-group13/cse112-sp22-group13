@@ -16,7 +16,6 @@ describe("testing for the website", () => {
         const searchBar = page.$(".searchContainer");
         expect(searchBar).toBeDefined();
     });
-
     it("Initial Page Test - Check for searchbar and search button", async () => {
         console.log("Checking if texts are correctly populated ");
         const title = await page.$(".title");
@@ -29,23 +28,22 @@ describe("testing for the website", () => {
         console.log(titleJson);
         expect([titleJson, typewriterJson]).toStrictEqual(["KNEAD IT", "ALL YOU KNEAD IS BREAD 🧇"]);
     })
-
-    it('Initial Page Test - Check if favorites are populated', async () => {
-        console.log('Checking if favorites are populated');
+    it("Initial Page Test - Check if favorites are populated", async () => {
+        console.log("Checking if favorites are populated");
     });
-
 
     //Test Add Recipe
     it('Testing Create - navigate to recipe list and add recipe', async () => {
-        await page.goto('https://nan-bread-4.herokuapp.com/recipe_list/recipe_list.html');
-        //Enter value in the input
-        const localStorage = await page.evaluate(() =>  Object.assign({}, window.localStorage));
-        //console.log(localStorage);
-        const hashes = JSON.parse(localStorage['0']);
-        await page.type('.add-bar', 'https://butterwithasideofbread.com/homemade-bread/');
-        //Click on add button
-        await page.click('.add-button');
-        
-        expect(localStorage[Object.keys(hashes)[0]]).toBeDefined();
-    });
+    await page.goto('https://nan-bread-4.herokuapp.com/recipe_list/recipe_list.html');
+    //Enter value in the input
+    const localStorage = await page.evaluate(() =>  Object.assign({}, window.localStorage));
+    //console.log(localStorage);
+    const hashes = JSON.parse(localStorage['0']);
+    await page.type('.add-bar', 'https://butterwithasideofbread.com/homemade-bread/');
+    //Click on add button
+    await page.click('.add-button');
+    
+    expect(localStorage[Object.keys(hashes)[0]]).toBeDefined();
+});
+
 });
