@@ -114,18 +114,20 @@ class RecipeCardExpand extends HTMLElement {
     // any other way without making another network call.
     const instructionsList = getInstructionSteps(recipeData);
     const suppliesList = [];
-    for (let i = 0; i < instructionsList.length; i++) {
-      const recipeExpandInstructions = document.createElement('li');
-      recipeExpandInstructions.innerText = instructionsList[i].step;
-      recipeExpandInstructionsList.appendChild(recipeExpandInstructions);
-
-      // Parse the instruction for the associated supplies.
-      const parsedSupplies = instructionsList[i].equipment;
-      // Iterate through the associated parsed supplies. If the element
-      // is not in the supplies list, add it.
-      for (let j = 0; j < parsedSupplies.length; j++) {
-        if (!(suppliesList.filter((e) => e.id === parsedSupplies[j].id).length > 0)) {
-          suppliesList.push(parsedSupplies[j]);
+    if ( instructionsList !== undefined) {
+      for (let i = 0; i < instructionsList.length; i++) {
+        const recipeExpandInstructions = document.createElement('li');
+        recipeExpandInstructions.innerText = instructionsList[i].step;
+        recipeExpandInstructionsList.appendChild(recipeExpandInstructions);
+  
+        // Parse the instruction for the associated supplies.
+        const parsedSupplies = instructionsList[i].equipment;
+        // Iterate through the associated parsed supplies. If the element
+        // is not in the supplies list, add it.
+        for (let j = 0; j < parsedSupplies.length; j++) {
+          if (!(suppliesList.filter((e) => e.id === parsedSupplies[j].id).length > 0)) {
+            suppliesList.push(parsedSupplies[j]);
+          }
         }
       }
     }
