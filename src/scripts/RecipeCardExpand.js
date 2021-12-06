@@ -199,7 +199,7 @@ class RecipeCardExpand extends HTMLElement {
     editButtonDiv.classList.add('edit-div');
     const editButton = document.createElement('button');
     editButton.classList.add('editbtn');
-    editButton.innerText = 'Edit';
+    editButton.innerText = 'Edit Serving Size';
     editButton.addEventListener('click', () => { editRecipe(); });
     editButtonDiv.appendChild(editButton);
     recipeExpandContainer.appendChild(editButtonDiv);
