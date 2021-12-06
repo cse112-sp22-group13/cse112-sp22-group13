@@ -6,23 +6,19 @@ const localStorage = window.localStorage;
 window.addEventListener('DOMContentLoaded', init);
 
 /**
- * **************************INIT FUNCTION*************************************** *
- * This function is simply just called when we load the cook view page. It        *
- * just calls the createCookView() function which will create the html            *
- * structure of the cook view page.                                               *
- * ****************************************************************************** *
+ * INIT function is simply just called when we load the cook view page. It
+ * just calls the createCookView() function which will create the html
+ * structure of the cook view page.
  */
 async function init () {
   createCookView();
 }
 
 /**
- * **************************CREATECOOKVIEW FUNCTION*************************     *
- * Grabs the #id url fragment that was appended when we clicked on a recipe card  *
- * and creates the html structure of the cook view page by passing in the         *
- * data string from localStorage into a custom recipe-card-expand-container. See  *
- * recipeCardExpand.js for how this data is parsed.                               *
- * ****************************************************************************** *
+ * CREATECOOKVIEW functionGrabs the #id url fragment that was appended when we clicked
+ * on a recipe card and creates the html structure of the cook view page by passing in the
+ * data string from localStorage into a custom recipe-card-expand-container. See
+ * recipeCardExpand.js for how this data is parsed.
  */
 function createCookView () {
   const main = document.querySelector('main');

@@ -1,9 +1,8 @@
 /**
-   * *************************MARKFAV FUNCTION************************* *
-   * Mark favorite as true in hashmap by id of recipe, store the        *
-   * hashmap in localStorage                                            *
-   * ****************************************************************** *
-   */
+ * MARKFAV function sets recipe's id location in favmap as true, and then
+ * replaces the favmap in local storage.
+ * @param {int} id
+ */
 export function markFav (id) {
   // get hash table
   const favmap = new Map(JSON.parse(localStorage['2']));
@@ -13,11 +12,10 @@ export function markFav (id) {
 }
 
 /**
-    * *************************UNFAV FUNCTION************************* *
-    * Mark favorite as false in hashmap by id of recipe, replace the   *
-    * hashmap in localStorage                                          *
-    * **************************************************************** *
-    */
+ * UNFAV function sets recipe's id location in favmap as false and replaces
+ * the favmap into local storage again.
+ * @param {int} id
+ */
 export function unFav (id) {
   // get hash table
   const favmap = new Map(JSON.parse(localStorage['2']));

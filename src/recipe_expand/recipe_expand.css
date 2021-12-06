@@ -1,9 +1,11 @@
 body {
-    font-family: 'Montserrat', sans-serif;  
+    font-family: 'Montserrat', sans-serif;    
     box-sizing: border-box;
-    background-color: #AD9169;
     background-color: black;
-    color:  #fff;
+    /* background-color: #AD9169; */
+    color: white;
+    /* color: #e3d477;
+    color: #bc815f; */
 }
 
 main {
@@ -13,6 +15,7 @@ main {
 .title {
     text-align: center;
     color: #e3d477;
+    color: #8c7973;
     padding: 3vh 0 0 0;
     font-size: 3.7rem;
     font-weight: 800;
@@ -151,6 +154,7 @@ main {
 }
 
 /* Button to open and close the sidebar */
+/* Button to open and close the sidebar */
 .openbtn {
     font-size: 20px;
     top: 0;
@@ -158,6 +162,7 @@ main {
     z-index: 2;
     position:fixed;
     background-color: #ce966e;
+    opacity: 90%;
     color: #e3d477;
     padding: 10px 15px;
     border: none;

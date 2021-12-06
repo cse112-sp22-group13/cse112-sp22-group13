@@ -13,12 +13,16 @@ class RecipeCard extends HTMLElement {
   }
 
   /**
+   * Takes in JSON object in string form and parses it to create a recipe card that
+   * will be populated in the recipe list page. The card will be clickable that will
+   * navigate you to its recipe expand page. Also places a fav heart and delete button for
+   * the user to interact with.
    * @param {String} data The string representation of our JSON object representing a recipe
    */
   set data (data) {
     // Parse string to JSON object
     const parsed = JSON.parse(data);
-    console.log(parsed);
+    // console.log(parsed);
     const recipeCard = document.createElement('article');
     recipeCard.classList.add('recipe-card');
 
@@ -96,15 +100,35 @@ class RecipeCard extends HTMLElement {
 
     recipeOverview.appendChild(favorite);
 
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Delete';
-    deleteButton.classList.add('deleteBtn');
-    deleteButton.addEventListener('click', function (e) {
+
+    // Make another div to lock the delete button on the right side of the container 
+    // Create the delete button to remove recipes from list 
+    const delete_btn = document.createElement('img');
+    delete_btn.classList.add("delete-button");
+    delete_btn.src = "../recipe_list/img/delete.png";
+    // const buttonGrid = document.createElement('div');
+    // buttonGrid.classList.add('delete-button');
+    // const deleteButton = document.createElement('button');
+    // deleteButton.textContent = 'Delete';
+    // deleteButton.classList.add('deleteBtn');
+    delete_btn.addEventListener('click', function (e) {
       e.stopPropagation();
       document.getElementById(parsed.id).classList.add('deleted');
       deleteRecipe(parsed.id);
     });
-    recipeOverview.appendChild(deleteButton);
+    recipeOverview.appendChild(delete_btn);
+
+    // attach title-buffer to buttonGrid to make sure the button is on the bottom
+    // and is locked there 
+    // const titleBuffer = document.createElement('p');
+    // titleBuffer.classList.add('title-buffer');
+    // titleBuffer.innerText = '       ' +'\n\n\n\n\n'; 
+    // buttonGrid.appendChild(titleBuffer); 
+    // PLEASE TALK TO ME WTH IS THIS - HAN
+
+
+    // buttonGrid.appendChild(deleteButton);
+    // recipeContainer.appendChild(buttonGrid);
 
     const styleElem = document.createElement('style');
     styleElem.innerHTML = `
@@ -153,19 +177,13 @@ class RecipeCard extends HTMLElement {
     .recipe-favorite {
         padding: 0.3rem 0 0.3rem 0;
         height: 30px;
-        width: 30px;
+        width: 30px;  
     }
-    .deleteBtn {
-      font-size: 1rem;
-      font-weight: 900;
-      color: whitesmoke;
-      position: relative;
-      border-radius: 10px 10px 10px 10px;
-      left: 50px;
-      padding: 0.5rem 1rem 0.5rem 1rem;
-      outline: none;
-      cursor: pointer;
-      background-color: #FF8303;;
+
+    .delete-button {
+      padding: 0.3rem 0 0.3rem 1rem;
+      height: 30px;
+      width: 30px;  
     }
     `;
 
