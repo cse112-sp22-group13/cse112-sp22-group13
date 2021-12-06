@@ -22,10 +22,8 @@ window.addEventListener('DOMContentLoaded', init);
 const localStorage = window.localStorage;
 
 /**
-  * **********************INITIALIZE FUNCTION********************** *
   * Recipes will be fetched as soon as website is booted up, and    *
   * local storage is filled.                                        *
-  * *************************************************************** *
   */
 async function init () {
   // initializeServiceWorker(); will eventually implement
