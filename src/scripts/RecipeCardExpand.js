@@ -176,6 +176,10 @@ class RecipeCardExpand extends HTMLElement {
     recipeInputFormInput.setAttribute('type', 'text');
     recipeInputForm.appendChild(recipeInputFormInput);
     recipeInputFormInput.value = searchForKey(recipeData, 'servings');
+    recipeInputForm.addEventListener('submit', function (e) { 
+      e.preventDefault();
+      saveRecipe();
+      return false; });
     recipeInputForm.classList.add('hidden');
     recipeInputFormInput.classList.add('hidden');
     recipeExpandContainer.appendChild(recipeInputForm);
