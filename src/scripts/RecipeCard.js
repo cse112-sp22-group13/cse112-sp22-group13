@@ -53,7 +53,7 @@ class RecipeCard extends HTMLElement {
     // attach serving to recipe overview
     const recipeServing = document.createElement('p');
     recipeServing.classList.add('recipe-serving');
-    recipeServing.innerHTML = 'Sevings: ' + searchForKey(parsed, 'servings');
+    recipeServing.innerHTML = 'Servings: ' + searchForKey(parsed, 'servings');
     recipeOverview.appendChild(recipeServing);
 
     // attach time to recipe overview
