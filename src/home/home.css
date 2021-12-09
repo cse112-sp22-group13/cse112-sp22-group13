@@ -140,6 +140,8 @@ section {
 .cool-button.one {
     color: #FF8303;
     border: 3px solid #FF8303;
+    font-size : 20px;
+    padding: 15px 15px;
     /* box-shadow: -3px 5px 0 0 #FF8303; */
 }
 
