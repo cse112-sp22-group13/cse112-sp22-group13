@@ -84,5 +84,12 @@ Commit b70aa97cb188504e85821ee845877ccf8a5f7be5 on Dec 6,
   pressing the submit button, page would refresh without calling the function to scale the ingredients.
 - Inserted a function to not refresh the page on enter key, and call the function to update scaling.
 
+# Peicong's Testing:
+## SearchKey Test
+- Used to return undefined instead object when grab id from localStorage
+- Change the id tobe an Json object to test
 
-
+## AddRecipe Test
+- We test "add back" feature to add deleted item back, which didn;'t work due to generate random id, then we try to make each id unique for each new added Recipe by grab it back when we undo delete.
+- The delete function for add recipe didn't work due to generate id issue, then we change the id in recipetoHash to make it valid.
+- I test add recipe to make it insert at top of list. 
