@@ -1,16 +1,22 @@
 {
   "devDependencies": {
+    "@babel/core": "^7.16.0",
     "@babel/eslint-parser": "^7.16.3",
     "@babel/eslint-plugin": "^7.14.5",
+    "@babel/preset-env": "^7.16.4",
     "@html-eslint/eslint-plugin": "^0.12.0",
     "@html-eslint/parser": "^0.12.0",
     "babel-core": "^6.26.3",
+    "babel-jest": "^27.4.2",
     "babel-loader": "^8.2.3",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.1",
+    "jest": "^27.4.3",
+    "jest-puppeteer": "^6.0.2",
+    "puppeteer": "^12.0.1",
     "standard": "^16.0.4"
   },
   "eslintConfig": {
@@ -32,6 +38,11 @@
   },
   "babel": {},
   "scripts": {
+    "test": "jest",
     "eslint:github-action": "eslint source/"
+  },
+  "jest": {
+    "preset": "jest-puppeteer",
+    "verbose": true
   }
 }
