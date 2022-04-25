@@ -4,11 +4,11 @@
  * @param {int} id
  */
 export function markFav (id) {
-  // get hash table
-  const favmap = new Map(JSON.parse(localStorage['2']));
-  favmap.set(id, true);
-  // console.log(favmap);
-  localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
+    // get hash table
+    const favmap = new Map(JSON.parse(localStorage["2"]));
+    favmap.set(id, true);
+    // console.log(favmap);
+    localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
 }
 
 /**
@@ -17,9 +17,9 @@ export function markFav (id) {
  * @param {int} id
  */
 export function unFav (id) {
-  // get hash table
-  const favmap = new Map(JSON.parse(localStorage['2']));
-  favmap.set(id, false);
-  // console.log(favmap);
-  localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
+    // get hash table
+    const favmap = new Map(JSON.parse(localStorage["2"]));
+    favmap.set(id, false);
+    // console.log(favmap);
+    localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
 }
