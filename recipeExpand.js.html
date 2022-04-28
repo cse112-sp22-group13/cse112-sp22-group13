@@ -26,14 +26,14 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { searchForKey } from './searchKey.js';
+            <pre class="prettyprint source linenums"><code>import { searchForKey } from "./searchKey.js";
 
 // The ID of the recipe that we clicked on to get recipe expand.
 const recipeId = window.location.hash.substring(1);
 const localStorage = window.localStorage;
 
 // Initialize creating the recipe expand page.
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener("DOMContentLoaded", init);
 
 /**
  * INIT is automatically called when we load the recipe expand page. It called
@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', init);
  * recipe expand page.
  */
 async function init () {
-  createRecipeExpand();
+    createRecipeExpand();
 }
 
 /**
@@ -51,11 +51,11 @@ async function init () {
  * recipe-card-expand-container. See recipeCardExpand.js for how this data is parsed.
  */
 function createRecipeExpand () {
-  const main = document.querySelector('main');
-  const element = document.createElement('recipe-card-expand-container');
-  element.data = localStorage.getItem(recipeId);
-  element.id = recipeId;
-  main.appendChild(element);
+    const main = document.querySelector("main");
+    const element = document.createElement("recipe-card-expand-container");
+    element.data = localStorage.getItem(recipeId);
+    element.id = recipeId;
+    main.appendChild(element);
 }
 
 /**
@@ -63,22 +63,22 @@ function createRecipeExpand () {
  * Hides the edit button and sets the input form and submit button to be viewable.
  */
 export function editRecipe () {
-  console.log('edit');
-  // Example selecting the shadowroot + recipe expand container
-  const recipeExpandRoot = document.querySelector('recipe-card-expand-container').data;
-  const recipeExpandContainer = recipeExpandRoot.querySelector('.recipe-expand-grid-container');
-  const recipeInputForm = recipeExpandRoot.querySelector('.recipe-form');
+    console.log("edit");
+    // Example selecting the shadowroot + recipe expand container
+    const recipeExpandRoot = document.querySelector("recipe-card-expand-container").data;
+    const recipeExpandContainer = recipeExpandRoot.querySelector(".recipe-expand-grid-container");
+    const recipeInputForm = recipeExpandRoot.querySelector(".recipe-form");
 
-  recipeInputForm.classList.remove('hidden');
-  recipeInputForm.children[0].classList.remove('hidden');
+    recipeInputForm.classList.remove("hidden");
+    recipeInputForm.children[0].classList.remove("hidden");
 
-  const editButtonDiv = recipeExpandContainer.querySelector('.edit-div');
-  editButtonDiv.classList.add('hidden');
-  editButtonDiv.querySelector('.editbtn').classList.add('hidden');
+    const editButtonDiv = recipeExpandContainer.querySelector(".edit-div");
+    editButtonDiv.classList.add("hidden");
+    editButtonDiv.querySelector(".editbtn").classList.add("hidden");
 
-  const submitButtonDiv = recipeExpandContainer.querySelector('.submit-div');
-  submitButtonDiv.classList.remove('hidden');
-  submitButtonDiv.querySelector('.submitbtn').classList.remove('hidden');
+    const submitButtonDiv = recipeExpandContainer.querySelector(".submit-div");
+    submitButtonDiv.classList.remove("hidden");
+    submitButtonDiv.querySelector(".submitbtn").classList.remove("hidden");
 }
 
 /**
@@ -87,54 +87,54 @@ export function editRecipe () {
  * changes to local storage. Hides submit button and input form, shows edit button again.
  */
 export function saveRecipe () {
-  console.log('save');
-  // Get the edit button and show it
-  const recipeExpandRoot = document.querySelector('recipe-card-expand-container').data;
-  const recipeExpandContainer = recipeExpandRoot.querySelector('.recipe-expand-grid-container');
-  const recipeInputForm = recipeExpandRoot.querySelector('.recipe-form');
-  const editButtonDiv = recipeExpandContainer.querySelector('.edit-div');
-  editButtonDiv.classList.remove('hidden');
-  editButtonDiv.querySelector('.editbtn').classList.remove('hidden');
+    console.log("save");
+    // Get the edit button and show it
+    const recipeExpandRoot = document.querySelector("recipe-card-expand-container").data;
+    const recipeExpandContainer = recipeExpandRoot.querySelector(".recipe-expand-grid-container");
+    const recipeInputForm = recipeExpandRoot.querySelector(".recipe-form");
+    const editButtonDiv = recipeExpandContainer.querySelector(".edit-div");
+    editButtonDiv.classList.remove("hidden");
+    editButtonDiv.querySelector(".editbtn").classList.remove("hidden");
 
-  // Hide submit button
-  const submitButtonDiv = recipeExpandContainer.querySelector('.submit-div');
-  submitButtonDiv.classList.add('hidden');
-  submitButtonDiv.querySelector('.submitbtn').classList.add('hidden');
+    // Hide submit button
+    const submitButtonDiv = recipeExpandContainer.querySelector(".submit-div");
+    submitButtonDiv.classList.add("hidden");
+    submitButtonDiv.querySelector(".submitbtn").classList.add("hidden");
 
-  // Update recipe given new serving amount
-  const servings = recipeInputForm.children[0].value;
-  updateRecipeServings(servings);
+    // Update recipe given new serving amount
+    const servings = recipeInputForm.children[0].value;
+    updateRecipeServings(servings);
 
-  // Update HTML for Serving
-  const recipeServingContainer = recipeExpandContainer.querySelector('.recipe-expand-servings-time-container');
-  recipeServingContainer.querySelector('.recipe-servings-label').innerText = 'Servings: ' + servings;
+    // Update HTML for Serving
+    const recipeServingContainer = recipeExpandContainer.querySelector(".recipe-expand-servings-time-container");
+    recipeServingContainer.querySelector(".recipe-servings-label").innerText = "Servings: " + servings;
 
-  // Update HTML for ingredients
-  const ingredientContainer = recipeExpandContainer.querySelector('.recipe-expand-ingredients-container');
-  const recipeExpandIngredientsList = document.createElement('ul');
-  recipeExpandIngredientsList.classList.add('recipe-expand-ingredients-list');
-  recipeExpandIngredientsList.id = 'ingredientList';
-  recipeExpandIngredientsList.innerText = 'Ingredients:';
-  const recipeId = document.querySelector('recipe-card-expand-container').id;
-  const recipe = JSON.parse(localStorage[recipeId]);
-  const ingredientsList = searchForKey(recipe, 'extendedIngredients');
+    // Update HTML for ingredients
+    const ingredientContainer = recipeExpandContainer.querySelector(".recipe-expand-ingredients-container");
+    const recipeExpandIngredientsList = document.createElement("ul");
+    recipeExpandIngredientsList.classList.add("recipe-expand-ingredients-list");
+    recipeExpandIngredientsList.id = "ingredientList";
+    recipeExpandIngredientsList.innerText = "Ingredients:";
+    const recipeId = document.querySelector("recipe-card-expand-container").id;
+    const recipe = JSON.parse(localStorage[recipeId]);
+    const ingredientsList = searchForKey(recipe, "extendedIngredients");
 
-  for (let i = 0; i &lt; ingredientsList.length; i++) {
-    const recipeExpandIngredients = document.createElement('li');
-    if (ingredientsList[i].unit === '') {
-      recipeExpandIngredients.innerText = ingredientsList[i].amount + ' ' + ingredientsList[i].originalName;
-    } else {
-      recipeExpandIngredients.innerText = ingredientsList[i].amount + ' ' + ingredientsList[i].unit + ' ' + ingredientsList[i].originalName;
+    for (let i = 0; i &lt; ingredientsList.length; i++) {
+        const recipeExpandIngredients = document.createElement("li");
+        if (ingredientsList[i].unit === "") {
+            recipeExpandIngredients.innerText = ingredientsList[i].amount + " " + ingredientsList[i].originalName;
+        } else {
+            recipeExpandIngredients.innerText = ingredientsList[i].amount + " " + ingredientsList[i].unit + " " + ingredientsList[i].originalName;
+        }
+        recipeExpandIngredientsList.appendChild(recipeExpandIngredients);
     }
-    recipeExpandIngredientsList.appendChild(recipeExpandIngredients);
-  }
-  const oldIngredients = recipeExpandContainer.querySelector('.recipe-expand-ingredients-container').querySelector('.recipe-expand-ingredients-list');
-  oldIngredients.remove();
+    const oldIngredients = recipeExpandContainer.querySelector(".recipe-expand-ingredients-container").querySelector(".recipe-expand-ingredients-list");
+    oldIngredients.remove();
 
-  // Hide the input form
-  ingredientContainer.appendChild(recipeExpandIngredientsList);
-  recipeInputForm.classList.add('hidden');
-  recipeInputForm.children[0].classList.add('hidden');
+    // Hide the input form
+    ingredientContainer.appendChild(recipeExpandIngredientsList);
+    recipeInputForm.classList.add("hidden");
+    recipeInputForm.children[0].classList.add("hidden");
 }
 
 /**
@@ -143,29 +143,29 @@ export function saveRecipe () {
  * @param {int} numServings , number of servings to modify the recipe's ingredients
  */
 function updateRecipeServings (numServings) {
-  const recipeExpandRoot = document.querySelector('recipe-card-expand-container').data;
-  const recipeExpandContainer = recipeExpandRoot.querySelector('.recipe-expand-grid-container');
-  const recipeServingContainer = recipeExpandContainer.querySelector('.recipe-expand-servings-time-container');
-  const currServings = recipeServingContainer.querySelector('.recipe-servings-label').innerText.substring(10);
-  // recipeServingContainer.querySelector('.recipe-servings-label').innerText = 'Servings: ' + numServings;
+    const recipeExpandRoot = document.querySelector("recipe-card-expand-container").data;
+    const recipeExpandContainer = recipeExpandRoot.querySelector(".recipe-expand-grid-container");
+    const recipeServingContainer = recipeExpandContainer.querySelector(".recipe-expand-servings-time-container");
+    const currServings = recipeServingContainer.querySelector(".recipe-servings-label").innerText.substring(10);
+    // recipeServingContainer.querySelector('.recipe-servings-label').innerText = 'Servings: ' + numServings;
 
-  if (isNaN(numServings)) {
-    alert('Your Serving Amount is Not a Number, Try Again');
-    return;
-  }
-  if (currServings === numServings) {
-    return;
-  }
-  const difference = numServings / currServings;
-  const recipeId = document.querySelector('recipe-card-expand-container').id;
-  const recipe = JSON.parse(localStorage[recipeId]);
-  const recipeIngredients = recipe.extendedIngredients;
-  for (let i = 0; i &lt; recipeIngredients.length; i++) {
-    const numIngredient = recipeIngredients[i].amount;
-    recipeIngredients[i].amount = numIngredient * difference;
-  }
-  recipe.servings = numServings;
-  localStorage.setItem(recipeId, JSON.stringify(recipe));
+    if (isNaN(numServings)) {
+        alert("Your Serving Amount is Not a Number, Try Again");
+        return;
+    }
+    if (currServings === numServings) {
+        return;
+    }
+    const difference = numServings / currServings;
+    const recipeId = document.querySelector("recipe-card-expand-container").id;
+    const recipe = JSON.parse(localStorage[recipeId]);
+    const recipeIngredients = recipe.extendedIngredients;
+    for (let i = 0; i &lt; recipeIngredients.length; i++) {
+        const numIngredient = recipeIngredients[i].amount;
+        recipeIngredients[i].amount = numIngredient * difference;
+    }
+    recipe.servings = numServings;
+    localStorage.setItem(recipeId, JSON.stringify(recipe));
 }
 </code></pre>
         </article>
@@ -183,7 +183,7 @@ function updateRecipeServings (numServings) {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Tue Apr 26 2022 00:07:17 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Thu Apr 28 2022 00:10:26 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
