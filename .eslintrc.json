@@ -37,6 +37,9 @@
         ],
         "no-undef": [
             "off"
+        ],
+        "linebreak-style": [
+            "off"
         ]
     }
 }
