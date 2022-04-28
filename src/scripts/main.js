@@ -11,7 +11,7 @@
 
 // import { ComplexSearch } from './apiComplexSearch.js';
 // import { GenericFetch } from './genericFetch.js';
-import { fillPopular } from './popularRecipes.js';
+import { fillPopular } from "./popularRecipes.js";
 
 // Backend devs will switch up using their own spoonacular key for fetching
 // const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
@@ -19,21 +19,21 @@ import { fillPopular } from './popularRecipes.js';
 const localStorage = window.localStorage;
 // SANAT
 const objSanat = {
-  analyzedInstructions: [{ name: '', steps: [{ equipment: [], ingredients: [], number: 1, step: '' }] }],
-  servings: '\u221E',
-  title: 'Sanat',
-  summary: 'Sanat is 1 part hot cocoa by the fire, 2 parts earthy love, 3 parts long embrace after a hard day, 4 parts pile of puppies, a pinch of your cheek by grandma, and a dash of "go get em tiger". You will not regret this recipe!',
-  id: 1,
-  image: 'https://avatars.githubusercontent.com/u/31770675?v=4',
-  extendedIngredients: [{ amount: 1, unit: '', originalName: 'naan bread' }, { amount: 1, unit: '', originalName: 'spices' }, { amount: 1, unit: '', originalName: 'hot dog' }],
-  cheap: true,
-  dairyFree: false,
-  glutenFree: false,
-  vegan: false,
-  vegetarian: false,
-  healthy: false
+    analyzedInstructions: [{ name: "", steps: [{ equipment: [], ingredients: [], number: 1, step: "" }] }],
+    servings: "\u221E",
+    title: "Sanat",
+    summary: "Sanat is 1 part hot cocoa by the fire, 2 parts earthy love, 3 parts long embrace after a hard day, 4 parts pile of puppies, a pinch of your cheek by grandma, and a dash of \"go get em tiger\". You will not regret this recipe!",
+    id: 1,
+    image: "https://avatars.githubusercontent.com/u/31770675?v=4",
+    extendedIngredients: [{ amount: 1, unit: "", originalName: "naan bread" }, { amount: 1, unit: "", originalName: "spices" }, { amount: 1, unit: "", originalName: "hot dog" }],
+    cheap: true,
+    dairyFree: false,
+    glutenFree: false,
+    vegan: false,
+    vegetarian: false,
+    healthy: false
 };
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener("DOMContentLoaded", init);
 
 /**
  * INITIALIZE FUNCTION where recipes will be fetches as soon as website is booted up.
@@ -44,20 +44,20 @@ window.addEventListener('DOMContentLoaded', init);
  * that that holds url as key and id as a value to keep track of duplicated added recipes.
  */
 async function init () {
-  // initializeServiceWorker(); will eventually implement; or not
-  if (localStorage.length === 0) {
-    const thing = { data: {} }; // structured like this so it is polymorphic with old fetch
-    await fetch('../why.txt', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'text/plain',
-        'Accept-Encoding': 'gzip'
-      }
-    })
-      .then(response => response.text())
-      .then(text => { thing.data = JSON.parse(text); });
-    // OLD FETCH
-    /* const initialSearch = {
+    // initializeServiceWorker(); will eventually implement; or not
+    if (localStorage.length === 0) {
+        const thing = { data: {} }; // structured like this so it is polymorphic with old fetch
+        await fetch("../why.txt", {
+            method: "GET",
+            headers: {
+                "Content-Type": "text/plain",
+                "Accept-Encoding": "gzip"
+            }
+        })
+            .then(response => response.text())
+            .then(text => { thing.data = JSON.parse(text); });
+        // OLD FETCH
+        /* const initialSearch = {
       method: 'GET',
       url: 'https://api.spoonacular.com/recipes/complexSearch',
       params: {
@@ -74,18 +74,18 @@ async function init () {
 
     // grabbing recipes with id's
     let idString = ''; */
-    // making hash table that maps titles (key) to recipe id's (values)
-    const hashmap = new Map();
-    /* for (const elem of search.data.results) {
+        // making hash table that maps titles (key) to recipe id's (values)
+        const hashmap = new Map();
+        /* for (const elem of search.data.results) {
       hashmap.set(elem.title, elem.id);
       idString = idString + elem.id + ',';
     } */
 
-    // console.log(JSON.stringify(Array.from(hashmap.entries())));
-    // console.log(search.data.results);
+        // console.log(JSON.stringify(Array.from(hashmap.entries())));
+        // console.log(search.data.results);
 
-    // OLD FETCH
-    /*
+        // OLD FETCH
+        /*
     const bulkOptions = {
       method: 'GET',
       url: 'https://api.spoonacular.com/recipes/informationBulk',
@@ -98,82 +98,82 @@ async function init () {
     const thing = new GenericFetch(bulkOptions);
     await GenericFetch.fGenericFetch(thing);
     */
-    for (const elem of thing.data) {
-      hashmap.set(elem.title, elem.id);
+        for (const elem of thing.data) {
+            hashmap.set(elem.title, elem.id);
+        }
+
+        // put in sanat last
+        hashmap.set(objSanat.title, 1);
+
+        // FILLING LOCAL STORAGE
+        // create a popular array to place into local storage
+        const popularArr = [];
+        // first set a place in local storage that will hold the hash table itself at key 0
+        localStorage.setItem(0, JSON.stringify(Array.from(hashmap.entries())));
+        localStorage.setItem(1, JSON.stringify(objSanat));
+
+        // TIME TO STORE JSONS INTO LOCAL STORAGE :)
+        for (const elem of thing.data) {
+            // check if elem contains image attribute, because if it doesn't, will throw a 404 error
+            // when creating a recipe card
+            if (elem.image === undefined) {
+                // console.log(elem.image);
+                console.log("we found a json that doesnt contain an image attribute, so adding in our logo :)");
+                elem.image = "../home/img/bread_logo.jpg";
+                console.log(elem);
+                // console.log(elem.image);
+            }
+
+            // yeet that baby into local storage :)
+            localStorage.setItem(elem.id, JSON.stringify(elem));
+
+            // fill popularArr
+            if (elem.spoonacularScore >= 30) {
+                popularArr.push(elem.id);
+            }
+        }
+        // console.log('we are here');
+
+        // MAKING FAVORITES HASHMAP THAT WILL BE LOCATED AT #2 IN LOCAL STORAGE
+        const favmap = new Map();
+        // MAKING DELETES HASHMAP THAT WILL BE LOCATED AT #3 IN LOCAL STORAGE
+        const deletedMap = new Map();
+        // URL map to keep track of duplicate inputs for addRecipe
+        const urlMap = new Map();
+
+        // get hash table
+        const hashes = JSON.parse(localStorage["0"]);
+
+        hashes.forEach(h => { favmap.set(h[1], false); deletedMap.set(h[1], false); });
+
+        // urlMap.set('2046', 'none');
+        // store the fav map into local
+        localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
+        // store the del map into local
+        localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
+        // store popular array
+        localStorage.setItem(4, JSON.stringify(popularArr));
+        // store URL map to check duplicated issue in add
+        localStorage.setItem(5, JSON.stringify(Array.from(urlMap.entries())));
+
+        console.log("local storage has ", localStorage.length, " elements, which is 5 hashmaps, Sanats card, and ", localStorage.length - 6, "recipes");
+        alert("Local storage populated. You may now naviage freely.");
     }
 
-    // put in sanat last
-    hashmap.set(objSanat.title, 1);
+    // fill popular recipes
+    fillPopular();
 
-    // FILLING LOCAL STORAGE
-    // create a popular array to place into local storage
-    const popularArr = [];
-    // first set a place in local storage that will hold the hash table itself at key 0
-    localStorage.setItem(0, JSON.stringify(Array.from(hashmap.entries())));
-    localStorage.setItem(1, JSON.stringify(objSanat));
-
-    // TIME TO STORE JSONS INTO LOCAL STORAGE :)
-    for (const elem of thing.data) {
-      // check if elem contains image attribute, because if it doesn't, will throw a 404 error
-      // when creating a recipe card
-      if (elem.image === undefined) {
-        // console.log(elem.image);
-        console.log('we found a json that doesnt contain an image attribute, so adding in our logo :)');
-        elem.image = '../home/img/bread_logo.jpg';
-        console.log(elem);
-        // console.log(elem.image);
-      }
-
-      // yeet that baby into local storage :)
-      localStorage.setItem(elem.id, JSON.stringify(elem));
-
-      // fill popularArr
-      if (elem.spoonacularScore >= 30) {
-        popularArr.push(elem.id);
-      }
-    }
-    // console.log('we are here');
-
-    // MAKING FAVORITES HASHMAP THAT WILL BE LOCATED AT #2 IN LOCAL STORAGE
-    const favmap = new Map();
-    // MAKING DELETES HASHMAP THAT WILL BE LOCATED AT #3 IN LOCAL STORAGE
-    const deletedMap = new Map();
-    // URL map to keep track of duplicate inputs for addRecipe
-    const urlMap = new Map();
-
-    // get hash table
-    const hashes = JSON.parse(localStorage['0']);
-
-    hashes.forEach(h => { favmap.set(h[1], false); deletedMap.set(h[1], false); });
-
-    // urlMap.set('2046', 'none');
-    // store the fav map into local
-    localStorage.setItem(2, JSON.stringify(Array.from(favmap.entries())));
-    // store the del map into local
-    localStorage.setItem(3, JSON.stringify(Array.from(deletedMap.entries())));
-    // store popular array
-    localStorage.setItem(4, JSON.stringify(popularArr));
-    // store URL map to check duplicated issue in add
-    localStorage.setItem(5, JSON.stringify(Array.from(urlMap.entries())));
-
-    console.log('local storage has ', localStorage.length, ' elements, which is 5 hashmaps, Sanats card, and ', localStorage.length - 6, 'recipes');
-    alert('Local storage populated. You may now naviage freely.');
-  }
-
-  // fill popular recipes
-  fillPopular();
-
-  // Bind the enter key on main
-  bindEnterOnMain();
+    // Bind the enter key on main
+    bindEnterOnMain();
 }
 
 function bindEnterOnMain () {
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') {
-      const element = document.activeElement;
-      if (element.className === 'search-bar') {
-        window.location.href = '../recipe_list/recipe_list.html';
-      }
-    }
-  });
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            const element = document.activeElement;
+            if (element.className === "search-bar") {
+                window.location.href = "../recipe_list/recipe_list.html";
+            }
+        }
+    });
 }

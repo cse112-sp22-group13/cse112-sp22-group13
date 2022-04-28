@@ -3,7 +3,7 @@ const recipeId = window.location.hash.substring(1);
 const localStorage = window.localStorage;
 
 // Initialize creating the recipe expand page.
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener("DOMContentLoaded", init);
 
 /**
  * INIT function is simply just called when we load the cook view page. It
@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', init);
  * structure of the cook view page.
  */
 async function init () {
-  createCookView();
+    createCookView();
 }
 
 /**
@@ -21,8 +21,8 @@ async function init () {
  * recipeCardExpand.js for how this data is parsed.
  */
 function createCookView () {
-  const main = document.querySelector('main');
-  const element = document.createElement('cook-view');
-  element.data = localStorage.getItem(recipeId);
-  main.appendChild(element);
+    const main = document.querySelector("main");
+    const element = document.createElement("cook-view");
+    element.data = localStorage.getItem(recipeId);
+    main.appendChild(element);
 }
