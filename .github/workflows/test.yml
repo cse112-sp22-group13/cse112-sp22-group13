@@ -1,0 +1,19 @@
+name: Unit Testing
+on: pull-request
+jobs:
+  unit_tests:
+    name: Run Jest Unit Tests
+    runs-on: ubuntu-latest
+    env:
+      CI: 'true'
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Install node 
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: 12.x
+    - name: Install stuff 
+      run: npm install 
+    - name: Run jest
+      run: npm test
