@@ -1,9 +1,9 @@
-name: Jest Unit Tests
+name: Jest-Puppeteer Unit Tests
 
 on:
   pull_request:
 jobs:
-  unit_tests:
+  jest-test:
     runs-on: ubuntu-latest
     env:
       CI: 'true'
