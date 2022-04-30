@@ -4,7 +4,7 @@
  * @param {String} key the name of the attribute we are trying to acces in the json file
  * @returns {*} The value associated with the key if found
  */
-export function searchForKey (object, key) {
+function searchForKey (object, key) {
     let value;
     Object.keys(object).some(function (k) {
         if (k === key) {
@@ -25,6 +25,8 @@ export function searchForKey (object, key) {
  * @param {Object} data json file
  * @returns {Object[]} An array holding the list of steps
  */
-export function getInstructionSteps (data) {
+function getInstructionSteps (data) {
     return searchForKey(searchForKey(data, "analyzedInstructions"), "steps");
 }
+
+module.exports = { searchForKey: searchForKey, getInstructionSteps: getInstructionSteps };

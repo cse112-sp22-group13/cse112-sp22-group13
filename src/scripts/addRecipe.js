@@ -4,7 +4,8 @@
  */
 
 // should recieve a website url to be inputed
-import { GenericFetch } from "./genericFetch.js";
+// import { GenericFetch } from "./genericFetch.js";
+const { GenericFetch } = require("./genericFetch.js");
 const APIKey = "85859c45fa7949ec8b915c61690f2ce1";
 
 // test url
@@ -50,7 +51,7 @@ async function extraction (input) {
  * from the website. Will then insert into local storage and all the hash maps, and then
  * create the recipe card that will be viewable at the top of the recipe list.
  */
-export async function addRecipe () {
+async function addRecipe () {
     const inputData = inputHTML.value;
 
     // grab maps from localStorage for insertion and replacement
@@ -162,3 +163,5 @@ function insertAtIndex (insertIndex, key, value, ourMap) {
     convertArr.splice(insertIndex, 0, [key, value]);
     return new Map(convertArr);
 }
+
+module.exports = { addRecipe:addRecipe, insertAtIndex:insertAtIndex };

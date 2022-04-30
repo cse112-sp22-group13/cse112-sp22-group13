@@ -1,5 +1,8 @@
-import { searchForKey } from "./searchKey.js";
-import { addRecipe } from "./addRecipe.js";
+//import { searchForKey } from "./searchKey.js";
+//import { addRecipe } from "./addRecipe.js";
+
+const { searchForKey } = require("./searchKey.js");
+const { addRecipe } = require("./addRecipe.js");
 
 // SEARCH BAR BUTTON
 const searchBar = document.querySelector("button");
@@ -188,3 +191,5 @@ function bindEnterKey () {
         }
     });
 }
+
+module.exports = { init: init, resetCards: resetCards, bindEnterKey: bindEnterKey, searchRecipes:searchRecipes };
