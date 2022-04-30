@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 const fs = require("fs");
 
 // For some reason, this path is relative to the current working directory and not the file. 

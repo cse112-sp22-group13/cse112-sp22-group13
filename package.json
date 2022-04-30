@@ -11,6 +11,9 @@
   },
   "jest": {
     "preset": "jest-puppeteer",
-    "transform": { }
+    "transform": {}
+  },
+  "dependencies": {
+    "jest-environment-jsdom": "^28.0.2"
   }
 }
