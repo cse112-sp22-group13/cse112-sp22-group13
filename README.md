@@ -1,41 +1,38 @@
-# cse112-sp22-group13
+# cse112-sp22-group13 - Full Stack
 
-# [KNEAD IT](https://knead-it.herokuapp.com)
+## [KNEAD IT](https://knead-it.herokuapp.com)
+Knead It is a recipe manager designed for use in the browser that presents recipes that are all about bread. 
 
+# Using this project
+Simply host the `src` directory using your favorite webserver or hosting service. The main page is in `src/home/home.html`. The
+directory provided by this repo contains a file, [`index.php`](src/index.php) that is used with deployment to Heroku to redirect
+to the correct homepage.
 
-UPDATE FILE THROUGHOUT THE PROJECT.
-Our project will consist of creating a Recipe Manager. It will incorporate many aspects of software engineering!
+# Developing for this Project
 
-Team Page: [link](https://github.com/cse110-fa21-group4/cse110-fa21-group4/blob/main/admin/team.md)
+## Issues
+In the Issues tab, each issue is a goal on the roadmap that still needs doing. Use these to get a basic understanding of the
+state of the project and the direction that development is headed.
 
-Developer wiki: [link](https://cse110-fa21-group4.github.io/cse110-fa21-group4/index.html)
+## Pull Requests
+Direct pushes to the `main` branch are not allowed. In order for your changes to be incorporated into the main codebase, you must
+first create a new branch, make your changes on that branch, then make a Pull Request for your branch into `main`. If it passes
+all of the tests and is deemed a good change by at least two people in the organization, then it is able to be merged into the
+main codebase.
 
-## Project Pitch
-  
-- we will produce a project pitch that will be presented to your team mentor for sign-off.  We will use the ideas from Shape Up (Links to an external site.) to guide this process.  Teams looking to get ahead are advised to read this book now.
+## Projects
+The main project board for this repository is automated and gives a visual representation of the state of all issues and pull requests.
+There is no additional functionality that cannot be accessed via other tabs, but it is a good way to visualize the project if
+you are used to something like Kanban.
 
-## Overarching Decisions
+## Wiki
+In the wiki, there are some useful documents and tutorials to help you with specific aspects of setting up your development
+environment to make it as easy as possible for you to develop and make pull requests without issue.
 
-- we will eventually capture these as an ADR in markdown  (Links to an external site.)(/specs/adrs will contain an individual document per major decision.
-There will be some initial ones that have to do with general project plan and approach, but more may be added as the project goes on.
-The main point of this capture is to explain why choices are made.
-As brainstorming may have your team settle on choices quickly capturing them in a document may be better than just mental consensus)
+## Documentation
+Every source file is documented with JSDoc syntax, and any additions should also be documented in the same way. One can see the documentation
+by simply looking in the source file, or by viewing the JSDoc website deployed onto Github Pages [here](https://cse112-sp22-group13.github.io/cse112-sp22-group13/).
 
-## User Centered Thinking Documents
+# Administrative Resources
 
-- we will produce personas (Links to an external site.), user stories (Links to an external site.), and potentially use cases. (Links to an external site.) (/specs/users will contain this but user stories chosen will also be represented as issues to work on)
-
-## System Diagrams
-
-- we will eventually capture how your app will be decomposed in C4 diagram (Links to an external site.), event modeling diagram (Links to an external site.), or UML (Links to an external site.) form
-
-## Interface Design Documents
-
-- we will initially capture "fat marker design" 
-later extended with wireframes and high fidelity prototypes (/specs/interface/rough, /specs/interface/wireframes, /specs/interface/highfidelity  These directories may contain single or multitude of documents)
-
-## Project Roadmap
-
-- we will capture a roadmap of how the product will evolve both here in the quarter as well as ideas of how it might grow beyond the time we have with  (/specs/roadmap.md)
-
-![gitBranchVerification](https://user-images.githubusercontent.com/47044043/144176446-84c47ea2-4b68-41cd-abe7-081a26ce4552.png)
+Administrative Documentation can be found on the [`docs` branch](https://github.com/cse112-sp22-group13/cse112-sp22-group13/tree/docs).
