@@ -1,3 +1,9 @@
+module.exports = { topFunction };
+
+/**
+ * @jest-environment jsdom
+ */
+
 window.onscroll = function() {scrollFunction();};
 function scrollFunction() {
     let mybutton = document.getElementById("myBtn");

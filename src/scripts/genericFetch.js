@@ -1,7 +1,7 @@
 /**
  * Generic fetch that can be used for most of the Spoonacular API calls
  */
-export class GenericFetch {
+class GenericFetch {
     /**
    * Take in object to parse into axios fetch call.
    * @param {Object} input Options object to be parsed into
@@ -24,3 +24,5 @@ export class GenericFetch {
         });
     }
 }
+
+module.exports = { GenericFetch };

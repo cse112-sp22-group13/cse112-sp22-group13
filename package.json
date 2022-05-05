@@ -1,8 +1,19 @@
 {
   "devDependencies": {
-    "eslint": "^8.14.0"
+    "eslint": "^8.14.0",
+    "eslint-plugin-html": "^6.2.0",
+    "jest": "^28.0.2",
+    "jest-puppeteer": "^6.1.0",
+    "puppeteer": "^13.7.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-puppeteer",
+    "transform": {}
   },
   "dependencies": {
-    "eslint-plugin-html": "^6.2.0"
+    "jest-environment-jsdom": "^28.0.2"
   }
 }

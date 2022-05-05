@@ -1,0 +1,16 @@
+name: Jest-Puppeteer Unit Tests
+
+on:
+  pull_request:
+jobs:
+  jest-test:
+    runs-on: ubuntu-latest
+    env:
+      CI: 'true'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+            node-version: 16
+      - run: npm install 
+      - run: npm test
