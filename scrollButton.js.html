@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: genericFetch.js</title>
+    <title>JSDoc: Source: scrollButton.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: genericFetch.js</h1>
+    <h1 class="page-title">Source: scrollButton.js</h1>
 
     
 
@@ -26,34 +26,25 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Generic fetch that can be used for most of the Spoonacular API calls
- */
-class GenericFetch {
-    /**
-   * Take in object to parse into axios fetch call.
-   * @param {Object} input Options object to be parsed into
-   */
-    constructor (input) {
-        this.options = input;
-        this.data = null;
-    }
+            <pre class="prettyprint source linenums"><code>module.exports = { topFunction };
 
-    /**
-   * Async function will request data from api, if there is an error it will
-   * be caught and console log the error.
-   * @param {Object} input
-   */
-    static async fGenericFetch (input) {
-        await axios.request(input.options).then(function (response) {
-            input.data = response.data;
-        }).catch(function (error) {
-            console.log(error);
-        });
+/**
+ * @jest-environment jsdom
+ */
+
+window.onscroll = function() {scrollFunction();};
+function scrollFunction() {
+    let mybutton = document.getElementById("myBtn");
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
     }
 }
-
-module.exports = { GenericFetch };</code></pre>
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}</code></pre>
         </article>
     </section>
 
