@@ -1,10 +1,11 @@
-// const server = require("../server");
 const puppeteer = require("puppeteer");
 const http = require("http");
 const fs = require("fs").promises;
 
 let server;
 let browser;
+
+// Server is set up following tutorial on https://www.digitalocean.com/community/tutorials/how-to-create-a-web-server-in-node-js-with-the-http-module
 
 describe("Knead It", () => {
     beforeAll(async () => {
