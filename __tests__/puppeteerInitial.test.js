@@ -3,6 +3,9 @@ const puppeteer = require("puppeteer");
 const http = require("http");
 const fs = require("fs").promises;
 
+let server;
+let browser;
+
 describe("Knead It", () => {
     beforeAll(async () => {
         // console.log(process.cwd());
@@ -38,11 +41,11 @@ describe("Knead It", () => {
         });
 
 
-        const server = http.createServer(requestListener);
+        server = http.createServer(requestListener);
         server.listen(port, host, () => {
             // console.log(`Server is running on http://${host}:${port}`);
         });
-        const browser = await puppeteer.launch();
+        browser = await puppeteer.launch();
     });
 
     it("should be titled \"KNEAD IT\"", async () => {
@@ -50,6 +53,11 @@ describe("Knead It", () => {
         await page.goto("http://localhost:8000");
 
         await expect(page.title()).resolves.toMatch("KNEAD IT");
+    });
+
+    afterAll(async () => {
+        await browser.close();
+        await server.close();
     });
 
 });
