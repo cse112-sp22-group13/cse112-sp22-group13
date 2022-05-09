@@ -2,14 +2,14 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 
-import NavBar from "./components/NavBar";
-import Main from "./containers/Main";
+// import NavBar from "./components/NavBar";
+import Main from "./components/Main";
 
 const App = (props) => (
     <BrowserRouter>
       <ScrollToTop>
         <div>
-          <NavBar />
+          {/* <NavBar /> */}
           <Main />
         </div>
       </ScrollToTop>
