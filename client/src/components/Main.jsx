@@ -10,7 +10,7 @@ const Main = () => {
     <Fragment>
       <Switch>
         <Route exact path="/" render={FrontPage} />
-        <Route exact path="/" render={RecipesPage} />
+        <Route exact path="/recipes" render={RecipesPage} />
       </Switch>
     </Fragment>
   );
