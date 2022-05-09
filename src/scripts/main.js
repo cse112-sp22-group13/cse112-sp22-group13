@@ -12,6 +12,26 @@
 // import { ComplexSearch } from './apiComplexSearch.js';
 // import { GenericFetch } from './genericFetch.js';
 import { fillPopular } from "./popularRecipes.js";
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc, setDoc } from "firebase/firestore"; 
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyAEWF3Hxz9GquMTz_huVUes7q-zXbzAVJE",
+    authDomain: "kneadit-b63a8.firebaseapp.com",
+    projectId: "kneadit-b63a8",
+    storageBucket: "kneadit-b63a8.appspot.com",
+    messagingSenderId: "492712284341",
+    appId: "1:492712284341:web:61a4697a986914abbb6efc",
+    measurementId: "G-59HFYTH3KC"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
 
 // Backend devs will switch up using their own spoonacular key for fetching
 // const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
@@ -131,6 +151,11 @@ async function init () {
             if (elem.spoonacularScore >= 30) {
                 popularArr.push(elem.id);
             }
+
+            // add element to firestore DB
+            await setDoc(doc(db, "recipes", elem.id), {
+                value: "test123"
+            });
         }
         // console.log('we are here');
 
