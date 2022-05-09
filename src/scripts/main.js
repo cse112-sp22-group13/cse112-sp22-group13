@@ -30,7 +30,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Cloud Firestore and get a reference to the service
+// Initialize Cloud Firestore and get a reference to the service 
 const db = getFirestore(app);
 
 // Backend devs will switch up using their own spoonacular key for fetching
