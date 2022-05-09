@@ -16,7 +16,7 @@ import { fillPopular } from "./popularRecipes.js";
 //import { getFirestore, doc, setDoc } from "firebase/firestore"; 
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional 
 const firebaseConfig = {
     apiKey: "AIzaSyAEWF3Hxz9GquMTz_huVUes7q-zXbzAVJE",
     authDomain: "kneadit-b63a8.firebaseapp.com",
