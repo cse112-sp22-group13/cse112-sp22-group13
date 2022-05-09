@@ -12,8 +12,8 @@
 // import { ComplexSearch } from './apiComplexSearch.js';
 // import { GenericFetch } from './genericFetch.js';
 import { fillPopular } from "./popularRecipes.js";
-import { initializeApp } from "firebase/app";
-import { getFirestore, doc, setDoc } from "firebase/firestore"; 
+//import { initializeApp } from "firebase/app";
+//import { getFirestore, doc, setDoc } from "firebase/firestore"; 
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
