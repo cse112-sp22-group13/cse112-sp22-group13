@@ -34,7 +34,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Backend devs will switch up using their own spoonacular key for fetching
-// const API_KEY = '85859c45fa7949ec8b915c61690f2ce1';
+// const API_KEY = '85859c45fa7949ec8b915c61690f2ce1'; 
 // LOCAL STORAGE
 const localStorage = window.localStorage;
 // SANAT
