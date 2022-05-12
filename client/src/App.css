@@ -1,0 +1,5 @@
+/* shared styles for multiple React pages */
+.link, .link:hover {
+    text-decoration: none;
+    color: inherit;
+}

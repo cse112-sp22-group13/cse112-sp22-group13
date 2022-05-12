@@ -1,19 +1,18 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import ScrollToTop from "./components/ScrollToTop";
 
 // import NavBar from "./components/NavBar";
 import Main from "./components/Main";
 
+import "./App.css";
+
 const App = (props) => (
-    <BrowserRouter>
-      <ScrollToTop>
-        <div>
-          {/* <NavBar /> */}
-          <Main />
-        </div>
-      </ScrollToTop>
-    </BrowserRouter>
+  <BrowserRouter>
+    <div>
+      {/* <NavBar /> */}
+      <Main />
+    </div>
+  </BrowserRouter>
 );
 
 export default App;

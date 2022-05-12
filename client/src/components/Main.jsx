@@ -1,17 +1,22 @@
 import React, { Fragment } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
-import FrontPage from "../pages/FrontPage";
-import RecipesPage from "../pages/RecipesPage";
-
+// import FrontPage from "../pages/FrontPage";
+// import RecipesPage from "../pages/RecipesPage";
+import SignUpPage from "../pages/SignUp";
+import LogInPage from "../pages/LogIn";
 
 const Main = () => {
   return (
     <Fragment>
-      <Switch>
-        <Route exact path="/" render={FrontPage} />
-        <Route exact path="/recipes" render={RecipesPage} />
-      </Switch>
+      <Routes>
+        {" "}
+        {/* In react-router-dom v6, "Switch" is replaced by routes "Routes" */}
+        {/* <Route exact path="/" element={FrontPage} />
+        <Route exact path="/recipes" element={RecipesPage} /> */}
+        <Route exact path="/signup" element={<SignUpPage />} />
+        <Route exact path="/login" element={<LogInPage />} />
+      </Routes>
     </Fragment>
   );
 };
