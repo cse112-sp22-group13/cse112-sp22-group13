@@ -1,5 +1,6 @@
 {
-    "indent": 4,
-    "quotes": "double",
-    "semi": "always"
+    "tabWidth": 4,
+    "singleQuote": false,
+    "semi": true,
+    "trailingComma": "none"
 }
