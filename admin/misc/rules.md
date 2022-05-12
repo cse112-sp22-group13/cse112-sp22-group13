@@ -1,73 +1,82 @@
 # TEAM CONTRACT
-## CSE 110 - Software Engineering
-## Team 4 - NaN Bread
+## CSE 112 - Advanced Software Engineering
+## Team 13 - Full Stack
+
+To keep in line with the previous group's intent (and to pick up where they left off), we adapted the existing rules to fit our values and needs.
 
 ### Team Members:
-1. Alanna Merlan
-2. Scott Andrews
-3. David Thai
-4. Patrick Wang
-5. Christian Velasquez
-6. Peicong Wu
-7. Han Nguyen				
-8. Andy Sunjic
-9. Delvin Tuankun
-10. Bryan Nguyen
-11. Xavier Sevcik
-12. Ryan McLaughlin
-13. David Liu
+1. Theodore Alo
+2. Eric Song
+3. Xavier Sevcik
+4. Anh Pham
+5. Xi-Kai (Kai) Wu
+6. Yijie (Rodney) Huang
+7. Nathaniel (Nat) Sawdai
+8. Jon Chang
+9. Lucius Weathersby
+10. Peder Ditlev-Simonsen
 
 ## Team Procedures
 1. Day, time, and place for regular **team meetings**:<br/>
-Monday 6:30 PM - 7:30 PM PST<br/>
-Meet on 1st floor of Geisel West<br/>
-Any additional meetings may be scheduled either in-person or virtually 
+Weekly full team meetings on Monday 3:00 PM - 4:00 PM PST via Zoom<br/>
+Any additional meetings (either full team or within subgroups) may be scheduled either in-person or virtually as needed
 
-1. Preferred method of **communication** in order to inform each other of team meetings, announcements, updates, reminders, issues, and project responsibilities: <br/>
-We will be communicating through the group’s workspace on Slack. We will make use of the specific channels to keep different conversation types organized. If any virtual meetings are scheduled, it will occur through Zoom.
+2. Preferred method of **communication**: <br/>
+Our group's Slack workspace will be our typical means of asynchronous communication. We have channels set up for standups, general discussion, and specific channels for each of the subgroups (BTS, UI, Features). We will use a Slack bot to conduct asynchronous daily standups where team members report their mood, progress, agenda, and blockers.
 
-3. **Decision-making policy** (consensus or majority vote): <br/>
-We will make decisions based on what the majority vote is. In the case of a tie, we will base the decision on a consensus.
+3. **Decision-making policy**: <br/>
+We will make important decisions through discussion in full team meetings and reaching a majority opinion. In the case of more specialized and/or minor decisions (e.g. ones where one particular subgroup would have more experience/knowledge), we will trust them to make the right judgements. All decision processes should be recorded as ADRs.
 
 4. Method for setting and following meeting **agendas**: <br/>
-Team leaders will post the meeting agenda in the ‘agenda’ channel on Slack every Monday prior to the evening meeting. Team members can add to the agenda if needed. Whoever is taking the minutes for the meeting that day will use the agenda as a template. Team leaders will be responsible for the teams following the agenda.
+Team leaders will post the meeting agenda in `#general` on Slack at least 24 hours before the meeting. Team members can add to the agenda if needed. Team leaders will be responsible for the teams following the agenda.
 
 5. Method of **record keeping**: <br/>
-Meeting minutes will be assigned in a revolving cycle every week. Unless a secretary is assigned who will handle all meeting record keeping, it will be evenly divided among all team members. 
-All commits to a branch, closing of issues, and PR’s should be with description in order to keep a stable record of all code changes. 
-All project conversations, brainstorming, and decisions should be within Slack for the sake of careful record keeping. 
+Meeting minutes will be kept by Eric and stored on the `docs` branch.
+Commits, issues, PRs, and other changes to the repository should be accompanied by suitable descriptions to adequately document their purpose.
 
-## Team Expectations
+6. Handling **Merging/Pull Requests**: <br/>
+Pull requests involving merging to `main` branch must go through our CI/CD pipeline and receive two manual approvals before being merged. <br/>
+Changes involving edits to the `docs` branch should get a Pull Request, even though they do not go through the build pipeline, for visibility. <br/>
+Changes involving additions (no existing files changed) to the `docs` branch or to other branches do not need a Pull Request and may be done at the developer's discretion. <br/>
+When merging a Pull Request, the build pipeline must be respected -- do not force push to main or attempt to bypass any parts of the pipeline. <br/>
 
-### Work Quality
+
+## Team Values (Our "-ilities")
+
+1. Code clarity and code consistency among all members
+2. Reliability of codebase through test coverage (80% goal)
+3. App accessibility through semantic HTML, multiple control options
+4. Maintainability, readability through documentation
+
+<!-- ### Work Quality
 1. **Project standards**: <br/>
 The level of quality we expect from each member of the team is to provide substantial amounts of cooperation, drive, and creativity. Each member that is assigned a specific role to the project shall uphold that role and exhibit skills within that role. For example, designers must exemplify creativity and produce complex ideas, while researchers shall collect abundant information to support the design of the project. Front-end and back-end developers must pay full attention to detail while working on specific features, and have input to feature aspects without leading astray from the desired design. All roles shall communicate effectively amongst their sub-teams and the entire team so that everyone has the same expectations of the outcome of the project. Members should have their questions answered and clarified before continuing with their work. Lastly, every member shall exemplify their own type of leadership and take initiative when they notice things are heading in the wrong direction. It is up to the team as a whole, and the individual, to make sure that the project stays on track and covers all requirements of the assignment.
 
 2. **Strategies** to fulfill these standards: <br/>
-There will be frequent team and individual check-ups to ensure we are accurately meeting the project needs and expectations. Team leaders may contact any member periodically to confirm the member is completing the work within their role. Weekly stand-up meetings will also be scheduled once roles are assigned. During stand-ups, every member will share what items they have completed, tasks they are currently working on, and what areas they are stuck on. During Monday team meetings, it is expected that every member provides qualitative feedback and ideas toward the project. If a member falls behind or misses a meeting, they will be reminded to read the minutes and Slack channels in order to get caught up. Every member is subject to being reminded to contribute toward the project while they should also be reminding others to do the same.
+There will be frequent team and individual check-ups to ensure we are accurately meeting the project needs and expectations. Team leaders may contact any member periodically to confirm the member is completing the work within their role. Weekly stand-up meetings will also be scheduled once roles are assigned. During stand-ups, every member will share what items they have completed, tasks they are currently working on, and what areas they are stuck on. During Monday team meetings, it is expected that every member provides qualitative feedback and ideas toward the project. If a member falls behind or misses a meeting, they will be reminded to read the minutes and Slack channels in order to get caught up. Every member is subject to being reminded to contribute toward the project while they should also be reminding others to do the same. -->
 
 ### Personal Accountability
 1. Expected individual attendance, punctuality, and participation at all team meetings: <br/>
-We expect team members to show up on time since the meeting times have been set ahead of time and will be recurring weekly. All team members are expected to either attend a meeting for the entire duration, or to catch up by reviewing the minutes if they cannot attend/show up late/leave early. If there is something that needs to be done on their part, the minutes/Slack will let them know what needs to be done. Team members are expected to participate during the meeting by providing input/ideas, and agreeing/disagreeing on actions.
+We expect team members to be present at all weekly team meetings and to coordinate within their subgroups to arrange meetings as necessary. In the case that a team member cannot be present for a meeting, it is up to them to review the meeting minutes and/or consult other team members to learn what they missed. Team members are encouraged to speak their mind on the meeting topics via actions such as contributing new ideas and affirming or disagreeing with propositions.
 
-2. Expected level of responsibility for fulfilling team assignments, timelines, and deadlines: <br/>
-All team members will take on equal responsibility for getting assignments turned in before the deadline. If a team member is worried about getting their part done prior to the deadline, they need to communicate with the members so that something can be done and the assignment can still be completed in time. 
+1. Expected level of responsibility for fulfilling team assignments, timelines, and deadlines: <br/>
+All team members must take responsibility for completing assignments before the deadline and updating other team members with their progress when relevant. Blockers must be communicated clearly and promptly to ensure the group may still meet any deadlines present.
 
 3. Expected level of communication with other team members: <br/>
-All team members must be active on Slack daily. Every main team channel must be read as pinned announcements may occur frequently. Additionally, members must be continuously active within their own sub-team channels and communicate effectively within those sub-teams (i.e. designers, researchers, specific feature developers) so that their teammates are all on the same page. Close and frequent communication with the Team Leaders is also expected so that members are comfortable with discussing any aspect of their work.
+Members must be active on Slack and pay attention to discussion in the `#general` channel and their own subgroup channel, although it is encouraged to stay on top of communication occuring in the other subgroups' channels and the `#standups` channel for more clarity on the team's current progress. Leaders of each subgroup are expected to facilitate cross-subgroup discussion, although all team members are responsible for interacting with the rest of the group as necessary.
 
-4.  Expected level of commitment to team decisions and tasks: <br/>
-Since we are all sharing leadership responsibilities, we will equally commit to team decision making and task effort.
+4.  Expected role of subgroup leaders: <br/>
+Subgroup leaders will help facilitate interactions between subgroups when possible (e.g. helping to arrange meetings involving multiple subgroups), reporting their team's progress at full team meetings, and tracking/handling important information (e.g. creating ADRs).
 
 ## Conflict Resolution
-1. Handling infractions of any of the obligations of this team contract: <br/>
-If a team member shows signs of infractions of their obligations, the group will remind the member of their duties. The Team Leaders will then begin issuing warnings if a member continues to forget about their obligations every week.
+1. Handling infractions of this team contract: <br/>
+If a team member fails to meet the standards set in this team contract, team members who notice this behavior may remind the offender of their obligations through individual (private) discussion.
 
-2. What the team will do if the infractions continue: <br/>
-If the team recognizes that a team member is not following the rules of the contract for an extended period of time (such as missing most meetings without following up or not putting in the effort for their part(s) of the project), the team will provide a warning to the person. Following a warning, it will be expected that the member will no longer continue falling back on their duties. If the member does not change their behavior after notification, the team may contact the TA and decide how to proceed from there. 
+1. What the team will do if the infractions continue: <br/>
+If the problematic behavior persists, these concerns should be brought to the attention of team leaders, who should discuss the infractions with the offender and attempt conflict resolution. If this fails to resolve issues, then the concerns should be brought to the attention of the entire team, which may once again remind the offender of their obligations as a final warning. If the member does not change their behavior after this warning, the team may contact the TA for intervention. 
 
 
-***************************************************************************
+<!-- ***************************************************************************
 
 a) *I reviewed the standards, roles, and procedures as stated in this contract.* <br/>
 b) *I understand that I am obligated to abide by these terms and conditions.* <br/>
@@ -78,4 +87,4 @@ Print Name:
 
 Signature:
 
-Date:
+Date: -->
