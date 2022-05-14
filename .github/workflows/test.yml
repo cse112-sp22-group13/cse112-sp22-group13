@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
             node-version: 16
-#       - run: npm install
+      - run: npm install
       - run: yarn install
         working-directory: client
       - run: nohup yarn start &
