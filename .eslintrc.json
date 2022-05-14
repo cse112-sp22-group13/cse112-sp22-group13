@@ -45,6 +45,10 @@
         "no-undef": [
             "off"
         ],
+        "comma-dangle": [
+            "error",
+            "never"
+        ],
         "react/jsx-closing-bracket-location": [
             "error",
             "tag-aligned"
