@@ -15,7 +15,7 @@ jobs:
       - run: npm install
       - run: yarn install
         working-directory: client
-      - run: yarn start
+      - run: nohup yarn start &
         working-directory: client
       - run: yarn test
         working-directory: client
