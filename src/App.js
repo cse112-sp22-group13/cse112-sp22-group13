@@ -7,12 +7,12 @@ import Main from "./components/Main";
 
 const App = (props) => (
     <BrowserRouter>
-      <ScrollToTop>
-        <div>
-          {/* <NavBar /> */}
-          <Main />
-        </div>
-      </ScrollToTop>
+        <ScrollToTop>
+            <div>
+                {/* <NavBar /> */}
+                <Main />
+            </div>
+        </ScrollToTop>
     </BrowserRouter>
 );
 
