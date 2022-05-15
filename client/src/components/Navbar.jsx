@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import '../stylesheets/NavBar.css';
 //import { Route, Switch } from "react-router-dom";
 
 //import FrontPage from "../pages/FrontPage";
