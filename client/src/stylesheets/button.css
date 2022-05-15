@@ -1,0 +1,17 @@
+.button-individual{
+    background-color: grey;
+    outline-color: black;
+    outline-style: solid;
+    outline-width: 1vh;
+    outline-width: .4vh;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vh;
+    width: 10vw;
+    height: 5vh;
+    border-radius: .75vh;
+}
