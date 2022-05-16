@@ -14,4 +14,5 @@
     width: 10vw;
     height: 5vh;
     border-radius: .75vh;
+    cursor: pointer;
 }
