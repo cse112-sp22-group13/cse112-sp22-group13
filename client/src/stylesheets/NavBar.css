@@ -1,12 +1,20 @@
-.scrolling-wrapper{
-	overflow-x: auto;
+#title {
+    text-align: center;
+    font-weight: bold;
 }
 
-.input-group{
-    border-radius: 15px;
-    position: absolute
+#searchbar {
+    border-radius: 50px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
-#test {
-    color:red;
+#searchbtn {
+    border-radius: 50px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+#button {
+    border-radius: 10px;
 }

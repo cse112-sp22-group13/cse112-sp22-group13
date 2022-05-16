@@ -1,5 +1,6 @@
 import React from "react";
-import "../stylesheets/navbar.css";
+import "../stylesheets/NavBar.css";
+// import {Logo} from "../media/NavBar Logo.svg"
 //import { Route, Switch } from "react-router-dom";
 
 //import FrontPage from "../pages/FrontPage";
@@ -13,7 +14,7 @@ const NavBar = () => {
           href="/"
           class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
         >
-          <img src="logo192.png" alt="Logo" width="75" height="75"></img>
+          <img src={require("../media/NavBar Logo.png")} alt="Logo" width="125" height="125"></img>
         </a>
 
         <form
@@ -23,14 +24,18 @@ const NavBar = () => {
           action=""
           class="form-inline"
         >
-          <a href="#" class="nav-link px-2 link-secondary">
+          <a id="title" href="#" class="nav-link px-2 link-secondary">
             Knead It
           </a>
           <div class="input-group">
-            <input class="form-control" placeholder="Search..." type="text" />
+            <input 
+              id="searchbar"
+              class="form-control" 
+              placeholder="Search..." 
+              type="text" />
             <span class="input-group-btn">
               <button
-                id="test"
+                id="searchbtn"
                 class="btn btn-outline-primary me-2"
                 type="button"
               >
@@ -41,10 +46,10 @@ const NavBar = () => {
         </form>
 
         <div class="col-md-3 text-end">
-          <button type="button" class="btn btn-outline-primary me-2">
+          <button id="button" type="button" class="btn btn-outline-primary me-2">
             Login
           </button>
-          <button type="button" class="btn btn-primary">
+          <button id="button" type="button" class="btn btn-primary">
             Sign-up
           </button>
         </div>
