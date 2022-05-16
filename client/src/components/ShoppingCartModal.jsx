@@ -1,7 +1,8 @@
 import React, {Fragment} from "react";
 //import ScrollToTop from "../components/ScrollToTop";
-import MockPhoto from "../media/mock-photo.jpg";
-//import "../stylesheets/frontpage.css";
+import Modal from 'react-bootstrap/Modal';
+import { Button} from 'react-bootstrap';
+import MockPhoto from "../media/NavBar Logo.png";
 
 const ShoppingCartModal = () => {
 
@@ -54,49 +55,65 @@ const ShoppingCartModal = () => {
 
     return (
         <Fragment>
-            <container>
-                <div class="title">
-                    Add to Cart
-                </div>
-                
-                <div class="scrolling-wrapper col flex-col flex-nowrap py-2">
-                    {
-                        cuisineMockData.map((cuisine) => (
-                            <div class="container">
-                                <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-2 border-bottom">
-                                
-                                <div>
-                                    <input type="checkbox" />
-                                    <img  alt="image" width="150" height="150" src={MockPhoto}
-                                    data-holder-rendered="true" />
-                                </div>
+            <Modal.Dialog>
+            <Modal.Header closeButton>
+                <Modal.Title>Add to Cart</Modal.Title>
+            </Modal.Header>
 
-                                <div>
-                                    <div>
-                                        {cuisine.name}
-                                    </div>
-                                    <div>
-                                        {cuisine.place}
-                                    </div>
-                                    <div>
-                                        <button type="button" class="btn btn-outline-primary me-2">Quantity</button>
-                                        <button type="button" class="btn btn-outline-primary me-2">Delete</button>
-                                        <button type="button" class="btn btn-outline-primary me-2">Save for later</button>
-                                    </div>
-                                </div>
+            <Modal.Body>
+                <p>
+                    <div id="container">
+                                               
+                        <div class="scrolling-wrapper col flex-col flex-nowrap py-2">
+                            {
+                                cuisineMockData.map((cuisine) => (
+                                    <div class="container">
+                                        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-2 border-bottom">
+                                        
+                                        <div>
+                                            <input type="checkbox" />
+                                            <img  alt="image" width="150" height="150" src={MockPhoto}
+                                            data-holder-rendered="true" />
+                                        </div>
 
-                                <div class="col-md-3 text-end">
-                                    Price: 
-                                    {cuisine.price}
-                                </div>
-                    
-                                </header>
-                            </div>
+                                        <div>
+                                            <div>
+                                                {cuisine.name}
+                                            </div>
+                                            <div>
+                                                {cuisine.place}
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn btn-outline-primary me-2">Quantity</button>
+                                                <button type="button" class="btn btn-outline-primary me-2">Delete</button>
+                                                <button type="button" class="btn btn-outline-primary me-2">Save for later</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 text-end">
+                                            Price: 
+                                            {cuisine.price}
+                                        </div>
                             
-                        ))
-                    }
-                </div>
-            </container>
+                                        </header>
+                                    </div>
+                                    
+                                ))
+                            }
+                        </div>
+                    </div>
+                </p>
+            </Modal.Body>
+
+            <Modal.Footer>
+                Your Zip Code:
+                <input 
+                class="form-control" 
+                placeholder="example: 92093" 
+                type="text" />
+                <Button variant="primary">Checkout</Button>
+            </Modal.Footer>
+            </Modal.Dialog>
         </Fragment>
     )
 }
