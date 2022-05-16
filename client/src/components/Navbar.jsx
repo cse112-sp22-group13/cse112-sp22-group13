@@ -14,7 +14,7 @@ const NavBar = () => {
           href="/"
           class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
         >
-          <img src={require("../media/NavBar Logo.png")} alt="Logo" width="125" height="125"></img>
+          <img src={require("../media/NavBar Logo.png")} alt="Logo" width="75" height="75"></img>
         </a>
 
         <form
