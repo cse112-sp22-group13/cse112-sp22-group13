@@ -60,4 +60,8 @@
 * Team: 2 points per question, 3 free (be lenient)
 * General: If they've written something kind of relevant, be generous/at least half credit (rest is up to your discretion)
 
+### Miscellaneous
+
+* Send in a profile picture + school year + major to Eric on Slack, to be put in team.md for branding
+
 **End Time:** 4:00 PM
