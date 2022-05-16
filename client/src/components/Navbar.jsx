@@ -50,7 +50,7 @@ const NavBar = () => {
             Login
           </button>
           <button id="button" type="button" class="btn btn-primary">
-            Sign-up
+            Sign Up
           </button>
         </div>
       </header>
