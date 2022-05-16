@@ -1,6 +1,6 @@
 # Frontend Language
 
-* Status: Superceded by [005-frontend-language-2.md](005-frontend-language-2.md) <!-- optional -->
+* Status: Superceded by [006-frontend-language-2.md](006-frontend-language-2.md) <!-- optional -->
 * Deciders: Eric, Kai, Lucius, Nat, TJ, Xavier, Anh, Jon, Peder, Rodney <!-- optional -->
 * Date: 2022-04-25 <!-- optional -->
 
@@ -51,4 +51,4 @@ For this migration to be realistic/have minimal risk, we will aim to have the cu
 
 ## Links <!-- optional -->
 
-* Reassessed and reaffirmed by [005-frontend-language-2.md](005-frontend-language-2.md)
+* Reassessed and reaffirmed by [006-frontend-language-2.md](006-frontend-language-2.md)
