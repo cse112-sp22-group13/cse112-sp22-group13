@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../components/Button";
 import ShoppingCartModal from "../components/ShoppingCartModal";
+import Navbar from "../components/Navbar";
 import "../stylesheets/recipedetail.css";
 
 class RecipeDetails extends React.Component{
@@ -11,7 +12,7 @@ class RecipeDetails extends React.Component{
             visible: false,
             recipeJSON: {
                 "id": 716429,
-                "title": "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs",
+                "title": "Pasta with Garl   ic, Scallions, Cauliflower & Breadcrumbs",
                 "image": "https://spoonacular.com/recipeImages/716429-556x370.jpg",
                 "imageType": "jpg",
                 "servings": 2,
@@ -334,6 +335,11 @@ class RecipeDetails extends React.Component{
                 ]
             }
         }
+        this.setStateOfParent.bind(this);
+    }
+
+    setStateOfParent = () => {
+        this.setState({visible: false});
     }
     
     readIngredients(){
@@ -360,7 +366,7 @@ class RecipeDetails extends React.Component{
 
     renderVisibility(){
         if(this.state.visible == true){
-            return <ShoppingCartModal style></ShoppingCartModal>
+            return <ShoppingCartModal setStateOfParent={this.setStateOfParent}></ShoppingCartModal>
         }else{
         }
     }
@@ -373,6 +379,7 @@ class RecipeDetails extends React.Component{
         if(this.state.visible == true){
             return(
                 <div className="recipe-page">
+                <Navbar></Navbar>
                     <div className="recipe-container">
                         {this.renderVisibility()}
                     </div>
@@ -381,6 +388,7 @@ class RecipeDetails extends React.Component{
         }else{
             return(
                 <div className="recipe-page">
+                <Navbar />
                     <div className="recipe-container">
                         <div className="recipe-title">
                             {this.state.recipeJSON.title}
