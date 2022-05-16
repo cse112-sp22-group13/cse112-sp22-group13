@@ -62,46 +62,39 @@ const ShoppingCartModal = () => {
 
             <Modal.Body>
                 <p>
-                    <div id="container">
-                                               
-                        <div class="scrolling-wrapper col flex-col flex-nowrap py-2">
-                            {
-                                cuisineMockData.map((cuisine) => (
-                                    <div class="container">
-                                        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-2 border-bottom">
+                    {
+                        cuisineMockData.map((cuisine) => (
+                            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-2 border-bottom">
                                         
-                                        <div>
-                                            <input type="checkbox" />
-                                            <img  alt="image" width="150" height="150" src={MockPhoto}
-                                            data-holder-rendered="true" />
-                                        </div>
+                                <div>
+                                    <input type="checkbox" />
+                                    <img  alt="image" width="150" height="150" src={MockPhoto}
+                                    data-holder-rendered="true" />
+                                </div>
 
-                                        <div>
-                                            <div>
-                                                {cuisine.name}
-                                            </div>
-                                            <div>
-                                                {cuisine.place}
-                                            </div>
-                                            <div>
-                                                <button type="button" class="btn btn-outline-primary me-2">Quantity</button>
-                                                <button type="button" class="btn btn-outline-primary me-2">Delete</button>
-                                                <button type="button" class="btn btn-outline-primary me-2">Save for later</button>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3 text-end">
-                                            Price: 
-                                            {cuisine.price}
-                                        </div>
-                            
-                                        </header>
+                                <div>
+                                    <div>
+                                        {cuisine.name}
                                     </div>
+                                    <div>
+                                        {cuisine.place}
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-outline-primary me-2">Quantity</button>
+                                        <button type="button" class="btn btn-outline-primary me-2">Delete</button>
+                                        <button type="button" class="btn btn-outline-primary me-2">Save for later</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 text-end">
+                                    Price: 
+                                    {cuisine.price}
+                                </div>
+                            
+                            </header>
                                     
-                                ))
-                            }
-                        </div>
-                    </div>
+                        ))
+                    }
                 </p>
             </Modal.Body>
 
