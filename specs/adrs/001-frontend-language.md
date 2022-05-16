@@ -1,6 +1,6 @@
 # Frontend Language
 
-* Status: Accepted <!-- optional -->
+* Status: Superceded by [005-frontend-language-2.md](005-frontend-language-2.md) <!-- optional -->
 * Deciders: Eric, Kai, Lucius, Nat, TJ, Xavier, Anh, Jon, Peder, Rodney <!-- optional -->
 * Date: 2022-04-25 <!-- optional -->
 
@@ -48,3 +48,7 @@ For this migration to be realistic/have minimal risk, we will aim to have the cu
 * Good, because it is less work for us to keep using JavaScript
 * Good, because all of us have JavaScript experience
 * Bad, because members are interested in gaining experience with React 
+
+## Links <!-- optional -->
+
+* Reassessed and reaffirmed by [005-frontend-language-2.md](005-frontend-language-2.md)
