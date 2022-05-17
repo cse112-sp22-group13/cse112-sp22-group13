@@ -29,13 +29,7 @@ const NavBar = () => {
                     action=""
                     className="form-inline"
                 >
-                    <a
-                        id="title"
-                        href="#"
-                        className="nav-link px-2 link-secondary"
-                    >
-                        Knead It
-                    </a>
+                    <h1 id="title">Knead It</h1>
                     <div className="input-group">
                         <input
                             id="searchbar"
@@ -57,16 +51,14 @@ const NavBar = () => {
 
                 <div className="col-md-3 text-end">
                     <button
-                        id="button"
                         type="button"
-                        className="btn btn-outline-primary me-2"
+                        className="btn btn-link me-3 px-4 button"
                     >
                         Login
                     </button>
                     <button
-                        id="button"
                         type="button"
-                        className="btn btn-primary"
+                        className="btn btn-secondary px-4 button"
                     >
                         Sign Up
                     </button>
