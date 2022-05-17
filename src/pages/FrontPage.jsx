@@ -1,4 +1,6 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+// import StyledLink from "../components/StyledLink";
 import MockPhoto from "../media/mock-photo.jpg";
 import "../stylesheets/frontpage.css";
 
@@ -6,7 +8,25 @@ const FrontPage = () => {
     // TODO: replace it with Spoonacular API response?
     const cuisineMockData = [
         {
+            name: "African"
+        },
+        {
             name: "American"
+        },
+        {
+            name: "British"
+        },
+        {
+            name: "Cajun"
+        },
+        {
+            name: "Caribbean"
+        },
+        {
+            name: "Chinese"
+        },
+        {
+            name: "European"
         },
         {
             name: "French"
@@ -15,16 +35,31 @@ const FrontPage = () => {
             name: "German"
         },
         {
+            name: "Greak"
+        },
+        {
+            name: "Indian"
+        },
+        {
             name: "Italian"
+        },
+        {
+            name: "Japanese"
         },
         {
             name: "Jewish"
         },
         {
+            name: "Korean"
+        },
+        {
             name: "Portugese"
         },
         {
-            name: "Japanese"
+            name: "Mexican"
+        },
+        {
+            name: "Thai"
         },
         {
             name: "Vietnamese"
@@ -57,14 +92,16 @@ const FrontPage = () => {
             <h4>CUISINE</h4>
             <div className="container-fluid">
                 <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
-                    {cuisineMockData.map((cuisine) => (
-                        <div className="col-2 my-col">
-                            <img
-                                alt="100x100"
-                                src={MockPhoto}
-                                data-holder-rendered="true"
-                            />
-                            <p className="pt-2">{cuisine.name}</p>
+                    {cuisineMockData.map((cuisine, index) => (
+                        <div className="col-2 my-col" key={index}>
+                            <Link to="/recipes">
+                                <img
+                                    alt="100x100"
+                                    src={MockPhoto}
+                                    data-holder-rendered="true"
+                                />
+                                <p className="pt-2">{cuisine.name}</p>
+                            </Link>
                         </div>
                     ))}
                 </div>
@@ -84,10 +121,16 @@ const FrontPage = () => {
 const HorizontalScroll = (props) => {
     const { categoryList } = props;
 
-    return categoryList.map((category) => (
-        <div className="col-2 my-col">
-            <img alt="100x100" src={MockPhoto} data-holder-rendered="true" />
-            <p className="pt-2">{category}</p>
+    return categoryList.map((category, index) => (
+        <div className="col-2 my-col" key={index}>
+            <Link to="/recipes">
+                <img
+                    alt="100x100"
+                    src={MockPhoto}
+                    data-holder-rendered="true"
+                />
+                <p className="pt-2">{category}</p>
+            </Link>
         </div>
     ));
 };

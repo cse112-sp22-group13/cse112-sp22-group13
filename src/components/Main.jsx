@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import FrontPage from "../pages/FrontPage";
 import RecipesPage from "../pages/RecipesPage";
@@ -7,10 +7,10 @@ import RecipesPage from "../pages/RecipesPage";
 const Main = () => {
     return (
         <Fragment>
-            <Switch>
-                <Route exact path="/" render={FrontPage} />
-                <Route exact path="/recipes" render={RecipesPage} />
-            </Switch>
+            <Routes>
+                <Route exact path="/" element={<FrontPage />} />
+                <Route exact path="/recipes" element={<RecipesPage />} />
+            </Routes>
         </Fragment>
     );
 };
