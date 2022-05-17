@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import MockPhoto from "../media/mock-recipe-photo.jpg";
 import "../stylesheets/recipespage.css";
 
@@ -36,15 +37,17 @@ const RowOfCards = (props) => {
             {mockData.map((recipe) => (
                 <div className="col mb-4">
                     <div className="card">
-                        <img
-                            src={MockPhoto}
-                            className="card-img-top"
-                            alt="..."
-                        />
-                        <div className="card-body">
-                            <h5 className="card-title">{recipe.name}</h5>
-                            <p className="card-text">{recipe.cuisine}</p>
-                        </div>
+                        <Link to="/recipe">
+                            <img
+                                src={MockPhoto}
+                                className="card-img-top"
+                                alt="..."
+                            />
+                            <div className="card-body">
+                                <h5 className="card-title">{recipe.name}</h5>
+                                <p className="card-text">{recipe.cuisine}</p>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             ))}
