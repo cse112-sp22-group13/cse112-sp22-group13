@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-// import StyledLink from "../components/StyledLink";
 import MockPhoto from "../media/mock-photo.jpg";
 import "../stylesheets/frontpage.css";
 

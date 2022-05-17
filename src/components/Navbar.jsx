@@ -1,10 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../stylesheets/navBar.css";
-// import {Logo} from "../media/NavBar Logo.svg"
-//import { Route, Switch } from "react-router-dom";
-
-//import FrontPage from "../pages/FrontPage";
-//import RecipesPage from "../pages/RecipesPage";
 
 const NavBar = () => {
     return (
@@ -50,18 +46,22 @@ const NavBar = () => {
                 </form>
 
                 <div className="col-md-3 text-end">
-                    <button
-                        type="button"
-                        className="btn btn-link me-3 px-4 button"
-                    >
-                        Login
-                    </button>
-                    <button
-                        type="button"
-                        className="btn btn-secondary px-4 button"
-                    >
-                        Sign Up
-                    </button>
+                    <Link to="/login">
+                        <button
+                            type="button"
+                            className="btn btn-link me-3 px-4 button"
+                        >
+                            Login
+                        </button>
+                    </Link>
+                    <Link to="/signup">
+                        <button
+                            type="button"
+                            className="btn btn-secondary px-4 button"
+                        >
+                            Sign Up
+                        </button>
+                    </Link>
                 </div>
             </header>
         </div>
