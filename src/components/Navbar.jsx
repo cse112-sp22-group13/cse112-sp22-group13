@@ -14,7 +14,12 @@ const NavBar = () => {
                     href="/"
                     className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
                 >
-                    <img src={require("../media/NavBar Logo.png")} alt="Logo" width="75" height="75"></img>
+                    <img
+                        src={require("../media/NavBar Logo.png")}
+                        alt="Logo"
+                        width="75"
+                        height="75"
+                    ></img>
                 </a>
 
                 <form
@@ -24,33 +29,38 @@ const NavBar = () => {
                     action=""
                     className="form-inline"
                 >
-                    <a id="title" href="#" className="nav-link px-2 link-secondary">
-            Knead It
-                    </a>
+                    <h1 id="title">Knead It</h1>
                     <div className="input-group">
-                        <input 
+                        <input
                             id="searchbar"
-                            className="form-control" 
-                            placeholder="Search..." 
-                            type="text" />
+                            className="form-control"
+                            placeholder="Search..."
+                            type="text"
+                        />
                         <span className="input-group-btn">
                             <button
                                 id="searchbtn"
                                 className="btn btn-outline-primary me-2"
                                 type="button"
                             >
-                Search
+                                Search
                             </button>
                         </span>
                     </div>
                 </form>
 
                 <div className="col-md-3 text-end">
-                    <button id="button" type="button" className="btn btn-outline-primary me-2">
-            Login
+                    <button
+                        type="button"
+                        className="btn btn-link me-3 px-4 button"
+                    >
+                        Login
                     </button>
-                    <button id="button" type="button" className="btn btn-primary">
-            Sign Up
+                    <button
+                        type="button"
+                        className="btn btn-secondary px-4 button"
+                    >
+                        Sign Up
                     </button>
                 </div>
             </header>
