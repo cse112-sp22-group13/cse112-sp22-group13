@@ -95,25 +95,24 @@ const FrontPage = () => {
                 <h4>CUISINE</h4>
                 <div className="container-fluid">
                     <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
-                        {cuisineMockData.map((cuisine) => (
-                            <div className="col-2 my-col">
-                                <img
-                                    alt="100x100"
-                                    src={MockPhoto}
-                                    data-holder-rendered="true"
-                                />
-                                <p className="pt-2">{cuisine.name}</p>
-                            </div>
-                        ))}
+                        {
+                            cuisineMockData.map((cuisine) => (
+                                <div className="col-2 my-col">
+                                    <img  alt="100x100" src={MockPhoto}
+                                        data-holder-rendered="true" />
+                                    <p className="pt-2">{cuisine.name}</p>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
                 <h4>INGREDIENTS</h4>
                 <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
-                    <HorizontalScroll categoryList={ingredients} />
+                    <HorizontalScroll categoryList={ingredients}/>
                 </div>
                 <h4>PREP TIME</h4>
                 <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
-                    <HorizontalScroll categoryList={prepTime} />
+                    <HorizontalScroll categoryList={prepTime}/>
                 </div>
             </ScrollToTop>
         </Fragment>
@@ -123,12 +122,16 @@ const FrontPage = () => {
 const HorizontalScroll = (props) => {
     const { categoryList } = props;
 
-    return categoryList.map((category) => (
-        <div className="col-2 my-col">
-            <img alt="100x100" src={MockPhoto} data-holder-rendered="true" />
-            <p className="pt-2">{category}</p>
-        </div>
-    ));
+    return (
+        categoryList.map((category) => (
+            <div className="col-2 my-col">
+                <img  alt="100x100" src={MockPhoto}
+                    data-holder-rendered="true" />
+                <p className="pt-2">{category}</p>
+            </div>
+        ))
+    );
 };
+
 
 export default FrontPage;
