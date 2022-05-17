@@ -47,6 +47,10 @@
         ],
         "react/jsx-key": [
             0
+        ],
+        "comma-dangle": [
+            "error",
+            "never"
         ]
     }
 }
