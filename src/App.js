@@ -1,18 +1,15 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import ScrollToTop from "./components/ScrollToTop";
 
 import NavBar from "./components/Navbar";
 import Main from "./components/Main";
 
 const App = (props) => (
     <BrowserRouter>
-        <ScrollToTop>
-            <div>
-                <NavBar />
-                <Main />
-            </div>
-        </ScrollToTop>
+        <div>
+            <NavBar />
+            <Main />
+        </div>
     </BrowserRouter>
 );
 

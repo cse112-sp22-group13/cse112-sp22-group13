@@ -1,5 +1,5 @@
 import React from "react";
-import "../stylesheets/NavBar.css";
+import "../stylesheets/navBar.css";
 // import {Logo} from "../media/NavBar Logo.svg"
 //import { Route, Switch } from "react-router-dom";
 
@@ -14,7 +14,12 @@ const NavBar = () => {
                     href="/"
                     className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
                 >
-                    <img src={require("../media/NavBar Logo.png")} alt="Logo" width="75" height="75"></img>
+                    <img
+                        src={require("../media/NavBar Logo.png")}
+                        alt="Logo"
+                        width="75"
+                        height="75"
+                    ></img>
                 </a>
 
                 <form
@@ -24,33 +29,46 @@ const NavBar = () => {
                     action=""
                     className="form-inline"
                 >
-                    <a id="title" href="#" className="nav-link px-2 link-secondary">
-            Knead It
+                    <a
+                        id="title"
+                        href="#"
+                        className="nav-link px-2 link-secondary"
+                    >
+                        Knead It
                     </a>
                     <div className="input-group">
-                        <input 
+                        <input
                             id="searchbar"
-                            className="form-control" 
-                            placeholder="Search..." 
-                            type="text" />
+                            className="form-control"
+                            placeholder="Search..."
+                            type="text"
+                        />
                         <span className="input-group-btn">
                             <button
                                 id="searchbtn"
                                 className="btn btn-outline-primary me-2"
                                 type="button"
                             >
-                Search
+                                Search
                             </button>
                         </span>
                     </div>
                 </form>
 
                 <div className="col-md-3 text-end">
-                    <button id="button" type="button" className="btn btn-outline-primary me-2">
-            Login
+                    <button
+                        id="button"
+                        type="button"
+                        className="btn btn-outline-primary me-2"
+                    >
+                        Login
                     </button>
-                    <button id="button" type="button" className="btn btn-primary">
-            Sign Up
+                    <button
+                        id="button"
+                        type="button"
+                        className="btn btn-primary"
+                    >
+                        Sign Up
                     </button>
                 </div>
             </header>
