@@ -8,12 +8,16 @@
     "@testing-library/user-event": "^13.2.1",
     "bootstrap-icons": "^1.8.1",
     "react": "^18.1.0",
+    "react-bootstrap": "^2.4.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^0.0.0-experimental-compat.6",
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.17.12",
+    "@babel/preset-flow": "^7.17.12",
+    "@babel/preset-react": "^7.17.12",
     "eslint": "^8.14.0",
     "eslint-plugin-html": "^6.2.0",
     "eslint-plugin-react": "^7.29.4",

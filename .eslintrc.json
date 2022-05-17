@@ -9,7 +9,10 @@
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
-        "sourceType": "module"
+        "sourceType": "module",
+        "babelOptions": {
+            "presets": ["@babel/react"]
+        }
     },
     "plugins": [
         "eslint-plugin-html",

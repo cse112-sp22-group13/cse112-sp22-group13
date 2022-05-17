@@ -15,7 +15,7 @@ const NavBar = () => {
                         alt="Logo"
                         width="75"
                         height="75"
-                    ></img>
+                    />
                 </a>
 
                 <form
