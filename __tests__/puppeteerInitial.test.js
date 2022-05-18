@@ -1,10 +1,9 @@
 describe("Knead It", () => {
     beforeAll(async () => {
-        console.log(process.cwd());
-        await page.goto("file://" + process.cwd() + "/src/home/home.html");
+        await page.goto("http://localhost:3000/");
     });
 
     it("should be titled \"KNEAD IT\"", async () => {
-        await expect(page.title()).resolves.toMatch("KNEAD IT");
+        await expect(page.title()).resolves.toMatch("Knead It");
     });
 });
