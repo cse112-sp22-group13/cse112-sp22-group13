@@ -13,7 +13,5 @@ jobs:
         with:
             node-version: 16
       - run: npm install
-      - run: npm run build
-      - run: npm install -g serve
-      - run: nohup serve -s build &
+      - run: nohup npm run start &
       - run: npm run test
