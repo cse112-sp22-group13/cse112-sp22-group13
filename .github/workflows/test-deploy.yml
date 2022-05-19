@@ -13,7 +13,7 @@ jobs:
         with:
           directory: 'src'      # Optional
           add_suffix: false     # Optional
-      - run: - run: git config user.email "gh-actions@github.com" && git config user.name "gh-actions" && git add -A && git commit -m "Updated code"
+      - run: git config user.email "gh-actions@github.com" && git config user.name "gh-actions" && git add -A && git commit -m "Updated code"
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
