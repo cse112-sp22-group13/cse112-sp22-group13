@@ -1,0 +1,23 @@
+name: Test Heroku Deployment
+on:
+  pull_request:
+jobs:
+  minify-and-deploy:
+    runs-on: ubuntu-latest      # Docker-based github actions have to run on a linux environment
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: HTML/CSS/JS Minifier
+        uses: docker://devatherock/minify-js:1.0.3
+        with:
+          directory: 'src'      # Optional
+          add_suffix: false     # Optional
+
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "knead-it-testing" #Must be unique in Heroku
+          heroku_email: "xsevcik@ucsd.edu"
+          appdir: "src" # <- This will point to the api folder in your project
+          branch: "main"
