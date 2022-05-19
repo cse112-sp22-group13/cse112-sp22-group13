@@ -20,4 +20,4 @@ jobs:
           heroku_app_name: "knead-it-testing" #Must be unique in Heroku
           heroku_email: "xsevcik@ucsd.edu"
           appdir: "src" # <- This will point to the api folder in your project
-          branch: "main"
+          branch: "demo-UI-tests"
