@@ -1,0 +1,25 @@
+#title {
+    text-align: center;
+    font-weight: bold;
+}
+
+#searchbar {
+    border-radius: 50px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+#searchbtn {
+    border-radius: 50px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.button {
+    border-radius: 5px;
+}
+
+.btn-link {
+    text-decoration: none !important;
+    color: black !important;
+}
