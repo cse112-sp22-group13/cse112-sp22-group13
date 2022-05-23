@@ -23,3 +23,12 @@
     text-decoration: none !important;
     color: black !important;
 }
+
+.dropdown {
+    color: grey !important;
+    background-color: white !important;
+    border-color: lightgrey !important;
+    border-radius: 50px !important;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
