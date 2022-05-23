@@ -1,6 +1,6 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
-import { getFirestore, collection, doc, getDocs, setDoc, updateDoc} from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
+import { getFirestore, collection, doc, getDoc, getDocs, setDoc, updateDoc} from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAEWF3Hxz9GquMTz_huVUes7q-zXbzAVJE",
@@ -15,19 +15,41 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const collectionName = "recipes";
-
 // Get the list of recipes from your database
-async function getRecipes() {
-    const recipesCol = collection(db, collectionName);
-    const recipesSnapshot = await getDocs(recipesCol);
-    const recipeList = recipesSnapshot.docs.map(doc => doc.data());
-    return recipeList;
+async function getRecipeIds(recipeType, recipeData) {
+    var ids = [];
+
+    // check if url query exists
+    if (recipeType && recipeData) {
+        const colRef = collection(db, "recipe_categories");
+        const docRef = doc(colRef, recipeType);
+        const subColRef = collection(docRef, recipeData);
+
+        const querySnapshot = await getDocs(subColRef);
+
+        // gets ids of all recipes in category
+        querySnapshot.forEach((doc) => {
+            ids.push(doc.data().data);
+        });
+    }
+
+    return ids;
 }
 
-async function getRecipe(id){
-    const recipesCol = collection(db, collectionName);
-    return recipesCol.child(id);
+// get recipe from id
+async function getRecipe(id) {
+    var recipe;
+
+    const docRef = doc(db, "recipes", id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        recipe = docSnap.data();
+    } else {
+        console.log("No document found.");
+    }
+
+    return recipe;
 }
 
 // add recipe to db
@@ -128,4 +150,4 @@ async function updateDB(fsCollection, jsonString) {
     await setDoc(subDocRef, {data: (json.id).toString()});
 }
 
-export {addRecipe, getRecipes, getRecipe, updateDB};
+export {addRecipe, getRecipeIds, getRecipe, updateDB};

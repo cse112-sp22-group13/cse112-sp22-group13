@@ -119,7 +119,7 @@ const FrontPage = () => {
                         <div className="col-2 my-col" key={index}>
                             <Link to={{
                                 pathname: "/recipes",
-                                search: "?type=cuisine&data=" + cuisine.name }}>
+                                search: "?type=cuisines&data=" + cuisine.name }}>
                                 <img
                                     alt="100x100"
                                     src={MockPhoto}
@@ -133,7 +133,7 @@ const FrontPage = () => {
             </div>
             <h4>INGREDIENTS</h4>
             <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
-                <HorizontalScroll categoryList={ingredients} type="ingredient"/>
+                <HorizontalScroll categoryList={ingredients} type="ingredients"/>
             </div>
             <h4>PREP TIME</h4>
             <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
