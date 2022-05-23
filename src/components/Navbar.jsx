@@ -1,8 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Dropdown } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import "../stylesheets/NavBar.css";
-
 const NavBar = () => {
+    let navigate = useNavigate();  
+    const [queryType, setQueryType] = useState("Name");
     return (
         <div className="container">
             <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
@@ -24,23 +26,34 @@ const NavBar = () => {
                     method="get"
                     action=""
                     className="form-inline"
+                    onSubmit= {(event) =>{
+                        event.preventDefault();
+                        navigate("/recipes");    
+                        window.location.href += "?searchbar=" + document.getElementById("searchbar").value + "?queryType=" + queryType;
+                    }}
                 >
                     <h1 id="title">Knead It</h1>
-                    <div className="input-group">
+                    <div className="input-group" name="divcontainer">
                         <input
                             id="searchbar"
+                            name="searchbar"
                             className="form-control"
-                            placeholder="Search..."
+                            placeholder="Search By..."
                             type="text"
                         />
                         <span className="input-group-btn">
-                            <button
-                                id="searchbtn"
-                                className="btn btn-outline-primary me-2"
-                                type="button"
-                            >
-                                Search
-                            </button>
+                            <Dropdown>
+                                <Dropdown.Toggle className="dropdown" variant="success" id="dropdown-basic">
+                                    {queryType}
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    <Dropdown.Item onClick={() => setQueryType("Name")}>Name</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setQueryType("Cuisine")}>Cuisine</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setQueryType("Prep")}>Prep Time</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setQueryType("Ingredients")}>Ingredients</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
                         </span>
                     </div>
                 </form>
