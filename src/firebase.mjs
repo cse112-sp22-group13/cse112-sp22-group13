@@ -30,24 +30,102 @@ async function getRecipe(id){
     return recipesCol.child(id);
 }
 
+// add recipe to db
+async function addRecipe(jsonString) {
+    var docRef;
+
+    // get reference to collection
+    const colRef = collection(db, "recipes");
+
+    // parse json string
+    const json = JSON.parse(jsonString);
+    
+    // add recipes to db
+    docRef = doc(colRef, (json.id).toString());
+    await setDoc(docRef, json);
+}
+
+
 // updates document in DB, or creates if doesn't exist
 async function updateDB(fsCollection, jsonString) {
+    var docRef;
+    var subColRef;
+    var subDocRef;
 
     // parse json string
     const json = JSON.parse(jsonString);
 
     // get reference to collection 
     const colRef = collection(db, fsCollection); 
-    
-    // replace with cuisine later 
-    var docRef = doc(colRef, "diet");
-    for (var idx in json.diets) {
-        var subColRef = collection(docRef, json.diets[idx]);
-        var subDocRef = doc(subColRef, (json.id).toString());
-        await setDoc(subDocRef, json);
+
+    // split by cuisine
+    docRef = doc(colRef, "cuisines");
+
+    // get each cuisine in recipe
+    for (var c in json.cuisines) {
+        subColRef = collection(docRef, json.cuisines[c]);
+        subDocRef = doc(subColRef, (json.id).toString());
+        await setDoc(subDocRef, {data: (json.id).toString()});
     }
 
-    // TODO: add docs for ingredients and time
+    const possible_ingredients = [
+        "Bread",
+        "Produce",
+        "Seafood",
+        "Spices and Seasonings",
+        "Milk, Eggs, Other Dairy",
+        "Oil, Vinegar, Salad Dressing",
+        "Cereal",
+        "Baking",
+        "Health Foods",
+        "Ethnic Foods",
+        "Beverages",
+        "Canned and Jarred"
+    ];
+
+    // split by ingredients
+    docRef = doc(colRef, "ingredients");
+    var ingredientList = [];
+    var hasIngredient = new Array(possible_ingredients.length).fill(false);
+
+    // get each ingredient in recipe
+    for (var i in json.extendedIngredients) {
+        var ingredient = json.extendedIngredients[i].aisle;
+
+        // ingredient exists in json
+        if (ingredient != null && ingredient != "?") {
+
+            // parse ingredient from json
+            ingredient = (ingredient.split(";")[0]).split("/");
+
+            // check if current ingredient is in list of possible ones
+            for (var pi in possible_ingredients) {
+                if (ingredient == possible_ingredients[pi]) {
+                    hasIngredient[pi] = true;
+                    break;
+                } 
+            }
+        }
+    }
+
+    // get all related ingredients for recipe
+    for (var hi in hasIngredient) {
+        if (hasIngredient[hi]) {
+            ingredientList.push(possible_ingredients[hi]);
+        }
+    }
+
+    for (var ing in ingredientList) {
+        subColRef = collection(docRef, ingredientList[ing]);
+        subDocRef = doc(subColRef, (json.id).toString());
+        await setDoc(subDocRef, {data: (json.id).toString()});
+    }
+
+    // split by time
+    docRef = doc(colRef, "time");
+    subColRef = collection(docRef, (json.readyInMinutes).toString());
+    subDocRef = doc(subColRef, (json.id).toString());
+    await setDoc(subDocRef, {data: (json.id).toString()});
 }
 
-export {getRecipes, getRecipe, updateDB};
+export {addRecipe, getRecipes, getRecipe, updateDB};

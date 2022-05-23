@@ -4,7 +4,7 @@ import MockPhoto from "../media/mock-photo.jpg";
 import { initializeDB } from "../spoonacular.mjs";
 import "../stylesheets/frontpage.css";
 
-//initializeDB();
+initializeDB();
 
 const FrontPage = () => {
     // TODO: replace it with Spoonacular API response?
@@ -87,24 +87,27 @@ const FrontPage = () => {
     ];
 
     const ingredients = [
-        "Beef",
-        "Pork",
-        "Chicken",
-        "Tofu",
-        "Duck",
-        "Egg",
-        "Milk",
-        "Butter",
-        "Fruits"
+        "Bread",
+        "Produce",
+        "Seafood",
+        "Spices and Seasonings",
+        "Milk, Eggs, or Other Dairy",
+        "Oil, Vinegar, or Salad Dressing",
+        "Cereal",
+        "Baking Goods",
+        "Health Foods",
+        "Ethnic Foods",
+        "Beverages",
+        "Canned and Jarred"
     ];
     const prepTime = [
-        "5 min",
-        "10 min",
-        "15 min",
-        "30 min",
-        "45 min",
-        "1 hour",
-        "2 hour"
+        "< 15 min",
+        "< 20 min",
+        "< 25 min",
+        "< 30 min",
+        "< 45 min",
+        "< 1 hr",
+        "< 2 hrs"
     ];
 
     return (
