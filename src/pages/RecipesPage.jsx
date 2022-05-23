@@ -9,8 +9,8 @@ const RecipesPage = () => {
     useEffect( () => {
         (async()=>{
             var queryText = window.location.href.indexOf("?searchbar=");
-            var qType = window.location.href.indexOf("%3FqueryType%3D");
-            var noQuery = window.location.href.indexOf("%3FquickQuery%3D");
+            var qType = window.location.href.indexOf("?queryType=");
+            var noQuery = window.location.href.indexOf("?quickQuery=");
             let text = "";
             if(queryText == -1 && noQuery == -1){
                 text = await fetchRecipes();

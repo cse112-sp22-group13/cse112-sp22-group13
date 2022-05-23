@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Dropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../stylesheets/NavBar.css";
 const NavBar = () => {
+    let navigate = useNavigate();  
     const [queryType, setQueryType] = useState("Name");
     return (
         <div className="container">
@@ -25,8 +26,10 @@ const NavBar = () => {
                     method="get"
                     action=""
                     className="form-inline"
-                    onSubmit= {() =>{
-                        document.getElementById("searchbar").value += "?queryType=" + queryType;
+                    onSubmit= {(event) =>{
+                        event.preventDefault();
+                        navigate("/recipes");    
+                        window.location.href += "?searchbar=" + document.getElementById("searchbar").value + "?queryType=" + queryType;
                     }}
                 >
                     <h1 id="title">Knead It</h1>
