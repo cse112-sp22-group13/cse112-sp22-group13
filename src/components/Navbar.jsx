@@ -29,7 +29,7 @@ const NavBar = () => {
                     onSubmit= {(event) =>{
                         event.preventDefault();
                         navigate("/recipes");    
-                        window.location.href += "?searchbar=" + document.getElementById("searchbar").value + "?queryType=" + queryType;
+                        window.location.href += "?type=" + queryType.toLowerCase() + "&data=" + document.getElementById("searchbar").value;
                     }}
                 >
                     <h1 id="title">Knead It</h1>
@@ -49,8 +49,8 @@ const NavBar = () => {
 
                                 <Dropdown.Menu>
                                     <Dropdown.Item onClick={() => setQueryType("Name")}>Name</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => setQueryType("Cuisine")}>Cuisine</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => setQueryType("Prep")}>Prep Time</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setQueryType("Cuisines")}>Cuisine</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setQueryType("Time")}>Prep Time</Dropdown.Item>
                                     <Dropdown.Item onClick={() => setQueryType("Ingredients")}>Ingredients</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>

@@ -93,7 +93,6 @@ const ShoppingCartModal = (props) => {
                                         <div className="col-4">
                                             <input
                                                 type="checkbox"
-                                                checked
                                                 className="me-3"
                                             />
                                             <img
@@ -144,7 +143,7 @@ const ShoppingCartModal = (props) => {
                                         </div>
 
                                         <div className="col-md-3 text-end">
-                                            Price:
+                                            Price: 
                                             {cuisine.price}
                                         </div>
                                     </div>
