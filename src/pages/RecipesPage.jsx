@@ -17,18 +17,24 @@ const RecipesPage = () => {
             const recipeData = params.data; 
 
             // get ids from type and data
-            var recipeInfo = getRecipeIds(recipeType, recipeData)
-                .then(ids => {
+            var recipeInfo = await getRecipeIds(recipeType, recipeData)
+                .then(async (ids) => {
                     // get recipes from ids
                     var recipesArray = [];
 
                     for (var i in ids) {
-                        var recipe = getRecipe(ids[i]);
-                        recipesArray.push(recipe);
+                        var recipe = await getRecipe(ids[i]);
+                        var recipe_json = {
+                            name: recipe.title,
+                            cuisine: recipe.cuisines[0],
+                            img: recipe.image
+                        };
+                        recipesArray.push(recipe_json);
                     }
 
                     return recipesArray;
                 }); 
+
             setRecipes(recipeInfo);
         })();
     }, []);
@@ -36,13 +42,16 @@ const RecipesPage = () => {
         <Fragment>
             <div className="container-md">
                 <h2 className="mb-4">Recipes</h2>
-                <RowOfCards data= {recipes} />
+                <RowOfCards data={recipes} />
             </div>
         </Fragment>
     );
 };
 
 const RowOfCards = (props) => {
+
+    //const mockData = props.data;
+
     const mockData = [
         {
             name: "Corn Bread",
@@ -58,8 +67,6 @@ const RowOfCards = (props) => {
         }
     ];
 
-    console.log(props.data);
-
     return (
         <div className="row row-cols-3">
             {mockData.map((recipe) => (
@@ -67,7 +74,7 @@ const RowOfCards = (props) => {
                     <div className="card">
                         <Link to="/recipe">
                             <img
-                                src={MockPhoto}
+                                src={recipe.img}
                                 className="card-img-top"
                                 alt="..."
                             />
