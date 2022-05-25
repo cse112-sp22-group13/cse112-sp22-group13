@@ -67,9 +67,9 @@ const RowOfCards = (props) => {
         }
     ];
 
-    return (
+    return props.data ? (
         <div className="row row-cols-3">
-            {mockData.map((recipe) => (
+            {props.data.map((recipe) => (
                 <div className="col mb-4">
                     <div className="card">
                         <Link to="/recipe">
@@ -87,6 +87,8 @@ const RowOfCards = (props) => {
                 </div>
             ))}
         </div>
+    ) : (
+        ""
     );
 };
 export default RecipesPage;
