@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import MockPhoto from "../media/mock-recipe-photo.jpg";
 import { getRecipe, getRecipeIds } from "../firebase.mjs";
 import "../stylesheets/recipespage.css";
+import { fetchRecipes, searchFetchRecipes } from "../recipeSearch";
 
 
 
@@ -72,7 +73,7 @@ const RecipesPage = () => {
 
 const RowOfCards = (props) => {
 
-    return (
+    return props.data ? (
         <div className="row row-cols-3">
             {props.mockData.map((recipe) => (
                 <div className="col mb-4">
@@ -99,6 +100,8 @@ const RowOfCards = (props) => {
                 </div>
             ))}
         </div>
+    ) : (
+        ""
     );
 };
 export default RecipesPage;

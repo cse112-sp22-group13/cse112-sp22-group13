@@ -1,6 +1,7 @@
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
-import { getFirestore, collection, doc, getDoc, getDocs, setDoc, updateDoc} from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, doc, getDoc, getDocs, setDoc, updateDoc} from "firebase/firestore/lite";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyAEWF3Hxz9GquMTz_huVUes7q-zXbzAVJE",
@@ -16,6 +17,11 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Get the list of recipes from your database
+
+function testConsole(){
+    console.log("Hey!");
+}
+
 async function getRecipeIds(recipeType, recipeData) {
     var ids = [];
 
@@ -148,6 +154,7 @@ async function updateDB(fsCollection, jsonString) {
     subColRef = collection(docRef, (json.readyInMinutes).toString());
     subDocRef = doc(subColRef, (json.id).toString());
     await setDoc(subDocRef, {data: (json.id).toString()});
+
 }
 
-export {addRecipe, getRecipeIds, getRecipe, updateDB};
+export {addRecipe, getRecipeIds, getRecipe, updateDB, testConsole};

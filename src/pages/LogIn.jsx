@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { testConsole } from "../firebase.mjs";
 
 const LogInPage = () => {
     return (
@@ -16,7 +17,7 @@ const LogInPage = () => {
                         </div>
 
                         <div className="modal-body p-5 pt-0">
-                            <form className="">
+                            <form onSubmit={e => testConsole()} className="">
                                 <div className="form-floating mb-3">
                                     <input
                                         type="email"
