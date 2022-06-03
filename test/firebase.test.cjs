@@ -12,4 +12,8 @@ describe("firebase unit tests", () => {
         assert.equal(recipe.title, "Spanish style salmon fillets");
         // expect(recipe.title).equal("Spanish style salmon fillets");
     });
+    // it("getRecipeIds", () => {
+    //     const ids = myFunctions.getRecipeIds("")
+    // });
+
 });

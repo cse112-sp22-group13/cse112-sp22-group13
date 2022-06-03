@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { testConsole } from "../firebase.mjs";
+//import { testConsole } from "../firebase.mjs";
 
 const LogInPage = () => {
     return (

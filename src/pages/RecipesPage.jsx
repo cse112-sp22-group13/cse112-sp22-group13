@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import MockPhoto from "../media/mock-recipe-photo.jpg";
 import { getRecipe, getRecipeIds } from "../firebase.cjs";
 import "../stylesheets/recipespage.css";
-import { fetchRecipes, searchFetchRecipes } from "../recipeSearch";
+const myFunctions = require("../firebase.cjs");
+//import { fetchRecipes, searchFetchRecipes } from "../recipeSearch";
 
 const RecipesPage = () => {
     const [recipes, setRecipes] = useState("");
@@ -17,13 +18,13 @@ const RecipesPage = () => {
             const recipeData = params.data; 
 
             // get ids from type and data
-            var recipeInfo = getRecipeIds(recipeType, recipeData)
+            var recipeInfo = myFunctions.getRecipeIds(recipeType, recipeData)
                 .then(ids => {
                     // get recipes from ids
                     var recipesArray = [];
 
                     for (var i in ids) {
-                        var recipe = getRecipe(ids[i]);
+                        var recipe = myFunctions.getRecipe(ids[i]);
                         recipesArray.push(recipe);
                     }
 

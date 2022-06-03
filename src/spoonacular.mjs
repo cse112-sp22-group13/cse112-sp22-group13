@@ -1,4 +1,5 @@
-import {addRecipe, getRecipes, updateDB} from "./firebase.mjs";
+//import {addRecipe, getRecipes, updateDB} from "./firebase.mjs";
+//const myFunctions = require("../src/firebase.cjs");
 
 async function initializeDB() {
     // fetch from spoonacular (replace url later)
