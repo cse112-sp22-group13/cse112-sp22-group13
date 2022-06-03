@@ -1,73 +1,98 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MockPhoto from "../media/mock-recipe-photo.jpg";
 import { getRecipe, getRecipeIds } from "../firebase.mjs";
 import "../stylesheets/recipespage.css";
 
-// get query string
-const params = new Proxy(new URLSearchParams(window.location.search), {
-    get: (searchParams, prop) => searchParams.get(prop),
-});
-const recipeType = params.type;
-const recipeData = params.data; 
 
-// get ids from type and data
-var recipeInfo = getRecipeIds(recipeType, recipeData)
-    .then(ids => {
-        // get recipes from ids
-        var recipes = [];
-
-        for (var i in ids) {
-            var recipe = getRecipe(ids[i]);
-            recipes.push(recipe);
-        }
-
-        return recipes;
-    }); 
 
 const RecipesPage = () => {
+    const [recipes, setRecipes] = useState([]);
+    const [recipetext, setRecipeText] = useState("All Recipes");
+    useEffect( () => {
+        const fetchData= async () => {
+            // get query string
+            let recipeText = "All Recipes";
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+            });
+            let recipeType = params.type;
+            const recipeData = params.data; 
+            if(recipeType == "Cuisine" || recipeType == "cuisines"){
+                recipeType = "cuisines";
+                recipeText = "Recipes that are " + recipeData;
+            }else if(recipeType == "Ingredients" || recipeType == "includeIngredients"){
+                recipeType = "includeIngredients";
+                recipeText = "Recipes containing " + recipeData;
+            }else if(recipeType == "Prep" || recipeType == "maxPrepTime"){
+                recipeType = "maxPrepTime";
+                recipeText = "Recipes that take " + recipeData + " minutes";
+            }else if(recipeType =="titleMatch" || recipeType == "name"){
+                recipeType = "name";
+                recipeText = "Recipes names with " + recipeData;
+            }
+            // get ids from type and data
+            var recipeInfo = await getRecipeIds(recipeType, recipeData)
+                .then(async(ids) => {
+                // get recipes from ids
+                    var recipez = [];
+                    let threerec = [];
+                    for (var i in ids) {
+                        var recipe = await getRecipe(ids[i]).then(key=>{
+                            return key;
+                        });
+                        threerec.push(recipe);
+                        if(threerec.length == 3){
+                            recipez.push(threerec);
+                            threerec = [];
+                        }
+                    }
+
+                    return recipez;
+                });
+            setRecipeText(recipeText);
+            console.log(recipeText);
+            setRecipes(recipeInfo);
+            return recipeInfo;
+        };
+
+        fetchData();
+    }, []);
     return (
         <Fragment>
             <div className="container-md">
-                <h2 className="mb-4">Recipes</h2>
-                <RowOfCards />
-                <RowOfCards />
-                <RowOfCards />
+                <h2 className="mb-4">{recipetext}</h2>
+                {recipes.map((three) => (
+                    <RowOfCards mockData={three}></RowOfCards>
+                ))}
             </div>
         </Fragment>
     );
 };
 
 const RowOfCards = (props) => {
-    const mockData = [
-        {
-            name: "Corn Bread",
-            cuisine: "American"
-        },
-        {
-            name: "Spagetti",
-            cuisine: "Italian"
-        },
-        {
-            name: "Pho",
-            cuisine: "Vietnamese"
-        }
-    ];
 
     return (
         <div className="row row-cols-3">
-            {mockData.map((recipe) => (
+            {props.mockData.map((recipe) => (
                 <div className="col mb-4">
                     <div className="card">
-                        <Link to="/recipe">
+                        <Link to={{
+                            pathname: "/recipe",
+                            search: "?type=" + recipe.id}} state={{ recipezz: recipe }}>
                             <img
-                                src={MockPhoto}
+                                src={recipe.image}
                                 className="card-img-top"
                                 alt="..."
                             />
                             <div className="card-body">
-                                <h5 className="card-title">{recipe.name}</h5>
-                                <p className="card-text">{recipe.cuisine}</p>
+                                <div className="card-title-box">
+                                    <h5 className="card-title">{recipe.title}</h5>
+                                </div>
+                                <div className="text-box">
+                                    <p className="card-text">{recipe.cuisines[0]}</p>
+                                    <p className="card-text">{recipe.readyInMinutes} Minutes</p>
+                                </div>
                             </div>
                         </Link>
                     </div>
