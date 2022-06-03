@@ -1,6 +1,8 @@
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
-import { getFirestore, collection, doc, getDoc, getDocs, setDoc, updateDoc} from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
+// import { getFirestore, collection, doc, getDoc, getDocs, setDoc, updateDoc} from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
+const firebaseApp = require("firebase/app");
+const firestore = require("firebase/firestore/lite");
 
 
 const firebaseConfig = {
@@ -13,8 +15,8 @@ const firebaseConfig = {
     measurementId: "G-59HFYTH3KC"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const app = firebaseApp.initializeApp(firebaseConfig);
+const db = firestore.getFirestore(app);
 
 // Get the list of recipes from your database
 
@@ -27,11 +29,11 @@ async function getRecipeIds(recipeType, recipeData) {
 
     // check if url query exists
     if (recipeType && recipeData) {
-        const colRef = collection(db, "recipe_categories");
-        const docRef = doc(colRef, recipeType);
-        const subColRef = collection(docRef, recipeData);
+        const colRef = firestore.collection(db, "recipe_categories");
+        const docRef = firestore.doc(colRef, recipeType);
+        const subColRef = firestore.collection(docRef, recipeData);
 
-        const querySnapshot = await getDocs(subColRef);
+        const querySnapshot = await firestore.getDocs(subColRef);
 
         // gets ids of all recipes in category
         querySnapshot.forEach((doc) => {
@@ -46,8 +48,8 @@ async function getRecipeIds(recipeType, recipeData) {
 async function getRecipe(id) {
     var recipe;
 
-    const docRef = doc(db, "recipes", id);
-    const docSnap = await getDoc(docRef);
+    const docRef = firestore.doc(db, "recipes", id);
+    const docSnap = await firestore.getDoc(docRef);
 
     if (docSnap.exists()) {
         recipe = docSnap.data();
@@ -63,14 +65,14 @@ async function addRecipe(jsonString) {
     var docRef;
 
     // get reference to collection
-    const colRef = collection(db, "recipes");
+    const colRef = firestore.collection(db, "recipes");
 
     // parse json string
     const json = JSON.parse(jsonString);
     
     // add recipes to db
-    docRef = doc(colRef, (json.id).toString());
-    await setDoc(docRef, json);
+    docRef = firestore.doc(colRef, (json.id).toString());
+    await firestore.setDoc(docRef, json);
 }
 
 
@@ -84,16 +86,16 @@ async function updateDB(fsCollection, jsonString) {
     const json = JSON.parse(jsonString);
 
     // get reference to collection 
-    const colRef = collection(db, fsCollection); 
+    const colRef = firestore.collection(db, fsCollection); 
 
     // split by cuisine
-    docRef = doc(colRef, "cuisines");
+    docRef = firestore.doc(colRef, "cuisines");
 
     // get each cuisine in recipe
     for (var c in json.cuisines) {
-        subColRef = collection(docRef, json.cuisines[c]);
-        subDocRef = doc(subColRef, (json.id).toString());
-        await setDoc(subDocRef, {data: (json.id).toString()});
+        subColRef = firestore.collection(docRef, json.cuisines[c]);
+        subDocRef = firestore.doc(subColRef, (json.id).toString());
+        await firestore.setDoc(subDocRef, {data: (json.id).toString()});
     }
 
     const possible_ingredients = [
@@ -112,7 +114,7 @@ async function updateDB(fsCollection, jsonString) {
     ];
 
     // split by ingredients
-    docRef = doc(colRef, "ingredients");
+    docRef = firestore.doc(colRef, "ingredients");
     var ingredientList = [];
     var hasIngredient = new Array(possible_ingredients.length).fill(false);
 
@@ -144,17 +146,18 @@ async function updateDB(fsCollection, jsonString) {
     }
 
     for (var ing in ingredientList) {
-        subColRef = collection(docRef, ingredientList[ing]);
-        subDocRef = doc(subColRef, (json.id).toString());
-        await setDoc(subDocRef, {data: (json.id).toString()});
+        subColRef = firestore.collection(docRef, ingredientList[ing]);
+        subDocRef = firestore.doc(subColRef, (json.id).toString());
+        await firestore.setDoc(subDocRef, {data: (json.id).toString()});
     }
 
     // split by time
-    docRef = doc(colRef, "time");
-    subColRef = collection(docRef, (json.readyInMinutes).toString());
-    subDocRef = doc(subColRef, (json.id).toString());
-    await setDoc(subDocRef, {data: (json.id).toString()});
+    docRef = firestore.doc(colRef, "time");
+    subColRef = firestore.collection(docRef, (json.readyInMinutes).toString());
+    subDocRef = firestore.doc(subColRef, (json.id).toString());
+    await firestore.setDoc(subDocRef, {data: (json.id).toString()});
 
 }
 
-export {addRecipe, getRecipeIds, getRecipe, updateDB, testConsole};
+// export {addRecipe, getRecipeIds, getRecipe, updateDB, testConsole};
+module.exports = {addRecipe, getRecipeIds, getRecipe, updateDB, testConsole};

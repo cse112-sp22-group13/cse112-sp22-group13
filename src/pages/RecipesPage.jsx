@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MockPhoto from "../media/mock-recipe-photo.jpg";
-import { getRecipe, getRecipeIds } from "../firebase.mjs";
+import { getRecipe, getRecipeIds } from "../firebase.cjs";
 import "../stylesheets/recipespage.css";
 import { fetchRecipes, searchFetchRecipes } from "../recipeSearch";
 
