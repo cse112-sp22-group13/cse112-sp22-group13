@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
+import { Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import MockPhoto from "../media/mock-photo.jpg";
 import { initializeDB } from "../spoonacular.mjs";
@@ -147,8 +148,46 @@ const FrontPage = () => {
         },
     ];
 
+    const [queryType, setQueryType] = useState("Name");
+
     return (
         <Fragment>
+            <form
+                id="form_search"
+                name="form_search"
+                method="get"
+                action=""
+                className="form-inline"
+                onSubmit= {(event) =>{
+                    event.preventDefault();
+                    navigate("/recipes");    
+                    window.location.search += "?type=" + queryType + "&data=" + document.getElementById("searchbar").value;
+                }}
+            >
+                <div className="input-group" name="divcontainer">
+                    <input
+                        id="searchbar"
+                        name="searchbar"
+                        className="form-control"
+                        placeholder="Search By..."
+                        type="text"
+                    />
+                    <span className="input-group-btn">
+                        <Dropdown>
+                            <Dropdown.Toggle className="dropdown" variant="success" id="dropdown-basic">
+                                {queryType}
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item onClick={() => setQueryType("Name")}>Name</Dropdown.Item>
+                                <Dropdown.Item onClick={() => setQueryType("Cuisine")}>Cuisine</Dropdown.Item>
+                                <Dropdown.Item onClick={() => setQueryType("Prep")}>Prep Time</Dropdown.Item>
+                                <Dropdown.Item onClick={() => setQueryType("Ingredients")}>Ingredients</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </span>
+                </div>
+            </form>
             <h4>CUISINE</h4>
             <div className="container-fluid">
                 <div className="scrolling-wrapper row flex-row flex-nowrap py-2">

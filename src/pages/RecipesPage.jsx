@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import MockPhoto from "../media/mock-recipe-photo.jpg";
 import { getRecipe, getRecipeIds } from "../firebase.mjs";
@@ -11,6 +12,7 @@ import "../stylesheets/recipespage.css";
 const RecipesPage = () => {
     const [recipes, setRecipes] = useState([]);
     const [recipetext, setRecipeText] = useState("All Recipes");
+    const [queryType, setQueryType] = useState("Name");
     useEffect( () => {
         const fetchData= async () => {
             // get query string
@@ -61,6 +63,42 @@ const RecipesPage = () => {
     }, []);
     return (
         <Fragment>
+            <form
+                id="form_search"
+                name="form_search"
+                method="get"
+                action=""
+                className="form-inline"
+                onSubmit= {(event) =>{
+                    event.preventDefault();
+                    navigate("/recipes");    
+                    window.location.search += "?type=" + queryType + "&data=" + document.getElementById("searchbar").value;
+                }}
+            >
+                <div className="input-group" name="divcontainer">
+                    <input
+                        id="searchbar"
+                        name="searchbar"
+                        className="form-control"
+                        placeholder="Search By..."
+                        type="text"
+                    />
+                    <span className="input-group-btn">
+                        <Dropdown>
+                            <Dropdown.Toggle className="dropdown" variant="success" id="dropdown-basic">
+                                {queryType}
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item onClick={() => setQueryType("Name")}>Name</Dropdown.Item>
+                                <Dropdown.Item onClick={() => setQueryType("Cuisine")}>Cuisine</Dropdown.Item>
+                                <Dropdown.Item onClick={() => setQueryType("Prep")}>Prep Time</Dropdown.Item>
+                                <Dropdown.Item onClick={() => setQueryType("Ingredients")}>Ingredients</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </span>
+                </div>
+            </form>
             <div className="container-md">
                 <h2 className="mb-4">{recipetext}</h2>
                 {recipes.map((three) => (

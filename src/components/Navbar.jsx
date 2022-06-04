@@ -30,7 +30,6 @@ const NavBar = () => {
                     </a>
 
                     <h1 id="title">Knead It</h1>
-                    
                     <form>
                         <div className="col-md-3 text-end">
                             {state.email ? (
@@ -67,42 +66,6 @@ const NavBar = () => {
                     </form>
                 </header>
             </div>
-            <form
-                id="form_search"
-                name="form_search"
-                method="get"
-                action=""
-                className="form-inline"
-                onSubmit= {(event) =>{
-                    event.preventDefault();
-                    navigate("/recipes");    
-                    window.location.search += "?type=" + queryType + "&data=" + document.getElementById("searchbar").value;
-                }}
-            >
-                <div className="input-group" name="divcontainer">
-                    <input
-                        id="searchbar"
-                        name="searchbar"
-                        className="form-control"
-                        placeholder="Search By..."
-                        type="text"
-                    />
-                    <span className="input-group-btn">
-                        <Dropdown>
-                            <Dropdown.Toggle className="dropdown" variant="success" id="dropdown-basic">
-                                {queryType}
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu>
-                                <Dropdown.Item onClick={() => setQueryType("Name")}>Name</Dropdown.Item>
-                                <Dropdown.Item onClick={() => setQueryType("Cuisine")}>Cuisine</Dropdown.Item>
-                                <Dropdown.Item onClick={() => setQueryType("Prep")}>Prep Time</Dropdown.Item>
-                                <Dropdown.Item onClick={() => setQueryType("Ingredients")}>Ingredients</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </span>
-                </div>
-            </form>
         </div>
     );
 };
