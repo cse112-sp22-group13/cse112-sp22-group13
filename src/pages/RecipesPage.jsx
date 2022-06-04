@@ -99,6 +99,11 @@ const RecipesPage = () => {
                     </span>
                 </div>
             </form>
+            <button
+                type="button"
+                className="btn btn-lg btn-secondary "
+                onClick={() => history.back()}
+            >Back</button>
             <div className="container-md">
                 <h2 className="mb-4">{recipetext}</h2>
                 {recipes.map((three) => (
