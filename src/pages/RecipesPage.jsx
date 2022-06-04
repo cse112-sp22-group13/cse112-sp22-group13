@@ -52,7 +52,6 @@ const RecipesPage = () => {
                     return recipez;
                 });
             setRecipeText(recipeText);
-            console.log(recipeText);
             setRecipes(recipeInfo);
             return recipeInfo;
         };
@@ -73,14 +72,15 @@ const RecipesPage = () => {
 
 const RowOfCards = (props) => {
 
-    return props.data ? (
+    return props.mockData ? (
         <div className="row row-cols-3">
             {props.mockData.map((recipe) => (
                 <div className="col mb-4">
+                    {console.log(recipe)}
                     <div className="card">
                         <Link to={{
                             pathname: "/recipe",
-                            search: "?type=" + recipe.id}} state={{ recipezz: recipe }}>
+                            search: "?type=" + recipe.id}}>
                             <img
                                 src={recipe.image}
                                 className="card-img-top"
