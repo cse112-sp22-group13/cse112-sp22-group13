@@ -7,6 +7,38 @@ h2 {
     color: black;
 }
 
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-title-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 8vh;
+    margin-bottom: 2vh;
+}
+
+.text-box{
+    font-style: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 9vw;
+}
+
 .card img {
     height: 30vh;
     width: auto;

@@ -32,3 +32,9 @@
     border-top-left-radius: 0px !important;
     border-bottom-left-radius: 0px !important;
 }
+
+.form-inline{
+    margin-left: 25vw;
+    width: 50vw;
+    margin-bottom: 3vh;
+}
