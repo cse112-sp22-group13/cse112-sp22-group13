@@ -31,6 +31,11 @@ const LogInPage = () => {
 
     return (
         <Fragment>
+            <button
+                type="button"
+                className="btn btn-lg btn-secondary "
+                onClick={() => history.back()}
+            >Back</button>
             <div
                 className="modal position-static d-block"
                 tabIndex="-1"
