@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import { Dropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import "../stylesheets/NavBar.css";
+import { store } from "../store/store";
+
+// User opens Login page, logs in, Login Component captures the user's info, store it in a Context, Navbar updates according to Context
 const NavBar = () => {
     let navigate = useNavigate();  
     const [queryType, setQueryType] = useState("Name");
+    const { state, dispatch } = useContext(store);
+
+    const logout = () => {
+        dispatch({ type: "DELETE_USER" });
+    };
+
     return (
         <div className="container">
             <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
@@ -57,24 +66,37 @@ const NavBar = () => {
                         </span>
                     </div>
                 </form>
-
                 <div className="col-md-3 text-end">
-                    <Link to="/login">
-                        <button
-                            type="button"
-                            className="btn btn-link me-3 px-4 button"
-                        >
-                            Login
-                        </button>
-                    </Link>
-                    <Link to="/signup">
-                        <button
-                            type="button"
-                            className="btn btn-secondary px-4 button"
-                        >
-                            Sign Up
-                        </button>
-                    </Link>
+                    {state.email ? (
+                        <Fragment>
+                            <button
+                                type="button"
+                                className="btn btn-link me-3 px-4 button"
+                                onClick={logout}
+                            >
+                                Logout
+                            </button>
+                        </Fragment>
+                    ) : (
+                        <Fragment>
+                            <Link to="/login">
+                                <button
+                                    type="button"
+                                    className="btn btn-link me-3 px-4 button"
+                                >
+                                    Login
+                                </button>
+                            </Link>
+                            <Link to="/signup">
+                                <button
+                                    type="button"
+                                    className="btn btn-secondary px-4 button"
+                                >
+                                    Sign Up
+                                </button>
+                            </Link>
+                        </Fragment>
+                    )}
                 </div>
             </header>
         </div>

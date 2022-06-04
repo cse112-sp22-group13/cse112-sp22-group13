@@ -3,6 +3,10 @@ h2 {
     text-align: center;
 }
 
+.card-title {
+    color: black;
+}
+
 .card img {
     height: 30vh;
     width: auto;

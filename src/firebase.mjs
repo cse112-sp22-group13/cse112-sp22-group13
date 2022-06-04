@@ -1,12 +1,25 @@
-
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
-// import { getFirestore, collection, doc, getDoc, getDocs, setDoc, updateDoc} from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, doc, getDoc, getDocs, setDoc, updateDoc} from "firebase/firestore/lite";
-// const firebaseApp = require("firebase/app");
-// const firestore = require("firebase/firestore/lite");
-
-
+import {
+    getFirestore,
+    collection,
+    doc,
+    getDoc,
+    getDocs,
+    setDoc,
+    updateDoc,
+    query,
+    where,
+    addDoc
+} from "firebase/firestore/lite";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    FacebookAuthProvider,
+    signInWithPopup,
+    sendPasswordResetEmail
+} from "firebase/auth";
 const firebaseConfig = {
     apiKey: "AIzaSyAEWF3Hxz9GquMTz_huVUes7q-zXbzAVJE",
     authDomain: "kneadit-b63a8.firebaseapp.com",
@@ -19,6 +32,93 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+const auth = getAuth(app);
+
+//var email = "peder@gmail.com";
+//var password = "heiheiArsenal12";
+//createUserWithEmailAndPassword(auth,email, password).then(cred => {
+//    console.log(cred);
+//});
+
+const logInWithEmailAndPassword = async (email, password) => {
+    try {
+        const res = await signInWithEmailAndPassword(auth, email, password);
+        return { email: res.user.email, uid: res.user.uid };
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+};
+
+const registerWithEmailAndPassword = async (email, password) => {
+    try {
+        const res = await createUserWithEmailAndPassword(auth, email, password);
+        return { email: res.user.email, uid: res.user.uid };
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+};
+
+const googleProvider = new GoogleAuthProvider();
+const signInWithGoogle = async () => {
+    try {
+        const res = await signInWithPopup(auth, googleProvider);
+        const user = res.user;
+        const q = query(collection(db, "users"), where("uid", "==", user.uid));
+        const docs = await getDocs(q);
+
+        if (docs.docs.length === 0) {
+            await addDoc(collection(db, "users"), {
+                uid: user.uid,
+                name: user.displayName,
+                authProvider: "google",
+                email: user.email
+            });
+        }
+        console.log({ email: res.user.email, uid: res.user.uid });
+        return { email: res.user.email, uid: res.user.uid };
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+};
+
+const facebookProvider = new FacebookAuthProvider();
+const signInWithFacebook = async () => {
+    try {
+        const res = await signInWithPopup(auth, facebookProvider);
+        const user = res.user;
+        const q = query(collection(db, "users"), where("uid", "==", user.uid));
+        const docs = await getDocs(q);
+
+        if (docs.docs.length === 0) {
+            await addDoc(collection(db, "users"), {
+                uid: user.uid,
+                name: user.displayName,
+                authProvider: "facebook",
+                email: user.email
+            });
+        }
+        console.log({ email: res.user.email, uid: res.user.uid });
+        return { email: res.user.email, uid: res.user.uid };
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+};
+
+const passwordReset = async (email) => {
+    sendPasswordResetEmail(auth, email)
+        .then(() => {
+            alert("Password reset email sent!");
+        })
+        .catch((err) => {
+            console.error(err);
+            alert(err.message);
+        });
+};
 
 // Get the list of recipes from your database
 
@@ -71,12 +171,11 @@ async function addRecipe(jsonString) {
 
     // parse json string
     const json = JSON.parse(jsonString);
-    
+
     // add recipes to db
-    docRef = doc(colRef, (json.id).toString());
+    docRef = doc(colRef, json.id.toString());
     await setDoc(docRef, json);
 }
-
 
 // updates document in DB, or creates if doesn't exist
 async function updateDB(fsCollection, jsonString) {
@@ -87,8 +186,8 @@ async function updateDB(fsCollection, jsonString) {
     // parse json string
     const json = JSON.parse(jsonString);
 
-    // get reference to collection 
-    const colRef = collection(db, fsCollection); 
+    // get reference to collection
+    const colRef = collection(db, fsCollection);
 
     // split by cuisine
     docRef = doc(colRef, "cuisines");
@@ -96,8 +195,8 @@ async function updateDB(fsCollection, jsonString) {
     // get each cuisine in recipe
     for (var c in json.cuisines) {
         subColRef = collection(docRef, json.cuisines[c]);
-        subDocRef = doc(subColRef, (json.id).toString());
-        await setDoc(subDocRef, {data: (json.id).toString()});
+        subDocRef = doc(subColRef, json.id.toString());
+        await setDoc(subDocRef, { data: json.id.toString() });
     }
 
     const possible_ingredients = [
@@ -126,16 +225,15 @@ async function updateDB(fsCollection, jsonString) {
 
         // ingredient exists in json
         if (ingredient != null && ingredient != "?") {
-
             // parse ingredient from json
-            ingredient = (ingredient.split(";")[0]).split("/");
+            ingredient = ingredient.split(";")[0].split("/");
 
             // check if current ingredient is in list of possible ones
             for (var pi in possible_ingredients) {
                 if (ingredient == possible_ingredients[pi]) {
                     hasIngredient[pi] = true;
                     break;
-                } 
+                }
             }
         }
     }
@@ -149,17 +247,25 @@ async function updateDB(fsCollection, jsonString) {
 
     for (var ing in ingredientList) {
         subColRef = collection(docRef, ingredientList[ing]);
-        subDocRef = doc(subColRef, (json.id).toString());
-        await setDoc(subDocRef, {data: (json.id).toString()});
+        subDocRef = doc(subColRef, json.id.toString());
+        await setDoc(subDocRef, { data: json.id.toString() });
     }
 
     // split by time
     docRef = doc(colRef, "time");
-    subColRef = collection(docRef, (json.readyInMinutes).toString());
-    subDocRef = doc(subColRef, (json.id).toString());
-    await setDoc(subDocRef, {data: (json.id).toString()});
-
+    subColRef = collection(docRef, json.readyInMinutes.toString());
+    subDocRef = doc(subColRef, json.id.toString());
+    await setDoc(subDocRef, { data: json.id.toString() });
 }
 
-export {addRecipe, getRecipeIds, getRecipe, updateDB, testConsole};
-// module.exports = {addRecipe, getRecipeIds, getRecipe, updateDB, testConsole};
+export {
+    addRecipe,
+    getRecipeIds,
+    signInWithFacebook,
+    signInWithGoogle,
+    getRecipe,
+    updateDB,
+    registerWithEmailAndPassword,
+    logInWithEmailAndPassword,
+    passwordReset
+};
