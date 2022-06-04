@@ -33,12 +33,14 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "mocha --reporter spec",
+    "test": "mocha test/unit/**/*.js --reporter spec",
+    "e2e-test": "jest",
     "eject": "react-scripts eject"
   },
   "jest": {
     "preset": "jest-puppeteer",
-    "transform": {}
+    "transform": {},
+    "testMatch": ["**/test/e2e"]
   },
   "browserslist": {
     "production": [

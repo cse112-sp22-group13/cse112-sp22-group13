@@ -4,7 +4,7 @@
 //     projectId: "kneadit-b63a8",
 // }, "kneadit-b63a8-c734ebe38dda.json");
 import * as firebase from "firebase-functions-test";
-import {addRecipe, getRecipeIds, getRecipe, updateDB, testConsole} from "../src/firebase.mjs";
+import {addRecipe, getRecipeIds, getRecipe, updateDB, testConsole} from "../../src/firebase.mjs";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, doc, getDoc, getDocs, setDoc, updateDoc} from "firebase/firestore/lite";
 // const myFunctions = import("../src/firebase.mjs");
