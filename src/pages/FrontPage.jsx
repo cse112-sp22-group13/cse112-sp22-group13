@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Dropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MockPhoto from "../media/mock-photo.jpg";
 import { initializeDB } from "../spoonacular.mjs";
 import "../stylesheets/frontpage.css";
@@ -149,6 +149,7 @@ const FrontPage = () => {
     ];
 
     const [queryType, setQueryType] = useState("Name");
+    let navigate = useNavigate();  
 
     return (
         <Fragment>

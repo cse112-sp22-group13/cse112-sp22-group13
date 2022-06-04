@@ -1,18 +1,17 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MockPhoto from "../media/mock-recipe-photo.jpg";
 import { getRecipe, getRecipeIds } from "../firebase.mjs";
 import "../stylesheets/recipespage.css";
 // const myFunctions = require("../firebase.mjs");
 //import { fetchRecipes, searchFetchRecipes } from "../recipeSearch";
 
-
-
 const RecipesPage = () => {
     const [recipes, setRecipes] = useState([]);
     const [recipetext, setRecipeText] = useState("All Recipes");
     const [queryType, setQueryType] = useState("Name");
+    let navigate = useNavigate();  
     useEffect( () => {
         const fetchData= async () => {
             // get query string
