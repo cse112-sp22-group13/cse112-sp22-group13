@@ -1,9 +1,9 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MockPhoto from "../media/mock-recipe-photo.jpg";
-import { getRecipe, getRecipeIds } from "../firebase.cjs";
+import { getRecipe, getRecipeIds } from "../firebase.mjs";
 import "../stylesheets/recipespage.css";
-const myFunctions = require("../firebase.cjs");
+// const myFunctions = require("../firebase.mjs");
 //import { fetchRecipes, searchFetchRecipes } from "../recipeSearch";
 
 const RecipesPage = () => {
@@ -18,13 +18,13 @@ const RecipesPage = () => {
             const recipeData = params.data; 
 
             // get ids from type and data
-            var recipeInfo = myFunctions.getRecipeIds(recipeType, recipeData)
+            var recipeInfo = getRecipeIds(recipeType, recipeData)
                 .then(ids => {
                     // get recipes from ids
                     var recipesArray = [];
 
                     for (var i in ids) {
-                        var recipe = myFunctions.getRecipe(ids[i]);
+                        var recipe = getRecipe(ids[i]);
                         recipesArray.push(recipe);
                     }
 
