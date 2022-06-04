@@ -40,7 +40,7 @@
   "jest": {
     "preset": "jest-puppeteer",
     "transform": {},
-    "testMatch": ["**/test/e2e"]
+    "testMatch": ["**/test/e2e/*.js"]
   },
   "browserslist": {
     "production": [
