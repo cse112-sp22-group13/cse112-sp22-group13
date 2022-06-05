@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-2700,0)">
+        <rect id="Artboard10" x="2700" y="0" width="300" height="300" style="fill:none;"/>
+        <g id="Artboard101" serif:id="Artboard10">
+            <g transform="matrix(0.96875,0,0,0.96875,-147.656,-2029.69)">
+                <g transform="matrix(1,0,0,1,1500,1800)">
+                    <path d="M1612.5,375C1625,359.375 1650,328.125 1650,328.125L1687.5,365.625L1687.5,562.5L1612.5,600" style="fill:rgb(125,200,255);stroke:rgb(125,200,255);stroke-width:8.6px;"/>
+                </g>
+                <g transform="matrix(1,0,0,1,1500,1800)">
+                    <path d="M1612.5,600L1500,600L1500,375L1537.5,328.125L1537.5,300L1650,300L1650,328.125L1612.5,375L1612.5,600Z" style="fill:rgb(0,150,255);stroke:rgb(0,150,255);stroke-width:8.6px;"/>
+                </g>
+                <g transform="matrix(1,0,0,0.833333,0,362.5)">
+                    <rect x="2962.5" y="2118.75" width="225" height="56.25" style="fill:none;"/>
+                    <clipPath id="_clip1">
+                        <rect x="2962.5" y="2118.75" width="225" height="56.25"/>
+                    </clipPath>
+                    <g clip-path="url(#_clip1)">
+                        <g transform="matrix(1,0,0,1.2,0,-435)">
+                            <path d="M3000,2175L3037.5,2128L3150,2128L3112.5,2175L3000,2175Z" style="fill:rgb(75,175,255);stroke:rgb(75,175,255);stroke-width:8.6px;"/>
+                        </g>
+                    </g>
+                </g>
+                <g transform="matrix(1,0,-0.288675,0.5,1659.09,1968.75)">
+                    <circle cx="1518.75" cy="356.25" r="18.75" style="fill:white;"/>
+                    <path d="M1518.75,337.5C1529.1,337.5 1537.5,345.902 1537.5,356.25C1537.5,366.598 1529.1,375 1518.75,375C1508.4,375 1500,366.598 1500,356.25C1500,345.902 1508.4,337.5 1518.75,337.5ZM1522.84,354.73C1521.31,354.818 1519.83,355.135 1518.45,355.652C1517.08,356.169 1515.8,356.885 1514.66,357.77C1517.73,357.595 1520.56,356.5 1522.84,354.73Z" style="fill:white;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
