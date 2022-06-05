@@ -11,6 +11,17 @@ import timer30 from "../media/timer30.png";
 import timer45 from "../media/timer45.png";
 import timer60 from "../media/timer60.png";
 import timer2hr from "../media/timer2hr.png";
+import bread from "../icons/bread.png";
+import muffin from "../icons/muffin.png";
+import fish from "../icons/fish.png";
+import milk from "../icons/milk.png";
+import spices from "../icons/spices.png";
+import cheese from "../icons/cheese.png";
+import steak from "../icons/steak.png";
+import chicken from "../icons/chicken.png";
+import ethnic from "../icons/ethnic.png";
+import banana from "../icons/banana.png";
+
 
 initializeDB();
 
@@ -94,6 +105,52 @@ const FrontPage = () => {
         }
     ];
 
+    const ingredientsImg = [
+        {
+            name: "bread",
+            img: bread
+        },
+        {
+            name: "muffin",
+            img: muffin
+        },
+        {
+            name: "banana",
+            img: banana
+        },
+        {
+            name: "fish",
+            img: fish
+        },
+        {
+            name: "milk",
+            img: milk
+        },
+        {
+            name: "spices",
+            img: spices
+        },
+        {
+            name: "steak",
+            img: steak
+        },
+        {
+            name: "chicken",
+            img: chicken
+        },
+        {
+            name: "cheese",
+            img: cheese
+        },
+        {
+            name: "ethnic",
+            img: ethnic
+        },
+        {
+            name: "cheese",
+            img: cheese
+        }
+    ];
     const ingredients = [
         "Bread",
         "Produce",
@@ -210,7 +267,7 @@ const FrontPage = () => {
             </div>
             <h4>INGREDIENTS</h4>
             <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
-                <HorizontalScroll categoryList={ingredients} type="ingredients"/>
+                <HorizontalScrollImg categoryList={ingredientsImg} type="ingredients"/>
             </div>
             <h4>PREP TIME</h4>
             <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
@@ -228,7 +285,7 @@ const HorizontalScroll = (props) => {
             <Link to= {{
                 pathname: "/recipes",
                 search: "?type=" + props.type + "&data=" + category}}>
-                <img
+                <img height="100px" width="100px"
                     alt="100x100"
                     src={MockPhoto}
                     data-holder-rendered="true"
