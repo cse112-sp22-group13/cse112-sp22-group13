@@ -36,7 +36,7 @@ const RecipeDetails = () => {
             return "No Ingredients given";
         }
         for (let i = 0; i < RecipeMockData.extendedIngredients.length; i++) {
-            ingredients += counter.toString(2);
+            ingredients += counter.toString(10);
             ingredients += ". ";
             ingredients += RecipeMockData.extendedIngredients[i].original;
             ingredients += "\n";
@@ -115,6 +115,10 @@ const RecipeDetails = () => {
                             >
                                 Favorite
                             </button>
+                        </div>
+                        <div className="instructions-box">
+                            <div className="box-title">Ingredients</div>
+                            <div className="listed">{readIngredients()}</div>
                         </div>
                         <div className="instructions-box">
                             <div className="box-title">Servings</div>

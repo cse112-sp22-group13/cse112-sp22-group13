@@ -3,6 +3,7 @@ import { Dropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import MockPhoto from "../media/mock-photo.jpg";
 import { initializeDB } from "../spoonacular.mjs";
+import { searchByName } from "../firebase.mjs";
 import "../stylesheets/frontpage.css";
 import timer5 from "../media/timer5.png";
 import timer10 from "../media/timer10.png";
@@ -108,44 +109,20 @@ const FrontPage = () => {
         "Beverages",
         "Canned and Jarred"
     ];
-    const prepTime = [
-        "< 15 min",
-        "< 20 min",
-        "< 25 min",
-        "< 30 min",
-        "< 45 min",
-        "< 1 hr",
-        "< 2 hrs"
-    ];
+
     const prepTimeImg = [
         {
-            name: "5 min",
-            img: timer5
-        },
-        {
-            name: "10 min",
-            img: timer10
-        },
-        {
-            name: "15 min",
-            img: timer15
-        },
-        {
-            name: "30 min",
+            name: "Less Than 30 Minutes",
             img: timer30
         },
         {
-            name: "45 min",
+            name: "30 to 60 Minutes",
             img: timer45
         },
         {
-            name: "1 hr",
+            name: "60 Minutes or More",
             img: timer60
-        },
-        {
-            name: "2 hr",
-            img: timer2hr
-        },
+        }
     ];
 
     const [queryType, setQueryType] = useState("Name");
@@ -182,7 +159,6 @@ const FrontPage = () => {
                             <Dropdown.Menu>
                                 <Dropdown.Item onClick={() => setQueryType("Name")}>Name</Dropdown.Item>
                                 <Dropdown.Item onClick={() => setQueryType("Cuisine")}>Cuisine</Dropdown.Item>
-                                <Dropdown.Item onClick={() => setQueryType("Prep")}>Prep Time</Dropdown.Item>
                                 <Dropdown.Item onClick={() => setQueryType("Ingredients")}>Ingredients</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
@@ -214,7 +190,7 @@ const FrontPage = () => {
             </div>
             <h4>PREP TIME</h4>
             <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
-                <HorizontalScrollImg categoryList={prepTimeImg} />
+                <HorizontalScrollImg categoryList={prepTimeImg} type="time"/>
             </div>
         </Fragment>
     );
@@ -244,7 +220,9 @@ const HorizontalScrollImg = (props) => {
 
     return categoryList.map((category, index) => (
         <div className="col-2 my-col" key={index}>
-            <Link to="/recipes">
+            <Link to= {{
+                pathname: "/recipes",
+                search: "?type=" + props.type + "&data=" + category.name}}>
                 <img
                     alt="100x100"
                     src={category.img}

@@ -19,17 +19,20 @@ const NavBar = () => {
                 <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
                     <a
                         href="/"
-                        className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
+                        className="d-flex align-items-center mb-2 mb-md-0 text-dark text-decoration-none col-md-3" // col-md-3
                     >
                         <img
+                            id="icon"
                             src={require("../media/NavBar Logo.png")}
                             alt="Logo"
                             width="75"
                             height="75"
                         />
                     </a>
+                    <form>
+                        <h1 id="title">Knead It</h1>
+                    </form>
 
-                    <h1 id="title">Knead It</h1>
                     <form>
                         <div className="col-md-3 text-end">
                             {state.email ? (
