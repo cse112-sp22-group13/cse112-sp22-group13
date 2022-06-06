@@ -3,6 +3,7 @@ import ShoppingCartModal from "../components/ShoppingCartModal";
 import "../stylesheets/recipedetail.css";
 import { getRecipe } from "../firebase.mjs";
 import { useLocation } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
 
 const RecipeDetails = () => {
     const [RecipeMockData, setMock] = useState([]);
@@ -118,9 +119,21 @@ const RecipeDetails = () => {
                             <div className="box-title">Instructions</div>
                             <div className="listed">{readInstructions()}</div>
                         </div>
-                        {/* <div className="note-box">
-                            <Button bTitle="Add a Note"></Button>
-                        </div> */}
+                        <div>
+                            <form>
+                                <label>
+                                    Name:
+                                    <input type="text" name="name" />
+                                </label>
+                                <input type="submit" value="Submit" />
+                            </form>
+                            <button
+                                type="button"
+                                className="btn btn btn-secondary "
+                            >
+                                Add Note
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}

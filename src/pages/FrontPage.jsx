@@ -176,6 +176,10 @@ const FrontPage = () => {
             <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
                 <HorizontalScrollImg categoryList={prepTimeImg} />
             </div>
+            <h4>FAVORITES</h4>
+            <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
+                <HorizontalScrollImg categoryList={prepTimeImg} />
+            </div>
         </Fragment>
     );
 };
@@ -214,6 +218,40 @@ const HorizontalScrollImg = (props) => {
             </Link>
         </div>
     ));
+};
+
+const RowOfCards = (props) => {
+
+    return props.mockData ? (
+        <div className="row row-cols-3">
+            {props.mockData.map((recipe) => (
+                <div className="col mb-4">
+                    <div className="card">
+                        <Link to={{
+                            pathname: "/recipe",
+                            search: "?type=" + recipe.id}}>
+                            <img
+                                src={recipe.image}
+                                className="card-img-top"
+                                alt="..."
+                            />
+                            <div className="card-body">
+                                <div className="card-title-box">
+                                    <h5 className="card-title">{recipe.title}</h5>
+                                </div>
+                                <div className="text-box">
+                                    <p className="card-text">{recipe.cuisines[0]}</p>
+                                    <p className="card-text">{recipe.readyInMinutes} Minutes</p>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                </div>
+            ))}
+        </div>
+    ) : (
+        ""
+    );
 };
 
 export default FrontPage;

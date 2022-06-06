@@ -76,7 +76,6 @@ const RowOfCards = (props) => {
         <div className="row row-cols-3">
             {props.mockData.map((recipe) => (
                 <div className="col mb-4">
-                    {console.log(recipe)}
                     <div className="card">
                         <Link to={{
                             pathname: "/recipe",
