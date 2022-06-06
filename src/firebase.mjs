@@ -54,6 +54,10 @@ const auth = getAuth(app);
 //});
 
 const getComment = async () => {
+    if (auth.currentUser === null) {
+        alert("You are not signed in!");
+        return;
+    }
     const docRef = doc(db, "users", auth.currentUser.uid);
     const docSnap = await getDoc(docRef);
     //get recipeid, either by input or something else
@@ -74,6 +78,10 @@ const getComment = async () => {
 };
 
 const editComment = async () => {
+    if (auth.currentUser === null) {
+        alert("You are not signed in!");
+        return;
+    }
     const docRef = doc(db, "users", auth.currentUser.uid);
     const docSnap = await getDoc(docRef);
     //get recipeID, either by input or something else

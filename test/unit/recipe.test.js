@@ -12,33 +12,13 @@ describe("Recipe-related unit tests", () => {
         assert.strictEqual(recipe, undefined);
     });
 
-    it("getRecipeIds with cuisine in database", async () => {
-        const ids = await getRecipeIds("cuisines", "test");
+    it("getRecipeIds with test collection in database", async () => {
+        const ids = await getRecipeIds("test", "test");
         assert.deepEqual(ids, [1, 2, 3]);
     });
 
-    it("getRecipeIds with cuisine not in database", async () => {
-        const ids = await getRecipeIds("cuisines", "doesnotexist");
-        assert.equal(ids.length, 0);
-    });
-
-    it("getRecipeIds with ingredients in database", async () => {
-        const ids = await getRecipeIds("ingredients", "test");
-        assert.deepEqual(ids, [4, 5]);
-    });
-
-    it("getRecipeIds with ingredients not in database", async () => {
-        const ids = await getRecipeIds("ingredients", "doesnotexist");
-        assert.equal(ids.length, 0);
-    });
-
-    it("getRecipeIds with time in database", async () => {
-        const ids = await getRecipeIds("time", "test");
-        assert.deepEqual(ids, [6, 7, 8, 9]);
-    });
-
-    it("getRecipeIds with time not in database", async () => {
-        const ids = await getRecipeIds("time", "doesnotexist");
+    it("getRecipeIds with test collection not in database", async () => {
+        const ids = await getRecipeIds("test", "doesnotexist");
         assert.equal(ids.length, 0);
     });
 
