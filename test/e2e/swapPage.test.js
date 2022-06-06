@@ -12,8 +12,8 @@ describe("Clicking Between Signup, Login, Front Pages", () => {
         expect(cuisine).toBe("CUISINE");
 
         // Click to signup page
-        const button = await page.$("#root > div > div:nth-child(1) > div > header > form > div > a:nth-child(2) > button");
-        await button.evaluate(b => b.click());
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div:nth-child(1) > div > header > form > div > a:nth-child(2) > button").click());
 
         // Should be on signup page
         await page.waitForSelector("h2");
@@ -31,8 +31,8 @@ describe("Clicking Between Signup, Login, Front Pages", () => {
         expect(cuisine).toBe("CUISINE");
 
         // Click to login page
-        const button = await page.$("#root > div > div:nth-child(1) > div > header > form > div > a:nth-child(1) > button");
-        await button.evaluate(b => b.click());
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div:nth-child(1) > div > header > form > div > a:nth-child(1) > button").click());
 
         // Should be on login page
         await page.waitForSelector("h2");
@@ -48,8 +48,8 @@ describe("Clicking Between Signup, Login, Front Pages", () => {
         expect(login).toBe("Log In");
 
         // Click to signup page
-        const button = await page.$("#root > div > div:nth-child(1) > div > header > form > div > a:nth-child(2) > button");
-        await button.evaluate(b => b.click());
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div:nth-child(1) > div > header > form > div > a:nth-child(2) > button").click());
 
         // Should be on signup page
         await page.waitForSelector("h2");
@@ -66,8 +66,8 @@ describe("Clicking Between Signup, Login, Front Pages", () => {
         expect(signup).toBe("Sign up");  
         
         // Click to login page
-        const button = await page.$("#root > div > div:nth-child(1) > div > header > form > div > a:nth-child(1) > button");
-        await button.evaluate(b => b.click());
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div:nth-child(1) > div > header > form > div > a:nth-child(1) > button").click());
 
         // Should be on login page
         await page.waitForSelector("h2");
@@ -83,8 +83,8 @@ describe("Clicking Between Signup, Login, Front Pages", () => {
         expect(login).toBe("Log In");
 
         // Click to signup page
-        const link = await page.$("#root > div > div.modal.position-static.d-block > div > div > div.modal-body.p-5.pt-0 > div > a");
-        await link.evaluate(b => b.click());
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div.modal.position-static.d-block > div > div > div.modal-body.p-5.pt-0 > div > a").click());
 
         // Should be on signup page
         await page.waitForSelector("h2");
@@ -101,8 +101,9 @@ describe("Clicking Between Signup, Login, Front Pages", () => {
         expect(signup).toBe("Sign up");  
         
         // Click to login page
-        const link = await page.$("#root > div > div.modal.position-static.d-block > div > div > div.modal-body.p-5.pt-0 > div > a");
-        await link.evaluate(b => b.click());
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div.modal.position-static.d-block > div > div > div.modal-body.p-5.pt-0 > div > a").click());
+
 
         // Should be on login page
         await page.waitForSelector("h2");
@@ -119,8 +120,9 @@ describe("Clicking Between Signup, Login, Front Pages", () => {
         expect(signup).toBe("Sign up");  
         
         // Click to home page
-        const button = await page.$("#root > div > div:nth-child(1) > div > header > a > img");
-        await button.evaluate(b => b.click());
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div:nth-child(1) > div > header > a > img").click());
+
 
         await page.waitForSelector("h4");
         
@@ -138,8 +140,8 @@ describe("Clicking Between Signup, Login, Front Pages", () => {
         expect(signup).toBe("Log In");  
         
         // Click to home page
-        const button = await page.$("#root > div > div:nth-child(1) > div > header > a > img");
-        await button.evaluate(b => b.click());
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div:nth-child(1) > div > header > a > img").click());
 
         await page.waitForSelector("h4");
         

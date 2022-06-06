@@ -30,7 +30,6 @@ describe("Login Tests", () => {
 
     it("Login with invalid password", async () => {
         page.on("dialog", async dialog => {
-            console.log(dialog.message());
             expect(dialog.message()).toBe("Firebase: Error (auth/wrong-password).");
             await dialog.accept();
         });

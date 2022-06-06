@@ -1,3 +1,6 @@
+jest.useRealTimers();
+jest.setTimeout(10000);
+
 describe("Recipe List Tests", () => {
     beforeEach(async () => {
         await page.goto("http://localhost:3000");
@@ -21,22 +24,13 @@ describe("Recipe List Tests", () => {
         expect(header).toBe("Recipes that are Vietnamese");
     });
 
-    it("Click to recipes with bread ingredients (onscreen)", async () => {
+    it("Click to recipes with bread ingredients", async () => {
         await page.waitForSelector("#root > div > div:nth-child(6) > div:nth-child(1) > a > img");
         await page.evaluate(() => document.querySelector("#root > div > div:nth-child(6) > div:nth-child(1) > a > img").click());
         
         await page.waitForTimeout(2000);
         const header = await page.evaluate(() => document.querySelector("#root > div > div.container-md > h2").textContent);
         expect(header).toBe("Recipes containing Bread Ingredients");
-    });
-
-    it("Click to recipes with canned and jarred ingredients (offscreen)", async () => {
-        await page.waitForSelector("#root > div > div:nth-child(6) > div:nth-child(12) > a > img");
-        await page.evaluate(() => document.querySelector("#root > div > div:nth-child(6) > div:nth-child(12) > a > img").click());
-        
-        await page.waitForTimeout(2000);
-        const header = await page.evaluate(() => document.querySelector("#root > div > div.container-md > h2").textContent);
-        expect(header).toBe("Recipes containing Canned And Jarred Ingredients");
     });
 
     it("Click to recipes with <30 minutes prep time", async () => {
