@@ -20,7 +20,8 @@ import {
     GoogleAuthProvider,
     FacebookAuthProvider,
     signInWithPopup,
-    sendPasswordResetEmail
+    sendPasswordResetEmail,
+    signOut
 } from "firebase/auth";
 const firebaseConfig = {
     apiKey: "AIzaSyAEWF3Hxz9GquMTz_huVUes7q-zXbzAVJE",
@@ -86,6 +87,9 @@ const editComment = async () => {
 
 const getFavorites = async () => {
     try {
+        if (auth.currentUser === null) {
+            return null;
+        }
         const docRef = doc(db, "users", auth.currentUser.uid);
         const docSnap = await getDoc(docRef);
         console.log(docSnap.get("favorites"));
@@ -99,6 +103,10 @@ const getFavorites = async () => {
 
 const checkFavorite = async () => {
     try {
+        if (auth.currentUser === null) {
+            alert("You are not signed in!");
+            return;
+        }
         const docRef = doc(db, "users", auth.currentUser.uid);
         const docSnap = await getDoc(docRef);
         const favoriteList = docSnap.get("favorites");
@@ -140,7 +148,9 @@ const registerWithEmailAndPassword = async (email, password) => {
         if (docs.docs.length === 0) {
             await setDoc(doc(db, "users", user.uid), {
                 authProvider: "regular",
-                email: user.email
+                email: user.email,
+                favorites: [],
+                comments: {}
             });
         }
         return { email: res.user.email, uid: res.user.uid };
@@ -161,10 +171,11 @@ const signInWithGoogle = async () => {
         if (docs.docs.length === 0) {
             await setDoc(doc(db, "users", user.uid), {
                 authProvider: "google",
-                email: user.email
+                email: user.email,
+                favorites: [],
+                comments: {}
             });
         }
-        console.log({ email: res.user.email, uid: res.user.uid });
         return { email: res.user.email, uid: res.user.uid };
     } catch (err) {
         console.error(err);
@@ -172,29 +183,6 @@ const signInWithGoogle = async () => {
     }
 };
 
-const facebookProvider = new FacebookAuthProvider();
-const signInWithFacebook = async () => {
-    try {
-        const res = await signInWithPopup(auth, facebookProvider);
-        const user = res.user;
-        const q = query(collection(db, "users"), where("uid", "==", user.uid));
-        const docs = await getDocs(q);
-
-        if (docs.docs.length === 0) {
-            await addDoc(collection(db, "users"), {
-                uid: user.uid,
-                name: user.displayName,
-                authProvider: "facebook",
-                email: user.email
-            });
-        }
-        console.log({ email: res.user.email, uid: res.user.uid });
-        return { email: res.user.email, uid: res.user.uid };
-    } catch (err) {
-        console.error(err);
-        alert(err.message);
-    }
-};
 
 const passwordReset = async (email) => {
     sendPasswordResetEmail(auth, email)
@@ -388,10 +376,20 @@ async function updateDB(fsCollection, jsonString) {
     await setDoc(subDocRef, { data: json.id.toString() });
 }
 
+const logOut = async () => {
+    signOut(auth)
+        .then(() => {
+            alert("You are now signed out!");
+        })
+        .catch((err) => {
+            console.error(err);
+            alert(err.message);
+        });
+};
+
 export {
     addRecipe,
     getRecipeIds,
-    signInWithFacebook,
     signInWithGoogle,
     getRecipe,
     updateDB,
@@ -401,5 +399,6 @@ export {
     checkFavorite,
     getFavorites, 
     getComment,
-    editComment
+    editComment,
+    logOut
 };

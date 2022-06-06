@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import ShoppingCartModal from "../components/ShoppingCartModal";
 import "../stylesheets/recipedetail.css";
-import { getRecipe } from "../firebase.mjs";
+import { getRecipe, getFavorites, checkFavorite } from "../firebase.mjs";
 import { useLocation } from "react-router-dom";
 
 const RecipeDetails = () => {
@@ -112,6 +112,7 @@ const RecipeDetails = () => {
                             <button
                                 type="button"
                                 className="btn btn-lg btn-secondary "
+                                onClick={() => getFavorites()}
                             >
                                 Favorite
                             </button>
