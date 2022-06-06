@@ -1,20 +1,10 @@
-// const test = require("firebase-functions-test")({
-//     // databaseURL: "kneadit-b63a8.appspot.com",
-//     storageBucket: "kneadit-b63a8.appspot.com",
-//     projectId: "kneadit-b63a8",
-// }, "kneadit-b63a8-c734ebe38dda.json");
-import * as firebase from "firebase-functions-test";
 import {addRecipe, getRecipeIds, getRecipe, updateDB} from "../../src/firebase.mjs";
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, doc, getDoc, getDocs, setDoc, updateDoc} from "firebase/firestore/lite";
-// const myFunctions = import("../src/firebase.mjs");
 import assert from "assert";
 
 describe("Recipe-related unit tests", () => {
     it("getRecipe with recipe in database", async () => {
         const recipe = await getRecipe("1095806");
         assert.equal(recipe.title, "Spanish style salmon fillets");
-        // expect(recipe.title).equal("Spanish style salmon fillets");
     });
 
     it("getRecipe with recipe not in database", async () => {

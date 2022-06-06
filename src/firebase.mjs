@@ -9,7 +9,9 @@ import {
     updateDoc,
     query,
     where,
-    addDoc
+    addDoc,
+    arrayUnion,
+    arrayRemove
 } from "firebase/firestore/lite";
 import {
     getAuth,
@@ -130,6 +132,17 @@ const logInWithEmailAndPassword = async (email, password) => {
 const registerWithEmailAndPassword = async (email, password) => {
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
+        const user = res.user; 
+        console.log(user.uid);
+        const q = query(collection(db, "users"), where("uid", "==", user.uid));
+        const docs = await getDocs(q);
+
+        if (docs.docs.length === 0) {
+            await setDoc(doc(db, "users", user.uid), {
+                authProvider: "regular",
+                email: user.email
+            });
+        }
         return { email: res.user.email, uid: res.user.uid };
     } catch (err) {
         console.error(err);
@@ -146,9 +159,7 @@ const signInWithGoogle = async () => {
         const docs = await getDocs(q);
 
         if (docs.docs.length === 0) {
-            await addDoc(collection(db, "users"), {
-                uid: user.uid,
-                name: user.displayName,
+            await setDoc(doc(db, "users", user.uid), {
                 authProvider: "google",
                 email: user.email
             });
