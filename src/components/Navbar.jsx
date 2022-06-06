@@ -16,10 +16,10 @@ const NavBar = () => {
     return(
         <div>
             <div className="container">
-                <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+                <header className="d-flex flex justify-content-between align-items-center py-3 mb-4 border-bottom">
                     <a
                         href="/"
-                        className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
+                        //className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
                     >
                         <img
                             src={require("../media/NavBar Logo.png")}
@@ -28,10 +28,10 @@ const NavBar = () => {
                             height="75"
                         />
                     </a>
-
+                    
                     <h1 id="title">Knead It</h1>
-                    <form>
-                        <div className="col-md-3 text-end">
+                    <form className="buttons">
+                        <div /*className="col-md-3 text-end"*/>
                             {state.email ? (
                                 <Fragment>
                                     <button
