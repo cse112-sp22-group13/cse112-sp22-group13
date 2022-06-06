@@ -1,9 +1,9 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import MockPhoto from "../media/mock-photo.jpg";
 import { initializeDB } from "../spoonacular.mjs";
-import { searchByName } from "../firebase.mjs";
+import { searchByName, getFavorites } from "../firebase.mjs";
 import "../stylesheets/frontpage.css";
 import timer5 from "../media/timer5.png";
 import timer10 from "../media/timer10.png";
@@ -183,6 +183,18 @@ const FrontPage = () => {
     ];
 
     const [queryType, setQueryType] = useState("Name");
+    const [favorites, setFavorites] = useState([]);
+    useEffect( () => {
+        const randas = async () => {
+            
+            var recipe = await getFavorites().then(key=>{
+                return key;
+            });
+            setFavorites(recipe);
+            return recipe;
+        };
+        randas();
+    }, []);
     let navigate = useNavigate();  
 
     return (
@@ -251,7 +263,7 @@ const FrontPage = () => {
             </div>
             <h4>FAVORITES</h4>
             <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
-                <HorizontalScrollImg categoryList={prepTimeImg} />
+                <RowOfCards mockData={favorites} />
             </div>
         </Fragment>
     );

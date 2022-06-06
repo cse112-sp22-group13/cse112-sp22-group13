@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import ShoppingCartModal from "../components/ShoppingCartModal";
 import "../stylesheets/recipedetail.css";
-import { getRecipe } from "../firebase.mjs";
+import { getRecipe, getComment, editComment } from "../firebase.mjs";
 import { useLocation } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 
@@ -19,6 +19,7 @@ const RecipeDetails = () => {
             var recipe = await getRecipe(recipeType).then(key=>{
                 return key;
             });
+            var comment;
             setMock(recipe);
             return recipe;
         };
