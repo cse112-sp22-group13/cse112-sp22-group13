@@ -9,6 +9,7 @@ import { Button, Form } from "react-bootstrap";
 const RecipeDetails = () => {
     const [RecipeMockData, setMock] = useState([]);
     const [showModal, setShowModal] = useState("false");
+    const [comment, setComment] = useState("");
 
     useEffect( () => {
         const randas = async () => {
@@ -16,11 +17,15 @@ const RecipeDetails = () => {
                 get: (searchParams, prop) => searchParams.get(prop),
             });
             const recipeType = params.type;
+
             var recipe = await getRecipe(recipeType).then(key=>{
                 return key;
             });
-            var comment;
+            var comment = await getComment(recipeType).then(key=>{
+                return key;
+            });
             setMock(recipe);
+            setComment(comment);
             return recipe;
         };
         randas();
@@ -131,16 +136,16 @@ const RecipeDetails = () => {
                             <div className="listed">{readInstructions()}</div>
                         </div>
                         <div>
-                            <form>
-                                <label>
-                                    Name:
-                                    <input type="text" name="name" />
-                                </label>
-                                <input type="submit" value="Submit" />
-                            </form>
+                            <Form.Group className="mb-3" controlId="formBasicNotes">
+                                <Form.Label>Notes</Form.Label>
+                                <Form.Control type="Notes" placeholder="Enter Notes" value={comment}/>
+                            </Form.Group>
                             <button
                                 type="button"
                                 className="btn btn btn-secondary "
+                                onClick={async () => {
+                                    editComment()
+                                }}
                             >
                                 Add Note
                             </button>
