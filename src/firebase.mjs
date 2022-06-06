@@ -20,15 +20,24 @@ import {
     signInWithPopup,
     sendPasswordResetEmail
 } from "firebase/auth";
+// const firebaseConfig = {
+//     apiKey: "AIzaSyAEWF3Hxz9GquMTz_huVUes7q-zXbzAVJE",
+//     authDomain: "kneadit-b63a8.firebaseapp.com",
+//     projectId: "kneadit-b63a8",
+//     storageBucket: "kneadit-b63a8.appspot.com",
+//     messagingSenderId: "492712284341",
+//     appId: "1:492712284341:web:61a4697a986914abbb6efc",
+//     measurementId: "G-59HFYTH3KC"
+// };
+
 const firebaseConfig = {
-    apiKey: "AIzaSyAEWF3Hxz9GquMTz_huVUes7q-zXbzAVJE",
-    authDomain: "kneadit-b63a8.firebaseapp.com",
-    projectId: "kneadit-b63a8",
-    storageBucket: "kneadit-b63a8.appspot.com",
-    messagingSenderId: "492712284341",
-    appId: "1:492712284341:web:61a4697a986914abbb6efc",
-    measurementId: "G-59HFYTH3KC"
-};
+    apiKey: "AIzaSyA01GSeQDPGFDoZfy65_XbMk_qA6FM0m1U",
+    authDomain: "borpa-460ca.firebaseapp.com",
+    projectId: "borpa-460ca",
+    storageBucket: "borpa-460ca.appspot.com",
+    messagingSenderId: "132856979483",
+    appId: "1:132856979483:web:d44383fab327b0a865d8be"
+};  
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -40,6 +49,73 @@ const auth = getAuth(app);
 //createUserWithEmailAndPassword(auth,email, password).then(cred => {
 //    console.log(cred);
 //});
+
+const getComment = async () => {
+    const docRef = doc(db, "users", auth.currentUser.uid);
+    const docSnap = await getDoc(docRef);
+    //get recipeid, either by input or something else
+    try {
+        const comment = docSnap.data().comments["RecipeID"];
+        if (comment == null) {
+            console.log("no comment");
+            return "";
+        } else {
+            console.log(comment);
+            return comment;
+        }
+        
+    } catch(err) {
+        console.error(err);
+        alert(err.message);
+    }
+};
+
+const editComment = async () => {
+    const docRef = doc(db, "users", auth.currentUser.uid);
+    const docSnap = await getDoc(docRef);
+    //get recipeID, either by input or something else
+    try {
+        await updateDoc(docRef, {"comments.RecipeID": "Comment: Really good recipe"});  
+    } catch(err) { 
+        console.error(err);
+        alert(err.message);
+    }
+};
+
+const getFavorites = async () => {
+    try {
+        const docRef = doc(db, "users", auth.currentUser.uid);
+        const docSnap = await getDoc(docRef);
+        console.log(docSnap.get("favorites"));
+        return docSnap.get("favorites");
+    } catch(err) {
+        console.error(err);
+        alert(err.message);
+    }
+
+};
+
+const checkFavorite = async () => {
+    try {
+        const docRef = doc(db, "users", auth.currentUser.uid);
+        const docSnap = await getDoc(docRef);
+        const favoriteList = docSnap.get("favorites");
+        if (favoriteList.includes("123455")) {  
+            console.log("remove");
+            //replace number in array remove with actual recipe id
+            await updateDoc(docRef, {favorites: arrayRemove("123455")});
+            
+        } else {
+            console.log("add");
+            //replace number in array remove with actual recipe id
+            await updateDoc(docRef, {favorites: arrayUnion("123455")});
+        }
+    } catch(err) {
+        console.error(err);
+        alert(err.message);
+    }    
+};
+
 
 const logInWithEmailAndPassword = async (email, password) => {
     try {
@@ -121,28 +197,72 @@ const passwordReset = async (email) => {
 };
 
 // Get the list of recipes from your database
-
-function testConsole(){
-    console.log("Hey!");
-}
-
 async function getRecipeIds(recipeType, recipeData) {
+    if (recipeType == "Name") {
+        var recipes = [];
+        var toSearch = recipeData.toLowerCase();
+        const colRef = collection(db, "recipes");
+
+        const querySnapshot = await getDocs(colRef);
+        //var cols = querySnapshot.get("title");
+        // gets ids of all recipes in category
+        querySnapshot.forEach((doc) => {
+            // If name matches, push
+            let title = doc.data().title.toLowerCase();
+
+            if (title.includes(toSearch)) {
+                recipes.push(doc.data().id.toString());
+            }
+        });
+        return recipes;
+    }
+
+    var searchData = [];
     var ids = [];
+
+    // handle prep times
+    var prep = -1;
+    const preptimes = [
+        ["10", "15", "20", "30"],
+        ["35", "40", "45", "55"],
+        ["64", "75", "105", "110", "130", "150", "165", "180", "270", "350", "400", "500", "510"]];
+
+    if (recipeData == "Less Than 30 Minutes") {
+        prep = 0;
+    } else if (recipeData == "30 to 60 Minutes") {
+        prep = 1;
+    } else if (recipeData == "60 Minutes or More") {
+        prep = 2;
+    }
+
+    // not search by preptime
+    if (prep < 0) {
+        if (recipeData == "Bread") {
+            recipeData = "Baking";
+        }
+        searchData.push(recipeData);
+    // search by preptime
+    } else {
+        searchData = preptimes[prep];
+    }
 
     // check if url query exists
     if (recipeType && recipeData) {
-        const colRef = collection(db, "recipe_categories");
-        const docRef = doc(colRef, recipeType);
-        const subColRef = collection(docRef, recipeData);
 
-        const querySnapshot = await getDocs(subColRef);
+        // iterate through searchdata, gets all recipe ids from fitting categories
+        for (var i=0; i<searchData.length; i++) {
+            const colRef = collection(db, "recipe_categories");
+            const docRef = doc(colRef, recipeType);
+            const subColRef = collection(docRef, searchData[i]);
+    
+            const querySnapshot = await getDocs(subColRef);
 
-        // gets ids of all recipes in category
-        querySnapshot.forEach((doc) => {
-            ids.push(doc.data().data);
-        });
+            // gets ids of all recipes in category
+            querySnapshot.forEach((doc) => {
+                ids.push(doc.data().data);
+            });   
+        }
     }
-
     return ids;
 }
 
@@ -158,7 +278,6 @@ async function getRecipe(id) {
     } else {
         console.log("No document found.");
     }
-
     return recipe;
 }
 
@@ -267,5 +386,9 @@ export {
     updateDB,
     registerWithEmailAndPassword,
     logInWithEmailAndPassword,
-    passwordReset
+    passwordReset,
+    checkFavorite,
+    getFavorites, 
+    getComment,
+    editComment
 };

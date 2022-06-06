@@ -22,6 +22,7 @@ const NavBar = () => {
                         //className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
                     >
                         <img
+                            id="icon"
                             src={require("../media/NavBar Logo.png")}
                             alt="Logo"
                             width="75"

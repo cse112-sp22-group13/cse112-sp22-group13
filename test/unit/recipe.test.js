@@ -10,7 +10,7 @@ import { getFirestore, collection, doc, getDoc, getDocs, setDoc, updateDoc} from
 // const myFunctions = import("../src/firebase.mjs");
 import assert from "assert";
 
-describe("firebase unit tests", () => {
+describe("Recipe-related unit tests", () => {
     it("getRecipe with recipe in database", async () => {
         const recipe = await getRecipe("1095806");
         assert.equal(recipe.title, "Spanish style salmon fillets");

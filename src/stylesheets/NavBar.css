@@ -16,6 +16,10 @@
     border-bottom-left-radius: 0px;
 }
 
+#icon {
+    margin-right: 0%;
+}
+
 .button {
     border-radius: 5px;
 }
