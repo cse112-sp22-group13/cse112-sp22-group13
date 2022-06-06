@@ -3,7 +3,6 @@ import { Dropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import MockPhoto from "../media/mock-photo.jpg";
 import { initializeDB } from "../spoonacular.mjs";
-import { searchByName } from "../firebase.mjs";
 import "../stylesheets/frontpage.css";
 import timer5 from "../media/timer5.png";
 import timer10 from "../media/timer10.png";
