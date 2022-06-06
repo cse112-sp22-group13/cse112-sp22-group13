@@ -20,24 +20,24 @@ import {
     signInWithPopup,
     sendPasswordResetEmail
 } from "firebase/auth";
-// const firebaseConfig = {
-//     apiKey: "AIzaSyAEWF3Hxz9GquMTz_huVUes7q-zXbzAVJE",
-//     authDomain: "kneadit-b63a8.firebaseapp.com",
-//     projectId: "kneadit-b63a8",
-//     storageBucket: "kneadit-b63a8.appspot.com",
-//     messagingSenderId: "492712284341",
-//     appId: "1:492712284341:web:61a4697a986914abbb6efc",
-//     measurementId: "G-59HFYTH3KC"
-// };
-
 const firebaseConfig = {
-    apiKey: "AIzaSyA01GSeQDPGFDoZfy65_XbMk_qA6FM0m1U",
-    authDomain: "borpa-460ca.firebaseapp.com",
-    projectId: "borpa-460ca",
-    storageBucket: "borpa-460ca.appspot.com",
-    messagingSenderId: "132856979483",
-    appId: "1:132856979483:web:d44383fab327b0a865d8be"
-};  
+    apiKey: "AIzaSyAEWF3Hxz9GquMTz_huVUes7q-zXbzAVJE",
+    authDomain: "kneadit-b63a8.firebaseapp.com",
+    projectId: "kneadit-b63a8",
+    storageBucket: "kneadit-b63a8.appspot.com",
+    messagingSenderId: "492712284341",
+    appId: "1:492712284341:web:61a4697a986914abbb6efc",
+    measurementId: "G-59HFYTH3KC"
+};
+
+// const firebaseConfig = {
+//     apiKey: "AIzaSyA01GSeQDPGFDoZfy65_XbMk_qA6FM0m1U",
+//     authDomain: "borpa-460ca.firebaseapp.com",
+//     projectId: "borpa-460ca",
+//     storageBucket: "borpa-460ca.appspot.com",
+//     messagingSenderId: "132856979483",
+//     appId: "1:132856979483:web:d44383fab327b0a865d8be"
+// };  
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
