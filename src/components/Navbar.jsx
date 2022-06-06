@@ -1,83 +1,74 @@
-import React, { useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
 import { Dropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import "../stylesheets/NavBar.css";
+import { store } from "../store/store";
+
 const NavBar = () => {
     let navigate = useNavigate();  
     const [queryType, setQueryType] = useState("Name");
+    const { state, dispatch } = useContext(store);
+
+    const logout = () => {
+        dispatch({ type: "DELETE_USER" });
+    };
+
     return(
         <div>
             <div className="container">
                 <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
                     <a
                         href="/"
-                        className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
+                        className="d-flex align-items-center mb-2 mb-md-0 text-dark text-decoration-none col-md-3" // col-md-3
                     >
                         <img
+                            id="icon"
                             src={require("../media/NavBar Logo.png")}
                             alt="Logo"
                             width="75"
                             height="75"
                         />
                     </a>
-                    
-                    <h1 id="title">Knead It</h1>
-                    <div className="col-md-3 text-end">
-                        <Link to="/login">
-                            <button
-                                type="button"
-                                className="btn btn-link me-3 px-4 button"
-                            >
-                                Login
-                            </button>
-                        </Link>
-                        <Link to="/signup">
-                            <button
-                                type="button"
-                                className="btn btn-secondary px-4 button"
-                            >
-                                Sign Up
-                            </button>
-                        </Link>
-                    </div>
+                    <form>
+                        <h1 id="title">Knead It</h1>
+                    </form>
+
+                    <form>
+                        <div className="col-md-3 text-end">
+                            {state.email ? (
+                                <Fragment>
+                                    <button
+                                        type="button"
+                                        className="btn btn-link me-3 px-4 button"
+                                        onClick={logout}
+                                    >
+                                        Logout
+                                    </button>
+                                </Fragment>
+                            ) : (
+                                <Fragment>
+                                    <Link to="/login">
+                                        <button
+                                            type="button"
+                                            className="btn btn-link me-3 px-4 button"
+                                        >
+                                            Login
+                                        </button>
+                                    </Link>
+                                    <Link to="/signup">
+                                        <button
+                                            type="button"
+                                            className="btn btn-secondary px-4 button"
+                                        >
+                                            Sign Up
+                                        </button>
+                                    </Link>
+                                </Fragment>
+                            )}
+                        </div>
+                    </form>
                 </header>
             </div>
-            <form
-                id="form_search"
-                name="form_search"
-                method="get"
-                action=""
-                className="form-inline"
-                onSubmit= {(event) =>{
-                    event.preventDefault();
-                    navigate("/recipes");    
-                    window.location.search += "?type=" + queryType + "&data=" + document.getElementById("searchbar").value;
-                }}
-            >
-                <div className="input-group" name="divcontainer">
-                    <input
-                        id="searchbar"
-                        name="searchbar"
-                        className="form-control"
-                        placeholder="Search By..."
-                        type="text"
-                    />
-                    <span className="input-group-btn">
-                        <Dropdown>
-                            <Dropdown.Toggle className="dropdown" variant="success" id="dropdown-basic">
-                                {queryType}
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu>
-                                <Dropdown.Item onClick={() => setQueryType("Name")}>Name</Dropdown.Item>
-                                <Dropdown.Item onClick={() => setQueryType("Cuisine")}>Cuisine</Dropdown.Item>
-                                <Dropdown.Item onClick={() => setQueryType("Prep")}>Prep Time</Dropdown.Item>
-                                <Dropdown.Item onClick={() => setQueryType("Ingredients")}>Ingredients</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </span>
-                </div>
-            </form>
         </div>
     );
 };

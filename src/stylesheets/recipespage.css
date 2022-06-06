@@ -3,6 +3,10 @@ h2 {
     text-align: center;
 }
 
+.card-title {
+    color: black;
+}
+
 .card{
     display: flex;
     flex-direction: column;
@@ -40,4 +44,3 @@ h2 {
     width: auto;
     object-fit: fill;
 }
-

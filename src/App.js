@@ -6,13 +6,15 @@ import Main from "./components/Main";
 
 import "./App.css";
 
-const App = (props) => (
-    <BrowserRouter>
-        <div>
-            <NavBar />
-            <Main />
-        </div>
-    </BrowserRouter>
-);
+const App = (props) => {
+    return (
+        <BrowserRouter>
+            <div>
+                <NavBar />
+                <Main />
+            </div>
+        </BrowserRouter>
+    );
+};
 
 export default App;

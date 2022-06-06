@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { Dropdown } from "react-bootstrap";
 import ShoppingCartModal from "../components/ShoppingCartModal";
 import "../stylesheets/recipedetail.css";
 import { getRecipe } from "../firebase.mjs";
@@ -36,7 +37,7 @@ const RecipeDetails = () => {
             return "No Ingredients given";
         }
         for (let i = 0; i < RecipeMockData.extendedIngredients.length; i++) {
-            ingredients += counter.toString(2);
+            ingredients += counter.toString(10);
             ingredients += ". ";
             ingredients += RecipeMockData.extendedIngredients[i].original;
             ingredients += "\n";
@@ -76,6 +77,11 @@ const RecipeDetails = () => {
 
     return (
         <Fragment>
+            <button
+                type="button"
+                className="btn btn-lg btn-secondary "
+                onClick={() => history.back()}
+            >Back</button>
             {showModal == "true" && (
                 <div className="recipe-page">
                     <div className="recipe-container">{renderVisibility()}</div>
@@ -110,6 +116,10 @@ const RecipeDetails = () => {
                             >
                                 Favorite
                             </button>
+                        </div>
+                        <div className="instructions-box">
+                            <div className="box-title">Ingredients</div>
+                            <div className="listed">{readIngredients()}</div>
                         </div>
                         <div className="instructions-box">
                             <div className="box-title">Servings</div>

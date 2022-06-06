@@ -7,7 +7,7 @@
     "puppeteer": "^13.7.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "mocha --reporter spec"
   },
   "jest": {
     "preset": "jest-puppeteer",

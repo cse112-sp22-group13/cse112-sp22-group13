@@ -22,8 +22,8 @@ a {
 }
 
 .my-col img {
-    height: 33vh;
-    width: auto;
+    height: 150px;
+    width: 150px;
     object-fit: contain;
 }
 

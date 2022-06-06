@@ -1,10 +1,41 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { testConsole } from "../firebase.mjs";
+import {
+    logInWithEmailAndPassword,
+    signInWithGoogle,
+    passwordReset
+} from "../firebase.mjs";
+import { store } from "../store/store";
 
 const LogInPage = () => {
+    const globalState = useContext(store);
+    const { dispatch } = globalState;
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleEmailSubmission = (e) => {
+        e.preventDefault();
+        logInWithEmailAndPassword(email, password).then(({ email, uid }) => {
+            dispatch({ type: "ADD_USER", payload: { email: email, uid: uid } });
+        });
+    };
+
+    const handleGoogleSubmission = (e) => {
+        e.preventDefault();
+        signInWithGoogle().then(({ email, uid }) => {
+            console.log("Signed", email, uid);
+            dispatch({ type: "ADD_USER", payload: { email: email, uid: uid } });
+        });
+    };
+
     return (
         <Fragment>
+            <button
+                type="button"
+                className="btn btn-lg btn-secondary "
+                onClick={() => history.back()}
+            >Back</button>
             <div
                 className="modal position-static d-block"
                 tabIndex="-1"
@@ -17,12 +48,16 @@ const LogInPage = () => {
                         </div>
 
                         <div className="modal-body p-5 pt-0">
-                            <form onSubmit={e => testConsole()} className="">
+                            <form onSubmit={handleEmailSubmission}>
                                 <div className="form-floating mb-3">
                                     <input
                                         type="email"
                                         className="form-control rounded-4"
                                         id="floatingInput"
+                                        value={email}
+                                        onChange={(e) =>
+                                            setEmail(e.target.value)
+                                        }
                                         placeholder="name@example.com"
                                     />
                                     <label htmlFor="floatingInput">
@@ -35,6 +70,10 @@ const LogInPage = () => {
                                         className="form-control rounded-4"
                                         id="floatingPassword"
                                         placeholder="Password"
+                                        value={password}
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
                                     />
                                     <label htmlFor="floatingPassword">
                                         Password
@@ -46,6 +85,14 @@ const LogInPage = () => {
                                 >
                                     Log In
                                 </button>
+                                <div className="text-end">
+                                    <small
+                                        className="text-muted me-2 mt-5"
+                                        onClick={() => passwordReset(email)}
+                                    >
+                                        Forgot your Password?
+                                    </small>
+                                </div>
 
                                 <div className="d-flex flex-row align-items-center py-2">
                                     <hr className="w-50" />
@@ -55,6 +102,7 @@ const LogInPage = () => {
 
                                 <button
                                     className="w-100 py-2 mb-2 btn btn-danger rounded-4"
+                                    onClick={handleGoogleSubmission}
                                     type="submit"
                                 >
                                     <svg
@@ -69,31 +117,18 @@ const LogInPage = () => {
                                     </svg>
                                     Log In with Google
                                 </button>
-                                <button
-                                    className="w-100 py-2 mb-2 btn btn-primary rounded-4"
-                                    type="submit"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
-                                        fill="currentColor"
-                                        className="bi bi-facebook mx-2"
-                                        viewBox="0 0 16 16"
-                                    >
-                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
-                                    </svg>
-                                    Log In with Facebook
-                                </button>
                             </form>
-                            <small className="text-muted mx-auto mt-5">
-                                Not a User?
-                            </small>
-                            <Link to="/signup" className="link">
-                                <button className="w-100 my-2 btn btn-lg btn-info">
+                            <div className="text-end">
+                                <small className="text-muted me-2 mt-5">
+                                    Not a User?
+                                </small>
+                                <Link
+                                    to="/signup"
+                                    className="link alert-link switch-link"
+                                >
                                     Sign Up
-                                </button>
-                            </Link>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

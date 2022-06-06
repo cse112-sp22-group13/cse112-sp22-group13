@@ -1,7 +1,5 @@
-describe("Clicking Between Pages", () => {
-    // TODO: Clicking to recipe list, from recipe list to specific recipes
-
-    beforeAll(async () => {
+describe("Clicking Between Signup, Login, Front Pages", () => {
+    beforeEach(async () => {
         await page.goto("http://localhost:3000/");
     });
 
@@ -14,8 +12,8 @@ describe("Clicking Between Pages", () => {
         expect(cuisine).toBe("CUISINE");
 
         // Click to signup page
-        const button = await page.$("#root > div > div.container > header > div > a:nth-child(2) > button");
-        await button.evaluate(b => b.click());
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div:nth-child(1) > div > header > form > div > a:nth-child(2) > button").click());
 
         // Should be on signup page
         await page.waitForSelector("h2");
@@ -33,8 +31,8 @@ describe("Clicking Between Pages", () => {
         expect(cuisine).toBe("CUISINE");
 
         // Click to login page
-        const button = await page.$("#root > div > div.container > header > div > a:nth-child(1) > button");
-        await button.evaluate(b => b.click());
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div:nth-child(1) > div > header > form > div > a:nth-child(1) > button").click());
 
         // Should be on login page
         await page.waitForSelector("h2");
@@ -50,8 +48,8 @@ describe("Clicking Between Pages", () => {
         expect(login).toBe("Log In");
 
         // Click to signup page
-        const button = await page.$("#root > div > div.modal.position-static.d-block > div > div > div.modal-body.p-5.pt-0 > a > button");
-        await button.evaluate(b => b.click());
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div:nth-child(1) > div > header > form > div > a:nth-child(2) > button").click());
 
         // Should be on signup page
         await page.waitForSelector("h2");
@@ -68,8 +66,44 @@ describe("Clicking Between Pages", () => {
         expect(signup).toBe("Sign up");  
         
         // Click to login page
-        const button = await page.$("#root > div > div.modal.position-static.d-block > div > div > div.modal-body.p-5.pt-0 > a > button");
-        await button.evaluate(b => b.click());
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div:nth-child(1) > div > header > form > div > a:nth-child(1) > button").click());
+
+        // Should be on login page
+        await page.waitForSelector("h2");
+        const login = await page.$eval("h2", (e) => e.textContent);
+        expect(login).toBe("Log In");
+    });
+
+    it("Click from login page to signup page (link method)", async () => {
+        // Start on login page
+        await page.goto("http://localhost:3000/login");
+        await page.waitForSelector("h2");
+        const login = await page.$eval("h2", (e) => e.textContent);
+        expect(login).toBe("Log In");
+
+        // Click to signup page
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div.modal.position-static.d-block > div > div > div.modal-body.p-5.pt-0 > div > a").click());
+
+        // Should be on signup page
+        await page.waitForSelector("h2");
+        const signup = await page.$eval("h2", (e) => e.textContent);
+        expect(signup).toBe("Sign up");   
+    });
+
+    it("Click from signup page to login page (link method)", async () => {
+        // Start on signup page
+        await page.goto("http://localhost:3000/signup");
+
+        await page.waitForSelector("h2");
+        const signup = await page.$eval("h2", (e) => e.textContent);
+        expect(signup).toBe("Sign up");  
+        
+        // Click to login page
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div.modal.position-static.d-block > div > div > div.modal-body.p-5.pt-0 > div > a").click());
+
 
         // Should be on login page
         await page.waitForSelector("h2");
@@ -85,9 +119,10 @@ describe("Clicking Between Pages", () => {
         const signup = await page.$eval("h2", (e) => e.textContent);
         expect(signup).toBe("Sign up");  
         
-        // Click to login page
-        const button = await page.$("#root > div > div.container > header > a > img");
-        await button.evaluate(b => b.click());
+        // Click to home page
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div:nth-child(1) > div > header > a > img").click());
+
 
         await page.waitForSelector("h4");
         
@@ -104,9 +139,9 @@ describe("Clicking Between Pages", () => {
         const signup = await page.$eval("h2", (e) => e.textContent);
         expect(signup).toBe("Log In");  
         
-        // Click to login page
-        const button = await page.$("#root > div > div.container > header > a > img");
-        await button.evaluate(b => b.click());
+        // Click to home page
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div:nth-child(1) > div > header > a > img").click());
 
         await page.waitForSelector("h4");
         
