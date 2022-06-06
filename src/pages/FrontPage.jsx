@@ -188,8 +188,12 @@ const FrontPage = () => {
         const randas = async () => {
             
             var recipe = await getFavorites().then(key=>{
+                console.log(key);
                 return key;
             });
+            if(recipe == null){
+                return;
+            }
             setFavorites(recipe);
             return recipe;
         };
@@ -199,6 +203,7 @@ const FrontPage = () => {
 
     return (
         <Fragment>
+            {console.log(favorites)}
             <form
                 id="form_search"
                 name="form_search"
@@ -262,8 +267,10 @@ const FrontPage = () => {
                 <HorizontalScrollImg categoryList={prepTimeImg} type="time"/>
             </div>
             <h4>FAVORITES</h4>
-            <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
-                <RowOfCards mockData={favorites} />
+            <div>
+                {favorites.map((three) => (
+                    <RowOfCards mockData={three}></RowOfCards>
+                ))}
             </div>
         </Fragment>
     );
@@ -308,7 +315,6 @@ const HorizontalScrollImg = (props) => {
 };
 
 const RowOfCards = (props) => {
-
     return props.mockData ? (
         <div className="row row-cols-3">
             {props.mockData.map((recipe) => (

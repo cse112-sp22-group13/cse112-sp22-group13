@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import ShoppingCartModal from "../components/ShoppingCartModal";
 import "../stylesheets/recipedetail.css";
-import { getRecipe, getComment, editComment } from "../firebase.mjs";
+import { getRecipe, getComment, editComment, getFavorites, checkFavorite } from "../firebase.mjs";
 import { useLocation } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 
@@ -21,14 +21,23 @@ const RecipeDetails = () => {
             var recipe = await getRecipe(recipeType).then(key=>{
                 return key;
             });
+            setMock(recipe);
+            return recipe;
+        };
+        const randas2 = async () => {
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+            });
+            const recipeType = params.type;
+
             var comment = await getComment(recipeType).then(key=>{
                 return key;
             });
-            setMock(recipe);
             setComment(comment);
-            return recipe;
+            return comment;
         };
         randas();
+        randas2();
     }, []);
     
 
@@ -81,6 +90,10 @@ const RecipeDetails = () => {
         }
     };
 
+    const handleChange = (e) => {
+        setComment(e.target.value);
+    };
+
     return (
         <Fragment>
             <button
@@ -119,6 +132,7 @@ const RecipeDetails = () => {
                             <button
                                 type="button"
                                 className="btn btn-lg btn-secondary "
+                                onClick={() => getFavorites()}
                             >
                                 Favorite
                             </button>
@@ -138,13 +152,14 @@ const RecipeDetails = () => {
                         <div>
                             <Form.Group className="mb-3" controlId="formBasicNotes">
                                 <Form.Label>Notes</Form.Label>
-                                <Form.Control type="Notes" placeholder="Enter Notes" value={comment}/>
+                                <Form.Control className="form" type="Notes" placeholder="Enter Notes" id="notes" value={comment} onChange={handleChange}/>
                             </Form.Group>
                             <button
                                 type="button"
                                 className="btn btn btn-secondary "
                                 onClick={async () => {
-                                    editComment()
+                                    console.log(document.getElementById("notes").value);
+                                    editComment(document.getElementById("notes").value);
                                 }}
                             >
                                 Add Note
