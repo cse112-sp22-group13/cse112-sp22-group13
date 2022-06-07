@@ -37,7 +37,7 @@ import palestine from "../icons/flags/palestine.png";
 import southAfrica from "../icons/flags/south-africa.png";
 import southKorea from "../icons/flags/south-korea.png";
 import spain from "../icons/flags/spain.png";
-import sweden from "../icons/flags/sweden.png";
+import norway from "../icons/flags/norway.png";
 import thailand from "../icons/flags/thailand.png";
 import ukraine from "../icons/flags/ukraine.png";
 import uk from "../icons/flags/united-kingdom.png";
@@ -117,7 +117,7 @@ const FrontPage = () => {
         },
         {
             name: "Nordic",
-            img: sweden
+            img: norway
         },
         {
             name: "Spanish",
