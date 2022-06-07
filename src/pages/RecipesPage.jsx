@@ -7,12 +7,19 @@ import "../stylesheets/recipespage.css";
 // const myFunctions = require("../firebase.mjs");
 //import { fetchRecipes, searchFetchRecipes } from "../recipeSearch";
 
+/**
+ * Component that renders a page of Recipes
+ */
 const RecipesPage = () => {
     const [recipes, setRecipes] = useState([]);
     const [recipetext, setRecipeText] = useState("All Recipes");
     const [queryType, setQueryType] = useState("Name");
 
     let navigate = useNavigate();
+
+    /**
+     * fetch recipes according to user's request from Firebase
+     */
     useEffect(() => {
         const fetchData = async () => {
             // get query string
@@ -174,6 +181,10 @@ const RecipesPage = () => {
     );
 };
 
+/**
+ * Component to render recipe cards for the Favorites row
+ * @param {} props - favorited recipe data
+ */
 const RowOfCards = (props) => {
     return props.mockData ? (
         <div className="row row-cols-3">

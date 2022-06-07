@@ -44,12 +44,12 @@ import uk from "../icons/flags/united-kingdom.png";
 import us from "../icons/flags/united-states.png";
 import vietnam from "../icons/flags/vietnam.png";
 
-
-
 initializeDB();
 
+/**
+ * Components to render the front page with rows of cusines, ingredients, prep time and favorites
+ */
 const FrontPage = () => {
-    // TODO: replace it with Spoonacular API response?
     const cuisineMockData = [
         {
             name: "African",
@@ -173,7 +173,7 @@ const FrontPage = () => {
         {
             name: "ethnic",
             img: ethnic
-        },
+        }
     ];
     const ingredients = [
         "Bread",
@@ -207,7 +207,11 @@ const FrontPage = () => {
 
     const [queryType, setQueryType] = useState("Name");
     const [favorites, setFavorites] = useState([]);
-    useEffect( () => {
+
+    /**
+     * Create a row of Favorited recipe if the user has logged in
+     */
+    useEffect(() => {
         const randas = async () => {
             var ids = await getFavorites();
             if (ids == null) {
@@ -216,11 +220,11 @@ const FrontPage = () => {
             var recipez = [];
             let threerec = [];
             for (var i in ids) {
-                var recipe = await getRecipe(ids[i]).then(async key=>{
+                var recipe = await getRecipe(ids[i]).then(async (key) => {
                     return key;
                 });
                 threerec.push(recipe);
-                if(threerec.length == 3){
+                if (threerec.length == 3) {
                     recipez.push(threerec);
                     threerec = [];
                 }
@@ -232,30 +236,32 @@ const FrontPage = () => {
             return recipez;
         };
         const auth = getAuth();
-        auth.onAuthStateChanged(function(user) {
+        auth.onAuthStateChanged(function (user) {
             if (user) {
                 randas();
             } else {
                 return null;
             }
         });
-        
     }, []);
-    let navigate = useNavigate();  
+    let navigate = useNavigate();
 
     return (
         <Fragment>
-            {/* {console.log(favorites)} */}
             <form
                 id="form_search"
                 name="form_search"
                 method="get"
                 action=""
                 className="form-inline"
-                onSubmit= {(event) =>{
+                onSubmit={(event) => {
                     event.preventDefault();
-                    navigate("/recipes");    
-                    window.location.search += "?type=" + queryType + "&data=" + document.getElementById("searchbar").value;
+                    navigate("/recipes");
+                    window.location.search +=
+                        "?type=" +
+                        queryType +
+                        "&data=" +
+                        document.getElementById("searchbar").value;
                 }}
             >
                 <div className="input-group" name="divcontainer">
@@ -268,14 +274,30 @@ const FrontPage = () => {
                     />
                     <span className="input-group-btn">
                         <Dropdown>
-                            <Dropdown.Toggle className="dropdown" variant="success" id="dropdown-basic">
+                            <Dropdown.Toggle
+                                className="dropdown"
+                                variant="success"
+                                id="dropdown-basic"
+                            >
                                 {queryType}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
-                                <Dropdown.Item onClick={() => setQueryType("Name")}>Name</Dropdown.Item>
-                                <Dropdown.Item onClick={() => setQueryType("Cuisine")}>Cuisine</Dropdown.Item>
-                                <Dropdown.Item onClick={() => setQueryType("Ingredients")}>Ingredients</Dropdown.Item>
+                                <Dropdown.Item
+                                    onClick={() => setQueryType("Name")}
+                                >
+                                    Name
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    onClick={() => setQueryType("Cuisine")}
+                                >
+                                    Cuisine
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    onClick={() => setQueryType("Ingredients")}
+                                >
+                                    Ingredients
+                                </Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </span>
@@ -286,9 +308,13 @@ const FrontPage = () => {
                 <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
                     {cuisineMockData.map((cuisine, index) => (
                         <div className="col-2 my-col" key={index}>
-                            <Link to={{
-                                pathname: "/recipes",
-                                search: "?type=cuisines&data=" + cuisine.name }}>
+                            <Link
+                                to={{
+                                    pathname: "/recipes",
+                                    search:
+                                        "?type=cuisines&data=" + cuisine.name
+                                }}
+                            >
                                 <img
                                     alt="100x100"
                                     src={cuisine.img}
@@ -302,49 +328,39 @@ const FrontPage = () => {
             </div>
             <h4>INGREDIENTS</h4>
             <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
-                <HorizontalScrollImg categoryList={ingredientsImg} type="ingredients"/>
+                <HorizontalScrollImg
+                    categoryList={ingredientsImg}
+                    type="ingredients"
+                />
             </div>
             <h4>PREP TIME</h4>
-            <div className="scrolling-wrapper row flex-row flex-nowrap py-2">
-                <HorizontalScrollImg categoryList={prepTimeImg} type="time"/>
+            <div className="row flex-row justify-content-evenly py-2">
+                <HorizontalScrollImg categoryList={prepTimeImg} type="time" />
             </div>
             <h4>FAVORITES</h4>
             <div>
                 {favorites.map((three) => (
-                    <RowOfCards mockData={three}></RowOfCards>
+                    <RowOfCards data={three}></RowOfCards>
                 ))}
             </div>
         </Fragment>
     );
 };
 
-const HorizontalScroll = (props) => {
-    const { categoryList } = props;
-
-    return categoryList.map((category, index) => (
-        <div className="col-2 my-col" key={index}>
-            <Link to= {{
-                pathname: "/recipes",
-                search: "?type=" + props.type + "&data=" + category}}>
-                <img height="100px" width="100px"
-                    alt="100x100"
-                    src={MockPhoto}
-                    data-holder-rendered="true"
-                />
-                <p className="pt-2">{category}</p>
-            </Link>
-        </div>
-    ));
-};
-
+/**
+ * Component to render horizontal icons for Cuisine, Ingredients, and Prep Time row
+ */
 const HorizontalScrollImg = (props) => {
     const { categoryList } = props;
 
     return categoryList.map((category, index) => (
         <div className="col-2 my-col" key={index}>
-            <Link to= {{
-                pathname: "/recipes",
-                search: "?type=" + props.type + "&data=" + category.name}}>
+            <Link
+                to={{
+                    pathname: "/recipes",
+                    search: "?type=" + props.type + "&data=" + category.name
+                }}
+            >
                 <img
                     alt="100x100"
                     src={category.img}
@@ -356,15 +372,22 @@ const HorizontalScrollImg = (props) => {
     ));
 };
 
+/**
+ * Component to render recipe cards for the Favorites row
+ * @param {} props - favorited recipe data
+ */
 const RowOfCards = (props) => {
-    return props.mockData ? (
+    return props.data ? (
         <div className="row row-cols-3">
-            {props.mockData.map((recipe) => (
+            {props.data.map((recipe) => (
                 <div className="col mb-4">
                     <div className="card">
-                        <Link to={{
-                            pathname: "/recipe",
-                            search: "?type=" + recipe.id}}>
+                        <Link
+                            to={{
+                                pathname: "/recipe",
+                                search: "?type=" + recipe.id
+                            }}
+                        >
                             <img
                                 src={recipe.image}
                                 className="card-img-top"
@@ -372,11 +395,17 @@ const RowOfCards = (props) => {
                             />
                             <div className="card-body">
                                 <div className="card-title-box">
-                                    <h5 className="card-title">{recipe.title}</h5>
+                                    <h5 className="card-title">
+                                        {recipe.title}
+                                    </h5>
                                 </div>
                                 <div className="text-box">
-                                    <p className="card-text">{recipe.cuisines[0]}</p>
-                                    <p className="card-text">{recipe.readyInMinutes} Minutes</p>
+                                    <p className="card-text">
+                                        {recipe.cuisines[0]}
+                                    </p>
+                                    <p className="card-text">
+                                        {recipe.readyInMinutes} Minutes
+                                    </p>
                                 </div>
                             </div>
                         </Link>

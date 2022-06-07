@@ -8,10 +8,8 @@ import {
 import { store } from "../store/store";
 
 /**
- *
- * @returns
+ * Component that renders the Login form
  */
-
 const LogInPage = () => {
     const globalState = useContext(store);
     const { dispatch } = globalState;
@@ -20,8 +18,8 @@ const LogInPage = () => {
     const [password, setPassword] = useState("");
 
     /**
-     *
-     * @param {*} e
+     * Sign the user in with email and password via Firebase and save their data in local storage
+     * @param {*} e - window's default event
      */
     const handleEmailSubmission = (e) => {
         e.preventDefault();
@@ -30,6 +28,10 @@ const LogInPage = () => {
         });
     };
 
+    /**
+     * Sign the user in through their Google account via Firebase and save their data in local storage
+     * @param {*} e - window's default event
+     */
     const handleGoogleSubmission = (e) => {
         e.preventDefault();
         signInWithGoogle().then(({ email, uid }) => {

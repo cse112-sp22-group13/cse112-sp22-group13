@@ -6,7 +6,11 @@ import Main from "./components/Main";
 
 import "./App.css";
 
-const App = (props) => {
+/**
+ * Main component of our app
+ * @returns
+ */
+const App = () => {
     return (
         <BrowserRouter>
             <div>

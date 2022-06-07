@@ -5,17 +5,23 @@ import "../stylesheets/NavBar.css";
 import { store } from "../store/store";
 import { logOut } from "../firebase.mjs";
 
+/**
+ * Component to render Navbar with login/signup/logout options
+ */
 const NavBar = () => {
-    let navigate = useNavigate();  
+    let navigate = useNavigate();
     const [queryType, setQueryType] = useState("Name");
     const { state, dispatch } = useContext(store);
 
+    /**
+     * Log user out by clearing their logged in data from the Context Store
+     */
     const logout = () => {
         dispatch({ type: "DELETE_USER" });
         logOut();
     };
 
-    return(
+    return (
         <div>
             <div className="container">
                 <header className="d-flex flex justify-content-between align-items-center py-3 mb-4 border-bottom">
@@ -31,7 +37,7 @@ const NavBar = () => {
                             height="75"
                         />
                     </a>
-                    
+
                     <h1 id="title">Knead It</h1>
                     <form className="buttons">
                         <div /*className="col-md-3 text-end"*/>

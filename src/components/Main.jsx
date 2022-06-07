@@ -8,12 +8,16 @@ import SignUpPage from "../pages/SignUp";
 import LogInPage from "../pages/LogIn";
 import { fetchRecipes, searchFetchRecipes } from "../recipeSearch";
 
+/**
+ * Component to set up routes for different pages
+ * @returns <Routes>
+ */
 const Main = () => {
     return (
         <Fragment>
             <Routes>
                 <Route exact path="/" element={<FrontPage />} />
-                <Route exact path="/recipes" element={<RecipesPage/>} />
+                <Route exact path="/recipes" element={<RecipesPage />} />
                 <Route exact path="/recipe" element={<RecipeDetails />} />
                 <Route exact path="/signup" element={<SignUpPage />} />
                 <Route exact path="/login" element={<LogInPage />} />

@@ -2,11 +2,13 @@ import React, { Fragment, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
     registerWithEmailAndPassword,
-    signInWithGoogle,
-    passwordReset
+    signInWithGoogle
 } from "../firebase.mjs";
 import { store } from "../store/store";
 
+/**
+ * Component that renders the Sign Up form
+ */
 const SignUpPage = () => {
     const globalState = useContext(store);
     const { dispatch } = globalState;
@@ -14,6 +16,10 @@ const SignUpPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    /**
+     * Sign the user up with email and password via Firebase and save their data in local storage
+     * @param {*} e - window's default event
+     */
     const handleEmailSubmission = (e) => {
         e.preventDefault();
         registerWithEmailAndPassword(email, password).then(({ email, uid }) =>
@@ -21,6 +27,10 @@ const SignUpPage = () => {
         );
     };
 
+    /**
+     * Sign the user up through their Google account via Firebase and save their data in local storage
+     * @param {*} e - window's default event
+     */
     const handleGoogleSubmission = (e) => {
         e.preventDefault();
         signInWithGoogle().then(({ email, uid }) => {
@@ -35,7 +45,9 @@ const SignUpPage = () => {
                 type="button"
                 className="btn btn-lg btn-secondary "
                 onClick={() => history.back()}
-            >Back</button>
+            >
+                Back
+            </button>
             <div
                 className="modal position-static d-block"
                 tabIndex="-1"

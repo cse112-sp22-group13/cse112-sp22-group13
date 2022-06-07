@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import MockPhoto from "../media/NavBar Logo.png";
 
+/**
+ * Component to render the shopping cart modal when user clicks the Shopping button on Recipe Details page
+ * @param {*} props ingredients of the recipe the user wants to shop
+ */
 const ShoppingCartModal = (props) => {
     const cuisineMockData = [
         {
@@ -143,7 +147,7 @@ const ShoppingCartModal = (props) => {
                                         </div>
 
                                         <div className="col-md-3 text-end">
-                                            Price: 
+                                            Price:
                                             {cuisine.price}
                                         </div>
                                     </div>

@@ -4,6 +4,9 @@ const initialState = {};
 const store = createContext(initialState);
 const { Provider } = store;
 
+/**
+ * Context API stores with actions
+ */
 const StateProvider = ({ children }) => {
     const [state, dispatch] = useReducer(
         (state, action) => {
