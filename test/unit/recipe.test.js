@@ -27,4 +27,9 @@ describe("Recipe-related unit tests", () => {
         const ids = await getRecipeIds("doesnotexist", "doesnotexist");
         assert.equal(ids.length, 0);
     });
+
+    it("getRecipeIds with name", async () => {
+        const ids = await getRecipeIds("Name", "Spanish style salmon fillets");
+        assert.deepEqual(ids, ["1095806"]);
+    });
 });

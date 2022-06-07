@@ -174,10 +174,6 @@ const FrontPage = () => {
             name: "ethnic",
             img: ethnic
         },
-        {
-            name: "cheese",
-            img: cheese
-        }
     ];
     const ingredients = [
         "Bread",
@@ -389,7 +385,7 @@ const RowOfCards = (props) => {
             ))}
         </div>
     ) : (
-        ""
+        "Loading recipes..."
     );
 };
 
