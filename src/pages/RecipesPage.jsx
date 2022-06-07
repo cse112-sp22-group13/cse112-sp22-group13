@@ -12,30 +12,35 @@ const RecipesPage = () => {
     const [recipetext, setRecipeText] = useState("All Recipes");
     const [queryType, setQueryType] = useState("Name");
 
-    let navigate = useNavigate();  
-    useEffect( () => {
-        const fetchData= async () => {
+    let navigate = useNavigate();
+    useEffect(() => {
+        const fetchData = async () => {
             // get query string
             let recipeText = "All Recipes";
-            const params = new Proxy(new URLSearchParams(window.location.search), {
-                get: (searchParams, prop) => searchParams.get(prop),
-            });
+            const params = new Proxy(
+                new URLSearchParams(window.location.search),
+                {
+                    get: (searchParams, prop) => searchParams.get(prop)
+                }
+            );
             let recipeType = params.type;
-            let recipeDatas = params.data.toLowerCase(); 
-            recipeDatas = recipeDatas.substring(0, 1).toUpperCase() + recipeDatas.substring(1);
+            let recipeDatas = params.data.toLowerCase();
+            recipeDatas =
+                recipeDatas.substring(0, 1).toUpperCase() +
+                recipeDatas.substring(1);
             let bool = false;
             let recipeData = "";
-            for(let i = 0; i < recipeDatas.length; i++){
-                if(bool){
-                    let indiv = recipeDatas.substring(i, i+1);
+            for (let i = 0; i < recipeDatas.length; i++) {
+                if (bool) {
+                    let indiv = recipeDatas.substring(i, i + 1);
                     recipeData += indiv.toUpperCase();
                     bool = false;
-                    if (indiv == " "){
+                    if (indiv == " ") {
                         bool = true;
                     }
-                }else{
-                    let indiv = recipeDatas.substring(i, i+1);
-                    if (indiv == " "){
+                } else {
+                    let indiv = recipeDatas.substring(i, i + 1);
+                    if (indiv == " ") {
                         bool = true;
                     }
                     recipeData += indiv;
@@ -43,31 +48,41 @@ const RecipesPage = () => {
             }
             setQueryType(recipeType);
 
-            if(recipeType.toLowerCase() == "cuisine" || recipeType == "cuisines"){
+            if (
+                recipeType.toLowerCase() == "cuisine" ||
+                recipeType == "cuisines"
+            ) {
                 recipeType = "cuisines";
                 recipeText = "Recipes that are " + recipeData;
-            }else if(recipeType.toLowerCase() == "ingredients" || recipeType == "includeIngredients"){
+            } else if (
+                recipeType.toLowerCase() == "ingredients" ||
+                recipeType == "includeIngredients"
+            ) {
                 recipeType = "ingredients";
-                recipeText = "Recipes containing " + recipeData + " Ingredients";
-            }else if(recipeType.toLowerCase() == "time" || recipeType == "maxPrepTime"){
+                recipeText =
+                    "Recipes containing " + recipeData + " Ingredients";
+            } else if (
+                recipeType.toLowerCase() == "time" ||
+                recipeType == "maxPrepTime"
+            ) {
                 recipeType = "time";
                 recipeText = "Recipes that take " + recipeData;
-            }else if(recipeType =="titleMatch" || recipeType == "Name"){
+            } else if (recipeType == "titleMatch" || recipeType == "Name") {
                 recipeType = "Name";
                 recipeText = "Recipes names with " + recipeData;
             }
             // get ids from type and data
-            var recipeInfo = await getRecipeIds(recipeType, recipeData)
-                .then(async(ids) => {
-                // get recipes from ids
+            var recipeInfo = await getRecipeIds(recipeType, recipeData).then(
+                async (ids) => {
+                    // get recipes from ids
                     var recipez = [];
                     let threerec = [];
                     for (var i in ids) {
-                        var recipe = await getRecipe(ids[i]).then(key=>{
+                        var recipe = await getRecipe(ids[i]).then((key) => {
                             return key;
                         });
                         threerec.push(recipe);
-                        if(threerec.length == 3){
+                        if (threerec.length == 3) {
                             recipez.push(threerec);
                             threerec = [];
                         }
@@ -76,7 +91,8 @@ const RecipesPage = () => {
                         recipez.push(threerec);
                     }
                     return recipez;
-                });
+                }
+            );
             setRecipeText(recipeText);
             setRecipes(recipeInfo);
             return recipeInfo;
@@ -92,10 +108,14 @@ const RecipesPage = () => {
                 method="get"
                 action=""
                 className="form-inline"
-                onSubmit= {(event) =>{
+                onSubmit={(event) => {
                     event.preventDefault();
-                    navigate("/recipes");    
-                    window.location.search += "?type=" + queryType + "&data=" + document.getElementById("searchbar").value;
+                    navigate("/recipes");
+                    window.location.search +=
+                        "?type=" +
+                        queryType +
+                        "&data=" +
+                        document.getElementById("searchbar").value;
                 }}
             >
                 <div className="input-group" name="divcontainer">
@@ -108,14 +128,30 @@ const RecipesPage = () => {
                     />
                     <span className="input-group-btn">
                         <Dropdown>
-                            <Dropdown.Toggle className="dropdown" variant="success" id="dropdown-basic">
+                            <Dropdown.Toggle
+                                className="dropdown"
+                                variant="success"
+                                id="dropdown-basic"
+                            >
                                 {queryType}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
-                                <Dropdown.Item onClick={() => setQueryType("Name")}>Name</Dropdown.Item>
-                                <Dropdown.Item onClick={() => setQueryType("Cuisine")}>Cuisine</Dropdown.Item>
-                                <Dropdown.Item onClick={() => setQueryType("Ingredients")}>Ingredients</Dropdown.Item>
+                                <Dropdown.Item
+                                    onClick={() => setQueryType("Name")}
+                                >
+                                    Name
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    onClick={() => setQueryType("Cuisine")}
+                                >
+                                    Cuisine
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    onClick={() => setQueryType("Ingredients")}
+                                >
+                                    Ingredients
+                                </Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </span>
@@ -125,7 +161,9 @@ const RecipesPage = () => {
                 type="button"
                 className="btn btn-lg btn-secondary "
                 onClick={() => history.back()}
-            >Back</button>
+            >
+                Back
+            </button>
             <div className="container-md">
                 <h2 className="mb-4">{recipetext}</h2>
                 {recipes.map((three) => (
@@ -142,21 +180,30 @@ const RowOfCards = (props) => {
             {props.mockData.map((recipe) => (
                 <div className="col mb-4">
                     <div className="card">
-                        <Link to={{
-                            pathname: "/recipe",
-                            search: "?type=" + recipe.id}}>
+                        <Link
+                            to={{
+                                pathname: "/recipe",
+                                search: "?type=" + recipe.id
+                            }}
+                        >
                             <img
                                 src={recipe.image}
-                                className="card-img-top"
+                                className="card-img-top mx-auto d-block"
                                 alt="..."
                             />
                             <div className="card-body">
                                 <div className="card-title-box">
-                                    <h5 className="card-title">{recipe.title}</h5>
+                                    <h5 className="card-title">
+                                        {recipe.title}
+                                    </h5>
                                 </div>
                                 <div className="text-box">
-                                    <p className="card-text">{recipe.cuisines[0]}</p>
-                                    <p className="card-text">{recipe.readyInMinutes} Minutes</p>
+                                    <p className="card-text">
+                                        {recipe.cuisines[0]}
+                                    </p>
+                                    <p className="card-text">
+                                        {recipe.readyInMinutes} Minutes
+                                    </p>
                                 </div>
                             </div>
                         </Link>
