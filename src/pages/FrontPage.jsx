@@ -2,8 +2,9 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import MockPhoto from "../media/mock-photo.jpg";
-import { getFavorites } from "../firebase.mjs";
+import { getFavorites, getRecipe } from "../firebase.mjs";
 import { initializeDB } from "../spoonacular.mjs";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "../stylesheets/frontpage.css";
 import timer5 from "../media/timer5.png";
 import timer10 from "../media/timer10.png";
@@ -186,24 +187,43 @@ const FrontPage = () => {
     const [favorites, setFavorites] = useState([]);
     useEffect( () => {
         const randas = async () => {
-            
-            var recipe = await getFavorites().then(key=>{
-                console.log(key);
-                return key;
-            });
-            if(recipe == null){
+            var ids = await getFavorites();
+            if (ids == null) {
                 return;
             }
-            setFavorites(recipe);
-            return recipe;
+            var recipez = [];
+            let threerec = [];
+            for (var i in ids) {
+                var recipe = await getRecipe(ids[i]).then(async key=>{
+                    return key;
+                });
+                threerec.push(recipe);
+                if(threerec.length == 3){
+                    recipez.push(threerec);
+                    threerec = [];
+                }
+            }
+            if (threerec.length > 0) {
+                recipez.push(threerec);
+            }
+            setFavorites(recipez);
+            return recipez;
         };
-        randas();
+        const auth = getAuth();
+        auth.onAuthStateChanged(function(user) {
+            if (user) {
+                randas();
+            } else {
+                return null;
+            }
+        });
+        
     }, []);
     let navigate = useNavigate();  
 
     return (
         <Fragment>
-            {console.log(favorites)}
+            {/* {console.log(favorites)} */}
             <form
                 id="form_search"
                 name="form_search"
