@@ -85,7 +85,7 @@ const SignUpPage = () => {
                                 >
                                     Sign up
                                 </button>
-                                <div className="text-end">
+                                <div className="text-center">
                                     <small className="text-muted">
                                         By clicking Sign up, you agree to the
                                         terms of use.

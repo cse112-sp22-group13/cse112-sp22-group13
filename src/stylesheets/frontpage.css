@@ -1,40 +1,71 @@
 a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
+
 
 .scrolling-wrapper{
-	overflow-x: auto;
+display: block;
+height: auto;
+width: 100%; 
+overflow-x: scroll;
+white-space: nowrap;
+
+padding: 10px;
+margin: 0;
+padding-top: 8px;
+padding-bottom: 8px;
+z-index: 5;
+
+} 
+
+/* make the scrollbar always visible */
+.scrolling-wrapper:hover::-webkit-scrollbar:horizontal {
+  height: 11px;
+  overflow-x: scroll;
+  
 }
 
+.scrolling-wrapper:hover::-webkit-scrollbar-thumb {
+border-radius: 8px;
+background-color: rgba(0, 0, 0, .5);
+}
+
+.scrolling-wrapper:hover::-webkit-scrollbar {
+-webkit-appearance: none;
+}   
+
+
+
 .my-col{
-	background-color: #fff;
-	border: none;
-	background-position: center;
-	background-size: cover;
-	transition: all 0.2s ease-in-out !important;
+background-color: #fff;
+border: none;
+background-position: center;
+background-size: cover;
+transition: all 0.2s ease-in-out !important;
+  display: inline-block;
 }
 
 .my-col:hover {
-    transform: translateY(-5px);
-    box-shadow: none;
-    opacity: 0.9;
+  transform: translateY(-5px);
+  box-shadow: none;
+  opacity: 0.9;
 }
 
 .my-col img {
-    height: 150px;
-    width: 150px;
-    object-fit: contain;
+  height: 33vh;
+  width: auto;
+  object-fit: contain;
 }
 
 h4, p {
-    text-align: center;
+  text-align: center;
 }
 
 h4 {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .card p {
-    margin: 0;
+  margin: 0;
 }

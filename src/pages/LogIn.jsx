@@ -7,6 +7,11 @@ import {
 } from "../firebase.mjs";
 import { store } from "../store/store";
 
+/**
+ *
+ * @returns
+ */
+
 const LogInPage = () => {
     const globalState = useContext(store);
     const { dispatch } = globalState;
@@ -14,6 +19,10 @@ const LogInPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    /**
+     *
+     * @param {*} e
+     */
     const handleEmailSubmission = (e) => {
         e.preventDefault();
         logInWithEmailAndPassword(email, password).then(({ email, uid }) => {
@@ -35,7 +44,9 @@ const LogInPage = () => {
                 type="button"
                 className="btn btn-lg btn-secondary "
                 onClick={() => history.back()}
-            >Back</button>
+            >
+                Back
+            </button>
             <div
                 className="modal position-static d-block"
                 tabIndex="-1"

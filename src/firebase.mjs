@@ -18,11 +18,9 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     GoogleAuthProvider,
-    FacebookAuthProvider,
     signInWithPopup,
     sendPasswordResetEmail,
-    signOut,
-    onAuthStateChanged
+    signOut
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -42,7 +40,7 @@ const firebaseConfig = {
 //     storageBucket: "borpa-460ca.appspot.com",
 //     messagingSenderId: "132856979483",
 //     appId: "1:132856979483:web:d44383fab327b0a865d8be"
-// };  
+// };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -72,8 +70,7 @@ const getComment = async () => {
             console.log(comment);
             return comment;
         }
-        
-    } catch(err) {
+    } catch (err) {
         console.error(err);
         alert(err.message);
     }
@@ -88,8 +85,10 @@ const editComment = async () => {
     const docSnap = await getDoc(docRef);
     //get recipeID, either by input or something else
     try {
-        await updateDoc(docRef, {"comments.RecipeID": "Comment: Really good recipe"});  
-    } catch(err) { 
+        await updateDoc(docRef, {
+            "comments.RecipeID": "Comment: Really good recipe"
+        });
+    } catch (err) {
         console.error(err);
         alert(err.message);
     }
@@ -103,11 +102,10 @@ const getFavorites = async () => {
         const docRef = doc(db, "users", auth.currentUser.uid);
         const docSnap = await getDoc(docRef);
         return docSnap.get("favorites");
-    } catch(err) {
+    } catch (err) {
         console.error(err);
         alert(err.message);
     }
-
 };
 
 const checkFavorite = async (recipe) => {
@@ -119,21 +117,20 @@ const checkFavorite = async (recipe) => {
         const docRef = doc(db, "users", auth.currentUser.uid);
         const docSnap = await getDoc(docRef);
         const favoriteList = docSnap.get("favorites");
-        if (favoriteList.includes(recipe)) {  
+        if (favoriteList.includes(recipe)) {
             console.log("Recipe was removed from favorites");
             //replace number in array remove with actual recipe id
-            await updateDoc(docRef, {favorites: arrayRemove(recipe)});
+            await updateDoc(docRef, { favorites: arrayRemove(recipe) });
         } else {
             console.log("Recipe was added to favorites");
             //replace number in array remove with actual recipe id
-            await updateDoc(docRef, {favorites: arrayUnion(recipe)});
+            await updateDoc(docRef, { favorites: arrayUnion(recipe) });
         }
-    } catch(err) {
+    } catch (err) {
         console.error(err);
         alert(err.message);
-    }    
+    }
 };
-
 
 const logInWithEmailAndPassword = async (email, password) => {
     try {
@@ -148,8 +145,7 @@ const logInWithEmailAndPassword = async (email, password) => {
 const registerWithEmailAndPassword = async (email, password) => {
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
-        const user = res.user; 
-        console.log(user.uid);
+        const user = res.user;
         const q = query(collection(db, "users"), where("uid", "==", user.uid));
         const docs = await getDocs(q);
 
@@ -191,7 +187,6 @@ const signInWithGoogle = async () => {
     }
 };
 
-
 const passwordReset = async (email) => {
     sendPasswordResetEmail(auth, email)
         .then(() => {
@@ -232,7 +227,22 @@ async function getRecipeIds(recipeType, recipeData) {
     const preptimes = [
         ["10", "15", "20", "30"],
         ["35", "40", "45", "55"],
-        ["64", "75", "105", "110", "130", "150", "165", "180", "270", "350", "400", "500", "510"]];
+        [
+            "64",
+            "75",
+            "105",
+            "110",
+            "130",
+            "150",
+            "165",
+            "180",
+            "270",
+            "350",
+            "400",
+            "500",
+            "510"
+        ]
+    ];
 
     if (recipeData == "Less Than 30 Minutes") {
         prep = 0;
@@ -248,26 +258,25 @@ async function getRecipeIds(recipeType, recipeData) {
             recipeData = "Baking";
         }
         searchData.push(recipeData);
-    // search by preptime
+        // search by preptime
     } else {
         searchData = preptimes[prep];
     }
 
     // check if url query exists
     if (recipeType && recipeData) {
-
         // iterate through searchdata, gets all recipe ids from fitting categories
-        for (var i=0; i<searchData.length; i++) {
+        for (var i = 0; i < searchData.length; i++) {
             const colRef = collection(db, "recipe_categories");
             const docRef = doc(colRef, recipeType);
             const subColRef = collection(docRef, searchData[i]);
-    
+
             const querySnapshot = await getDocs(subColRef);
 
             // gets ids of all recipes in category
             querySnapshot.forEach((doc) => {
                 ids.push(doc.data().data);
-            });   
+            });
         }
     }
     return ids;
@@ -386,9 +395,7 @@ async function updateDB(fsCollection, jsonString) {
 
 const logOut = async () => {
     signOut(auth)
-        .then(() => {
-            
-        })
+        .then(() => {})
         .catch((err) => {
             console.error(err);
             alert(err.message);
@@ -405,7 +412,7 @@ export {
     logInWithEmailAndPassword,
     passwordReset,
     checkFavorite,
-    getFavorites, 
+    getFavorites,
     getComment,
     editComment,
     logOut
