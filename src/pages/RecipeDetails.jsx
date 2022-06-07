@@ -2,12 +2,14 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import ShoppingCartModal from "../components/ShoppingCartModal";
 import "../stylesheets/recipedetail.css";
-import { getRecipe, getFavorites, checkFavorite } from "../firebase.mjs";
+import { getRecipe, getComment, editComment, getFavorites, checkFavorite } from "../firebase.mjs";
 import { useLocation } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
 
 const RecipeDetails = () => {
     const [RecipeMockData, setMock] = useState([]);
     const [showModal, setShowModal] = useState("false");
+    const [comment, setComment] = useState("");
 
     useEffect( () => {
         const randas = async () => {
@@ -15,13 +17,27 @@ const RecipeDetails = () => {
                 get: (searchParams, prop) => searchParams.get(prop),
             });
             const recipeType = params.type;
+
             var recipe = await getRecipe(recipeType).then(key=>{
                 return key;
             });
             setMock(recipe);
             return recipe;
         };
+        const randas2 = async () => {
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+            });
+            const recipeType = params.type;
+
+            var comment = await getComment(recipeType).then(key=>{
+                return key;
+            });
+            setComment(comment);
+            return comment;
+        };
         randas();
+        randas2();
     }, []);
     
 
@@ -72,6 +88,10 @@ const RecipeDetails = () => {
                 ></ShoppingCartModal>
             );
         }
+    };
+
+    const handleChange = (e) => {
+        setComment(e.target.value);
     };
 
     return (
@@ -129,9 +149,22 @@ const RecipeDetails = () => {
                             <div className="box-title">Instructions</div>
                             <div className="listed">{readInstructions()}</div>
                         </div>
-                        {/* <div className="note-box">
-                            <Button bTitle="Add a Note"></Button>
-                        </div> */}
+                        <div>
+                            <Form.Group className="mb-3" controlId="formBasicNotes">
+                                <Form.Label>Notes</Form.Label>
+                                <Form.Control className="form" type="Notes" placeholder="Enter Notes" id="notes" value={comment} onChange={handleChange}/>
+                            </Form.Group>
+                            <button
+                                type="button"
+                                className="btn btn btn-secondary "
+                                onClick={async () => {
+                                    console.log(document.getElementById("notes").value);
+                                    editComment(document.getElementById("notes").value);
+                                }}
+                            >
+                                Add Note
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}

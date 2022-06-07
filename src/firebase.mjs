@@ -21,7 +21,8 @@ import {
     FacebookAuthProvider,
     signInWithPopup,
     sendPasswordResetEmail,
-    signOut
+    signOut,
+    onAuthStateChanged
 } from "firebase/auth";
 const firebaseConfig = {
     apiKey: "AIzaSyAEWF3Hxz9GquMTz_huVUes7q-zXbzAVJE",
@@ -100,7 +101,6 @@ const getFavorites = async () => {
         }
         const docRef = doc(db, "users", auth.currentUser.uid);
         const docSnap = await getDoc(docRef);
-        console.log(docSnap.get("favorites"));
         return docSnap.get("favorites");
     } catch(err) {
         console.error(err);
@@ -408,5 +408,5 @@ export {
     getFavorites, 
     getComment,
     editComment,
-    logOut
+    logOut,
 };
