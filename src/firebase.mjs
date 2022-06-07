@@ -54,10 +54,6 @@ const auth = getAuth(app);
 //});
 
 const getComment = async () => {
-    if (auth.currentUser === null) {
-        alert("You are not signed in!");
-        return;
-    }
     const docRef = doc(db, "users", auth.currentUser.uid);
     const docSnap = await getDoc(docRef);
     //get recipeid, either by input or something else
@@ -111,7 +107,7 @@ const getFavorites = async () => {
 const checkFavorite = async (recipe) => {
     try {
         if (auth.currentUser === null) {
-            alert("You are not signed in!");
+            alert("You are not signed in! Please sign in to save recipes!");
             return;
         }
         const docRef = doc(db, "users", auth.currentUser.uid);
