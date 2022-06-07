@@ -5,10 +5,12 @@ describe("Login Tests", () => {
 
     it("Login/logout with valid credentials", async () => {
         // Log in using valid credentials
+        await page.evaluate(() => document.querySelector("#floatingInput").value = "");
+        await page.evaluate(() => document.querySelector("#floatingPassword").value = "");
         await page.type("#floatingInput", "kneadit112@gmail.com");
         await page.type("#floatingPassword", "cse112ucsd");
         await page.click("#root > div > div.modal.position-static.d-block > div > div > div.modal-body.p-5.pt-0 > form > button.w-100.mb-2.btn.btn-lg.rounded-4.btn-warning");
-        
+
         // Check if signup/login have changed to logout button
         await page.waitForSelector("#root > div > div:nth-child(1) > div > header > form > div > button");
         const logout = await page.evaluate(() => 
@@ -28,27 +30,32 @@ describe("Login Tests", () => {
         expect(signup).toBe("Sign Up");
     });
 
-    it("Login with invalid password", async () => {
-        page.on("dialog", async dialog => {
-            expect(dialog.message()).toBe("Firebase: Error (auth/wrong-password).");
-            await dialog.accept();
-        });
-
-        await page.type("#floatingInput", "kneadit112@gmail.com");
-        await page.type("#floatingPassword", "wrongpassword");
-        await page.click("#root > div > div.modal.position-static.d-block > div > div > div.modal-body.p-5.pt-0 > form > button.w-100.mb-2.btn.btn-lg.rounded-4.btn-warning");
-        await page.screenshot();
-    });
-
     it("Login with invalid email", async () => {
         page.on("dialog", async dialog => {
             expect(dialog.message()).toBe("Firebase: Error (auth/user-not-found).");
             await dialog.accept();
         });
-
+        await page.evaluate(() => document.querySelector("#floatingInput").value = "");
+        await page.evaluate(() => document.querySelector("#floatingPassword").value = "");
         await page.type("#floatingInput", "wrongemail@wrongemail.com");
         await page.type("#floatingPassword", "cse112ucsd");
+
         await page.click("#root > div > div.modal.position-static.d-block > div > div > div.modal-body.p-5.pt-0 > form > button.w-100.mb-2.btn.btn-lg.rounded-4.btn-warning");
+        await page.screenshot();
+    });
+
+    it("Login with invalid password", async () => {
+        page.on("dialog", async dialog => {
+            expect(dialog.message()).toBe("Firebase: Error (auth/wrong-password).");
+            await dialog.accept();
+        });
+        await page.goto("http://localhost:3000/login");
+        await page.evaluate(() => document.querySelector("#floatingInput").value = "");
+        await page.evaluate(() => document.querySelector("#floatingPassword").value = "");
+        await page.type("#floatingInput", "kneadit112@gmail.com");
+        await page.type("#floatingPassword", "wrongpassword");
+        await page.evaluate(() => 
+            document.querySelector("#root > div > div.modal.position-static.d-block > div > div > div.modal-body.p-5.pt-0 > form > button.w-100.mb-2.btn.btn-lg.rounded-4.btn-warning").click());
         await page.screenshot();
     });
 });

@@ -24,6 +24,7 @@ import {
     signOut,
     onAuthStateChanged
 } from "firebase/auth";
+
 const firebaseConfig = {
     apiKey: "AIzaSyAEWF3Hxz9GquMTz_huVUes7q-zXbzAVJE",
     authDomain: "kneadit-b63a8.firebaseapp.com",
@@ -386,7 +387,7 @@ async function updateDB(fsCollection, jsonString) {
 const logOut = async () => {
     signOut(auth)
         .then(() => {
-            alert("You are now signed out!");
+            
         })
         .catch((err) => {
             console.error(err);
@@ -407,5 +408,5 @@ export {
     getFavorites, 
     getComment,
     editComment,
-    logOut,
+    logOut
 };

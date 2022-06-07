@@ -67,7 +67,6 @@ const RecipesPage = () => {
                             return key;
                         });
                         threerec.push(recipe);
-                        console.log(threerec);
                         if(threerec.length == 3){
                             recipez.push(threerec);
                             threerec = [];

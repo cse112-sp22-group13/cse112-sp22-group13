@@ -1,5 +1,5 @@
 jest.useRealTimers();
-jest.setTimeout(10000);
+jest.setTimeout(15000);
 
 describe("Search Tests", () => {
     beforeAll(async () => {
@@ -14,8 +14,7 @@ describe("Search Tests", () => {
         await page.type("#searchbar", "African");
         await page.keyboard.press("Enter");
 
-        await page.waitForSelector("#root > div > div.container-md > h2");
-        await page.waitForTimeout(2000);
+        await page.waitForSelector("#root > div > div.container-md > div:nth-child(2) > div:nth-child(1) > div > a > img");
         const header = await page.evaluate(() => document.querySelector("#root > div > div.container-md > h2").textContent);
         expect(header).toBe("Recipes that are African");
     });
@@ -28,8 +27,7 @@ describe("Search Tests", () => {
         await page.type("#searchbar", "AfRIcaN");
         await page.keyboard.press("Enter");
 
-        await page.waitForSelector("#root > div > div.container-md > h2");
-        await page.waitForTimeout(2000);
+        await page.waitForSelector("#root > div > div.container-md > div:nth-child(2) > div:nth-child(1) > div > a > img");
         const header = await page.evaluate(() => document.querySelector("#root > div > div.container-md > h2").textContent);
         expect(header).toBe("Recipes that are African");
     });
@@ -42,8 +40,7 @@ describe("Search Tests", () => {
         await page.type("#searchbar", "Bread");
         await page.keyboard.press("Enter");
 
-        await page.waitForSelector("#root > div > div.container-md > h2");
-        await page.waitForTimeout(2000);
+        await page.waitForSelector("#root > div > div.container-md > div:nth-child(2) > div:nth-child(1) > div > a > img");
         const header = await page.evaluate(() => document.querySelector("#root > div > div.container-md > h2").textContent);
         expect(header).toBe("Recipes containing Bread Ingredients");
     });
@@ -56,8 +53,7 @@ describe("Search Tests", () => {
         await page.type("#searchbar", "BReAd");
         await page.keyboard.press("Enter");
 
-        await page.waitForSelector("#root > div > div.container-md > h2");
-        await page.waitForTimeout(2000);
+        await page.waitForSelector("#root > div > div.container-md > div:nth-child(2) > div:nth-child(1) > div > a > img");
         const header = await page.evaluate(() => document.querySelector("#root > div > div.container-md > h2").textContent);
         expect(header).toBe("Recipes containing Bread Ingredients");
     });
@@ -70,10 +66,8 @@ describe("Search Tests", () => {
         await page.type("#searchbar", "Spanish style salmon fillets");
         await page.keyboard.press("Enter");
 
-        await page.waitForSelector("#root > div > div.container-md > h2");
-        await page.waitForTimeout(2000);
+        await page.waitForSelector("#root > div > div.container-md > div:nth-child(2) > div:nth-child(1) > div > a > img");
         const header = await page.evaluate(() => document.querySelector("#root > div > div.container-md > h2").textContent);
-        // console.log(header == "Recipes names with Spanish Style Salmon Fillets");
         expect(header).toBe("Recipes names with Spanish Style Salmon Fillets");
     });
 
@@ -85,10 +79,8 @@ describe("Search Tests", () => {
         await page.type("#searchbar", "sAlMoN fILleTS");
         await page.keyboard.press("Enter");
 
-        await page.waitForSelector("#root > div > div.container-md > h2");
-        await page.waitForTimeout(2000);
+        await page.waitForSelector("#root > div > div.container-md > div:nth-child(2) > div:nth-child(1) > div > a > img");
         const header = await page.evaluate(() => document.querySelector("#root > div > div.container-md > h2").textContent);
-        // console.log(header == "Recipes names with Salmon Fillets");
         expect(header).toBe("Recipes names with Salmon Fillets");
     });
 });

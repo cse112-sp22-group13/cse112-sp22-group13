@@ -5,6 +5,7 @@ describe("Recipe-related unit tests", () => {
     it("getRecipe with recipe in database", async () => {
         const recipe = await getRecipe("1095806");
         assert.equal(recipe.title, "Spanish style salmon fillets");
+        // expect(recipe.title).equal("Spanish style salmon fillets");
     });
 
     it("getRecipe with recipe not in database", async () => {
@@ -12,7 +13,7 @@ describe("Recipe-related unit tests", () => {
         assert.strictEqual(recipe, undefined);
     });
 
-    it("getRecipeIds with test collection in database", async () => {
+    it("getRecipeIds with test collection", async () => {
         const ids = await getRecipeIds("test", "test");
         assert.deepEqual(ids, [1, 2, 3]);
     });
