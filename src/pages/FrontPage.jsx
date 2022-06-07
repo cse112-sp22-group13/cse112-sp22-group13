@@ -23,6 +23,27 @@ import steak from "../icons/steak.png";
 import chicken from "../icons/chicken.png";
 import ethnic from "../icons/ethnic.png";
 import banana from "../icons/banana.png";
+//all country flag icons from https://www.flaticon.com/packs/countrys-flags
+import brazil from "../icons/flags/brazil.png";
+import china from "../icons/flags/china.png";
+import europe from "../icons/flags/european-union.png";
+import france from "../icons/flags/france.png";
+import germany from "../icons/flags/germany.png";
+import india from "../icons/flags/india.png";
+import israel from "../icons/flags/israel.png";
+import italy from "../icons/flags/italy.png";
+import jamaica from "../icons/flags/jamaica.png";
+import palestine from "../icons/flags/palestine.png";
+import southAfrica from "../icons/flags/south-africa.png";
+import southKorea from "../icons/flags/south-korea.png";
+import spain from "../icons/flags/spain.png";
+import sweden from "../icons/flags/sweden.png";
+import thailand from "../icons/flags/thailand.png";
+import ukraine from "../icons/flags/ukraine.png";
+import uk from "../icons/flags/united-kingdom.png";
+import us from "../icons/flags/united-states.png";
+import vietnam from "../icons/flags/vietnam.png";
+
 
 
 initializeDB();
@@ -31,79 +52,84 @@ const FrontPage = () => {
     // TODO: replace it with Spoonacular API response?
     const cuisineMockData = [
         {
-            name: "African"
+            name: "African",
+            img: southAfrica
         },
         {
-            name: "American"
+            name: "American",
+            img: us
         },
         {
-            name: "British"
+            name: "British",
+            img: uk
         },
         {
-            name: "Cajun"
+            name: "Cajun",
+            img: us
         },
         {
-            name: "Caribbean"
+            name: "Caribbean",
+            img: jamaica
         },
         {
-            name: "Chinese"
+            name: "Chinese",
+            img: china
         },
         {
-            name: "Eastern European"
+            name: "Eastern European",
+            img: ukraine
         },
         {
-            name: "European"
+            name: "European",
+            img: europe
         },
         {
-            name: "French"
+            name: "French",
+            img: france
         },
         {
-            name: "German"
+            name: "German",
+            img: germany
         },
         {
-            name: "Greek"
+            name: "Indian",
+            img: india
         },
         {
-            name: "Indian"
+            name: "Italian",
+            img: italy
         },
         {
-            name: "Italian"
+            name: "Jewish",
+            img: israel
         },
         {
-            name: "Japanese"
+            name: "Korean",
+            img: southKorea
         },
         {
-            name: "Jewish"
+            name: "Latin American",
+            img: brazil
         },
         {
-            name: "Korean"
+            name: "Mediterranean",
+            img: palestine
         },
         {
-            name: "Latin American"
+            name: "Nordic",
+            img: sweden
         },
         {
-            name: "Mediterranean"
+            name: "Spanish",
+            img: spain
         },
         {
-            name: "Mexican"
+            name: "Thai",
+            img: thailand
         },
         {
-            name: "Middle Eastern"
-        },
-        {
-            name: "Nordic"
-        },
-        {
-            name: "Southern"
-        },
-        {
-            name: "Spanish"
-        },
-        {
-            name: "Thai"
-        },
-        {
-            name: "Vietnamese"
+            name: "Vietnamese",
+            img: vietnam
         }
     ];
 
@@ -269,7 +295,7 @@ const FrontPage = () => {
                                 search: "?type=cuisines&data=" + cuisine.name }}>
                                 <img
                                     alt="100x100"
-                                    src={MockPhoto}
+                                    src={cuisine.img}
                                     data-holder-rendered="true"
                                 />
                                 <p className="pt-2">{cuisine.name}</p>
