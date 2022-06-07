@@ -109,7 +109,7 @@ const getFavorites = async () => {
 
 };
 
-const checkFavorite = async () => {
+const checkFavorite = async (recipe) => {
     try {
         if (auth.currentUser === null) {
             alert("You are not signed in!");
@@ -118,15 +118,14 @@ const checkFavorite = async () => {
         const docRef = doc(db, "users", auth.currentUser.uid);
         const docSnap = await getDoc(docRef);
         const favoriteList = docSnap.get("favorites");
-        if (favoriteList.includes("123455")) {  
-            console.log("remove");
+        if (favoriteList.includes(recipe)) {  
+            console.log("Recipe was removed from favorites");
             //replace number in array remove with actual recipe id
-            await updateDoc(docRef, {favorites: arrayRemove("123455")});
-            
+            await updateDoc(docRef, {favorites: arrayRemove(recipe)});
         } else {
-            console.log("add");
+            console.log("Recipe was added to favorites");
             //replace number in array remove with actual recipe id
-            await updateDoc(docRef, {favorites: arrayUnion("123455")});
+            await updateDoc(docRef, {favorites: arrayUnion(recipe)});
         }
     } catch(err) {
         console.error(err);

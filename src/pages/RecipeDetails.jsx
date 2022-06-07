@@ -132,7 +132,7 @@ const RecipeDetails = () => {
                             <button
                                 type="button"
                                 className="btn btn-lg btn-secondary "
-                                onClick={() => getFavorites()}
+                                onClick={() => checkFavorite(RecipeMockData.id.toString())}
                             >
                                 Favorite
                             </button>
