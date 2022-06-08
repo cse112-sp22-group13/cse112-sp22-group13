@@ -1,9 +1,9 @@
-name: Jest-Puppeteer Unit Tests
+name: Mocha Unit Tests
 
 on:
   pull_request:
 jobs:
-  jest-test:
+  unit-test:
     runs-on: ubuntu-latest
     env:
       CI: 'true'
@@ -17,4 +17,3 @@ jobs:
           npm run build
           npm run serve
           npm run test
-          npm run e2e-test
