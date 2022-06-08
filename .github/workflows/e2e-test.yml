@@ -15,4 +15,5 @@ jobs:
       - run: |
           npm ci
           npm run build
+          nohup npm run serve &
           npm run e2e-test
