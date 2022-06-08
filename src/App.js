@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import NavBar from "./components/Navbar.jsx";
 import Main from "./components/Main.jsx";
 
-import "./App.css";
+import "./stylesheets/App.css";
 
 /**
  * Main component of our app
