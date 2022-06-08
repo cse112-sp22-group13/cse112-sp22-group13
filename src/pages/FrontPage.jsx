@@ -180,20 +180,6 @@ const FrontPage = () => {
             img: carrot
         }
     ];
-    const ingredients = [
-        "Bread",
-        "Produce",
-        "Seafood",
-        "Spices and Seasonings",
-        "Milk, Eggs, or Other Dairy",
-        "Oil, Vinegar, or Salad Dressing",
-        "Cereal",
-        "Baking Goods",
-        "Health Foods",
-        "Ethnic Foods",
-        "Beverages",
-        "Canned and Jarred"
-    ];
 
     const prepTimeImg = [
         {
@@ -419,7 +405,7 @@ const RowOfCards = (props) => {
             ))}
         </div>
     ) : (
-        "Loading recipes..."
+        ""
     );
 };
 
