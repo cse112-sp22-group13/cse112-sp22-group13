@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
-import ShoppingCartModal from "../components/ShoppingCartModal";
+import ShoppingCartModal from "../components/ShoppingCartModal.jsx";
 import "../stylesheets/recipedetail.css";
 import {
     getRecipe,

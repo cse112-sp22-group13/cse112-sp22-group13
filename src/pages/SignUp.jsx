@@ -4,7 +4,7 @@ import {
     registerWithEmailAndPassword,
     signInWithGoogle
 } from "../firebase.mjs";
-import { store } from "../store/store";
+import { store } from "../store/store.js";
 
 /**
  * Component that renders the Sign Up form

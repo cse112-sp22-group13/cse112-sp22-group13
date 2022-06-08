@@ -1,12 +1,11 @@
 import React, { Fragment } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import FrontPage from "../pages/FrontPage";
-import RecipesPage from "../pages/RecipesPage";
-import RecipeDetails from "../pages/RecipeDetails";
-import SignUpPage from "../pages/SignUp";
-import LogInPage from "../pages/LogIn";
-import { fetchRecipes, searchFetchRecipes } from "../recipeSearch";
+import FrontPage from "../pages/FrontPage.jsx";
+import RecipesPage from "../pages/RecipesPage.jsx";
+import RecipeDetails from "../pages/RecipeDetails.jsx";
+import SignUpPage from "../pages/SignUp.jsx";
+import LogInPage from "../pages/LogIn.jsx";
 
 /**
  * Component to set up routes for different pages

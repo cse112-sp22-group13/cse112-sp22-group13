@@ -4,8 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import MockPhoto from "../media/mock-recipe-photo.jpg";
 import { getRecipe, getRecipeIds } from "../firebase.mjs";
 import "../stylesheets/recipespage.css";
-// const myFunctions = require("../firebase.mjs");
-//import { fetchRecipes, searchFetchRecipes } from "../recipeSearch";
 
 /**
  * Component that renders a page of Recipes

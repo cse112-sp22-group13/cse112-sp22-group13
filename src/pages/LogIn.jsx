@@ -5,7 +5,7 @@ import {
     signInWithGoogle,
     passwordReset
 } from "../firebase.mjs";
-import { store } from "../store/store";
+import { store } from "../store/store.js";
 
 /**
  * Component that renders the Login form
