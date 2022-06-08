@@ -11,6 +11,7 @@ import {
 } from "../firebase.mjs";
 import { useLocation } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 /**
  * Component that renders the Recipe Details
@@ -47,15 +48,23 @@ const RecipeDetails = () => {
                 }
             );
             const recipeType = params.type;
-
+            console.log(recipeType);
             var comment = await getComment(recipeType).then((key) => {
+                console.log(key);
                 return key;
             });
             setComment(comment);
             return comment;
         };
         randas();
-        randas2();
+        const auth = getAuth();
+        auth.onAuthStateChanged(function (user) {
+            if (user) {
+                randas2();
+            } else {
+                return "";
+            }
+        });
     }, []);
 
     /**
