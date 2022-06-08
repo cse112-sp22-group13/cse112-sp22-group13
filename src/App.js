@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
-import NavBar from "./components/Navbar";
-import Main from "./components/Main";
+import NavBar from "./components/Navbar.jsx";
+import Main from "./components/Main.jsx";
 
 import "./App.css";
 

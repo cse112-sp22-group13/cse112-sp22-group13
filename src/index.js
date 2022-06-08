@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { StateProvider } from "./store/store";
+import App from "./App.js";
+import reportWebVitals from "./reportWebVitals.js";
+import { StateProvider } from "./store/store.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
