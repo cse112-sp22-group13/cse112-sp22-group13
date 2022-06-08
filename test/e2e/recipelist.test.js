@@ -25,8 +25,8 @@ describe("Recipe List Tests", () => {
     });
 
     it("Click to recipes with Health Foods ingredients", async () => {
-        await page.waitForSelector("#root > div > div.scrolling-wrapper.row.flex-row.flex-nowrap.py-2 > div:nth-child(7) > a > img");
-        await page.evaluate(() => document.querySelector("#root > div > div.scrolling-wrapper.row.flex-row.flex-nowrap.py-2 > div:nth-child(7) > a > img").click());
+        await page.waitForSelector("#root > div > div.scrolling-wrapper.row.flex-row.flex-nowrap.py-2 > div:nth-child(3) > a > img");
+        await page.evaluate(() => document.querySelector("#root > div > div.scrolling-wrapper.row.flex-row.flex-nowrap.py-2 > div:nth-child(3) > a > img").click());
         
         await page.waitForSelector("#root > div > div.container-md > div:nth-child(2) > div:nth-child(1) > div > a > img");
         const header = await page.evaluate(() => document.querySelector("#root > div > div.container-md > h2").textContent);
