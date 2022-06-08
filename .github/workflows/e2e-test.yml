@@ -15,5 +15,4 @@ jobs:
       - run: |
           npm ci
           npm run build
-          npm run serve
           npm run e2e-test
