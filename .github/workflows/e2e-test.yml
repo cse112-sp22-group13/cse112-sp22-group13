@@ -1,7 +1,7 @@
 name: Jest-Puppeteer E2E Tests
 
 on:
-  pull_request
+  pull_request:
 jobs:
   e2e-test:
     runs-on: ubuntu-latest
