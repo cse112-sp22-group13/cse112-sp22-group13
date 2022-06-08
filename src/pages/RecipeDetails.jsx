@@ -1,15 +1,11 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Dropdown } from "react-bootstrap";
-import ShoppingCartModal from "../components/ShoppingCartModal.jsx";
 import "../stylesheets/recipedetail.css";
 import {
     getRecipe,
     getComment,
     editComment,
-    getFavorites,
     checkFavorite
 } from "../firebase.mjs";
-import { useLocation } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -124,19 +120,6 @@ const RecipeDetails = () => {
     };
 
     /**
-     * Render the shopping modal based on user's interactivity
-     */
-    const renderVisibility = () => {
-        if (showModal == "true") {
-            return (
-                <ShoppingCartModal
-                    setStateOfParent={setStateOfParent}
-                ></ShoppingCartModal>
-            );
-        }
-    };
-
-    /**
      * set comment in state
      * @param {} e window's default event
      */
@@ -167,13 +150,6 @@ const RecipeDetails = () => {
                             ></img>
                         </div>
                         <div className="button-row">
-                            <button
-                                type="button"
-                                className="btn btn-lg btn-secondary "
-                                onClick={() => setShowModal("true")}
-                            >
-                                Shopping
-                            </button>
                             <button
                                 type="button"
                                 className="btn btn-lg btn-secondary "

@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useContext } from "react";
-import { Dropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import "../stylesheets/NavBar.css";
 import { store } from "../store/store.js";

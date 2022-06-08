@@ -1,7 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import MockPhoto from "../media/mock-recipe-photo.jpg";
 import { getRecipe, getRecipeIds } from "../firebase.mjs";
 import "../stylesheets/recipespage.css";
 

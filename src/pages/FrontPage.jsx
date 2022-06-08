@@ -1,18 +1,13 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import MockPhoto from "../media/mock-photo.jpg";
 import { getFavorites, getRecipe } from "../firebase.mjs";
 import { initializeDB } from "../spoonacular.mjs";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "../stylesheets/frontpage.css";
-import timer5 from "../media/timer5.png";
-import timer10 from "../media/timer10.png";
-import timer15 from "../media/timer15.png";
 import timer30 from "../media/timer30.png";
 import timer45 from "../media/timer45.png";
 import timer60 from "../media/timer60.png";
-import timer2hr from "../media/timer2hr.png";
 import bread from "../icons/bread.png";
 import muffin from "../icons/muffin.png";
 import fish from "../icons/fish.png";
