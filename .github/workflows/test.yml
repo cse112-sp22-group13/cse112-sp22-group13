@@ -14,7 +14,7 @@ jobs:
             node-version: 16
       - run: |
           npm ci
-          nohup npm run start &
-          sleep 15
+          npm run build
+          npm run serve
           npm run test
           npm run e2e-test
