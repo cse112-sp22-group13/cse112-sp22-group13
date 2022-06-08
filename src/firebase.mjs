@@ -33,26 +33,17 @@ const firebaseConfig = {
     measurementId: "G-59HFYTH3KC"
 };
 
-// const firebaseConfig = {
-//     apiKey: "AIzaSyA01GSeQDPGFDoZfy65_XbMk_qA6FM0m1U",
-//     authDomain: "borpa-460ca.firebaseapp.com",
-//     projectId: "borpa-460ca",
-//     storageBucket: "borpa-460ca.appspot.com",
-//     messagingSenderId: "132856979483",
-//     appId: "1:132856979483:web:d44383fab327b0a865d8be"
-// };
-
+// Initialize Firebase instance
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const auth = getAuth(app);
 
-//var email = "peder@gmail.com";
-//var password = "heiheiArsenal12";
-//createUserWithEmailAndPassword(auth,email, password).then(cred => {
-//    console.log(cred);
-//});
-
+/** 
+ * Get a comment from the recipe id.
+ * @param {String} recipe The recipe to get the comment for
+ * @returns A string representing the recipe comment
+ */
 const getComment = async (recipe) => {
     if (auth.currentUser === null) {
         return "";
@@ -75,29 +66,34 @@ const getComment = async (recipe) => {
     }
 };
 
+/** 
+ * Edit the comment for a recipe.
+ * @param {String} recipe The recipe to edit the comment of
+ * @param {String} comment The comment for the recipe
+ */
 const editComment = async (recipe, comment) => {
     if (auth.currentUser === null) {
         alert("You are not signed in!");
         return;
     }
     const docRef = doc(db, "users", auth.currentUser.uid);
-    const docSnap = await getDoc(docRef);
     //get recipeID, either by input or something else
     try {
         const recipeid = "comments." + recipe;
         await updateDoc(docRef, {
             [recipeid]: comment
         });
-        // await docRef.child("comments").update({
-        //     [recipe]: comment
-        // });
-        await updateDoc(docRef, { favorites: arrayRemove(recipe) });
+        alert("Comment saved!");
     } catch (err) {
         console.error(err);
         alert(err.message);
     }
 };
 
+/**
+ * Get a user's favorite recipes.
+ * @returns users favorite recipes, as an array of recipe ids
+ */
 const getFavorites = async () => {
     try {
         if (auth.currentUser === null) {
@@ -112,6 +108,10 @@ const getFavorites = async () => {
     }
 };
 
+/**
+ * Toggle the recipe in the user's favorite list (favorites if unfavorited, unfavorites if favorited).
+ * @param {*} recipe The recipe to favorite/unfavorite
+ */
 const checkFavorite = async (recipe) => {
     try {
         if (auth.currentUser === null) {
@@ -122,11 +122,11 @@ const checkFavorite = async (recipe) => {
         const docSnap = await getDoc(docRef);
         const favoriteList = docSnap.get("favorites");
         if (favoriteList.includes(recipe)) {
-            console.log("Recipe was removed from favorites");
+            alert("Recipe was removed from favorites.");
             //replace number in array remove with actual recipe id
             await updateDoc(docRef, { favorites: arrayRemove(recipe) });
         } else {
-            console.log("Recipe was added to favorites");
+            alert("Recipe was added to favorites.");
             //replace number in array remove with actual recipe id
             await updateDoc(docRef, { favorites: arrayUnion(recipe) });
         }
@@ -136,6 +136,12 @@ const checkFavorite = async (recipe) => {
     }
 };
 
+/**
+ * Log in user using input email and password.
+ * @param {String} email Email of user
+ * @param {String} password Password of user
+ * @returns 
+ */
 const logInWithEmailAndPassword = async (email, password) => {
     try {
         const res = await signInWithEmailAndPassword(auth, email, password);
@@ -146,6 +152,12 @@ const logInWithEmailAndPassword = async (email, password) => {
     }
 };
 
+/**
+ * Register user using input and password.
+ * @param {String} email Email of user
+ * @param {String} password Password of user
+ * @returns 
+ */
 const registerWithEmailAndPassword = async (email, password) => {
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -169,6 +181,10 @@ const registerWithEmailAndPassword = async (email, password) => {
 };
 
 const googleProvider = new GoogleAuthProvider();
+
+/**
+ * Sign in user using Google authentication.
+ */
 const signInWithGoogle = async () => {
     try {
         const res = await signInWithPopup(auth, googleProvider);
@@ -191,6 +207,10 @@ const signInWithGoogle = async () => {
     }
 };
 
+/**
+ * Send user a password reset email.
+ * @param {String} email Email to send the reset email to
+ */
 const passwordReset = async (email) => {
     sendPasswordResetEmail(auth, email)
         .then(() => {
@@ -202,7 +222,12 @@ const passwordReset = async (email) => {
         });
 };
 
-// Get the list of recipes from your database
+/**
+ * Get a list of recipes from the database with a search type of recipeType and a query of recipeData.
+ * @param {String} recipeType Type of the search
+ * @param {String} recipeData Query of the search
+ * @returns Recipes found in the search
+ */
 async function getRecipeIds(recipeType, recipeData) {
     if (recipeType == "Name") {
         var recipes = [];
@@ -286,7 +311,11 @@ async function getRecipeIds(recipeType, recipeData) {
     return ids;
 }
 
-// get recipe from id
+/**
+ * Get recipe information from its ID.
+ * @param {String} id ID of the recipe to fetch
+ * @returns Recipe information being queried
+ */
 async function getRecipe(id) {
     var recipe;
 
@@ -316,7 +345,11 @@ async function addRecipe(jsonString) {
     await setDoc(docRef, json);
 }
 
-// updates document in DB, or creates if doesn't exist
+/**
+ * Updates a document in the database or creates the document if it does not exist.
+ * @param {String} fsCollection document to create/update
+ * @param {String} jsonString content to update with
+ */
 async function updateDB(fsCollection, jsonString) {
     var docRef;
     var subColRef;
@@ -397,6 +430,9 @@ async function updateDB(fsCollection, jsonString) {
     await setDoc(subDocRef, { data: json.id.toString() });
 }
 
+/**
+ * Logs out the user.
+ */
 const logOut = async () => {
     signOut(auth)
         .then(() => {})

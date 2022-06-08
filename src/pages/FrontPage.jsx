@@ -135,43 +135,43 @@ const FrontPage = () => {
 
     const ingredientsImg = [
         {
-            name: "bread",
+            name: "Bread",
             img: bread
         },
         {
-            name: "muffin",
+            name: "Baking",
             img: muffin
         },
         {
-            name: "banana",
+            name: "Produce",
             img: banana
         },
         {
-            name: "fish",
+            name: "Seafood",
             img: fish
         },
         {
-            name: "milk",
+            name: "Beverages",
             img: milk
         },
         {
-            name: "spices",
+            name: "Spices and Seasonings",
             img: spices
         },
         {
-            name: "steak",
+            name: "Health Foods",
             img: steak
         },
         {
-            name: "chicken",
+            name: "Oil, Vinegar, Salad Dressing",
             img: chicken
         },
         {
-            name: "cheese",
+            name: "Milk, Eggs, Other Dairy",
             img: cheese
         },
         {
-            name: "ethnic",
+            name: "Ethnic Foods",
             img: ethnic
         }
     ];

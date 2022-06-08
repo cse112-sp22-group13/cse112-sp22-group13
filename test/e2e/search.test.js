@@ -37,12 +37,12 @@ describe("Search Tests", () => {
         await page.evaluate(() => document.querySelector("#dropdown-basic").click());
         await page.waitForSelector("#form_search > div > span > div > div > a:nth-child(3)");
         await page.evaluate(() => document.querySelector("#form_search > div > span > div > div > a:nth-child(3)").click());
-        await page.type("#searchbar", "Bread");
+        await page.type("#searchbar", "Health Foods");
         await page.keyboard.press("Enter");
 
         await page.waitForSelector("#root > div > div.container-md > div:nth-child(2) > div:nth-child(1) > div > a > img");
         const header = await page.evaluate(() => document.querySelector("#root > div > div.container-md > h2").textContent);
-        expect(header).toBe("Recipes containing Bread Ingredients");
+        expect(header).toBe("Recipes containing Health Foods Ingredients");
     });
 
     it("Strange casing ingredient search", async () => {
@@ -50,12 +50,12 @@ describe("Search Tests", () => {
         await page.evaluate(() => document.querySelector("#dropdown-basic").click());
         await page.waitForSelector("#form_search > div > span > div > div > a:nth-child(3)");
         await page.evaluate(() => document.querySelector("#form_search > div > span > div > div > a:nth-child(3)").click());
-        await page.type("#searchbar", "BReAd");
+        await page.type("#searchbar", "hEaLtH fOOdS");
         await page.keyboard.press("Enter");
 
         await page.waitForSelector("#root > div > div.container-md > div:nth-child(2) > div:nth-child(1) > div > a > img");
         const header = await page.evaluate(() => document.querySelector("#root > div > div.container-md > h2").textContent);
-        expect(header).toBe("Recipes containing Bread Ingredients");
+        expect(header).toBe("Recipes containing Health Foods Ingredients");
     });
 
     it("Simple name search", async () => {

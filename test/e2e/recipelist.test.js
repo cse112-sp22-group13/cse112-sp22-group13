@@ -15,22 +15,22 @@ describe("Recipe List Tests", () => {
         expect(header).toBe("Recipes that are African");
     });
 
-    it("Click to Vietnamese recipes (offscreen)", async () => {
-        await page.waitForSelector("#root > div > div.container-fluid > div > div:nth-child(25) > a > img");
-        await page.evaluate(() => document.querySelector("#root > div > div.container-fluid > div > div:nth-child(25) > a > img").click());
+    it("Click to Nordic recipes (offscreen)", async () => {
+        await page.waitForSelector("#root > div > div.container-fluid > div > div:nth-child(17) > a > img");
+        await page.evaluate(() => document.querySelector("#root > div > div.container-fluid > div > div:nth-child(17) > a > img").click());
         
         await page.waitForSelector("#root > div > div.container-md > div:nth-child(2) > div:nth-child(1) > div > a > img");
         const header = await page.evaluate(() => document.querySelector("#root > div > div.container-md > h2").textContent);
-        expect(header).toBe("Recipes that are Vietnamese");
+        expect(header).toBe("Recipes that are Nordic");
     });
 
-    it("Click to recipes with bread ingredients", async () => {
-        await page.waitForSelector("#root > div > div:nth-child(6) > div:nth-child(1) > a > img");
-        await page.evaluate(() => document.querySelector("#root > div > div:nth-child(6) > div:nth-child(1) > a > img").click());
+    it("Click to recipes with Health Foods ingredients", async () => {
+        await page.waitForSelector("#root > div > div.scrolling-wrapper.row.flex-row.flex-nowrap.py-2 > div:nth-child(7) > a > img");
+        await page.evaluate(() => document.querySelector("#root > div > div.scrolling-wrapper.row.flex-row.flex-nowrap.py-2 > div:nth-child(7) > a > img").click());
         
         await page.waitForSelector("#root > div > div.container-md > div:nth-child(2) > div:nth-child(1) > div > a > img");
         const header = await page.evaluate(() => document.querySelector("#root > div > div.container-md > h2").textContent);
-        expect(header).toBe("Recipes containing Bread Ingredients");
+        expect(header).toBe("Recipes containing Health Foods Ingredients");
     });
 
     it("Click to recipes with <30 minutes prep time", async () => {

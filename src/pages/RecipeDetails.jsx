@@ -146,13 +146,6 @@ const RecipeDetails = () => {
 
     return (
         <Fragment>
-            <button
-                type="button"
-                className="btn btn-lg btn-secondary "
-                onClick={() => history.back()}
-            >
-                Back
-            </button>
             {showModal == "true" && (
                 <div className="recipe-page">
                     <div className="recipe-container">{renderVisibility()}</div>
