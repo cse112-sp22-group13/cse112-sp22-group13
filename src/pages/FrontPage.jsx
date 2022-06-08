@@ -23,6 +23,7 @@ import steak from "../icons/steak.png";
 import chicken from "../icons/chicken.png";
 import ethnic from "../icons/ethnic.png";
 import banana from "../icons/banana.png";
+import carrot from "../icons/carrot.png";
 //all country flag icons from https://www.flaticon.com/packs/countrys-flags
 import brazil from "../icons/flags/brazil.png";
 import china from "../icons/flags/china.png";
@@ -143,7 +144,7 @@ const FrontPage = () => {
             img: muffin
         },
         {
-            name: "Produce",
+            name: "Health Foods",
             img: banana
         },
         {
@@ -159,7 +160,7 @@ const FrontPage = () => {
             img: spices
         },
         {
-            name: "Health Foods",
+            name: "Canned and Jarred",
             img: steak
         },
         {
@@ -173,6 +174,10 @@ const FrontPage = () => {
         {
             name: "Ethnic Foods",
             img: ethnic
+        },
+        {
+            name: "Produce",
+            img: carrot
         }
     ];
     const ingredients = [
