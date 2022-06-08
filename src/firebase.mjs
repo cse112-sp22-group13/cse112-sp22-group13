@@ -275,9 +275,9 @@ async function getRecipeIds(recipeType, recipeData) {
 
     if (recipeData == "Less Than 30 Minutes") {
         prep = 0;
-    } else if (recipeData == "30 to 60 Minutes") {
+    } else if (recipeData == "30 To 60 Minutes") {
         prep = 1;
-    } else if (recipeData == "60 Minutes or More") {
+    } else if (recipeData == "60 Minutes Or More") {
         prep = 2;
     }
 
