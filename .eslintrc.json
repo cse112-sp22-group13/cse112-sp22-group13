@@ -3,18 +3,28 @@
         "browser": true,
         "es2021": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
     "parserOptions": {
         "ecmaVersion": "latest",
-        "sourceType": "module"
+        "sourceType": "module",
+        "babelOptions": {
+            "presets": ["@babel/react"]
+        }
     },
     "plugins": [
-        "eslint-plugin-html"
+        "eslint-plugin-html",
+        "react"
       ],
     "rules": {
         "indent": [
             "error",
-            4
+            4,
+            {
+                "SwitchCase" : 1
+            }
         ],
         "linebreak-style": [
             "off",
@@ -38,9 +48,11 @@
         "no-undef": [
             "off"
         ],
-        "comma-dangle": [
-            "error",
-            "never"
+        "react/prop-types": [
+            0
+        ],
+        "react/jsx-key": [
+            0
         ]
     }
 }
