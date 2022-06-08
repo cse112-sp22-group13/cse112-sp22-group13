@@ -219,7 +219,7 @@ const RecipeDetails = () => {
                                         document.getElementById("notes").value
                                     );
                                     editComment(
-                                        document.getElementById("notes").value
+                                        RecipeMockData.id.toString(), document.getElementById("notes").value
                                     );
                                 }}
                             >

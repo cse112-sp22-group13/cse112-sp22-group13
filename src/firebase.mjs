@@ -53,12 +53,15 @@ const auth = getAuth(app);
 //    console.log(cred);
 //});
 
-const getComment = async () => {
+const getComment = async (recipe) => {
+    if (auth.currentUser === null) {
+        return "";
+    }
     const docRef = doc(db, "users", auth.currentUser.uid);
     const docSnap = await getDoc(docRef);
     //get recipeid, either by input or something else
     try {
-        const comment = docSnap.data().comments["RecipeID"];
+        const comment = docSnap.data().comments[recipe];
         if (comment == null) {
             console.log("no comment");
             return "";
@@ -72,7 +75,7 @@ const getComment = async () => {
     }
 };
 
-const editComment = async () => {
+const editComment = async (recipe, comment) => {
     if (auth.currentUser === null) {
         alert("You are not signed in!");
         return;
@@ -81,9 +84,14 @@ const editComment = async () => {
     const docSnap = await getDoc(docRef);
     //get recipeID, either by input or something else
     try {
+        const recipeid = "comments." + recipe;
         await updateDoc(docRef, {
-            "comments.RecipeID": "Comment: Really good recipe"
+            [recipeid]: comment
         });
+        // await docRef.child("comments").update({
+        //     [recipe]: comment
+        // });
+        await updateDoc(docRef, { favorites: arrayRemove(recipe) });
     } catch (err) {
         console.error(err);
         alert(err.message);
