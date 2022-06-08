@@ -30,7 +30,8 @@
     "jest-environment-jsdom": "^28.0.2",
     "jest-puppeteer": "^6.1.0",
     "mocha": "^10.0.0",
-    "puppeteer": "^13.7.0"
+    "puppeteer": "^13.7.0",
+    "serve": "^13.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
