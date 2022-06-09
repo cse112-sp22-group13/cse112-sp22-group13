@@ -8,7 +8,7 @@ import "./stylesheets/App.css";
 
 /**
  * Main component of our app
- * @returns
+ * @returns Component representing our app
  */
 const App = () => {
     return (
