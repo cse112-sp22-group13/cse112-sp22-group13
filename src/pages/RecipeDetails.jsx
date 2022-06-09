@@ -44,9 +44,7 @@ const RecipeDetails = () => {
                 }
             );
             const recipeType = params.type;
-            console.log(recipeType);
             var comment = await getComment(recipeType).then((key) => {
-                console.log(key);
                 return key;
             });
             setComment(comment);
@@ -136,7 +134,6 @@ const RecipeDetails = () => {
             )}
             {showModal == "false" && (
                 <div className="recipe-page">
-                    {console.log(RecipeMockData)}
                     <div className="recipe-container">
                         <div className="recipe-title">
                             {RecipeMockData.title}
@@ -193,9 +190,6 @@ const RecipeDetails = () => {
                                 type="button"
                                 className="btn btn btn-secondary "
                                 onClick={async () => {
-                                    console.log(
-                                        document.getElementById("notes").value
-                                    );
                                     editComment(
                                         RecipeMockData.id.toString(), document.getElementById("notes").value
                                     );

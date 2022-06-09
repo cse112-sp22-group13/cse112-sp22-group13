@@ -54,10 +54,8 @@ const getComment = async (recipe) => {
     try {
         const comment = docSnap.data().comments[recipe];
         if (comment == null) {
-            console.log("no comment");
             return "";
         } else {
-            console.log(comment);
             return comment;
         }
     } catch (err) {
@@ -325,7 +323,7 @@ async function getRecipe(id) {
     if (docSnap.exists()) {
         recipe = docSnap.data();
     } else {
-        console.log("No document found.");
+        console.error("No document found.");
     }
     return recipe;
 }

@@ -31,7 +31,6 @@ const StateProvider = ({ children }) => {
     // store the state in localStorage so the state persist across page loads
     useEffect(() => {
         localStorage.setItem("state", JSON.stringify(state));
-        console.log(localStorage);
     }, [state]);
 
     return <Provider value={{ state, dispatch }}>{children}</Provider>;
