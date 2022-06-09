@@ -1,6 +1,7 @@
 # cse112-sp22-group13 - Full Stack
 
 Final Video (Public): [https://youtu.be/oaQaCMjofmA](https://youtu.be/oaQaCMjofmA)
+Final Video (Private): [https://youtu.be/vCZ5KULGeno] (https://youtu.be/vCZ5KULGeno)
 
 ## [KNEAD IT](https://knead-it.netlify.app)
 Knead It is a bread-themed recipe manager designed for use in the browser. Users may create accounts to keep track of their favorite recipes and note down comments about recipes, similar to how they might interact with a physical cookbook.
