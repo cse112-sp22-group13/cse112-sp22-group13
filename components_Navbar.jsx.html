@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Navbar.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Navbar.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Fragment, useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../stylesheets/NavBar.css";
+import { store } from "../store/store.js";
+import { logOut } from "../firebase.mjs";
+
+/**
+ * Component to render Navbar with login/signup/logout options
+ */
+const NavBar = () => {
+    let navigate = useNavigate();
+    const [queryType, setQueryType] = useState("Name");
+    const { state, dispatch } = useContext(store);
+
+    /**
+     * Log user out by clearing their logged in data from the Context Store
+     */
+    const logout = () => {
+        dispatch({ type: "DELETE_USER" });
+        logOut();
+    };
+
+    return (
+        &lt;div>
+            &lt;div className="container">
+                &lt;header className="d-flex flex justify-content-between align-items-center py-3 mb-4 border-bottom">
+                    &lt;a
+                        href="/"
+                        //className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
+                    >
+                        &lt;img
+                            id="icon"
+                            src={require("../icons/NavBar Logo.png")}
+                            alt="Logo"
+                            width="75"
+                            height="75"
+                        />
+                    &lt;/a>
+
+                    &lt;h1 id="title">Knead It&lt;/h1>
+                    &lt;form className="buttons">
+                        &lt;div /*className="col-md-3 text-end"*/>
+                            {state.email ? (
+                                &lt;Fragment>
+                                    &lt;button
+                                        type="button"
+                                        className="btn btn-link me-3 px-4 button"
+                                        onClick={logout}
+                                    >
+                                        Logout
+                                    &lt;/button>
+                                &lt;/Fragment>
+                            ) : (
+                                &lt;Fragment>
+                                    &lt;Link to="/login">
+                                        &lt;button
+                                            type="button"
+                                            className="btn btn-link me-3 px-4 button"
+                                        >
+                                            Login
+                                        &lt;/button>
+                                    &lt;/Link>
+                                    &lt;Link to="/signup">
+                                        &lt;button
+                                            type="button"
+                                            className="btn btn-secondary px-4 button"
+                                        >
+                                            Sign Up
+                                        &lt;/button>
+                                    &lt;/Link>
+                                &lt;/Fragment>
+                            )}
+                        &lt;/div>
+                    &lt;/form>
+                &lt;/header>
+            &lt;/div>
+        &lt;/div>
+    );
+};
+
+export default NavBar;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#cuisineMockData">cuisineMockData</a></li><li><a href="global.html#FrontPage">FrontPage</a></li><li><a href="global.html#HorizontalScrollImg">HorizontalScrollImg</a></li><li><a href="global.html#ingredientsImg">ingredientsImg</a></li><li><a href="global.html#LogInPage">LogInPage</a></li><li><a href="global.html#Main">Main</a></li><li><a href="global.html#NavBar">NavBar</a></li><li><a href="global.html#prepTimeImg">prepTimeImg</a></li><li><a href="global.html#RecipeDetails">RecipeDetails</a></li><li><a href="global.html#RecipesPage">RecipesPage</a></li><li><a href="global.html#RowOfCards">RowOfCards</a></li><li><a href="global.html#SignUpPage">SignUpPage</a></li><li><a href="global.html#StateProvider">StateProvider</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Thu Jun 09 2022 02:08:49 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

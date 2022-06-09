@@ -94,6 +94,196 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="cuisineMockData"><span class="type-signature">(constant) </span>cuisineMockData<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Constants defining cuisine category cards.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="ingredientsImg"><span class="type-signature">(constant) </span>ingredientsImg<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Constants defining ingredient category cards.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line125">line 125</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="prepTimeImg"><span class="type-signature">(constant) </span>prepTimeImg<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Constants defining prep time category cards.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="constants.js.html">constants.js</a>, <a href="constants.js.html#line175">line 175</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -104,7 +294,7 @@
     
 
     
-    <h4 class="name" id="addRecipe"><span class="type-signature">(async) </span>addRecipe<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="App"><span class="type-signature"></span>App<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -112,9 +302,7 @@
 
 
 <div class="description">
-    ADDRECIPE function will take url input by user, check if it's a duplicate, and then extract the json
-from the website. Will then insert into local storage and all the hash maps, and then
-create the recipe card that will be viewable at the top of the recipe list.
+    Main component of our app
 </div>
 
 
@@ -158,234 +346,7 @@ create the recipe card that will be viewable at the top of the recipe list.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addRecipe.js.html">addRecipe.js</a>, <a href="addRecipe.js.html#line54">line 54</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="bindEnterKey"><span class="type-signature"></span>bindEnterKey<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    bindEnterKey allows user to click 'enter' after they typed something
-into the search bar or add bar on the recipe list page.
-Checks the active bar on the page first to call the appropriate funciton.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="RecipeList.js.html">RecipeList.js</a>, <a href="RecipeList.js.html#line182">line 182</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="checkDup"><span class="type-signature"></span>checkDup<span class="signature">(url)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Check if the recipe is already in the localStorage
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>url</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">url which comes from user input</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addRecipe.js.html">addRecipe.js</a>, <a href="addRecipe.js.html#line142">line 142</a>
+        <a href="App.js.html">App.js</a>, <a href="App.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -414,22 +375,10 @@ Checks the active bar on the page first to call the appropriate funciton.
 
         
 <div class="param-desc">
-    true if there already exists a url, false if not
+    Component representing our app
 </div>
 
 
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
 
     
 
@@ -443,7 +392,7 @@ Checks the active bar on the page first to call the appropriate funciton.
     
 
     
-    <h4 class="name" id="clickNav"><span class="type-signature"></span>clickNav<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="FrontPage"><span class="type-signature"></span>FrontPage<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -451,7 +400,7 @@ Checks the active bar on the page first to call the appropriate funciton.
 
 
 <div class="description">
-    Function that applies styling to expand and close the navbar on the side when clicked.
+    Components to render the front page with rows of cusines, ingredients, prep time and favorites
 </div>
 
 
@@ -495,7 +444,7 @@ Checks the active bar on the page first to call the appropriate funciton.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="sideBar.js.html">sideBar.js</a>, <a href="sideBar.js.html#line4">line 4</a>
+        <a href="pages_FrontPage.jsx.html">pages/FrontPage.jsx</a>, <a href="pages_FrontPage.jsx.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -531,7 +480,7 @@ Checks the active bar on the page first to call the appropriate funciton.
     
 
     
-    <h4 class="name" id="createCookView"><span class="type-signature"></span>createCookView<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="HorizontalScrollImg"><span class="type-signature"></span>HorizontalScrollImg<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -539,10 +488,7 @@ Checks the active bar on the page first to call the appropriate funciton.
 
 
 <div class="description">
-    CREATECOOKVIEW functionGrabs the #id url fragment that was appended when we clicked
-on a recipe card and creates the html structure of the cook view page by passing in the
-data string from localStorage into a custom recipe-card-expand-container. See
-recipeCardExpand.js for how this data is parsed.
+    Component to render horizontal icons for Cuisine, Ingredients, and Prep Time row
 </div>
 
 
@@ -586,7 +532,7 @@ recipeCardExpand.js for how this data is parsed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="cookViewInit.js.html">cookViewInit.js</a>, <a href="cookViewInit.js.html#line23">line 23</a>
+        <a href="pages_FrontPage.jsx.html">pages/FrontPage.jsx</a>, <a href="pages_FrontPage.jsx.html#line162">line 162</a>
     </li></ul></dd>
     
 
@@ -622,7 +568,7 @@ recipeCardExpand.js for how this data is parsed.
     
 
     
-    <h4 class="name" id="createFavCards"><span class="type-signature"></span>createFavCards<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="LogInPage"><span class="type-signature"></span>LogInPage<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -630,11 +576,7 @@ recipeCardExpand.js for how this data is parsed.
 
 
 <div class="description">
-    CREATEFAVCARDS function is called for you up above.
-From within this function you can access the recipe data from the JSON
-files with the recipeData Object above. Make sure you only display the
-three recipes we give you, you'll use the bindShowMore() function to
-show any others you've added when the user clicks on the "Show more" button.
+    Component that renders the Login form
 </div>
 
 
@@ -678,7 +620,7 @@ show any others you've added when the user clicks on the "Show more" button.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="FavoriteList.js.html">FavoriteList.js</a>, <a href="FavoriteList.js.html#line22">line 22</a>
+        <a href="pages_LogIn.jsx.html">pages/LogIn.jsx</a>, <a href="pages_LogIn.jsx.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -714,7 +656,7 @@ show any others you've added when the user clicks on the "Show more" button.
     
 
     
-    <h4 class="name" id="createRecipeCards"><span class="type-signature"></span>createRecipeCards<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Main"><span class="type-signature"></span>Main<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -722,10 +664,7 @@ show any others you've added when the user clicks on the "Show more" button.
 
 
 <div class="description">
-    CREATERECIPECARDS FUNCTION is called within init. From within this function you
-can access the recipe data from the JSON files with the recipeData Object above.
-Make sure you only display the three recipes we give you, you'll use the bindShowMore()
-function to show any others you've added when the user clicks on the "Show more" button.
+    Component to set up routes for different pages
 </div>
 
 
@@ -769,692 +708,7 @@ function to show any others you've added when the user clicks on the "Show more"
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="RecipeList.js.html">RecipeList.js</a>, <a href="RecipeList.js.html#line38">line 38</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="createRecipeExpand"><span class="type-signature"></span>createRecipeExpand<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    CREATERECIPEEXPAND function grabs the #id url fragment that was appended when
-we clicked on a recipe card and creates the html structure of the recipe expand
-page by passing in the data string from localStorage into a custom
-recipe-card-expand-container. See recipeCardExpand.js for how this data is parsed.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="recipeExpand.js.html">recipeExpand.js</a>, <a href="recipeExpand.js.html#line25">line 25</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="deleteRecipe"><span class="type-signature"></span>deleteRecipe<span class="signature">(id)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    DELETERECIPE takes in the id of the card that was clicked to delete by user
-and changes its value in the delMap (located at index 3 in localstorage) to true.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">, Id of Recipe to Delete</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="deleteRecipe.js.html">deleteRecipe.js</a>, <a href="deleteRecipe.js.html#line6">line 6</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="editRecipe"><span class="type-signature"></span>editRecipe<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Export editRecipe function called when edit button is clicked in recipe-expand.html.
-Hides the edit button and sets the input form and submit button to be viewable.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="recipeExpand.js.html">recipeExpand.js</a>, <a href="recipeExpand.js.html#line37">line 37</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="extraction"><span class="type-signature">(async) </span>extraction<span class="signature">(input)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Normal extract that makes call to API to obtain json file from the
-url the user inserted.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>input</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">takes in url that user inserted into textarea</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addRecipe.js.html">addRecipe.js</a>, <a href="addRecipe.js.html#line26">line 26</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="fillPopular"><span class="type-signature"></span>fillPopular<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    FILLPOPULAR will be called right when homepage is clicked on and localstorage is filled.
-It will access the popular array that main had initialized with the top rate recipes
-and shuffle it (so that there are different recommendations every page refresh. Then it
-will choose 3 and places their images and titles for view on homepage. When they are
-clicked on, will take you to recipe expand page.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="popularRecipes.js.html">popularRecipes.js</a>, <a href="popularRecipes.js.html#line8">line 8</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getInstructionSteps"><span class="type-signature"></span>getInstructionSteps<span class="signature">(data)</span><span class="type-signature"> &rarr; {Array.&lt;Object>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Returns the instruction steps of the given recipe
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>data</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">json file</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="searchKey.js.html">searchKey.js</a>, <a href="searchKey.js.html#line28">line 28</a>
+        <a href="components_Main.jsx.html">components/Main.jsx</a>, <a href="components_Main.jsx.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -1483,22 +737,10 @@ clicked on, will take you to recipe expand page.
 
         
 <div class="param-desc">
-    An array holding the list of steps
+    <Routes>
 </div>
 
 
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;Object></span>
-
-
-    </dd>
-</dl>
 
     
 
@@ -1512,7 +754,7 @@ clicked on, will take you to recipe expand page.
     
 
     
-    <h4 class="name" id="getRecipesNotContainingKeyword"><span class="type-signature"></span>getRecipesNotContainingKeyword<span class="signature">(keyword)</span><span class="type-signature"> &rarr; {Array.&lt;int>}</span></h4>
+    <h4 class="name" id="NavBar"><span class="type-signature"></span>NavBar<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -1520,11 +762,271 @@ clicked on, will take you to recipe expand page.
 
 
 <div class="description">
-    GETRECIPESNOTCONTAININGKEYWORD function
-For grabbing an array of id' with all recipes that DON'T contain the
-search input user put into search bar. This will be used to set those
-recipes to 'hidden' so that only the recipes containing the word are
-in view on the recipe list.
+    Component to render Navbar with login/signup/logout options
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_Navbar.jsx.html">components/Navbar.jsx</a>, <a href="components_Navbar.jsx.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="RecipeDetails"><span class="type-signature"></span>RecipeDetails<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Component that renders the Recipe Details
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="pages_RecipeDetails.jsx.html">pages/RecipeDetails.jsx</a>, <a href="pages_RecipeDetails.jsx.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="RecipesPage"><span class="type-signature"></span>RecipesPage<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Component that renders a page of Recipes
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="pages_RecipesPage.jsx.html">pages/RecipesPage.jsx</a>, <a href="pages_RecipesPage.jsx.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="RowOfCards"><span class="type-signature"></span>RowOfCards<span class="signature">(props)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Component to render recipe cards for the Favorites row
 </div>
 
 
@@ -1560,15 +1062,10 @@ in view on the recipe list.
 
         <tr>
             
-                <td class="name"><code>keyword</code></td>
+                <td class="name"><code>props</code></td>
             
 
             <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
             
             </td>
 
@@ -1576,7 +1073,7 @@ in view on the recipe list.
 
             
 
-            <td class="description last"></td>
+            <td class="description last">favorited recipe data</td>
         </tr>
 
     
@@ -1617,7 +1114,7 @@ in view on the recipe list.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="RecipeList.js.html">RecipeList.js</a>, <a href="RecipeList.js.html#line114">line 114</a>
+        <a href="pages_FrontPage.jsx.html">pages/FrontPage.jsx</a>, <a href="pages_FrontPage.jsx.html#line188">line 188</a>
     </li></ul></dd>
     
 
@@ -1642,28 +1139,6 @@ in view on the recipe list.
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    an array that holds id's of recipes
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;int></span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -1675,7 +1150,7 @@ in view on the recipe list.
     
 
     
-    <h4 class="name" id="getTags"><span class="type-signature"></span>getTags<span class="signature">(jsonFile)</span><span class="type-signature"> &rarr; {Array.&lt;String>}</span></h4>
+    <h4 class="name" id="RowOfCards"><span class="type-signature"></span>RowOfCards<span class="signature">(props)</span><span class="type-signature"></span></h4>
     
 
     
@@ -1683,9 +1158,7 @@ in view on the recipe list.
 
 
 <div class="description">
-    getTags function will build an array containing title, ingredients,
-and tags for true booleans within the json file passed. These tags will be
-used to search through and compare user's search bar input to.
+    Component to render recipe cards for the Favorites row
 </div>
 
 
@@ -1721,15 +1194,10 @@ used to search through and compare user's search bar input to.
 
         <tr>
             
-                <td class="name"><code>jsonFile</code></td>
+                <td class="name"><code>props</code></td>
             
 
             <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
             
             </td>
 
@@ -1737,7 +1205,7 @@ used to search through and compare user's search bar input to.
 
             
 
-            <td class="description last">that will be used to extract tags</td>
+            <td class="description last">favorited recipe data</td>
         </tr>
 
     
@@ -1778,7 +1246,7 @@ used to search through and compare user's search bar input to.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="RecipeList.js.html">RecipeList.js</a>, <a href="RecipeList.js.html#line148">line 148</a>
+        <a href="pages_RecipesPage.jsx.html">pages/RecipesPage.jsx</a>, <a href="pages_RecipesPage.jsx.html#line178">line 178</a>
     </li></ul></dd>
     
 
@@ -1803,28 +1271,6 @@ used to search through and compare user's search bar input to.
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    an array of tags, consisting of the recipe title, ingredients, etc.
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;String></span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -1836,7 +1282,7 @@ used to search through and compare user's search bar input to.
     
 
     
-    <h4 class="name" id="init"><span class="type-signature">(async) </span>init<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="SignUpPage"><span class="type-signature"></span>SignUpPage<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -1844,7 +1290,7 @@ used to search through and compare user's search bar input to.
 
 
 <div class="description">
-    Init function that automacially creates cards list when favorites page is clicked on.
+    Component that renders the Sign Up form
 </div>
 
 
@@ -1888,7 +1334,7 @@ used to search through and compare user's search bar input to.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="FavoriteList.js.html">FavoriteList.js</a>, <a href="FavoriteList.js.html#line10">line 10</a>
+        <a href="pages_SignUp.jsx.html">pages/SignUp.jsx</a>, <a href="pages_SignUp.jsx.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -1924,7 +1370,7 @@ used to search through and compare user's search bar input to.
     
 
     
-    <h4 class="name" id="init"><span class="type-signature">(async) </span>init<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="StateProvider"><span class="type-signature"></span>StateProvider<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -1932,9 +1378,7 @@ used to search through and compare user's search bar input to.
 
 
 <div class="description">
-    Init automatically sets enter key bind to search bar and populates
-the page with recipe cards of every json file that was fetched into
-local storage.
+    Context API stores with actions
 </div>
 
 
@@ -1978,1351 +1422,7 @@ local storage.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="RecipeList.js.html">RecipeList.js</a>, <a href="RecipeList.js.html#line27">line 27</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="init"><span class="type-signature">(async) </span>init<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    INIT function is simply just called when we load the cook view page. It
-just calls the createCookView() function which will create the html
-structure of the cook view page.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="cookViewInit.js.html">cookViewInit.js</a>, <a href="cookViewInit.js.html#line13">line 13</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="init"><span class="type-signature">(async) </span>init<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    INITIALIZE FUNCTION where recipes will be fetches as soon as website is booted up.
-Will send out a request to api to fetch 0-100 recipes and then populate local storage
-to hold all recipe id's as keys and their json files as the values. Will also
-create a hashmap to map titles to id's, favmap and del map to map id's to booleans,
-a popular array to hold top rated recipes for homepage view, and lastly a urlmap
-that that holds url as key and id as a value to keep track of duplicated added recipes.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line46">line 46</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="init"><span class="type-signature">(async) </span>init<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    INIT is automatically called when we load the recipe expand page. It called
-the createRecipeExpand() function which will create the html structure of the
-recipe expand page.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="recipeExpand.js.html">recipeExpand.js</a>, <a href="recipeExpand.js.html#line15">line 15</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="insertAtIndex"><span class="type-signature"></span>insertAtIndex<span class="signature">(insertIndex, key, value)</span><span class="type-signature"> &rarr; {Map}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Use array.splice function to insert item at certain index to map
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>insertIndex</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">url which comes from user input</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>key</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">url which comes from user input</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">url which comes from user input</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="addRecipe.js.html">addRecipe.js</a>, <a href="addRecipe.js.html#line161">line 161</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    return the Map which is updated
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Map</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="markFav"><span class="type-signature"></span>markFav<span class="signature">(id)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    MARKFAV function sets recipe's id location in favmap as true, and then
-replaces the favmap in local storage.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="FavoriteRecipe.js.html">FavoriteRecipe.js</a>, <a href="FavoriteRecipe.js.html#line6">line 6</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="resetCards"><span class="type-signature"></span>resetCards<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    resetCards function selects all cards and removes any hidden classes to
-show them for view again.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="RecipeList.js.html">RecipeList.js</a>, <a href="RecipeList.js.html#line98">line 98</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="saveRecipe"><span class="type-signature"></span>saveRecipe<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Export saveRecipe alled when submit button is clicked in recipe-expand.html.
-Grabs the new serving amount and scales ingredients accordingly. Writes back
-changes to local storage. Hides submit button and input form, shows edit button again.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="recipeExpand.js.html">recipeExpand.js</a>, <a href="recipeExpand.js.html#line61">line 61</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="searchForKey"><span class="type-signature"></span>searchForKey<span class="signature">(object, key)</span><span class="type-signature"> &rarr; {*}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Search for the value of the `key` which is an attribute in the given object `data` json file
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>object</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the json file</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>key</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">the name of the attribute we are trying to acces in the json file</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="searchKey.js.html">searchKey.js</a>, <a href="searchKey.js.html#line7">line 7</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The value associated with the key if found
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">*</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="searchRecipes"><span class="type-signature"></span>searchRecipes<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    SEARCHRECIPES function is the connection between frontend and backend.
-When user clicks search button, search bar input will be pulled and passed to
-getRecipesContainingKeyword(). Then the array returned will populate cards on
-screen pertaining to input.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="RecipeList.js.html">RecipeList.js</a>, <a href="RecipeList.js.html#line66">line 66</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="unFav"><span class="type-signature"></span>unFav<span class="signature">(id)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    UNFAV function sets recipe's id location in favmap as false and replaces
-the favmap into local storage again.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="FavoriteRecipe.js.html">FavoriteRecipe.js</a>, <a href="FavoriteRecipe.js.html#line19">line 19</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="updateRecipeServings"><span class="type-signature"></span>updateRecipeServings<span class="signature">(numServings)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Given a new number of servings, scales the amount of ingredients needed for the recipe
-curently shown on recipe-expand.html accordingly.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>numServings</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">int</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">, number of servings to modify the recipe's ingredients</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="recipeExpand.js.html">recipeExpand.js</a>, <a href="recipeExpand.js.html#line117">line 117</a>
+        <a href="store_store.js.html">store/store.js</a>, <a href="store_store.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -3368,13 +1468,13 @@ curently shown on recipe-expand.html accordingly.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ComplexSearch.html">ComplexSearch</a></li><li><a href="GenericFetch.html">GenericFetch</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addRecipe">addRecipe</a></li><li><a href="global.html#bindEnterKey">bindEnterKey</a></li><li><a href="global.html#checkDup">checkDup</a></li><li><a href="global.html#clickNav">clickNav</a></li><li><a href="global.html#createCookView">createCookView</a></li><li><a href="global.html#createFavCards">createFavCards</a></li><li><a href="global.html#createRecipeCards">createRecipeCards</a></li><li><a href="global.html#createRecipeExpand">createRecipeExpand</a></li><li><a href="global.html#deleteRecipe">deleteRecipe</a></li><li><a href="global.html#editRecipe">editRecipe</a></li><li><a href="global.html#extraction">extraction</a></li><li><a href="global.html#fillPopular">fillPopular</a></li><li><a href="global.html#getInstructionSteps">getInstructionSteps</a></li><li><a href="global.html#getRecipesNotContainingKeyword">getRecipesNotContainingKeyword</a></li><li><a href="global.html#getTags">getTags</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#insertAtIndex">insertAtIndex</a></li><li><a href="global.html#markFav">markFav</a></li><li><a href="global.html#resetCards">resetCards</a></li><li><a href="global.html#saveRecipe">saveRecipe</a></li><li><a href="global.html#searchForKey">searchForKey</a></li><li><a href="global.html#searchRecipes">searchRecipes</a></li><li><a href="global.html#unFav">unFav</a></li><li><a href="global.html#updateRecipeServings">updateRecipeServings</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#cuisineMockData">cuisineMockData</a></li><li><a href="global.html#FrontPage">FrontPage</a></li><li><a href="global.html#HorizontalScrollImg">HorizontalScrollImg</a></li><li><a href="global.html#ingredientsImg">ingredientsImg</a></li><li><a href="global.html#LogInPage">LogInPage</a></li><li><a href="global.html#Main">Main</a></li><li><a href="global.html#NavBar">NavBar</a></li><li><a href="global.html#prepTimeImg">prepTimeImg</a></li><li><a href="global.html#RecipeDetails">RecipeDetails</a></li><li><a href="global.html#RecipesPage">RecipesPage</a></li><li><a href="global.html#RowOfCards">RowOfCards</a></li><li><a href="global.html#SignUpPage">SignUpPage</a></li><li><a href="global.html#StateProvider">StateProvider</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Thu May 19 2022 00:43:00 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Thu Jun 09 2022 02:08:49 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

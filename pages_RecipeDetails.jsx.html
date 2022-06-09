@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/RecipeDetails.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/RecipeDetails.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Fragment, useState, useEffect } from "react";
+import "../stylesheets/recipedetail.css";
+import {
+    getRecipe,
+    getComment,
+    editComment,
+    checkFavorite
+} from "../firebase.mjs";
+import { Button, Form } from "react-bootstrap";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+/**
+ * Component that renders the Recipe Details
+ */
+const RecipeDetails = () => {
+    const [RecipeMockData, setMock] = useState([]);
+    const [showModal, setShowModal] = useState("false");
+    const [comment, setComment] = useState("");
+
+    /**
+     * get the recipe details and comments from Firebase
+     */
+    useEffect(() => {
+        const randas = async () => {
+            const params = new Proxy(
+                new URLSearchParams(window.location.search),
+                {
+                    get: (searchParams, prop) => searchParams.get(prop)
+                }
+            );
+            const recipeType = params.type;
+
+            var recipe = await getRecipe(recipeType).then((key) => {
+                return key;
+            });
+            setMock(recipe);
+            return recipe;
+        };
+        const randas2 = async () => {
+            const params = new Proxy(
+                new URLSearchParams(window.location.search),
+                {
+                    get: (searchParams, prop) => searchParams.get(prop)
+                }
+            );
+            const recipeType = params.type;
+            console.log(recipeType);
+            var comment = await getComment(recipeType).then((key) => {
+                console.log(key);
+                return key;
+            });
+            setComment(comment);
+            return comment;
+        };
+        randas();
+        const auth = getAuth();
+        auth.onAuthStateChanged(function (user) {
+            if (user) {
+                randas2();
+            } else {
+                return "";
+            }
+        });
+    }, []);
+
+    /**
+     * Set the default state of the modal
+     */
+    const setStateOfParent = () => {
+        setShowModal("false");
+    };
+
+    /**
+     * format the ingredient string to display on screen
+     */
+    const readIngredients = () => {
+        let ingredients = "";
+        let counter = 1;
+        if (RecipeMockData.extendedIngredients == undefined) {
+            return "No Ingredients given";
+        }
+        for (let i = 0; i &lt; RecipeMockData.extendedIngredients.length; i++) {
+            ingredients += counter.toString(10);
+            ingredients += ". ";
+            ingredients += RecipeMockData.extendedIngredients[i].original;
+            ingredients += "\n";
+            ingredients += "\n";
+            counter++;
+        }
+        return ingredients;
+    };
+
+    /**
+     * Format the instructions to display on screen
+     */
+    const readInstructions = () => {
+        let instructions = "";
+        let counter = 1;
+        if (
+            RecipeMockData.analyzedInstructions == undefined ||
+            RecipeMockData.analyzedInstructions.length == 0
+        ) {
+            return "There are no instructions currently for this recipe!";
+        } else {
+            for (
+                let i = 0;
+                i &lt; RecipeMockData.analyzedInstructions[0].steps.length;
+                i++
+            ) {
+                instructions += counter.toString(10);
+                instructions += ". ";
+                instructions +=
+                    RecipeMockData.analyzedInstructions[0].steps[i].step;
+                instructions += "\n";
+                instructions += "\n";
+                counter++;
+            }
+            return instructions;
+        }
+    };
+
+    /**
+     * set comment in state
+     * @param {} e window's default event
+     */
+    const handleChange = (e) => {
+        setComment(e.target.value);
+    };
+
+    return (
+        &lt;Fragment>
+            {showModal == "true" &amp;&amp; (
+                &lt;div className="recipe-page">
+                    &lt;div className="recipe-container">{renderVisibility()}&lt;/div>
+                &lt;/div>
+            )}
+            {showModal == "false" &amp;&amp; (
+                &lt;div className="recipe-page">
+                    {console.log(RecipeMockData)}
+                    &lt;div className="recipe-container">
+                        &lt;div className="recipe-title">
+                            {RecipeMockData.title}
+                        &lt;/div>
+                        &lt;div className="recipe-image">
+                            &lt;img
+                                src={RecipeMockData.image}
+                                alt="new"
+                                width="350"
+                                height="250"
+                            >&lt;/img>
+                        &lt;/div>
+                        &lt;div className="button-row">
+                            &lt;button
+                                type="button"
+                                className="btn btn-lg btn-secondary "
+                                onClick={() =>
+                                    checkFavorite(RecipeMockData.id.toString())
+                                }
+                            >
+                                Favorite
+                            &lt;/button>
+                        &lt;/div>
+                        &lt;div className="instructions-box">
+                            &lt;div className="box-title">Ingredients&lt;/div>
+                            &lt;div className="listed">{readIngredients()}&lt;/div>
+                        &lt;/div>
+                        &lt;div className="instructions-box">
+                            &lt;div className="box-title">Servings&lt;/div>
+                            &lt;div className="listed">
+                                {RecipeMockData.servings}
+                            &lt;/div>
+                        &lt;/div>
+                        &lt;div className="instructions-box">
+                            &lt;div className="box-title">Instructions&lt;/div>
+                            &lt;div className="listed">{readInstructions()}&lt;/div>
+                        &lt;/div>
+                        &lt;div>
+                            &lt;Form.Group
+                                className="mb-3"
+                                controlId="formBasicNotes"
+                            >
+                                &lt;Form.Label>Notes&lt;/Form.Label>
+                                &lt;Form.Control
+                                    className="form"
+                                    type="Notes"
+                                    placeholder="Enter Notes"
+                                    id="notes"
+                                    value={comment}
+                                    onChange={handleChange}
+                                />
+                            &lt;/Form.Group>
+                            &lt;button
+                                type="button"
+                                className="btn btn btn-secondary "
+                                onClick={async () => {
+                                    console.log(
+                                        document.getElementById("notes").value
+                                    );
+                                    editComment(
+                                        RecipeMockData.id.toString(), document.getElementById("notes").value
+                                    );
+                                }}
+                            >
+                                Add Note
+                            &lt;/button>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            )}
+        &lt;/Fragment>
+    );
+};
+
+export default RecipeDetails;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#cuisineMockData">cuisineMockData</a></li><li><a href="global.html#FrontPage">FrontPage</a></li><li><a href="global.html#HorizontalScrollImg">HorizontalScrollImg</a></li><li><a href="global.html#ingredientsImg">ingredientsImg</a></li><li><a href="global.html#LogInPage">LogInPage</a></li><li><a href="global.html#Main">Main</a></li><li><a href="global.html#NavBar">NavBar</a></li><li><a href="global.html#prepTimeImg">prepTimeImg</a></li><li><a href="global.html#RecipeDetails">RecipeDetails</a></li><li><a href="global.html#RecipesPage">RecipesPage</a></li><li><a href="global.html#RowOfCards">RowOfCards</a></li><li><a href="global.html#SignUpPage">SignUpPage</a></li><li><a href="global.html#StateProvider">StateProvider</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Thu Jun 09 2022 02:08:49 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

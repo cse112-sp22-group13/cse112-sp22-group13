@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/FrontPage.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/FrontPage.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Fragment, useState, useEffect } from "react";
+import { Dropdown } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { getFavorites, getRecipe } from "../firebase.mjs";
+import { initializeDB } from "../spoonacular.mjs";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import "../stylesheets/frontpage.css";
+import { cuisineMockData, ingredientsImg, prepTimeImg } from "../constants.js";
+
+initializeDB();
+
+/**
+ * Components to render the front page with rows of cusines, ingredients, prep time and favorites
+ */
+const FrontPage = () => {
+
+    const [queryType, setQueryType] = useState("Name");
+    const [favorites, setFavorites] = useState([]);
+
+    /**
+     * Create a row of Favorited recipe if the user has logged in
+     */
+    useEffect(() => {
+        const randas = async () => {
+            var ids = await getFavorites();
+            if (ids == null) {
+                return;
+            }
+            var recipez = [];
+            let threerec = [];
+            for (var i in ids) {
+                var recipe = await getRecipe(ids[i]).then(async (key) => {
+                    return key;
+                });
+                threerec.push(recipe);
+                if (threerec.length == 3) {
+                    recipez.push(threerec);
+                    threerec = [];
+                }
+            }
+            if (threerec.length > 0) {
+                recipez.push(threerec);
+            }
+            setFavorites(recipez);
+            return recipez;
+        };
+        const auth = getAuth();
+        auth.onAuthStateChanged(function (user) {
+            if (user) {
+                randas();
+            } else {
+                return null;
+            }
+        });
+    }, []);
+    let navigate = useNavigate();
+
+    return (
+        &lt;Fragment>
+            &lt;form
+                id="form_search"
+                name="form_search"
+                method="get"
+                action=""
+                className="form-inline"
+                onSubmit={(event) => {
+                    event.preventDefault();
+                    navigate("/recipes");
+                    window.location.search +=
+                        "?type=" +
+                        queryType +
+                        "&amp;data=" +
+                        document.getElementById("searchbar").value;
+                }}
+            >
+                &lt;div className="input-group" name="divcontainer">
+                    &lt;input
+                        id="searchbar"
+                        name="searchbar"
+                        className="form-control"
+                        placeholder="Search By..."
+                        type="text"
+                    />
+                    &lt;span className="input-group-btn">
+                        &lt;Dropdown>
+                            &lt;Dropdown.Toggle
+                                className="dropdown"
+                                variant="success"
+                                id="dropdown-basic"
+                            >
+                                {queryType}
+                            &lt;/Dropdown.Toggle>
+
+                            &lt;Dropdown.Menu>
+                                &lt;Dropdown.Item
+                                    onClick={() => setQueryType("Name")}
+                                >
+                                    Name
+                                &lt;/Dropdown.Item>
+                                &lt;Dropdown.Item
+                                    onClick={() => setQueryType("Cuisine")}
+                                >
+                                    Cuisine
+                                &lt;/Dropdown.Item>
+                                &lt;Dropdown.Item
+                                    onClick={() => setQueryType("Ingredients")}
+                                >
+                                    Ingredients
+                                &lt;/Dropdown.Item>
+                            &lt;/Dropdown.Menu>
+                        &lt;/Dropdown>
+                    &lt;/span>
+                &lt;/div>
+            &lt;/form>
+            &lt;h4>CUISINE&lt;/h4>
+            &lt;div className="container-fluid">
+                &lt;div className="scrolling-wrapper row flex-row flex-nowrap py-2">
+                    {cuisineMockData.map((cuisine, index) => (
+                        &lt;div className="col-2 my-col" key={index}>
+                            &lt;Link
+                                to={{
+                                    pathname: "/recipes",
+                                    search:
+                                        "?type=cuisines&amp;data=" + cuisine.name
+                                }}
+                            >
+                                &lt;img
+                                    alt="100x100"
+                                    src={cuisine.img}
+                                    data-holder-rendered="true"
+                                />
+                                &lt;p className="pt-2">{cuisine.name}&lt;/p>
+                            &lt;/Link>
+                        &lt;/div>
+                    ))}
+                &lt;/div>
+            &lt;/div>
+            &lt;h4>INGREDIENTS&lt;/h4>
+            &lt;div className="scrolling-wrapper row flex-row flex-nowrap py-2">
+                &lt;HorizontalScrollImg
+                    categoryList={ingredientsImg}
+                    type="ingredients"
+                />
+            &lt;/div>
+            &lt;h4>PREP TIME&lt;/h4>
+            &lt;div className="row flex-row justify-content-evenly py-2">
+                &lt;HorizontalScrollImg categoryList={prepTimeImg} type="time" />
+            &lt;/div>
+            &lt;h4>FAVORITES&lt;/h4>
+            &lt;div>
+                {favorites.map((three) => (
+                    &lt;RowOfCards data={three}>&lt;/RowOfCards>
+                ))}
+            &lt;/div>
+        &lt;/Fragment>
+    );
+};
+
+/**
+ * Component to render horizontal icons for Cuisine, Ingredients, and Prep Time row
+ */
+const HorizontalScrollImg = (props) => {
+    const { categoryList } = props;
+
+    return categoryList.map((category, index) => (
+        &lt;div className="col-2 my-col" key={index}>
+            &lt;Link
+                to={{
+                    pathname: "/recipes",
+                    search: "?type=" + props.type + "&amp;data=" + category.name
+                }}
+            >
+                &lt;img
+                    alt="100x100"
+                    src={category.img}
+                    data-holder-rendered="true"
+                />
+                &lt;p className="pt-2">{category.name}&lt;/p>
+            &lt;/Link>
+        &lt;/div>
+    ));
+};
+
+/**
+ * Component to render recipe cards for the Favorites row
+ * @param {} props - favorited recipe data
+ */
+const RowOfCards = (props) => {
+    return props.data ? (
+        &lt;div className="row row-cols-3">
+            {props.data.map((recipe) => (
+                &lt;div className="col mb-4">
+                    &lt;div className="card">
+                        &lt;Link
+                            to={{
+                                pathname: "/recipe",
+                                search: "?type=" + recipe.id
+                            }}
+                        >
+                            &lt;img
+                                src={recipe.image}
+                                className="card-img-top"
+                                alt="..."
+                            />
+                            &lt;div className="card-body">
+                                &lt;div className="card-title-box">
+                                    &lt;h5 className="card-title">
+                                        {recipe.title}
+                                    &lt;/h5>
+                                &lt;/div>
+                                &lt;div className="text-box">
+                                    &lt;p className="card-text">
+                                        {recipe.cuisines[0]}
+                                    &lt;/p>
+                                    &lt;p className="card-text">
+                                        {recipe.readyInMinutes} Minutes
+                                    &lt;/p>
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/Link>
+                    &lt;/div>
+                &lt;/div>
+            ))}
+        &lt;/div>
+    ) : (
+        ""
+    );
+};
+
+export default FrontPage;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#cuisineMockData">cuisineMockData</a></li><li><a href="global.html#FrontPage">FrontPage</a></li><li><a href="global.html#HorizontalScrollImg">HorizontalScrollImg</a></li><li><a href="global.html#ingredientsImg">ingredientsImg</a></li><li><a href="global.html#LogInPage">LogInPage</a></li><li><a href="global.html#Main">Main</a></li><li><a href="global.html#NavBar">NavBar</a></li><li><a href="global.html#prepTimeImg">prepTimeImg</a></li><li><a href="global.html#RecipeDetails">RecipeDetails</a></li><li><a href="global.html#RecipesPage">RecipesPage</a></li><li><a href="global.html#RowOfCards">RowOfCards</a></li><li><a href="global.html#SignUpPage">SignUpPage</a></li><li><a href="global.html#StateProvider">StateProvider</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Thu Jun 09 2022 02:08:49 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
