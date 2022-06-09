@@ -1,10 +1,12 @@
 # cse112-sp22-group13 - Full Stack
 
+Final Video (Public): [https://youtu.be/oaQaCMjofmA](https://youtu.be/oaQaCMjofmA)
+
 ## [KNEAD IT](https://knead-it.netlify.app)
 Knead It is a bread-themed recipe manager designed for use in the browser. Users may create accounts to keep track of their favorite recipes and note down comments about recipes, similar to how they might interact with a physical cookbook.
 
 # Using this project
-Simply host the `src` directory using your favorite webserver or hosting service. The main page is in `src/index.js`.
+Simply host the `src` directory using your favorite webserver or hosting service. The app is built from `src/App.js`, `src/index.js`, and `public/index.html`.
 
 # Developing for this Project
 
