@@ -30,7 +30,7 @@ const NavBar = () => {
                     >
                         <img
                             id="icon"
-                            src={require("../media/NavBar Logo.png")}
+                            src={require("../icons/NavBar Logo.png")}
                             alt="Logo"
                             width="75"
                             height="75"
