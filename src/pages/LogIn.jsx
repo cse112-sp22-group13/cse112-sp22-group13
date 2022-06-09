@@ -35,7 +35,6 @@ const LogInPage = () => {
     const handleGoogleSubmission = (e) => {
         e.preventDefault();
         signInWithGoogle().then(({ email, uid }) => {
-            console.log("Signed", email, uid);
             dispatch({ type: "ADD_USER", payload: { email: email, uid: uid } });
         });
     };
