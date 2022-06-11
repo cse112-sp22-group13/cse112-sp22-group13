@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { getRecipe, getRecipeIds } from "../firebase.mjs";
 import "../stylesheets/recipespage.css";
 
@@ -13,6 +13,7 @@ const RecipesPage = () => {
     const [queryType, setQueryType] = useState("Name");
 
     let navigate = useNavigate();
+    let location = useLocation();
 
     /**
      * fetch recipes according to user's request from Firebase
@@ -103,7 +104,7 @@ const RecipesPage = () => {
         };
 
         fetchData();
-    }, []);
+    }, [location]);
     return (
         <Fragment>
             <form
@@ -114,12 +115,12 @@ const RecipesPage = () => {
                 className="form-inline"
                 onSubmit={(event) => {
                     event.preventDefault();
-                    navigate("/recipes");
-                    window.location.search +=
-                        "?type=" +
-                        queryType +
-                        "&data=" +
-                        document.getElementById("searchbar").value;
+                    const query = "?type=" + queryType + "&data=" + document.getElementById("searchbar").value;
+                    navigate({ 
+                        pathname: "/recipes",
+                        search: query
+                    });
+                    
                 }}
             >
                 <div className="input-group" name="divcontainer">

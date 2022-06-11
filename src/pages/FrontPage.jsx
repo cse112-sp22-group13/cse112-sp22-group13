@@ -65,12 +65,11 @@ const FrontPage = () => {
                 className="form-inline"
                 onSubmit={(event) => {
                     event.preventDefault();
-                    navigate("/recipes");
-                    window.location.search +=
-                        "?type=" +
-                        queryType +
-                        "&data=" +
-                        document.getElementById("searchbar").value;
+                    const query = "?type=" + queryType + "&data=" + document.getElementById("searchbar").value;
+                    navigate({ 
+                        pathname: "/recipes",
+                        search: query
+                    });
                 }}
             >
                 <div className="input-group" name="divcontainer">

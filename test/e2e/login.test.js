@@ -1,3 +1,6 @@
+jest.useRealTimers();
+jest.setTimeout(15000);
+
 describe("Login Tests", () => {
     beforeAll(async () => {
         await page.goto("http://localhost:3000/login");

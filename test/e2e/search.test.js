@@ -2,7 +2,7 @@ jest.useRealTimers();
 jest.setTimeout(15000);
 
 describe("Search Tests", () => {
-    beforeAll(async () => {
+    beforeEach(async () => {
         await page.goto("http://localhost:3000");
     });
 

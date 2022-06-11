@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 
 import NavBar from "./components/Navbar.jsx";
 import Main from "./components/Main.jsx";
