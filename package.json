@@ -35,7 +35,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && echo '/* /public/index.html 200' | cat >build/_redirects ",
     "test": "mocha test/unit/**/*.js --reporter spec",
     "e2e-test": "jest",
     "eject": "react-scripts eject",
