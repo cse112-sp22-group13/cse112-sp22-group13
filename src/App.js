@@ -12,12 +12,12 @@ import "./stylesheets/App.css";
  */
 const App = () => {
     return (
-        <HashRouter>
+        <BrowserRouter>
             <div>
                 <NavBar />
                 <Main />
             </div>
-        </HashRouter>
+        </BrowserRouter>
     );
 };
 
