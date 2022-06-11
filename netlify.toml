@@ -1,4 +1,4 @@
 [[redirects]]
 from = "/*"
-to = "/public/index.js"
-status = 404
+to = "/src/index.js"
+status = 200
